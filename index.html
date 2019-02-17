@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Folgert Karsdorp</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" async
+            src="https://cdn.rawgit.com/pcooksey/bibtex-js/master/src/bibtex_js.js"></script>
+    <bibtex src="./static/references.bib"></bibtex>
+    <link href="./static/css/markdown.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+
+    <script>
+      function showBibTex(id) {
+          document.getElementById(id).classList.toggle("active");
+          element = document.getElementById(id + "raw");
+          if (element.style.maxHeight){
+              element.style.maxHeight = null;
+          } else {
+              element.style.maxHeight = element.scrollHeight + "px";
+          }
+      }    
+    </script>
+    
+  </head>
+<body>
+  
+<div class="social">
+  <span><a class="logos" href="https://github.com/fbkarsdorp">
+      <i class="fab fa-github"></i></a></span>
+  <span><a class="logos" href="https://twitter.com/FolgertK">
+      <i class="fab fa-twitter"></i></a></span>
+</div>
+<h1 class="header">Folgert Karsdorp</h1>
+
+<div class="bibtex_structure">
+  <div class="sections bibtextypekey">
+    <div class="section @article">
+      <h2>Journal Articles</h2>
+      <div class="sort year" extra="DESC number">
+        <div class="templates"></div>
+      </div>
+    </div>
+    <div class="section @inproceedings">
+      <h2>Conference and Workshop Papers</h2>
+      <div class="sort year" extra="DESC number">
+        <div class="templates"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="bibtex_display"></div>
+    <div class="bibtex_template">
+        <ul><li><p>
+            <span class="if author">
+                <span class="author"></span>
+            </span>
+            <span class="if year">(<span class="year"></span>).</span>
+            <span class="if title">
+              <span class="if url">
+                <a class="url" target="_blank"><span class="title"></span>.</a>
+              </span>
+              <span class="if !url">
+                <span class="title"></span>.
+              </span>
+            </span>
+            <span class="if journal"><em><span class="journal"></span></em>,</span>
+            <span class="if booktitle"><em><span class="booktitle"></span></em>,</span>
+            <span class="if editor"><span class="editor"></span> (editors),</span>
+            <span class="if publisher"><em><span class="publisher"></span></em>,</span>
+            <span class="if institution"><span class="institution"></span>,</span>
+            <span class="if address"><span class="address"></span>,</span>
+            <span class="if volume">vol. <span class="volume"></span>,</span>
+            <span class="if journal number">(<span class="number"></span>),</span>
+            <span class="if pages"> pp. <span class="pages"></span>.</span>
+            <span>
+              <a class="bibtexVar bibshow" id="bib+BIBTEXKEY+"
+                 onclick="showBibTex(this.id)"
+                 extra="BIBTEXKEY">(.bib)
+              </a>
+            </span>
+            <div class="card bibtexVar" id="bib+BIBTEXKEY+raw" extra="BIBTEXKEY">
+              <pre><span class="bibtexraw noread"></span></pre>
+            </div>
+        <p></li></ul>
+    </div>
+</div>
+
+</body>
+</html>
