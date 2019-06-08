@@ -90,6 +90,11 @@ div.section{
     margin-bottom: 24px;
 }
 
+.YEAR {
+    color:  #919191;
+    font-size: 24pt;
+}
+
 .bibshow {
     color: #FF6562;
     -webkit-touch-callout: none;
