@@ -132,15 +132,16 @@ footer a {
   }
 
   .fixed {
-    position: relative;
+      position: relative;
   }
 
   #abstract-box {
       display: none;
   }
 
-  body {
+  .container {
       display: block;
+      overflow-y: inherit;
   }
 
   footer a {
