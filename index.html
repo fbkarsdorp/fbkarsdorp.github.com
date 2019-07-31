@@ -13,31 +13,67 @@
         <script type="text/javascript"
                 src="https://cdn.rawgit.com/pcooksey/bibtex-js/ef59e62c/src/bibtex_js.js">
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js" type="text/javascript"></script>
         <bibtex src="./static/references.bib"></bibtex>
     </head>
     <body>
+      <script>
+        var width = null;
+        jQuery(document).ready(function() {
+            function resizeForm() {
+                width = (window.innerWidth > 0) ? window.innerWidth : document.documentElement.clientWidth;
+            }
+            window.onresize = resizeForm;
+            resizeForm();
+        });
+        
+        function showAbstract(id) {
+            if (width > 990) {
+                element = document.getElementById(id + "abstract");
+                element.style.display = "block";
+
+                abst = document.getElementsByClassName("show-abstract")[0];
+                abst.append(element);
+                if (element.visible == null) {
+                    $('.abstract-wrapper').hide().fadeIn(800);
+                }
+                element.visible = true;
+            }
+        }
+
+        function hideAbstract(id) {
+            element = document.getElementById(id + "abstract");
+            element.style.display = "none";
+            element.visible = null;
+        }
+    </script>
         <div class="bibtex_structure">
             <div class="group year" extra="DESC number">
                 <div class="templates"></div>
             </div>
         </div>
         
-        <div class="container">
-            <div class="fixed">
-            <main>
-                <h1>Folgert Karsdorp</h1>
-                <h2>Researcher<a href="https://www.meertens.knaw.nl/" target="_blank">
-                    @ KNAW Meertens Instituut</a>.
-                </h2>
-            </main>
+        <div class="fixed">
+          <main>
+            <h1>Folgert Karsdorp</h1>
+            <h2>Researcher<a href="https://www.meertens.knaw.nl/" target="_blank">
+                @ KNAW Meertens Instituut</a>.
+            </h2>
+          </main>
 
-            <footer>
-                <a href="https://twitter.com/FolgertK" target="_blank">twitter</a>
-                <a href="https://github.com/fbkarsdorp" target="_blank">github</a>
-                <a href="mailto:folgert.karsdorp@meertens.knaw.nl">e-mail</a>
-            </footer>
+          <footer>
+            <a href="https://twitter.com/FolgertK" target="_blank">twitter</a>
+            <a href="https://github.com/fbkarsdorp" target="_blank">github</a>
+            <a href="mailto:folgert.karsdorp@meertens.knaw.nl">e-mail</a>
+          </footer>
+        </div>
+
+        <div id="abstract-box" class="container">
+            <div class="abstract-wrapper">
+              <div class="show-abstract"></div>
             </div>
         </div>
+
         <div class="container">
             <div class="publist">
                 <div id="bibtex_display"></div>
@@ -45,20 +81,27 @@
         </div>
 
         <div class="bibtex_template" style="display: none;">
+          <div class="bibtexVar" id="bib+BIBTEXKEY+" onmouseover="showAbstract(this.id)"
+             extra="BIBTEXKEY" onmouseleave="hideAbstract(this.id)">
             <p>
-            <span class="if author">
+              <span class="if author">
                 <span class="author"></span>
-            </span>
-            <span class="if year">(<span class="year"></span>)</span>
-            <span class="if title">
+              </span>
+              <span class="if year">(<span class="year"></span>)</span>
+              <span class="if title">
                 <span class="if url">
-                    <a class="url" target="_blank"><span class="title"></span>.</a>
+                  <a class="url" target="_blank"><span class="title"></span>.</a>
                 </span>
                 <span class="if !url">
-                    <span class="title"></span>.
+                  <span class="title"></span>.
                 </span>
-            </span>
+              </span>
             </p>
+          </div>
+          <span class="if abstract">
+            <span id="bib+BIBTEXKEY+abstract" class="abstract bibtexVar"
+                  extra="BIBTEXKEY" style="display: none;"></span>
+          </span>
         </div>
     </body>
 </html>
