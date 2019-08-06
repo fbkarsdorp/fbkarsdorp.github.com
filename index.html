@@ -48,7 +48,6 @@
                 element = document.getElementById(id + "abstract");
                 if (element.visible == null) {
                     element.style.display = "block";
-
                     abst = document.getElementsByClassName("show-abstract")[0];
                     abst.append(element);
                     $('.abstract-wrapper').hide().fadeIn(800);
@@ -58,9 +57,12 @@
         }
 
         function hideAbstract(id) {
+            $(".abstract-wrapper").stop(true, true);
             element = document.getElementById(id + "abstract");
-            element.style.display = "none";
-            element.visible = null;
+            if (element.visible == true) {
+                element.style.display = "none";
+                element.visible = null;
+            }
         }
     </script>
         <div class="bibtex_structure">
@@ -97,7 +99,7 @@
         </div>
 
         <div class="bibtex_template" style="display: none;">
-          <div class="bibtexVar" id="bib+BIBTEXKEY+" onmouseover="showAbstract(this.id)"
+          <div class="bibtexVar" id="bib+BIBTEXKEY+" onmouseenter="showAbstract(this.id)"
              extra="BIBTEXKEY" onmouseleave="hideAbstract(this.id)">
             <p>
               <span class="if author">
@@ -116,7 +118,8 @@
           </div>
           <span class="if abstract">
             <span id="bib+BIBTEXKEY+abstract" class="abstract bibtexVar"
-                  extra="BIBTEXKEY" style="display: none;"></span>
+                  extra="BIBTEXKEY" style="display: none;">
+            </span>
           </span>
         </div>
     </body>
