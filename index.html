@@ -44,26 +44,16 @@
         });
         
         function showAbstract(id) {
+            abst = document.getElementsByClassName("show-abstract")[0];
+            $(abst).children().hide();
             if (width > 990) {
                 element = document.getElementById(id + "abstract");
-                if (element.visible == null) {
-                    element.style.display = "block";
-                    abst = document.getElementsByClassName("show-abstract")[0];
-                    abst.append(element);
-                    $('.abstract-wrapper').hide().fadeIn(800);
-                }
-                element.visible = true;
+                element.style.display = "block";
+                abst.append(element);
+                $('.abstract-wrapper').hide().fadeIn(800);
             }
         }
 
-        function hideAbstract(id) {
-            $(".abstract-wrapper").stop(true, true);
-            element = document.getElementById(id + "abstract");
-            if (element.visible == true) {
-                element.style.display = "none";
-                element.visible = null;
-            }
-        }
     </script>
         <div class="bibtex_structure">
             <div class='sort bibtexkey' extra="DESC string">
@@ -100,7 +90,8 @@
 
         <div class="bibtex_template" style="display: none;">
           <div class="bibtexVar" id="bib+BIBTEXKEY+" onmouseenter="showAbstract(this.id)"
-             extra="BIBTEXKEY" onmouseleave="hideAbstract(this.id)">
+               extra="BIBTEXKEY">
+            <!-- onmouseleave="hideAbstract(this.id)"> -->
             <p>
               <span class="if author">
                 <span class="author"></span>
