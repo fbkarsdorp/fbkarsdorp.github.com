@@ -46,11 +46,22 @@
         function showAbstract(id) {
             abst = document.getElementsByClassName("show-abstract")[0];
             $(abst).children().hide();
+            $('.bio').hide();
             if (width > 990) {
                 element = document.getElementById(id + "abstract");
                 element.style.display = "block";
                 abst.append(element);
                 $('.abstract-wrapper').hide().fadeIn(800);
+            }
+        }
+
+        function showBio() {
+            abst = document.getElementsByClassName("show-abstract")[0];
+            $(abst).children().hide();
+            bio = document.getElementsByClassName("bio")[0];
+            if (bio.style.display === "none") {
+                bio.style.display = "block";
+                $('.bio').hide().fadeIn(800);
             }
         }
 
@@ -63,7 +74,7 @@
         
         <div class="fixed">
           <main>
-            <h1>Folgert Karsdorp</h1>
+            <h1 onmouseenter="showBio();">Folgert Karsdorp</h1>
             <h2>Researcher<a href="https://www.meertens.knaw.nl/" target="_blank">
                 @ KNAW Meertens Instituut</a>.
             </h2>
@@ -74,6 +85,19 @@
             <a href="https://github.com/fbkarsdorp" target="_blank">github</a>
             <a href="mailto:folgert.karsdorp@meertens.knaw.nl">e-mail</a>
           </footer>
+
+          <div class="bio" style="display: none;">
+            <p>Hi! I'm a researcher researcher at the Meertens Instituut in Amsterdam. My
+              research focuses on why some cultural phenomena are adopted and persist
+              through time, while others change or disappear.</p>
+            
+            <p>I like programming (mostly in Python), and I also like to teach a bit about
+              programming. There's a book coming out in January 2021 about using Python
+              for <a href="https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis"
+              target="_blank">
+              Humanities data analysis!</a>.
+              </p>
+            </div>
         </div>
 
         <div id="abstract-box" class="container">
@@ -110,6 +134,7 @@
           <span class="if abstract">
             <div id="bib+BIBTEXKEY+abstract" class="bibtexVar" extra="BIBTEXKEY"
                  style="display: none;">
+              <h2><span class="title"></span></h2>
               <span class="abstract"></span>
               <div>
                 <p>
@@ -121,6 +146,9 @@
                   </span>
                   <span class="if booktitle">
                     <span class="booktitle"></span>
+                  </span>
+                  <span class="if publisher">
+                    <span class="publisher"></span>
                   </span>
                 </p>
               </div>
