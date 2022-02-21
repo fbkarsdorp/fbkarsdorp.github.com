@@ -217,6 +217,11 @@ h2 {
     overflow: auto;
   }
 
+  .video-container iframe, .video-container object, .video-container embed {
+      left: 0;
+      width: 100%;
+  }
+
   .right {
     display: block;
     overflow-y: hidden;
