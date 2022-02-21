@@ -159,6 +159,7 @@ h1 {
   color: var(--body-hcolor);
   font-weight: 400;
   font-size: 50px;
+  line-height: 1em;
 }
 
 h2 {
@@ -220,6 +221,7 @@ h2 {
     display: block;
     overflow-y: hidden;
     max-width: 100%;
+    height: 100%;
   }
 
   .internet-links a {
