@@ -1,12 +1,13 @@
-@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 html,
 body {
   overscroll-behavior: none;
+  /* overflow: hidden; */
   height: 100%;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     :root {
         --body-bg: #FFFFFF;
         --body-color: #161618;
@@ -15,31 +16,47 @@ body {
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
+  :root {
+      --body-bg: #FFFFFF;
+      --body-color: #161618;
+      --body-hcolor: #0a0a0b;
+      --body-acolor: #222225;
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
     :root {
         --body-bg: #161618;
         --body-color: #8E8E8E;
         --body-hcolor: #fff;
         --body-acolor: #D1D1D1;
     }
-}
+} */
 
 body {
-  display: flex;
-  flex-wrap: wrap;
   background: var(--body-bg);
   color: var(--body-color);
-  font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   transition: background .3s ease;
   font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.35em;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 a, .url {
   transition: color .3s ease;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: #0099e5;
   color: var(--body-acolor);
 }
 
@@ -52,15 +69,11 @@ a:hover {
 ::-moz-selection { color: #0099e5}
 ::selection { color: #0099e5; }
 
-.container {
-  display: flex;
+.right {
   flex: 1 0 320px;
   height: 100vh;
-  justify-items: center;
-  max-width: 500px;
-  grid-gap: 10px;
+  max-width: 40%;
   padding: 0 20px;
-  max-width: 100%;
   overflow-y: auto;
   margin: 0 auto;
   opacity: 0;
@@ -71,65 +84,108 @@ a:hover {
   animation-delay: 0.4s;
 }
 
-.fixed {
-    margin: 10px 20px;
-    position: fixed;
-    max-width: 600px;
-    z-index: 1;
+.right::-webkit-scrollbar {
+  display: none;
 }
 
-main, .publist {
+.left::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.left, .right {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.left {
+  flex: 1 0 320px;
+  height: 100vh;
+  padding: 0 20px;
+  max-width: 40%;
+  overflow-y: scroll;
+  margin: 0 auto;  
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 2em;
+  margin-bottom: 3em;
+}
+
+.thumbnail {
+  max-height: 100px;
+  max-width: 130px;
+}
+
+.right-section {
   padding: 10px 0;
 }
 
-main h1,
-main h2 {
-  margin: 0;
+.right-section h2 {
+  color: var(--body-hcolor);
 }
 
-main h1 {
-  margin-bottom: 10px;
+.publist {
+  padding: 10px 0;
+}
+
+.news {
+  margin-top: 3em;
+}
+
+.video-container {
+  display: flex;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 0px;
+  overflow: hidden;
+  display: block;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+  position: absolute;
+  top: 0;
+  left: 12.5%;
+  width: 75%;
+  height: 100%;
+}
+
+
+h1 {
+  margin-bottom: 0.5em;
   color: var(--body-hcolor);
   font-weight: 400;
   font-size: 50px;
 }
 
-.YEAR {
-    display: none;
-}
-
-main h2 {
+h2 {
   color: var(--body-color);
   font-weight: 300;
   font-size: 20px;
 }
 
-.title {
-    font-weight: 300;
-    font-size: 15px;
+.internet-links {
+  margin-top: -0.5em;
 }
 
-footer {
-    justify-content: space-around;
+.featured-article {
+  margin-bottom: 1.5em;
 }
 
-footer a {
+.featured {
+  font-size: 110%;
+}
+
+.bio {
+  margin-top: 3em;
+}
+
+.internet-links a {
   font-weight: 400;
   font-size: 15px;
-}
-
-.abstract-wrapper {
-    display: flex;
-    flex-direction: row;
-}
-
-.show-abstract {
-    margin: auto;
-    font-size: 12px; /* 10px */
-}
-
-.bibtexentry {
-    display: inline;
 }
 
 @-webkit-keyframes fadeIn {
@@ -144,27 +200,29 @@ footer a {
 
 
 @media only screen and (max-width: 990px) {
-  main h1 { font-size: 40px; }
-  main h2 { font-size: 18px; }
+  h1 { font-size: 40px; }
+  h2 { font-size: 18px; }
 
-  footer {
+  .internet-links {
     flex-direction: column;
   }
 
-  .fixed {
-      position: relative;
+  .left {
+    max-width: 100%;
+    height: 100%;
   }
 
-  #abstract-box {
-      display: none;
+  body {
+    overflow: auto;
   }
 
-  .container {
-      display: block;
-      overflow-y: inherit;
+  .right {
+    display: block;
+    overflow-y: hidden;
+    max-width: 100%;
   }
 
-  footer a {
+  .internet-links a {
     padding: 10px 0;
     font-size: 16px;
     display: inline-block;

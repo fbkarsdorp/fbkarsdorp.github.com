@@ -24,24 +24,14 @@
         <meta property="twitter:description" content="Academic website of Folgert Karsdorp">
         <meta property="twitter:image" content="https://www.karsdorp.io/static/images/preview.png">
         
-        <link rel="stylesheet" href="static/css/markdown.css" />
         <link rel="stylesheet" href="static/css/normalize.css" />
-        <script type="text/javascript"
-                src="https://cdn.rawgit.com/pcooksey/bibtex-js/ef59e62c/src/bibtex_js.js">
-        </script>
+        <link rel="stylesheet" href="static/css/markdown.css" />
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js" type="text/javascript"></script>
         <bibtex src="./static/references.bib"></bibtex>
     </head>
     <body>
       <script>
-        var width = null;
-        jQuery(document).ready(function() {
-            function resizeForm() {
-                width = (window.innerWidth > 0) ? window.innerWidth : document.documentElement.clientWidth;
-            }
-            window.onresize = resizeForm;
-            resizeForm();
-        });
         
         function showAbstract(id) {
             abst = document.getElementsByClassName("show-abstract")[0];
@@ -54,70 +44,166 @@
                 $('.abstract-wrapper').hide().fadeIn(800);
             }
         }
-
-        function showBio() {
-            abst = document.getElementsByClassName("show-abstract")[0];
-            $(abst).children().hide();
-            bio = document.getElementsByClassName("bio")[0];
-            if (bio.style.display === "none") {
-                bio.style.display = "block";
-                $('.bio').hide().fadeIn(800);
-            }
-        }
-
     </script>
-        <div class="bibtex_structure">
-            <div class='sort bibtexkey' extra="DESC string">
-                <div class="templates"></div>
-            </div>
-        </div>
-        
-        <div class="fixed">
-          <main>
-            <h1 onmouseenter="showBio();">Folgert Karsdorp</h1>
+
+    <div class="wrapper">
+        <div class="left">
+          <div class="author-info">
+            <h1>Folgert Karsdorp</h1>
             <h2>Researcher<a href="https://www.meertens.knaw.nl/" target="_blank">
                 @ KNAW Meertens Instituut</a>.
             </h2>
-          </main>
 
-          <footer>
+          <div class="internet-links">
             <a href="https://twitter.com/FolgertK" target="_blank">twitter</a>
             <a href="https://github.com/fbkarsdorp" target="_blank">github</a>
             <a href="mailto:folgert.karsdorp@meertens.knaw.nl">e-mail</a>
-          </footer>
+          </div>
+          
+          <div class="bio">
+            <p>I'm a researcher in Computational Humanities and Cultural Evolution at the Meertens
+              Institute of the Royal Netherlands Academy of Arts and Sciences (Amsterdam, the
+              Netherlands). My research focuses on why some cultural phenomena are adopted and persist
+              through time, while others change or disappear. Additionally, I'm interested in measuring
+              cultural diversity and compositional complexity, and how we can account for biases in our
+              estimations of diversity. To do that, I use computational models
+              from Machine Learning, Cultural Evolution, and Ecology.</p>
 
-          <div class="bio" style="display: none;">
-            <p>Hi! I'm a researcher at the Meertens Instituut in Amsterdam. My
-              research focuses on why some cultural phenomena are adopted and persist
-              through time, while others change or disappear.</p>
-            
-            <p>I like programming (mostly in Python), and I also like to teach a bit about
-              programming. Check out the open access edition of our book on
-              <a href="https://www.humnitiesdataanalysis.org">Humanities data analysis</a>!
-              </p>
-            </div>
+            <p>Besides cultural change and diversity, I'm also interested in teaching about computer
+              programming in the context of the Humanities. I published a text book with Princeton
+              University Press about using Python
+              for <a href="https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis">Humanities
+                data analysis</a>. Check out the open access edition of our book on
+              <a href="https://www.humnitiesdataanalysis.org">Humanities data
+                analysis</a>!
+            </p>
+          </div>
+
+          <div class="news">
+            <h2>NEWS</h2>
+            <p>We recently published an article in <i>Science</i> about estimating the amount of medieval lost books
+              using ecological models. Check out the paper <a href="https://www.science.org/doi/10.1126/science.abl7655">here</a>. 
+              As part of our communication efforts, we also created an <a href="https://forgotten-books.netlify.app">accompanying website</a>,
+               which provide some additional details about the project. Last but not least, we made an author explanation 
+               video, in which 
+              collaborators involved in this project provide a high-level explanation of our  
+              project and results.</p>
+            <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/677201737?h=a875da66f4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Forgotten Books &amp;mdash; Science (2022)"></iframe>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+          </div>
         </div>
+      </div>
 
-        <div id="abstract-box" class="container">
-            <div class="abstract-wrapper">
-              <div class="show-abstract"></div>
-            </div>
-        </div>
+      <div class="bibtex_structure">
+          <div class='sort bibtexkey' extra="DESC string">
+              <div class="templates"></div>
+          </div>
+      </div>
 
-        <div class="container">
-            <div class="publist">
-                <div id="bibtex_display"></div>
-            </div>
-        </div>
+      <div class="right">
+        <div class="right-section">
+          <h2>Selected Publications</h2>
 
-        <div class="bibtex_template" style="display: none;">
-          <div class="bibtexVar" id="bib+BIBTEXKEY+" onmouseenter="showAbstract(this.id)"
-               extra="BIBTEXKEY">
-            <!-- onmouseleave="hideAbstract(this.id)"> -->
+          <div class="featured-article">
+            <p class="featured"><a href="https://www.science.org/doi/10.1126/science.abl7655">
+              Forgotten Books: The Application of Unseen Species Models to the Survival of
+              Culture.</a> <i>Science</i> (2022)
+            </p>
             <p>
-              <span class="if author">
+              In this project, we show that unseen species models from ecology can be used to 
+              estimate the loss rates of cultural artefacts. For medieval literature (chivalric 
+              and heroic narratives in particular) we obtain survival estimates which are compatible 
+              with prior research and which emphasize the severity of the loss in this domain. 
+              Comparison of results between languages highlights interesting differences in literary 
+              survival patterns across European medieval vernaculars. 
+            </p>
+            <div class="images">
+              <img class="thumbnail" src="./static/images/survival_works_error.png">
+              <img class="thumbnail" src="./static/images/DriftCliqueVideo.gif">
+              <img class="thumbnail" src="./static/images/evenness-inset-text.png">
+            </div>
+          </div>
+
+          <div class="featured-article">
+            <p class="featured"><a href="https://www.humanitiesdataanalysis.org">Humanities
+            Data Analysis. Case Studies with Python.</a> Princeton University Press
+            (2021)</p>
+            <p>
+              <i>Humanities Data Analysis: Case Studies with Python</i> is a practical
+              guide to data-intensive humanities research using the Python programming
+              language. I have written the book together with Mike Kestemont and Allen
+              Riddell. It was originally published with Princeton University Press in 2021
+              (for a printed version of the book, see
+              the <a href="https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis">
+              publisher's website</a>), and is now available as
+              an <a href="https://www.humanitiesdataanalysis.org"> Open Access interactive
+              Juptyer Book.</a>
+            </p>
+
+            <div class="images">
+              <img class="thumbnail" src="./static/images/hda.jpg">
+              <img class="thumbnail" src="./static/images/notebook_61_0.png">
+              <img class="thumbnail" src="./static/images/notebook_162_0.png">
+            </div>
+          </div>
+          </div>
+          <div class="featured-article">
+            <p class="featured"><a href="https://doi.org/10.1017/ehs.2020.52">Classifying
+            Evolutionary Forces in Language Change Using Neural
+            Networks.</a> <i>Evolutionary Human Sciences</i> (2020)</p>
+            <p>This study is about discriminating neutral processes of cultural change
+              (drift) from non-neutral processes (selection). To this end, we investigate
+              how Neural Networks can assist in learning which aspects of time series are
+              distinctive for drift and selection. We compare the model with a statistical
+              test, and demonstrate how the neural classifier solves crucial issues with
+              that test.
+            </p>
+            <div class="images">
+              <img class="thumbnail" src="./static/images/nnfit1.png">
+              <img class="thumbnail" src="./static/images/nnfit2.png">
+              <img class="thumbnail" src="./static/images/nnfit3.png">
+            </div>
+          </div>
+          <div class="featured-article">
+            <p><a href="https://doi.org/10.1057/s41599-019-0234-9">Cultural Entrenchment of Folktales is Encoded in Language. <i>Palgrave
+                  Communications</i> (2019)</a>
+            </p>
+            <p>In this article, we explore the understudied effects of growing cultural
+                entrenchment on the form of stories with a long reproduction history.
+                Drawing on insight from literary theory, theoretical linguistics, and
+                cultural evolution theory, we argue that changes in the cultural
+                entrenchment of fairy tales and folk stories are reflected in (small)
+                structural 'mutations' in the story.
+              </p>
+          </div>
+
+        <div class="right-section">
+          <h2>Software</h2>
+          <p><a href="https://copia.readthedocs.io">Copia</a> is a statistical software
+          package for estimating diversity and richness on the basis of abundance data.
+          The package contains several bias-correcting richness estimators, such as the
+            Chao1 and the Jacknife estimator.</p>
+
+          <p><a href="https://zenodo.org/record/3563075">HDA</a> provides all code listed
+          in <i>Humanities Data Analysis</i>. Each file in this repository contains the
+            code used or discussed in one chapter.</p>
+
+            <p>→ See my <a href="https://github.com/fbkarsdorp">GitHub profile</a> for
+            more software, tutorials and code accompanying my articles. </p>
+        </div>
+        <div class="right-section">
+          <h2>Bibliography</h2>
+            <div id="bibtex_display"></div>
+        </div>
+      </div>
+
+      <div class="bibtex_template" style="display: none;">
+          <div class="bibtexVar" id="bib+BIBTEXKEY+"
+               extra="BIBTEXKEY">
+            <p>
                 <span class="author"></span>
-              </span>
               <span class="if year">(<span class="year"></span>)</span>
               <span class="if title">
                 <span class="if url">
@@ -127,9 +213,24 @@
                   <span class="title"></span>.
                 </span>
               </span>
+              <span class="if journal">
+                <span class="journal"></span>
+                <span class="issue"></span>(<span class="number"></span>)<span class="if pages">:
+                  <span class="pages"></span>.
+                </span>
+              </span>
+              <span class="if booktitle">
+                <span class="booktitle"></span>.
+              </span>
+              <span class="if publisher">
+                <span class="publisher"></span>.
+              </span>
+
             </p>
           </div>
-          <span class="if abstract">
+          </div>
+
+          <!-- <span class="if abstract">
             <div id="bib+BIBTEXKEY+abstract" class="bibtexVar" extra="BIBTEXKEY"
                  style="display: none;">
               <h2><span class="title"></span></h2>
@@ -152,6 +253,7 @@
               </div>
             </div>
           </span>
-        </div>
+        </div> -->
+      </div>
     </body>
 </html>
