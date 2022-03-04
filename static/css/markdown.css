@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 html,
 body {
@@ -41,9 +43,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   transition: background .3s ease;
-  font-family: 'Fira Code', monospace;
-  font-size: 14px;
-  line-height: 1.35em;
+  font-family: "Lora", "Times New Roman", Times, serif;
+  font-size: 18px;
+  line-height: 1.8em;
 }
 
 .wrapper {
@@ -62,8 +64,8 @@ a, .url {
 
 a:hover {
     text-decoration: underline;
-    text-decoration-color: var(--body-hcolor);
-    color: var(--body-hcolor);
+    text-decoration-color: #0099e5;
+    color:#0099e5;
 }
 
 ::-moz-selection { color: #0099e5}
@@ -164,11 +166,22 @@ h1 {
 
 h2 {
   color: var(--body-color);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 20px;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+.right-header {
+  font-size: 1.5em;
+  color: #0099e5;
 }
 
 .internet-links {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   margin-top: -0.5em;
 }
 

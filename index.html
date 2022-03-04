@@ -31,27 +31,13 @@
         <bibtex src="./static/references.bib"></bibtex>
     </head>
     <body>
-      <script>
-        
-        function showAbstract(id) {
-            abst = document.getElementsByClassName("show-abstract")[0];
-            $(abst).children().hide();
-            $('.bio').hide();
-            if (width > 990) {
-                element = document.getElementById(id + "abstract");
-                element.style.display = "block";
-                abst.append(element);
-                $('.abstract-wrapper').hide().fadeIn(800);
-            }
-        }
-    </script>
 
     <div class="wrapper">
         <div class="left">
           <div class="author-info">
             <h1>Folgert Karsdorp</h1>
-            <h2>Researcher<a href="https://www.meertens.knaw.nl/" target="_blank">
-                @ KNAW Meertens Instituut</a>.
+            <h2>researcher<a href="https://www.meertens.knaw.nl/" target="_blank">
+                @ knaw meertens instituut</a>.
             </h2>
 
           <div class="internet-links">
@@ -89,7 +75,7 @@
 
       <div class="right">
         <div class="right-section">
-          <h2>NEWS</h2>
+          <h2 class="right-header">news</h2>
           <p>We recently published an article in <i>Science</i> about estimating the amount of medieval lost books
             using ecological models. Check out the paper <a href="https://www.science.org/doi/10.1126/science.abl7655">here</a>. 
             As part of our communication efforts, we also created an <a href="https://forgotten-books.netlify.app">accompanying website</a>,
@@ -103,7 +89,7 @@
         </div>
         </div>
         <div class="right-section">
-          <h2>Selected Publications</h2>
+          <h2 class="right-header">selected publications</h2>
 
           <div class="featured-article">
             <p class="featured"><a href="https://www.science.org/doi/10.1126/science.abl7655">
@@ -181,7 +167,7 @@
           </div>
 
         <div class="right-section">
-          <h2>Software</h2>
+          <h2 class="right-header">software</h2>
           <p><a href="https://copia.readthedocs.io">Copia</a> is a statistical software
           package for estimating diversity and richness on the basis of abundance data.
           The package contains several bias-correcting richness estimators, such as the
@@ -195,7 +181,7 @@
             more software, tutorials and code accompanying my articles. </p>
         </div>
         <div class="right-section">
-          <h2>Bibliography</h2>
+          <h2 class="right-header">bibliography</h2>
             <div id="bibtex_display"></div>
         </div>
 
