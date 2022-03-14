@@ -59,5 +59,5 @@ Check out the open access edition of our book
 </ul>
 
 For a complete list of publications, see my
-[CV](https://github.com/fbkarsdorp/fbkarsdorp.github.com/blob/master/static/cv.pdf). 
+[CV](https://github.com/fbkarsdorp/fbkarsdorp.github.com/blob/master/tex/main.pdf). 
 
