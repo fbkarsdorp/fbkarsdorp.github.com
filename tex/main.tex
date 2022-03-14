@@ -1,0 +1,354 @@
+%!TeX program = pdflatex
+% Folgert Karsdorp's Curriculum Vitae
+% Email: folgert.karsdorp@meertens.knaw.nl
+% Web: https://www.karsdorp.io/
+% Repo: https://github.com/fbkarsdorp
+
+\documentclass[12pt,letterpaper]{report}
+
+\usepackage[T1]{fontenc} % output T1 font encoding (8-bit) for accented characters as single glyph
+\usepackage[strict,autostyle]{csquotes} % smart and nestable quote marks
+\usepackage[USenglish]{babel} % regionalize hyphens, quote marks, etc automatically
+\usepackage{microtype}% improve text appearance with kerning, etc
+\usepackage{datetime} % enable formatting of date output
+\usepackage{tabto}    % make nice tabbing
+\usepackage{hyperref} % enable hyperlinks and pdf metadata
+\usepackage{geometry} % manually set page margins
+\usepackage{enumitem} % enumerate with [resume] option
+\usepackage{titlesec} % allow custom section fonts
+\usepackage{setspace} % custom line spacing
+
+% what is your name?
+\newcommand{\myname}{Folgert Karsdorp}
+
+% select default typefaces
+\usepackage{ebgaramond} % document's serif typeface
+\usepackage{helvet}     % document's sans serif typeface
+
+% how far to tab for list items with left-aligned date: different fonts need different widths
+\newcommand{\listtabwidth}{1.7cm}
+
+% define font to use as document's title
+\newcommand{\namefont}[1]{{\normalfont\bfseries\Huge{#1}}}
+
+% set section heading fonts and before/after spacing
+\SetTracking{encoding=*, family=\sfdefault}{30} % increase sans serif headings tracking
+\titleformat{\section}{\lsstyle\sffamily\small\bfseries\uppercase}{}{}{}{}
+\titlespacing{\section}{0pt}{30pt plus 4pt minus 4pt}{8pt plus 2pt minus 2pt}
+
+% set subsection heading fonts and before/after spacing
+\titleformat{\subsection}{\lsstyle\sffamily\footnotesize\bfseries}{}{}{}{}
+\titlespacing{\subsection}{0pt}{16pt plus 4pt minus 4pt}{4pt plus 2pt minus 2pt}
+
+% set page margins (assumes letter paper)
+\geometry{body={6.5in, 9.0in},
+    left=1.0in,
+    top=1.0in}
+
+% prevent paragraph indentation
+\setlength\parindent{0em}
+
+% set line spacing
+\setstretch{0.9}
+
+% define space between list items
+\newcommand{\listitemspace}{0.25em}
+
+% make unordered lists without bullets and use compact spacing
+\renewenvironment{itemize}
+{\begin{list}{}{\setlength{\leftmargin}{0em}
+                \setlength{\parskip}{0em}
+                \setlength{\itemsep}{\listitemspace}
+                \setlength{\parsep}{\listitemspace}}}
+{\end{list}}
+
+% make tabbed lists so content is left-aligned next to years
+\TabPositions{\listtabwidth}
+\newlist{tablist}{description}{3}
+\setlist[tablist]{leftmargin=\listtabwidth,
+    labelindent=0em,
+    topsep=0em,
+    partopsep=0em,
+    itemsep=\listitemspace,
+    parsep=\listitemspace,
+    font=\normalfont}
+
+% print only the month and year when using \today
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+
+% define hyperlink appearance and metadata for pdf properties
+\hypersetup{
+    colorlinks  = true,
+    urlcolor    = black,
+    pdfauthor   = {\myname},
+    pdftitle    = {\myname: Curriculum Vitae},
+    pdfsubject  = {Curriculum Vitae},
+    pdfpagemode = UseNone
+}
+
+\usepackage[backend=biber, style=apa, maxcitenames=2, maxbibnames=99, sorting=ydnt,
+            uniquelist=false, mincitenames=1, citestyle=authoryear]{biblatex}
+\addbibresource{../static/references.bib}
+
+\usepackage{authblk}
+
+
+\begin{document}
+
+    \raggedright{}
+
+    % display your name as the document title
+    \namefont{\myname}
+
+    % affiliation and contact info blocks
+    \vspace{1em}
+    \begin{minipage}[t]{0.600\textwidth}
+        % current primary affiliation, left-aligned
+        Meertens Instituut \\
+        Koninklijke Nederlandse Akademie van Wetenschappen
+    \end{minipage}
+    \begin{minipage}[t]{0.390\textwidth}
+        % contact info details, right-aligned
+        \flushright{}
+        \href{mailto:folgert.karsdorp@meertens.knaw.nl}{folgert.karsdorp@meertens.knaw.nl} \\
+        \href{https://www.karsdorp.io}{www.karsdorp.io}
+    \end{minipage}
+
+\section*{Education}
+\begin{tablist}
+\item[PhD] \tab{}\textit{Retelling Stories. A Computational-Evolutionary Perpective},
+  (\textit{Cum Laude}), Radboud University, Nijmegen, 2012--2016
+  \item[MA] \tab{}Linguistics (\textit{Cum Laude}), Leiden University, 2007--2009
+  \item[BA]  \tab{}Dutch Language and Culture, Leiden University, 2004--2007
+\end{tablist}
+
+
+\section*{Academic Appointments}
+\begin{tablist}
+\item[2020--]   \tab{}KNAW Meertens Institute \\
+  Researcher, Oral Culture Research Group \& Affiliated member of the KNAW Humanities
+  Cluster DHlab
+
+\item[2016--20] \tab{}KNAW Meertens Institute \\
+  Tenure Track researcher, Oral Culture Research Group \& Affiliated member of the KNAW
+  Humanities Cluster DHlab
+
+\item[2016--16] \tab{}Radboud University \\
+  Research assistant, supervision by Prof. Dr. Antal van den Bosch
+
+\item[2010--11] \tab{}Instituut voor de Nederlandse Taal \\
+  Researcher, (Formerly known as the Instituut voor Nederlandse Lexicologie)
+
+\item[2009--10] \tab{}Free University Berlin \\
+  Research Assistant, Supervision by Prof. Dr. Matthias Hüning
+\end{tablist}
+
+\section*{Research Areas}
+
+My research focuses on processes of change in language and culture. I take a
+cultural-evolutionary perspective, in which I investigate how culture and language change
+as they are transmitted from person to person and from generation to generation. The
+central question tying together my past and current research addresses why some cultural
+phenomena are adopted, persist through time, and become successful (i.e., "flip"), while
+others change or disappear (i.e., "flop"), and how these processes affect cultural
+diversity and complexity within and across populations. I apply this to a rich diversity
+of domains, such as stories, literature, music, and language, both from a historical and a
+contemporary perspective.
+
+\nocite{*}
+\printbibliography[title=Publications, heading=subbibliography]
+
+\section*{Open Data Sets}
+\begin{tablist}
+\item[2019] \tab{}\textit{Supplemental Materials for ``Humanities Data Analysis''}\\ Data
+  discussed in the manuscript \textit{Humanities Data Analysis: Case Studies with Python}.
+  Each folder in this dataset contains data used or discussed in one chapter. Most of the
+  data are texts published before 1900. These texts are in the public domain. \\
+  \url{https://doi.org/10.5281/zenodo.891264}
+\item[2016] \tab{}\textit{Story network data sets} \\
+  Data discussed in Karsdorp \& Van den Bosch (2016): The structure and evolution of story
+  networks. Royal Society Open Science, 3, 160071.
+  \url{https://doi.org/10.5281/zenodo.51588} 
+\end{tablist}
+
+\section*{Open-Source Software}
+\begin{tablist}
+  \item[2020--21] \tab{}Copia. Estimating the survival of cultural heritage artifacts with
+    unseen species models from ecology. Copia is a Python package that can be used for
+    estimating the survival of artifacts from cultural heritage, based on established
+    unseen species models from ecology. \url{https://copia.readthedocs.io/en/latest/}
+  \item[2018--19] \tab{}Deep flow. Open source code for the Hip Hop experiment executed at
+    Lowlands 2018. \url{https://github.com/fbkarsdorp/deepflow}
+  \item[2015--21] \tab{}Momfer. Meertens Motif Finder. Online application and app for
+    browsing Thompson's \textit{Motif Index}. \url{https://momfer.meertens.knaw.nl/}
+  \item[2013--19] \tab{}Open source and open access materials for an interactive course
+    about Python in the Humanities. \url{https://github.com/fbkarsdorp/python-course}
+\end{tablist}
+
+\section*{Invited Talks}
+\begin{tablist}
+\item[2021] \tab{}``Unseen Species Models from Ecology to Estimate the Losses of Medieval
+  Literature: Advances in an International Comparison''. Talk at the International
+  Medieval Conference 2021 (IMC 2021) in the session “Loss and Transmission: Quantitative
+  Approaches to Modelling the Dissemination and Survival of Medieval Literature”, 8 July
+  2021
+\item[2021] \tab{}``The Birds in the Bush. What can Occupancy Models from Ecology Teach us
+  about the Survival of Medieval Literature?'', Invited presentation at the symposium The
+  Human in Digital Humanities, June 23 2021. 
+\item[2021] \tab{}``Libraries as book traps. Statistical methods from ecology to study the
+  survival of historic literature'', Keynote lecture at the conference \textit{Old Books
+    and New Technologies}: Medieval Books and the Digital Humanities in the Low Countries,
+  6 May 2021
+\item[2021] \tab{}``Estimating the loss of medieval literature with methods from
+  ecology'', invited talk in the online lecture series Beyond the Patterns. 10 March 2021,
+  FAU, Nürnberg, DE. 
+\item[2021] \tab{}``Estimating the loss of medieval literature with methods from
+    ecology'', invited talk in the ATNU/IES Virtual Speaker Series 2020/2021 \#6. 21
+    February 2021, Newcastle, UK
+\item[2020] \tab{}``Blind or directed? Cultural Evolution of Children's Books'',
+    Children’s Literature and Digital Humanities, University of Antwerp, 22-23 October
+    2020
+\item[2020] \tab{}``Bias, diversity and survival. Can statistical methods from ecology
+    estimate the loss of medieval literature?'' Online Árni Magnússon Birthday lecture, 13
+    november 2020, The Arnamagnæan Institute, University of Copenhagen
+\item[2020] \tab{}``Estimating the loss of medieval literature with unseen species model
+    from ecodiversity''. Presentation at the online conference Dark Archives 20/20: A
+    Voyage into the Medieval Unread and Unreadable, Tuesday 8th September 2020
+\item[2019] \tab{}``Cultural entrenchment of folktales is encoded in language'',
+  Presentation at the Lecture series of the Leiden University Centre for Digital
+  Humanities, Leiden, 28 February 2019
+\item[2019] \tab{}``The artificial synthesis of hiphop lyrics''. Humlab talk series. Umeå
+  universitet, Sweden. 12 February 2019.
+\item[2019] \tab{}``Keeping it real: the artificial synthesis of hiphop lyrics''. Vogin-IP,
+  Amsterdam. 22 March 2019
+\item[2018] \tab{}``Hoe verzin je het?''. Kenniscafe de Balie over wetenschap van
+  creativiteit. April 16, 2018, Amsterdam. 
+\item[2018] \tab{}``Cultural Evolution in Children’s Literature''. Cultural Evolution in
+  Children's Literature, Jul 5, 2018. 
+\item[2018] \tab{}``How to Read a Million Stories? Digital Text Analysis for the Study of
+  Children's Literature''. Plenary lecture at Children’s Literature Summer School 2018,
+  University of Antwerp, 5 July 2018
+\item[2018] \tab{}``Synthesising humanities. Explaining complex models through simple data
+  synthesis''. Closing keynote lecture at Digitial Humanities Benelux conference 2018.
+  Amsterdam, The Netherlands, 8 June 2018
+\item[2018] \tab{}``Cultural entrenchment of folktales is encoded in language'',
+  Presentation at the workshop Interdisciplinary Workshop on Folk and Fairytales Digital,
+  15 February 2018
+\item[2018] \tab{}``Willekeur in de Geesteswetenschap''. De analyse van emoties en
+  betekenis in tekst en beeld, 15 Jun 2018, VU Amsterdam.
+\item[2017] \tab{}``Een literaire robot als schrijfhulp''. Robots: van hulpje tot
+  kunstenaar (Research Files 4), Pakhuis de Zwijger, October 12, 2017. 
+\item[2017] \tab{}``Character Bias in Transmitting Folktales''. 14th SIKS/Twente Seminar
+  on Searching and Ranking. March 10, 2017. 
+\end{tablist}
+
+\section*{Public Outreach Projects}
+\begin{tablist}
+\item[2018] \tab{}\textit{Deepflow: Linguistic models of authenticity judgments for
+    artificially generated rap lyrics}\\
+  Collaboration between the Meertens Institute, the University of Antwerp and Lowlands
+  Science on generating artificial hip hop lyrics using neural language models. The
+  project involved an experiment carried out in the context of a large, mainstream
+  contemporary music festival in the Netherlands (Lowlands). We developed an app to study
+  crowd-sourced authenticity judgments for such artificially generated texts.
+\item[2017] \tab{}\textit{Asibot: Writing science fiction in a co-creative process}\\
+  Collaboration between the Meertens Institute, the University of Antwerp, the CPNB
+  foundation and writer Ronald Giphart on employing Artificial Intelligence for literary
+  language generation. The result of this experiment was a new story, "De Robot van de
+  Machine is de mens" – written by Giphart and a neural network language generation system
+  – of which 250,000 copies were disseminated to the public during the national campaign
+  "Nederland Leest" in November 2017.
+\end{tablist}
+
+\section*{Teaching (selected courses)}
+\begin{tablist}
+  \item[2021] \tab{}``Humanities Data Analysis with Python. Wetting one’s appetite with
+    historic cookbooks''. Workshop at the Leiden Summer School \textit{Literary Studies \&
+      Digital Humanities}, 31 May 2021, Leiden University.
+  \item[2021] \tab{}``Automated Authorship Attribution''. Guest lecture at Leiden
+    University, April 28 2021, Leiden University.     
+  \item[2021] \tab{}``Cultural Evolution and the Humanities''. Guest lecture at Antwerp
+    University, April 22, 2021. Antwerp University. 
+  \item[2018] \tab{}``How to Read a Million Stories? Digital Text Analysis for the Study of
+    Children's Literature''. Full-day tutorial at the Children’s Literature Summer School
+    2018, July 1 -- 5, 2018, University of Antwerp.  
+  \item[2017] \tab{}``Skills Training ’Introduction to Programming'', December 4 -- 8,
+    2017, Doctoral Training Unit `Digital History \& Hermeneutics' (DHH), University of
+    Luxembourg. 
+  \item[2017] \tab{}``Python programming for the humanities and allied social sciences'',
+    Mar 29, 2017 - Mar 31, 2017, Radboud Digital Humanities Spring School 2017
+  \item[2017] \tab{}``Text Analysis with Python'', January 27, 2017, Digital Humanities
+    Workshop Series, University of Manchester
+  \item[2016] \tab{}``Scraping Twitter with Python''. Workshop on scraping Twitter data
+    with Python. May 24, 2016. Digital Disruption in Asia Conference, Leiden. 
+  \item[2016] \tab{}``Cultural Selection of Fairy Tales''. Guest lecture on cultural
+    selection and evolution of fairy tales. April 28, 2016, Digital Humanities Lecture
+    Series, Radboud University. 
+  \item[2016] \tab{}``Digital Text Analysis'', Five-day (MA, PhD-level) course on
+    computational text analysis, with a special focus on `authorship attribution', `text
+    normalization', and `linguistic profiling', January 18 -- 22, 2016, LOT Winter School,
+    Tilburg University.
+  \item[2016] \tab{}``Python for the Humanities'', The objective of the full (MA,
+    PhD-level) course was to familiarize students with the programming language Python for
+    the computational processing of texts. December 2015 -- April 2016, Ghent University. 
+  \item[2015] \tab{}``Python for the Arts and Humanities''. Four-day (MA, PhD-level)
+    workshop on programming with Python for the Humanities. March 23 -- 26, 2015, Literary
+    Lab, Ghent University.
+  \item[2015] \tab{}``Python for the Arts and Humanities''. Three-day (MA, PhD-level)
+    workshop on programming with Python in the Humanities and Social Sciences, February 16
+    -- 18, 2015, Maynooth University
+  \item[2014] \tab{}``Introduction and tutorial in Humanities Programming with Python''.
+    Five-day (MA, PhD-level) workshop on programming with Python for the Humanities and
+    Social Sciences. August 17 -- 30, 2014. University of Göttingen. 
+  \item[2014] \tab{}``Advanced Programming with Python''. Five-day (MA, PhD-level)
+    workshop on advanced topics in Humanities programming. European Summer School in
+    Digital Humanities Culture \& Technology, July 22 -- August 1, 2014. 
+  \item[2014] \tab{}``Introduction into Python for the Humanities and Social Sciences''.
+    March 31 -- April 4 2014, University of Antwerp. 
+  \item[2013] \tab{}``Introduction into Python Programming for the Humanities'', Three-day
+    (MA-, PhD-level) workshop on programming with Python for the Humanities. With
+    Maarten van Gompel. April 2013, Radboud University.
+  \end{tablist}
+
+\section*{Current Academic Service}
+\begin{tablist}
+\item[2021 --] \tab{}Guest editor of the \textit{Journal of Open Humanities Data}
+\item[2021 --] \tab{}Programme Chair of the SciPy 2021 Symposium on Computational Social Science
+  \& Digital Humanities
+\item[2020 --] \tab{}Founder and Programme Chair of the \textit{Computational Humanities
+    Research} conference
+\item[2017 --] \tab{}Steering and Programme Committee member of the DH Benelux conference
+\end{tablist}
+
+\section*{Selected Media Coverage}
+\begin{tablist}
+\item[2020] \tab{}De jacht op de verloren ridderromans. \textit{NRC}, August 24, 2020.
+\item[2019] \tab{}Man (m/v) valt in put... Hebben alle succesvolle verhalen eigenlijk
+  dezelfde onderliggende plot?, \textit{NRC}. July 13, 2019. 
+\item[2018] \tab{}Taal is de sleutel tot echte artificiële intelligentie. \textit{De Tijd}.
+  September 15, 2018.
+\item[2018] \tab{}Raprobot krijgt op Lowlands een kans voor het grote publiek. \textit{Trouw}.
+  August 17, 2018. 
+\item[2018] \tab{}Rapper MC Turing heeft een indrukwekkende flow, voor een robot. \textit{de
+    Volkskrant}, August 2018. 
+\item[2017] \tab{}Guest on the television program \textit{Pauw} to talk about the artificial
+  writer Asibot, October 31, 2017.
+\item[2017] \tab{}Giphart schrijft samen met een robot. \textit{Trouw}, June 16, 2017. 
+\item[2017] \tab{}Giphart krijgt hulp van deze literaire robot. \textit{NOS op 3}, June 16, 2017. 
+\item[2017] \tab{}Robot schrijft verhaal, Giphart ondersteunt, \textit{EenVandaag}, July
+  11, 2017.
+\item[2016] \tab{}De grote boze wolf wordt steeds minder boos. \textit{de Volkskrant},
+  July 4, 2016. 
+\item[2016] \tab{}Pas op, er zit een moraal aan het verhaal. \textit{De Standaard}, June
+  4, 2016. 
+\item[2016] \tab{}New study could explain why we remake certain movies over and over
+  again. Online article in Ars Technica, June 30, 2016.
+\end{tablist}
+  
+
+\begin{center}
+  \vfill
+Updated \monthyeardate\today
+\end{center}
+
+\end{document}
