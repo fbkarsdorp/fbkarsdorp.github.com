@@ -7,7 +7,7 @@
 }
 
 body {
-  background: #f1eee1;
+  background: #F7F7F7;
   font-variant-ligatures: common-ligatures;
   font-family: "Alegreya", "Times New Roman", Times, serif;
   font-size: 20px;
@@ -51,7 +51,7 @@ header ul {
 
 nav ul a {
   display: block;
-  padding: 0 1em;
+  padding: 0 0.5em;
 }
 
 .wrapper {
