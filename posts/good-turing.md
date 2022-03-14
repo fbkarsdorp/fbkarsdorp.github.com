@@ -31,10 +31,8 @@ combat such biases are very useful in a wide variety of domains.
 
 In the cultural domain, too, there have been attempts to correct biases
 in our observations with statistical methods. A good example is our
-study into the loss of European medieval literature (Kestemont, Mike and
-Karsdorp, Folgert and {de Bruijn}, Elisabeth and Driscoll, Matthew and
-Kapitan, Katarzyna A. and Ó Macháin, Pádraig and Sawyer, Daniel and
-Sleiderink, Remco and Chao, Anne, 2022), which was recently published in
+study into the loss of European medieval literature (Kestemont, 2022), 
+which was recently published in
 the journal *Science*. In that study, we apply a specific "Unseen
 Species" model to medieval stories. Medieval stories (such as the
 legends about "King Arthur" or the stories surrounding the emperor
@@ -47,21 +45,16 @@ stories) and been lost. The model we used is called the "Chao1
 estimator", named after its discoverer, Anne Chao, co-author of our
 study.
 
-We are often asked how Chao1 can make these estimates of unseen things.
-But that question is not so easy to answer, because the exact motivation
-and derivation of Chao1 is not particularly intuitive (neither for
-ecologists, nor for cultural scholars). But fortunately, as Chao, Anne
-and Chiu, Chun‐Huo and Colwell, Robert K. and Magnago, Luiz Fernando S.
-and Chazdon, Robin L. and Gotelli, Nicholas J., 2017 have shown, Chao1
-can also be derived in a slightly different and much more intuitive way.
-This derivation is based on the groundbreaking work of the famous
-computer scientist Alan Turing, which he did at Bletchley Park during
-World War II. Below, guided by Chao, Anne and Chiu, Chun‐Huo and
-Colwell, Robert K. and Magnago, Luiz Fernando S. and Chazdon, Robin L.
-and Gotelli, Nicholas J., 2017, I will try to demystify Chao1 in terms
-of Turing's work. I hope that this will help people unfamiliar with the
-method to understand exactly how it works, and, perhaps more
-importantly, how (not) to interpret the calculated values.
+We are often asked how Chao1 can make these estimates of unseen things. But that question
+is not so easy to answer, because the exact motivation and derivation of Chao1 is not
+particularly intuitive (neither for ecologists, nor for cultural scholars). But
+fortunately, as Chao et al. 2017 have shown, Chao1 can also be derived in a slightly
+different and much more intuitive way. This derivation is based on the groundbreaking work
+of the famous computer scientist Alan Turing, which he did at Bletchley Park during World
+War II. Below, guided by Chao et al. 2017, I will try to demystify Chao1 in terms of
+Turing's work. I hope that this will help people unfamiliar with the method to understand
+exactly how it works, and, perhaps more importantly, how (not) to interpret the calculated
+values.
 
 Imagine that we discovered a snippet from an unknown book. The snippet
 has a total of 18 words on it, consisting of 6 unique words with the
@@ -105,7 +98,7 @@ only once, i.e. singletons). There are 3 words in total with a frequency
 of *r* = 1, which we write down as *f*<sub>1</sub> = 3. The probability
 that a word has a frequency of 1 is then equal to *f*<sub>1</sub>
 divided by the total number of words in a book:
-\(\frac{f_1}{n} = \frac{3}{18} = 0.167 \). And the average relative
+$\\frac{f_1}{n} = \\frac{3}{18} = 0.167$. And the average relative
 frequency of words with *r* = 1 is then equal to:
 $\\alpha_1 = \\frac{1}{18} f_1 /
 f_1 = \\frac{1}{18}$. But of course the 18-word snippet is just a
@@ -150,8 +143,7 @@ probability is smaller.
 
 Before we continue with showing how to use this all for computing
 *f*<sub>0</sub>, it is important to make a small modification to the
-original Good-Turing formula. In a follow-up study, Chiu, Chun-Huo and
-Wang, Yi-Ting and Walther, Bruno A. and Chao, Anne, 2014 show that the
+original Good-Turing formula. In a follow-up study, Chiu et al. (2014) show that the
 Good-Turing estimate can be made even more precise with:
 
 $$\\begin{equation}
@@ -196,7 +188,7 @@ $\\frac{\\alpha_0 f_0}{\\alpha_1}$, and that our estimate of
 *f*<sub>0</sub> is thus a *lower bound* on the true number of unique
 words. This estimate, based on Good-Turing counts, gives the same lower
 bound for *f*<sub>0</sub> that Anne Chao has proven extensively (Chao,
-Anne, 1984), and can be calculated with her well-known unseen species
+1984), and can be calculated with her well-known unseen species
 model, Chao1, which can be formulated as:
 $\\frac{(n - 1)}{n} \\frac{f_1^2}{2 f_2}$.
 
@@ -207,9 +199,9 @@ estimate of the true richness. The reasoning is as follows: if the
 average frequency of unseen words (*α*<sub>0</sub>) is approximately
 equal to that of words that occur once (*α*<sub>1</sub>), then there is
 no longer any difference between $\\frac{\\alpha_0 f_0}{\\alpha_0}$ and
-$\\frac{\\alpha_0 f_0}{\\alpha_1}$, and thus method can provide an
+$\\frac{\\alpha_0 f_0}{\\alpha_1}$, and thus the method can provide an
 unbiased estimate of the number of unique species, or say, cultural
-artefacts, such as mediavl stories that exist in a given area –
+artefacts, such as medieval stories that exist in a given area –
 including the ones that have not been seen.
 
 # References
