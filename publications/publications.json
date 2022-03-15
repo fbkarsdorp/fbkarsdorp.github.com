@@ -1,5 +1,3 @@
 {
-  "layout": "base.liquid",
-  "permalink": "{{ page.fileSlug }}/",
   "tags": ["publications"]
 }

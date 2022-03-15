@@ -1,38 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Demystifying Chao1 with Good-Turing" />
+    <title>Demystifying Chao1 with Good-Turing</title>
+    <link rel="stylesheet" href="../../styles/blogpost.css" />
+    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="Arpit Batra" />
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Academic website of Folgert Karsdorp">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0,
-                    minimum-scale=1.0">
-        <title>Folgert Karsdorp</title>
-        <meta name="title" content="Folgert Karsdorp">
+  <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+  </script>
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://www.karsdorp.io/">
-        <meta property="og:title" content="Folgert Karsdorp">
-        <meta property="og:description" content="Academic website of Folgert Karsdorp">
-        <meta property="og:image" content="https://www.karsdorp.io/static/images/preview.png">
-
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://www.karsdorp.io/">
-        <meta property="twitter:title" content="Folgert Karsdorp">
-        <meta property="twitter:description" content="Academic website of Folgert Karsdorp">
-        <meta property="twitter:image" content="https://www.karsdorp.io/static/images/preview.png">
-        
-        <link rel="stylesheet" href="static/css/normalize.css" />
-        <link rel="stylesheet" href="static/css/markdown.css" />
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pcooksey/bibtex-js@1.0.0/src/bibtex_js.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js" type="text/javascript"></script>
-        <bibtex src="./static/references.bib"></bibtex>
-    </head>
-    
-    <body>
-        <p>To estimate the &quot;biodiversity&quot; in a particular area – or, in other
+  <body>
+    <div class="container post-container">
+      <h1>demystifying chao1 with good-turing</h1>
+      <div class="content"><blockquote>
+<p><a href="https://doi.org/10.31219/osf.io/tb9w2">PDF version of this notebook</a></p>
+</blockquote>
+<p>To estimate the &quot;biodiversity&quot; in a particular area – or, in other
 words, the number of unique species living in a given environment –
 ecologists usually have no other option than to rely on incomplete
 samples. For all sorts of practical reasons, it is virtually impossible
@@ -57,10 +53,8 @@ Hence, the statistical methods that have been developed in ecology to
 combat such biases are very useful in a wide variety of domains.</p>
 <p>In the cultural domain, too, there have been attempts to correct biases
 in our observations with statistical methods. A good example is our
-study into the loss of European medieval literature (Kestemont, Mike and
-Karsdorp, Folgert and {de Bruijn}, Elisabeth and Driscoll, Matthew and
-Kapitan, Katarzyna A. and Ó Macháin, Pádraig and Sawyer, Daniel and
-Sleiderink, Remco and Chao, Anne, 2022), which was recently published in
+study into the loss of European medieval literature (Kestemont, 2022),
+which was recently published in
 the journal <em>Science</em>. In that study, we apply a specific &quot;Unseen
 Species&quot; model to medieval stories. Medieval stories (such as the
 legends about &quot;King Arthur&quot; or the stories surrounding the emperor
@@ -72,21 +66,16 @@ how many &quot;documents&quot; (the manuscripts) and how many &quot;works&quot; 
 stories) and been lost. The model we used is called the &quot;Chao1
 estimator&quot;, named after its discoverer, Anne Chao, co-author of our
 study.</p>
-<p>We are often asked how Chao1 can make these estimates of unseen things.
-But that question is not so easy to answer, because the exact motivation
-and derivation of Chao1 is not particularly intuitive (neither for
-ecologists, nor for cultural scholars). But fortunately, as Chao, Anne
-and Chiu, Chun‐Huo and Colwell, Robert K. and Magnago, Luiz Fernando S.
-and Chazdon, Robin L. and Gotelli, Nicholas J., 2017 have shown, Chao1
-can also be derived in a slightly different and much more intuitive way.
-This derivation is based on the groundbreaking work of the famous
-computer scientist Alan Turing, which he did at Bletchley Park during
-World War II. Below, guided by Chao, Anne and Chiu, Chun‐Huo and
-Colwell, Robert K. and Magnago, Luiz Fernando S. and Chazdon, Robin L.
-and Gotelli, Nicholas J., 2017, I will try to demystify Chao1 in terms
-of Turing's work. I hope that this will help people unfamiliar with the
-method to understand exactly how it works, and, perhaps more
-importantly, how (not) to interpret the calculated values.</p>
+<p>We are often asked how Chao1 can make these estimates of unseen things. But that question
+is not so easy to answer, because the exact motivation and derivation of Chao1 is not
+particularly intuitive (neither for ecologists, nor for cultural scholars). But
+fortunately, as Chao et al. 2017 have shown, Chao1 can also be derived in a slightly
+different and much more intuitive way. This derivation is based on the groundbreaking work
+of the famous computer scientist Alan Turing, which he did at Bletchley Park during World
+War II. Below, guided by Chao et al. 2017, I will try to demystify Chao1 in terms of
+Turing's work. I hope that this will help people unfamiliar with the method to understand
+exactly how it works, and, perhaps more importantly, how (not) to interpret the calculated
+values.</p>
 <p>Imagine that we discovered a snippet from an unknown book. The snippet
 has a total of 18 words on it, consisting of 6 unique words with the
 following frequencies:</p>
@@ -192,8 +181,7 @@ probability space for any unseen words – and hence the corrected
 probability is smaller.</p>
 <p>Before we continue with showing how to use this all for computing
 <em>f</em><sub>0</sub>, it is important to make a small modification to the
-original Good-Turing formula. In a follow-up study, Chiu, Chun-Huo and
-Wang, Yi-Ting and Walther, Bruno A. and Chao, Anne, 2014 show that the
+original Good-Turing formula. In a follow-up study, Chiu et al. (2014) show that the
 Good-Turing estimate can be made even more precise with:</p>
 <p>$$\begin{equation}
 \alpha_r = \frac{(r + 1) f_{r + 1}}{(n - r) f_r}.
@@ -233,7 +221,7 @@ $\frac{\alpha_0 f_0}{\alpha_1}$, and that our estimate of
 <em>f</em><sub>0</sub> is thus a <em>lower bound</em> on the true number of unique
 words. This estimate, based on Good-Turing counts, gives the same lower
 bound for <em>f</em><sub>0</sub> that Anne Chao has proven extensively (Chao,
-Anne, 1984), and can be calculated with her well-known unseen species
+1984), and can be calculated with her well-known unseen species
 model, Chao1, which can be formulated as:
 $\frac{(n - 1)}{n} \frac{f_1^2}{2 f_2}$.</p>
 <p>The Chao1 model thus provides a lower bound of the ecological, or
@@ -243,11 +231,11 @@ estimate of the true richness. The reasoning is as follows: if the
 average frequency of unseen words (<em>α</em><sub>0</sub>) is approximately
 equal to that of words that occur once (<em>α</em><sub>1</sub>), then there is
 no longer any difference between $\frac{\alpha_0 f_0}{\alpha_0}$ and
-$\frac{\alpha_0 f_0}{\alpha_1}$, and thus method can provide an
+$\frac{\alpha_0 f_0}{\alpha_1}$, and thus the method can provide an
 unbiased estimate of the number of unique species, or say, cultural
-artefacts, such as mediavl stories that exist in a given area –
+artefacts, such as medieval stories that exist in a given area –
 including the ones that have not been seen.</p>
-<h1>References</h1>
+<h3>References</h3>
 <p>Chao, Anne (1984). <em>Nonparametric Estimation of the Number of Classes in
 a Population</em>, Scandinavian Journal of Statistics.</p>
 <p>Chao, Anne and Chiu, Chun‐Huo and Colwell, Robert K. and Magnago, Luiz
@@ -263,6 +251,10 @@ Driscoll, Matthew and Kapitan, Katarzyna A. and Ó Macháin, Pádraig and
 Sawyer, Daniel and Sleiderink, Remco and Chao, Anne (2022). <em>Forgotten
 Books: The Application of Unseen Species Models to the Survival of
 Culture</em>, Science.</p>
-
-    </body>
+</div>
+      <div class="back-link">
+        <a href="/">← Back</a>
+      </div>
+    </div>
+  </body>
 </html>

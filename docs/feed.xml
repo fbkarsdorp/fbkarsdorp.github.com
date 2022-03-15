@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Arpit Batra</title>
+  <subtitle>A minimal blog template using eleventy</subtitle>
+  <link href="https://eleventy-blog-mnml.netlify.app" rel="self"/>
+  <link href="https://eleventy-blog-mnml.netlify.app"/>
+  <updated>2022-03-15T00:00:00Z</updated>
+  <id>https://eleventy-blog-mnml.netlify.app</id>
+  <author>
+    <name>Arpit Batra</name>
+    <email>arpitbatra123@gmail.com</email>
+  </author>
+    
+    <entry>
+      <title>Demystifying Chao1 with Good-Turing</title>
+      <link href="https://eleventy-blog-mnml.netlify.app/posts/good-turing/"/>
+      <updated>2022-03-15T00:00:00Z</updated>
+      <id>https://eleventy-blog-mnml.netlify.app/posts/good-turing/</id>
+      <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://doi.org/10.31219/osf.io/tb9w2&quot;&gt;PDF version of this notebook&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To estimate the &amp;quot;biodiversity&amp;quot; in a particular area – or, in other
+words, the number of unique species living in a given environment –
+ecologists usually have no other option than to rely on incomplete
+samples. For all sorts of practical reasons, it is virtually impossible
+to spot all species that are actually present in an area, and hence
+certain species will be missing in the counts. Consequently, an
+important research question in ecology is how to reliably estimate the
+resulting &amp;quot;bias&amp;quot; between the number of species that was observerd and
+the true number of unique species in an area.&lt;/p&gt;
+&lt;p&gt;Of course, scientists are not only confronted with the possibility of
+&#39;unseen entities&#39; when counting animal species. In astronomy, too, for
+example, researchers are interested in counting the number of unseen
+stars. In linguistics, researchers have also attempted to estimate the
+total size of a language&#39;s vocabulary using only samples of that
+language. And in computer science, researchers have tried to estimate
+the number of undetected &amp;quot;bugs&amp;quot; in software code. In all these
+applications, the same problem arsises: there are more unique stars,
+words, or bugs than we observe in our samples, and therefore we cannot
+base our judgement about the diversity of the phenomenon we are
+investigating directly on our observed counts. That would give a biased
+– or worse, an impoverished – picture of the true state of affairs.
+Hence, the statistical methods that have been developed in ecology to
+combat such biases are very useful in a wide variety of domains.&lt;/p&gt;
+&lt;p&gt;In the cultural domain, too, there have been attempts to correct biases
+in our observations with statistical methods. A good example is our
+study into the loss of European medieval literature (Kestemont, 2022),
+which was recently published in
+the journal &lt;em&gt;Science&lt;/em&gt;. In that study, we apply a specific &amp;quot;Unseen
+Species&amp;quot; model to medieval stories. Medieval stories (such as the
+legends about &amp;quot;King Arthur&amp;quot; or the stories surrounding the emperor
+Charlemagne) were often recorded several times in manuscripts. But not
+all of these copies or manuscripts have been preserved – and, therefore
+it is possible that the stories they contained have not been preserved
+either. Our aim, then, was to use an &amp;quot;Unseen Species&amp;quot; model to estimate
+how many &amp;quot;documents&amp;quot; (the manuscripts) and how many &amp;quot;works&amp;quot; (the
+stories) and been lost. The model we used is called the &amp;quot;Chao1
+estimator&amp;quot;, named after its discoverer, Anne Chao, co-author of our
+study.&lt;/p&gt;
+&lt;p&gt;We are often asked how Chao1 can make these estimates of unseen things. But that question
+is not so easy to answer, because the exact motivation and derivation of Chao1 is not
+particularly intuitive (neither for ecologists, nor for cultural scholars). But
+fortunately, as Chao et al. 2017 have shown, Chao1 can also be derived in a slightly
+different and much more intuitive way. This derivation is based on the groundbreaking work
+of the famous computer scientist Alan Turing, which he did at Bletchley Park during World
+War II. Below, guided by Chao et al. 2017, I will try to demystify Chao1 in terms of
+Turing&#39;s work. I hope that this will help people unfamiliar with the method to understand
+exactly how it works, and, perhaps more importantly, how (not) to interpret the calculated
+values.&lt;/p&gt;
+&lt;p&gt;Imagine that we discovered a snippet from an unknown book. The snippet
+has a total of 18 words on it, consisting of 6 unique words with the
+following frequencies:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;word&lt;/th&gt;
+&lt;th&gt;frequency&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;the&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;for&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;woman&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;park&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;snake&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;book&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The total number of words as well as the number of unique words in this
+scenario are of importance. Based on this snippet, where the total
+frequency &lt;em&gt;n&lt;/em&gt; is 18, we would like to estimate how many unique words
+there were in the original, unaffected book. The snippet thus provides
+us with a &amp;quot;sample&amp;quot; or a subset of the vocabulary in the original work.
+The complete vocabulary can be indicated by the symbol &lt;em&gt;V&lt;/em&gt;, and the
+observed vocabulary in the snippet is then called &lt;em&gt;V&lt;/em&gt;&lt;sub&gt;obs&lt;/sub&gt;. The
+aim of unseen species models, such as Chao1, is then to estimate the
+true number of unique words &lt;em&gt;V&lt;/em&gt; on the basis of the observed unique
+vocabulary items (&lt;em&gt;V&lt;/em&gt;&lt;sub&gt;obs&lt;/sub&gt;) and their frequencies. To this end,
+we need to know about how many words have a frequency of 0 in our
+snippet – or, in other words, how many unique words are missing from our
+sample. If we refer to that number as &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;, we can calculate
+the total number of words &lt;em&gt;V&lt;/em&gt; by adding &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; to the number of
+unique observed words &lt;em&gt;V&lt;/em&gt;&lt;sub&gt;obs&lt;/sub&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;V&lt;/em&gt; = &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; + &lt;em&gt;V&lt;/em&gt;&lt;sub&gt;obs&lt;/sub&gt; = &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; + 6   (1)&lt;/p&gt;
+&lt;p&gt;The key question is, of course, how to calculate &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;. If we
+assume that our snippet represents the complete work, it is easy to
+calculate the probability of a word such as &lt;em&gt;book&lt;/em&gt;. Let&#39;s illustrate
+that with the word &lt;em&gt;book&lt;/em&gt;: if the snippet represents the whole work, we
+can simply divide the frequecy of &lt;em&gt;book&lt;/em&gt; by the total number of words:
+$\frac{1}{18} = 0.056$. Similarly, we can calculate the probability
+that a word has a frequency &lt;em&gt;r&lt;/em&gt;, for example &lt;em&gt;r&lt;/em&gt; = 1 (words that occur
+only once, i.e. singletons). There are 3 words in total with a frequency
+of &lt;em&gt;r&lt;/em&gt; = 1, which we write down as &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;1&lt;/sub&gt; = 3. The probability
+that a word has a frequency of 1 is then equal to &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;1&lt;/sub&gt;
+divided by the total number of words in a book:
+$\frac{f_1}{n} = \frac{3}{18} = 0.167$. And the average relative
+frequency of words with &lt;em&gt;r&lt;/em&gt; = 1 is then equal to:
+$\alpha_1 = \frac{1}{18} f_1 /
+f_1 = \frac{1}{18}$. But of course the 18-word snippet is just a
+snippet, and not a whole work. Because the snippet is not complete,
+there is a considerable chance that we have not yet seen certain words
+from the original, complete book. Therefore, in our probability
+calculations, we must take into account the possibility that we will
+come across a range of unseen words. But how?&lt;/p&gt;
+&lt;p&gt;Well, let&#39;s suppose that we find another snippet of the same manuscript
+containing one new word. What is then the probability that this new word
+is another instance of the already observed &lt;em&gt;book&lt;/em&gt;? Note that if this
+new word is indeed the word &lt;em&gt;book&lt;/em&gt;, then &lt;em&gt;book&lt;/em&gt; no longer occurs once
+but twice. In other words, &lt;em&gt;book&lt;/em&gt; then no longer has the frequency
+&lt;em&gt;r&lt;/em&gt; = 1 but &lt;em&gt;r&lt;/em&gt; = 1 + 1. To account for such situations, Turing and his
+student Good proposed not to estimate the probability of a word
+occurring &lt;em&gt;r&lt;/em&gt; times with $\frac{r}{n}$ but with an adjusted count
+$\frac{r^*}{n}$ (note the asterisk). This modified count states that
+the probability that we have seen a new words &lt;em&gt;r&lt;/em&gt; + 1 times is equal to
+the probability of the words we have already seen &lt;em&gt;r&lt;/em&gt; + 1 times. This
+can be formulated as:
+&lt;em&gt;r&lt;/em&gt;&lt;sup&gt;*&lt;/sup&gt; = (&lt;em&gt;r&lt;/em&gt;+1)&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;&lt;em&gt;r&lt;/em&gt; + 1&lt;/sub&gt;/&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;&lt;em&gt;r&lt;/em&gt;&lt;/sub&gt;. The
+average relative frequency of words that occur &lt;em&gt;r&lt;/em&gt; times can then be
+computed with:&lt;/p&gt;
+&lt;p&gt;$$\begin{equation}
+\alpha_r = \frac{r^*}{n} = \frac{(r + 1)}{n} \frac{f_{r + 1}}{f_r}.
+\end{equation} \qquad (2)$$&lt;/p&gt;
+&lt;p&gt;To illustrate: the word &lt;em&gt;book&lt;/em&gt; occurs once in the snippet and there are
+two other words that occur once. This, as stated before, gives
+&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;1&lt;/sub&gt; = 3. There is one word with a frequency of 2, so
+&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;2&lt;/sub&gt; = 1. If we plug these number into the formula above, we
+can calculate the probability that the new word is the word &lt;em&gt;book&lt;/em&gt;:
+$\frac{(1 + 1)}{18}
+\frac{1}{3} = 0.037$. It is important to note that this new probability
+is smaller than the relative frequency of &lt;em&gt;book&lt;/em&gt; in the snippet that we
+caculated earlier (1/18 = 0.056). This is because the Good-Turing counts
+act as a kind of frequency correction, ensuring that we leave some
+probability space for any unseen words – and hence the corrected
+probability is smaller.&lt;/p&gt;
+&lt;p&gt;Before we continue with showing how to use this all for computing
+&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;, it is important to make a small modification to the
+original Good-Turing formula. In a follow-up study, Chiu et al. (2014) show that the
+Good-Turing estimate can be made even more precise with:&lt;/p&gt;
+&lt;p&gt;$$\begin{equation}
+\alpha_r = \frac{(r + 1) f_{r + 1}}{(n - r) f_r}.
+\end{equation} \qquad (3)$$&lt;/p&gt;
+&lt;p&gt;For unseen words, we cannot calculate the average relative frequency
+&lt;em&gt;α&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;, because we have no knowledge of &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;:
+$\frac{f_1}{n f_0=?}$. What we &lt;em&gt;are&lt;/em&gt; able to calculate, however, is the
+estimated proportion of the total number of words that are unseen. That
+proportion is equal to the product of the average relative frequency of
+unseen words &lt;em&gt;α&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; and the number of unseen words
+&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;: &lt;em&gt;α&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;. This product can be
+approximated by dividing the number of words that occur once by the
+total number of words: $\frac{f_1}{n}$. Essentialy, we strip
+&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; from the formula.&lt;/p&gt;
+&lt;p&gt;We are now almost in the position to grasp how to estimate
+&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;. As I mentioned, we can estimate the product
+&lt;em&gt;α&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; with $\frac{f_1}{n}$. A simple way to
+compute &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; would be to divide this product by
+&lt;em&gt;α&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;. But unfortunately, we do not know the average relative
+frequency of unseen words. We therefore have to work with what we do
+know, for example that the average relative frequency of unseen words is
+probably lower that that of words occuring once. That is to say:
+&lt;em&gt;α&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; ≤ &lt;em&gt;α&lt;/em&gt;&lt;sub&gt;1&lt;/sub&gt;. It then follows that
+$\frac{\alpha_0 f_0}{\alpha_0}$ must be &lt;em&gt;at least&lt;/em&gt; equal to or
+greater than $\frac{\alpha_0 f_0}{\alpha_1}$:&lt;/p&gt;
+&lt;p&gt;$$\begin{equation}
+f_0 = \frac{\alpha_0 f_0}{\alpha_0} \geq \frac{\alpha_0 f_0}{\alpha_1}.
+\end{equation} \qquad (4)$$&lt;/p&gt;
+&lt;p&gt;We can rewrite that last formula ($\frac{\alpha_0 f_0}{\alpha_1}$) to
+the calculable $\frac{f1}{n} / \frac{2f_2}{(n - 1)f_1}$. If we apply
+this formula to our snippet, the estimate is that we have not yet seen
+at least $\frac{3}{18} / \frac{2 * 1}{(18 - 1) * 3}
+\approx 4$ words yet. It is important to emphasize again that
+$\frac{\alpha_0
+f_0}{\alpha_0}$ is &lt;em&gt;at least&lt;/em&gt; equal to or greater than
+$\frac{\alpha_0 f_0}{\alpha_1}$, and that our estimate of
+&lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; is thus a &lt;em&gt;lower bound&lt;/em&gt; on the true number of unique
+words. This estimate, based on Good-Turing counts, gives the same lower
+bound for &lt;em&gt;f&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt; that Anne Chao has proven extensively (Chao,
+1984), and can be calculated with her well-known unseen species
+model, Chao1, which can be formulated as:
+$\frac{(n - 1)}{n} \frac{f_1^2}{2 f_2}$.&lt;/p&gt;
+&lt;p&gt;The Chao1 model thus provides a lower bound of the ecological, or
+cultural, richness in a given area. Using the Good-Turing perspective,
+we can now also clarify when the lower bound is in fact an accurate
+estimate of the true richness. The reasoning is as follows: if the
+average frequency of unseen words (&lt;em&gt;α&lt;/em&gt;&lt;sub&gt;0&lt;/sub&gt;) is approximately
+equal to that of words that occur once (&lt;em&gt;α&lt;/em&gt;&lt;sub&gt;1&lt;/sub&gt;), then there is
+no longer any difference between $\frac{\alpha_0 f_0}{\alpha_0}$ and
+$\frac{\alpha_0 f_0}{\alpha_1}$, and thus the method can provide an
+unbiased estimate of the number of unique species, or say, cultural
+artefacts, such as medieval stories that exist in a given area –
+including the ones that have not been seen.&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;p&gt;Chao, Anne (1984). &lt;em&gt;Nonparametric Estimation of the Number of Classes in
+a Population&lt;/em&gt;, Scandinavian Journal of Statistics.&lt;/p&gt;
+&lt;p&gt;Chao, Anne and Chiu, Chun‐Huo and Colwell, Robert K. and Magnago, Luiz
+Fernando S. and Chazdon, Robin L. and Gotelli, Nicholas J. (2017).
+&lt;em&gt;Deciphering the Enigma of Undetected Species, Phylogenetic, and
+Functional Diversity Based on Good‐Turing Theory&lt;/em&gt;, Ecology.&lt;/p&gt;
+&lt;p&gt;Chiu, Chun-Huo and Wang, Yi-Ting and Walther, Bruno A. and Chao, Anne
+(2014). &lt;em&gt;An Improved Nonparametric Lower Bound of Species Richness via a
+Modified Good-Turing Frequency Formula: An Improved Nonparametric Lower
+Bound of Species Richness&lt;/em&gt;, Biometrics.&lt;/p&gt;
+&lt;p&gt;Kestemont, Mike and Karsdorp, Folgert and {de Bruijn}, Elisabeth and
+Driscoll, Matthew and Kapitan, Katarzyna A. and Ó Macháin, Pádraig and
+Sawyer, Daniel and Sleiderink, Remco and Chao, Anne (2022). &lt;em&gt;Forgotten
+Books: The Application of Unseen Species Models to the Survival of
+Culture&lt;/em&gt;, Science.&lt;/p&gt;
+
+        &lt;hr/&gt; &lt;p&gt;&lt;a href=&#39;mailto:arpitbatra123@gmail.com?subject=Reply: Demystifying Chao1 with Good-Turing&#39;&gt;Reply via email&lt;/a&gt; &lt;/p&gt;
+      </content>
+    </entry>
+</feed>

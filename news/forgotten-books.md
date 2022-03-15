@@ -1,5 +1,5 @@
 ---
-title: New article in Science about estimating cultural loss
+title: New article in Science on estimating cultural loss
 date: 2022-02-17
 snippet: Using Unseen Species models on Cultural data
 ---
@@ -12,9 +12,5 @@ which provide some additional details about the project. Last but not least, we 
 author explanation video, in which collaborators involved in this project provide a
 high-level explanation of our project and results.
             
-<div class="video-container"> <iframe
-    src="https://player.vimeo.com/video/677201737?h=a875da66f4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-          frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-          title="Forgotten Books &amp;mdash; Science (2022)"></iframe>
-    <script  src="https://player.vimeo.com/api/player.js"></script>
-</div>
+<iframe width="100%" height="315" src="https://player.vimeo.com/video/677201737?h=a875da66f4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Forgotten Books &amp;mdash; Science (2022)"></iframe>
+<script  src="https://player.vimeo.com/api/player.js"></script>

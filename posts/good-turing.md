@@ -1,8 +1,10 @@
 ---
 title: Demystifying Chao1 with Good-Turing
-date: 2022-03-14
+date: 2022-03-15
 snippet: What do these Unseen Species estimates actually mean?
 ---
+
+> [PDF version of this notebook](https://doi.org/10.31219/osf.io/tb9w2)
 
 To estimate the "biodiversity" in a particular area – or, in other
 words, the number of unique species living in a given environment –
@@ -204,7 +206,7 @@ unbiased estimate of the number of unique species, or say, cultural
 artefacts, such as medieval stories that exist in a given area –
 including the ones that have not been seen.
 
-# References
+### References
 
 Chao, Anne (1984). *Nonparametric Estimation of the Number of Classes in
 a Population*, Scandinavian Journal of Statistics.

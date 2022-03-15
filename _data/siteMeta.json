@@ -1,0 +1,12 @@
+{
+    "url": "https://www.karsdorp.io",
+    "description": "Folgert Karsdorp's Academic Website",
+    "author": {
+      "name": "Folgert Karsdorp",
+      "email": "folgert.karsdorp@meertens.knaw.nl",
+      "twitter": "https://twitter.com/FolgertK",
+      "github": "https://github.com/fbkarsdorp"
+    },
+    "feedUrl": "/feed.xml"
+  }
+  
