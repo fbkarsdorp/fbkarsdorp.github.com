@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Arpit Batra</title>
-  <subtitle>A minimal blog template using eleventy</subtitle>
-  <link href="https://eleventy-blog-mnml.netlify.app" rel="self"/>
-  <link href="https://eleventy-blog-mnml.netlify.app"/>
+  <title>Folgert Karsdorp</title>
+  <subtitle>Folgert Karsdorp&#39;s Academic Website</subtitle>
+  <link href="https://www.karsdorp.io" rel="self"/>
+  <link href="https://www.karsdorp.io"/>
   <updated>2022-03-15T00:00:00Z</updated>
-  <id>https://eleventy-blog-mnml.netlify.app</id>
+  <id>https://www.karsdorp.io</id>
   <author>
-    <name>Arpit Batra</name>
-    <email>arpitbatra123@gmail.com</email>
+    <name>Folgert Karsdorp</name>
+    <email>folgert.karsdorp@meertens.knaw.nl</email>
   </author>
     
     <entry>
       <title>Demystifying Chao1 with Good-Turing</title>
-      <link href="https://eleventy-blog-mnml.netlify.app/posts/good-turing/"/>
+      <link href="https://www.karsdorp.io/posts/good-turing/"/>
       <updated>2022-03-15T00:00:00Z</updated>
-      <id>https://eleventy-blog-mnml.netlify.app/posts/good-turing/</id>
+      <id>https://www.karsdorp.io/posts/good-turing/</id>
       <content type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://doi.org/10.31219/osf.io/tb9w2&quot;&gt;PDF version of this notebook&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -35,7 +35,7 @@ stars. In linguistics, researchers have also attempted to estimate the
 total size of a language&#39;s vocabulary using only samples of that
 language. And in computer science, researchers have tried to estimate
 the number of undetected &amp;quot;bugs&amp;quot; in software code. In all these
-applications, the same problem arsises: there are more unique stars,
+applications, the same problem arises: there are more unique stars,
 words, or bugs than we observe in our samples, and therefore we cannot
 base our judgement about the diversity of the phenomenon we are
 investigating directly on our observed counts. That would give a biased
@@ -243,7 +243,7 @@ Sawyer, Daniel and Sleiderink, Remco and Chao, Anne (2022). &lt;em&gt;Forgotten
 Books: The Application of Unseen Species Models to the Survival of
 Culture&lt;/em&gt;, Science.&lt;/p&gt;
 
-        &lt;hr/&gt; &lt;p&gt;&lt;a href=&#39;mailto:arpitbatra123@gmail.com?subject=Reply: Demystifying Chao1 with Good-Turing&#39;&gt;Reply via email&lt;/a&gt; &lt;/p&gt;
+        &lt;hr/&gt; &lt;p&gt;&lt;a href=&#39;mailto:folgert.karsdorp@meertens.knaw.nl?subject=Reply: Demystifying Chao1 with Good-Turing&#39;&gt;Reply via email&lt;/a&gt; &lt;/p&gt;
       </content>
     </entry>
 </feed>

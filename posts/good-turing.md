@@ -23,7 +23,7 @@ stars. In linguistics, researchers have also attempted to estimate the
 total size of a language's vocabulary using only samples of that
 language. And in computer science, researchers have tried to estimate
 the number of undetected "bugs" in software code. In all these
-applications, the same problem arsises: there are more unique stars,
+applications, the same problem arises: there are more unique stars,
 words, or bugs than we observe in our samples, and therefore we cannot
 base our judgement about the diversity of the phenomenon we are
 investigating directly on our observed counts. That would give a biased
