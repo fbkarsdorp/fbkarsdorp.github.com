@@ -4,6 +4,7 @@ title = 'Folgert Karsdorp'
 theme = "cactus"
 copyright = "Folgert Karsdorp; made with Hugo and Org-mode"
 refLinksErrorLevel = "WARNING"
+publishDir = "docs"
 
 [[menu.main]]
 name = "Home"
