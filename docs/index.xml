@@ -18,15 +18,6 @@
     </item>
     
     <item>
-      <title>Population Size Estimation as a Regression Problem</title>
-      <link>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</link>
-      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</guid>
-      <description>Unseen heterogeneity Unseen Species Models such as Chao1 assume that the studied sample is homogeneous. That is, in the case of animal species, for example, all species are equally likely to be observed. Of course, this is a simplifying assumption. SOme species are simply more difficult to spot than others, and so most samples contain unseen heterogeneity. When heterogeneity is present in a sample, Chao&amp;rsquo;s estimate represents a lower bound of the actual population size.</description>
-    </item>
-    
-    <item>
       <title>Demystifying Chao1 with Good-Turing</title>
       <link>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>

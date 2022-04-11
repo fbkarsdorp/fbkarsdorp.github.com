@@ -1,7 +1,7 @@
 +++
 title = "Population Size Estimation as a Regression Problem"
 author = ["Folgert Karsdorp"]
-draft = false
+draft = true
 +++
 
 ## Unseen heterogeneity {#unseen-heterogeneity}
