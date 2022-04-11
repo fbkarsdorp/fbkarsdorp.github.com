@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Demystifying Chao1 with Good-Turing | Folgert Karsdorp</title>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/'>
+  <meta name="description" content="I&#39;m a researcher in Computational Humanities and Cultural Evolution at
+  the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal Netherlands Academy
+  of Arts and Sciences (Amsterdam, the Netherlands).
+
+  My research focuses on why some cultural phenomena are adopted and persist through time,
+  while others change or disappear. Additionally, I&#39;m interested in measuring cultural
+  diversity and compositional complexity, and how we can account for biases in our
+  estimations of diversity. To do that, I use computational models from Machine Learning,
+  Cultural Evolution, and Besides.
+
+  Ecology cultural change and diversity, I&#39;m also interested in teaching about computer
+  programming in the context of the Humanities. I published a text book with [Princeton
+  University
+  Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
+  about using Python for Humanities data analysis. Check out the open access edition of
+  our book [here](https://www.humanitiesdataanalysis.org)!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Demystifying Chao1 with Good-Turing" />
+<meta property="og:description" content="To estimate the &ldquo;biodiversity&rdquo; in a particular area &ndash; or, in other words, the number of unique species living in a given environment &ndash; ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting &ldquo;bias&rdquo; between the number of species that was observerd and the true number of unique species in an area." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-15T00:00:00+01:00" />
+<meta property="article:modified_time" content="2022-03-15T00:00:00+01:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Demystifying Chao1 with Good-Turing"/>
+<meta name="twitter:description" content="To estimate the &ldquo;biodiversity&rdquo; in a particular area &ndash; or, in other words, the number of unique species living in a given environment &ndash; ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting &ldquo;bias&rdquo; between the number of species that was observerd and the true number of unique species in an area."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.113434789f3c21bf5b57e90215ead36599790c0ce86e3492f239ce88648708a3dcced805b389721cf2f244af1fa951706872cadf838cb7fcc0321d7cdfa6afc8.css" integrity="sha512-ETQ0eJ88Ib9bV&#43;kCFerTZZl5DAzobjSS8jnOiGSHCKPcztgFs4lyHPLyRK8fqVFwaHLK34OMt/zAMh1836avyA=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/#news">News</a></li>
+         
+        <li><a href="/#publications">Publications</a></li>
+         
+        <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li>
+          <a class="icon" href="https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&text=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&title=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&is_video=false&description=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Demystifying%20Chao1%20with%20Good-Turing&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&title=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&title=Demystifying%20Chao1%20with%20Good-Turing" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&name=Demystifying%20Chao1%20with%20Good-Turing&description=To%20estimate%20the%20%26ldquo%3bbiodiversity%26rdquo%3b%20in%20a%20particular%20area%20%26ndash%3b%20or%2c%20in%20other%20words%2c%20the%20number%20of%20unique%20species%20living%20in%20a%20given%20environment%20%26ndash%3b%20ecologists%20usually%20have%20no%20other%20option%20than%20to%20rely%20on%20incomplete%20samples.%20For%20all%20sorts%20of%20practical%20reasons%2c%20it%20is%20virtually%20impossible%20to%20spot%20all%20species%20that%20are%20actually%20present%20in%20an%20area%2c%20and%20hence%20certain%20species%20will%20be%20missing%20in%20the%20counts.%20Consequently%2c%20an%20important%20research%20question%20in%20ecology%20is%20how%20to%20reliably%20estimate%20the%20resulting%20%26ldquo%3bbias%26rdquo%3b%20between%20the%20number%20of%20species%20that%20was%20observerd%20and%20the%20true%20number%20of%20unique%20species%20in%20an%20area." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&t=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#references">References</a></li>
+    <li><a href="#references-1">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Demystifying Chao1 with Good-Turing
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-03-15 00:00:00 &#43;0100 CET" itemprop="datePublished">2022-03-15</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          9 minute read
+        </div>
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/chao1" rel="tag">chao1</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/turing" rel="tag">turing</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/richness" rel="tag">richness</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/loss" rel="tag">loss</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/diversity" rel="tag">diversity</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <p>To estimate the &ldquo;<a href="">biodiversity</a>&rdquo; in a particular area &ndash; or, in other words, the number of
+unique species living in a given environment &ndash; ecologists usually have no other option
+than to rely on incomplete samples. For all sorts of practical reasons, it is virtually
+impossible to spot all species that are actually present in an area, and hence certain
+species will be missing in the counts. Consequently, an important research question in
+ecology is how to reliably estimate the resulting &ldquo;bias&rdquo; between the number of species
+that was observerd and the true number of unique species in an area.</p>
+<p>Of course, scientists are not only confronted with the possibility of &lsquo;unseen entities&rsquo;
+when counting animal species. In astronomy, too, for example, researchers are interested
+in counting the number of unseen stars. In linguistics, researchers have also attempted to
+estimate the total size of a language&rsquo;s vocabulary using only samples of that language.
+And in computer science, researchers have tried to estimate the number of undetected
+&ldquo;bugs&rdquo; in software code. In all these applications, the same problem arises: there are
+more unique stars, words, or bugs than we observe in our samples, and therefore we cannot
+base our judgement about the diversity of the phenomenon we are investigating directly on
+our observed counts. That would give a biased &ndash; or worse, an i≈mpoverished &ndash; picture of
+the true state of affairs. Hence, the statistical methods that have been developed in
+ecology to combat such biases are very useful in a wide variety of domains.</p>
+<p>In the cultural domain, too, there have been attempts to correct biases in our
+observations with statistical methods. A good example is our study into the loss of
+European medieval literature Kestemont et al. (<a href="#citeproc_bib_item_4">2022</a>), which was
+recently published in the journal <em>Science</em>. In that study, we apply a specific &ldquo;<a href="">Unseen
+Species</a>&rdquo; model to medieval stories. Medieval stories (such as the legends about &ldquo;King
+Arthur&rdquo; or the stories surrounding the emperor Charlemagne) were often recorded several
+times in manuscripts. But not all of these copies or manuscripts have been preserved &ndash;
+and, therefore it is possible that the stories they contained have not been preserved
+either. Our aim, then, was to use an &ldquo;Unseen Species&rdquo; model to estimate how many
+&ldquo;documents&rdquo; (the manuscripts) and how many &ldquo;works&rdquo; (the stories) and been lost. The model
+we used is called the &ldquo;<a href="">Chao1 estimator</a>&rdquo;, named after its discoverer, Anne Chao, co-author
+of our study.</p>
+<p>We are often asked how Chao1 can make these estimates of unseen things. But that question
+is not so easy to answer, because the exact motivation and derivation of Chao1 is not
+particularly intuitive (neither for ecologists, nor for cultural scholars). But
+fortunately, as Chao et al. (<a href="#citeproc_bib_item_2">2017</a>) have shown, Chao1 can also
+be derived in a slightly different and much more intuitive way. This derivation is based
+on the groundbreaking work of the famous computer scientist Alan Turing, which he did at
+Bletchley Park during World War II. Below, guided by
+Chao et al. (<a href="#citeproc_bib_item_2">2017</a>), I will try to demystify Chao1 in terms of
+Turing&rsquo;s work. I hope that this will help people unfamiliar with the method to understand
+exactly how it works, and, perhaps more importantly, how (not) to interpret the calculated
+values.</p>
+<p>Imagine that we discovered a snippet from an unknown book. The snippet has a total of 18
+words on it, consisting of 6 unique words with the following frequencies:</p>
+<table>
+<thead>
+<tr>
+<th>word</th>
+<th>frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the</td>
+<td>10</td>
+</tr>
+<tr>
+<td>for</td>
+<td>3</td>
+</tr>
+<tr>
+<td>woman</td>
+<td>2</td>
+</tr>
+<tr>
+<td>park</td>
+<td>1</td>
+</tr>
+<tr>
+<td>snake</td>
+<td>1</td>
+</tr>
+<tr>
+<td>book</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>The total number of words as well as the number of unique words in this scenario are of
+importance. Based on this snippet, where the total frequency \(n\) is 18, we would like to
+estimate how many unique words there were in the original, unaffected book. The snippet
+thus provides us with a &ldquo;sample&rdquo; or a subset of the vocabulary in the original work. The
+complete vocabulary can be indicated by the symbol \(V\), and the observed vocabulary in the
+snippet is then called \(V_{\textrm{obs}}\). The aim of unseen species models, such as
+Chao1, is then to estimate the true number of unique words \(V\) on the basis of the
+observed unique vocabulary items (\(V_{\textrm{obs}}\)) and their frequencies. To this end,
+we need to know about how many words have a frequency of 0 in our snippet &ndash; or, in other
+words, how many unique words are missing from our sample. (Note that we assume that the
+snippet was generated under a sampling process with replacement. This is an assumption of
+Chao1, which not always holds for cultural data, and is completely unrealistic when
+working with snippets of text. See <a href="/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">Estimating Richness under Sampling without Replacement</a>
+for a more elaborate discussion of sampling strategies in relation to Chao1.) If we refer
+to that number as \(f_0\), we can calculate the total number of words \(V\) by adding \(f_0\) to
+the number of unique observed words \(V_{\textrm{obs}}\):</p>
+<p>\begin{equation}
+V = f_0 + V_{\textrm{obs}} = f_0 + 6
+\end{equation}</p>
+<p>The key question is, of course, how to calculate \(f_0\). If we assume that our snippet
+represents the complete work, it is easy to calculate the probability of a word such as
+<em>book</em>. Let&rsquo;s illustrate that with the word <em>book</em>: if the snippet represents the whole
+work, we can simply divide the frequecy of <em>book</em> by the total number of words:
+\(\frac{1}{18} = 0.056\). Similarly, we can calculate the probability that a word has a
+frequency \(r\), for example \(r = 1\) (words that occur only once, i.e. singletons). There
+are 3 words in total with a frequency of \(r = 1\), which we write down as \(f_1 = 3\). The
+probability that a word has a frequency of 1 is then equal to \(f_1\) divided by the total
+number of words in a book: \(\frac{f_1}{n} = \frac{3}{18} = 0.167\). And the average
+relative frequency of words with \(r = 1\) is then equal to: \(\alpha_1 = \frac{1}{18} f_1 /
+f_1 = \frac{1}{18}\). But of course the 18-word snippet is just a snippet, and not a whole
+work. Because the snippet is not complete, there is a considerable chance that we have not
+yet seen certain words from the original, complete book. Therefore, in our probability
+calculations, we must take into account the possibility that we will come across a range
+of unseen words. But how?</p>
+<p>Well, let&rsquo;s suppose that we find another snippet of the same manuscript containing one new
+word. What is then the probability that this new word is another instance of the already
+observed <em>book</em>? Note that if this new word is indeed the word <em>book</em>, then <em>book</em> no
+longer occurs once but twice. In other words, <em>book</em> then no longer has the frequency \(r =
+1\) but \(r = 1 + 1\). To account for such situations, Turing and his student Good proposed
+not to estimate the probability of a word occurring \(r\) times with \(\frac{r}{n}\) but with
+an adjusted count \(\frac{r^*}{n}\) (note the asterisk). This modified count states that the
+probability that we have seen a new words \(r + 1\) times is equal to the probability of the
+words we have already seen \(r + 1\) times. This can be formulated as: \(r^*= (r + 1) f_{r +
+1} / f_r\). The average relative frequency of words that occur \(r\) times can then be
+computed with:</p>
+<p>\begin{equation}
+\alpha_r = \frac{r^*}{n} = \frac{(r + 1)}{n} \frac{f_{r + 1}}{f_r}.
+\end{equation}</p>
+<p>To illustrate: the word <em>book</em> occurs once in the snippet and there are two other words
+that occur once. This, as stated before, gives \(f_1 = 3\). There is one word with a
+frequency of 2, so \(f_2 = 1\). If we plug these number into the formula above, we can
+calculate the probability that the new word is the word <em>book</em>: \(\frac{(1 + 1)}{18}
+\frac{1}{3} = 0.037\). It is important to note that this new probability is smaller than
+the relative frequency of <em>book</em> in the snippet that we caculated earlier (\(1 / 18 =
+0.056\)). This is because the Good-Turing counts act as a kind of frequency correction,
+ensuring that we leave some probability space for any unseen words &ndash; and hence the
+corrected probability is smaller.</p>
+<p>Before we continue with showing how to use this all for computing \(f_0\), it is important
+to make a small modification to the original Good-Turing formula. In a follow-up study,
+Chiu et al. (<a href="#citeproc_bib_item_3">2014</a>) show that the Good-Turing estimate can be
+made even more precise with:</p>
+<p>\begin{equation}
+\alpha_r = \frac{(r + 1) f_{r + 1}}{(n - r) f_r}.
+\end{equation}</p>
+<p>For unseen words, we cannot calculate the average relative frequency \(\alpha_0\), because
+we have no knowledge of \(f_0\): \(\frac{f_1}{n f_0=?}\). What we <em>are</em> able to calculate,
+however, is the estimated proportion of the total number of words that are unseen. That
+proportion is equal to the product of the average relative frequency of unseen words
+\(\alpha_0\) and the number of unseen words \(f_0\): \(\alpha_0 f_0\). This product can be
+approximated by dividing the number of words that occur once by the total number of words:
+\(\frac{f_1}{n}\). Essentialy, we strip \(f_0\) from the formula.</p>
+<p>We are now almost in the position to grasp how to estimate \(f_0\). As I mentioned, we can
+estimate the product \(\alpha_0 f_0\) with \(\frac{f_1}{n}\). A simple way to compute \(f_0\)
+would be to divide this product by \(\alpha_0\). But unfortunately, we do not know the
+average relative frequency of unseen words. We therefore have to work with what we do
+know, for example that the average relative frequency of unseen words is probably lower
+that that of words occuring once. That is to say: \(\alpha_0 \leq \alpha_1\). It then
+follows that \(\frac{\alpha_0 f_0}{\alpha_0}\) must be <em>at least</em> equal to or greater than
+\(\frac{\alpha_0 f_0}{\alpha_1}\):</p>
+<p>\begin{equation}
+f_0 = \frac{\alpha_0 f_0}{\alpha_0} \geq \frac{\alpha_0 f_0}{\alpha_1}.
+\end{equation}</p>
+<p>We can rewrite that last formula (\(\frac{\alpha_0 f_0}{\alpha_1}\)) to the calculable
+\(\frac{f1}{n} / \frac{2f_2}{(n - 1)f_1}\). If we apply this formula to our snippet, the
+estimate is that we have not yet seen at least \(\frac{3}{18} / \frac{2 * 1}{(18 - 1) * 3}
+\approx 4\) words yet. It is important to emphasize again that \(\frac{\alpha_0
+f_0}{\alpha_0}\) is <em>at least</em> equal to or greater than \(\frac{\alpha_0 f_0}{\alpha_1}\),
+and that our estimate of \(f_0\) is thus a <em>lower bound</em> on the true number of unique words.
+This estimate, based on Good-Turing counts, gives the same lower bound for \(f_0\) that Anne
+Chao has proven extensively (<a href="#citeproc_bib_item_1">Chao 1984</a>), and can be
+calculated with her well-known unseen species model, Chao1, which can be formulated as:
+\(\frac{(n - 1)}{n} \frac{f_1^2}{2 f_2}\).</p>
+<p>The Chao1 model thus provides a lower bound of the ecological, or cultural, richness in a
+given area. Using the Good-Turing perspective, we can now also clarify when the lower
+bound is in fact an accurate estimate of the true richness. The reasoning is as follows:
+if the average frequency of unseen words (\(\alpha_0\)) is approximately equal to that of
+words that occur once (\(\alpha_1\)), then there is no longer any difference between
+\(\frac{\alpha_0 f_0}{\alpha_0}\) and \(\frac{\alpha_0 f_0}{\alpha_1}\), and thus the method
+can provide an unbiased estimate of the number of unique species, or say, cultural
+artefacts, such as medieval stories that exist in a given area &ndash; including the ones that
+have not been seen.</p>
+<h2 id="references">References</h2>
+<h2 id="references-1">References</h2>
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Chao, Anne, Chiu Chun‐Huo, Robert K. Colwell, Luiz Fernando S. Magnago, Robin L. Chazdon, and Nicholas J. Gotelli. 2017. “Deciphering the Enigma of Undetected Species, Phylogenetic, and Functional Diversity Based on Good‐Turing Theory.” <i>Ecology</i> 98 (11): 2914–29. <a href="https://doi.org/10.1002/ecy.2000">https://doi.org/10.1002/ecy.2000</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Chiu, Chun-Huo, Yi-Ting Wang, Bruno A. Walther, and Anne Chao. 2014. “An Improved Nonparametric Lower Bound of Species Richness via a Modified Good-Turing Frequency Formula: An Improved Nonparametric Lower Bound of Species Richness.” <i>Biometrics</i> 70 (3): 671–82. <a href="https://doi.org/10.1111/biom.12200">https://doi.org/10.1111/biom.12200</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Kestemont, Mike, Folgert Karsdorp, Elisabeth de Bruijn, Matthew Driscoll, Katarzyna A. Kapitan, Pádraig Ó Macháin, Daniel Sawyer, Remco Sleiderink, and Anne Chao. 2022. “Forgotten Books: The Application of Unseen Species Models to the Survival of Culture.” <i>Science</i> 375 (6582): 765–69. <a href="https://doi.org/10.1126/science.abl7655">https://doi.org/10.1126/science.abl7655</a>.</div>
+</div>
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/#news">News</a></li>
+         
+          <li><a href="/#publications">Publications</a></li>
+         
+          <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#references">References</a></li>
+    <li><a href="#references-1">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&text=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&title=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&is_video=false&description=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Demystifying%20Chao1%20with%20Good-Turing&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&title=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&title=Demystifying%20Chao1%20with%20Good-Turing" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&name=Demystifying%20Chao1%20with%20Good-Turing&description=To%20estimate%20the%20%26ldquo%3bbiodiversity%26rdquo%3b%20in%20a%20particular%20area%20%26ndash%3b%20or%2c%20in%20other%20words%2c%20the%20number%20of%20unique%20species%20living%20in%20a%20given%20environment%20%26ndash%3b%20ecologists%20usually%20have%20no%20other%20option%20than%20to%20rely%20on%20incomplete%20samples.%20For%20all%20sorts%20of%20practical%20reasons%2c%20it%20is%20virtually%20impossible%20to%20spot%20all%20species%20that%20are%20actually%20present%20in%20an%20area%2c%20and%20hence%20certain%20species%20will%20be%20missing%20in%20the%20counts.%20Consequently%2c%20an%20important%20research%20question%20in%20ecology%20is%20how%20to%20reliably%20estimate%20the%20resulting%20%26ldquo%3bbias%26rdquo%3b%20between%20the%20number%20of%20species%20that%20was%20observerd%20and%20the%20true%20number%20of%20unique%20species%20in%20an%20area." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&t=Demystifying%20Chao1%20with%20Good-Turing" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Folgert Karsdorp; made with Hugo and Org-mode 
+  </div>
+  <div class="footer-right">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>

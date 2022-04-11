@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>richness on Folgert Karsdorp</title>
+    <link>https://www.karsdorp.io/tags/richness/</link>
+    <description>Recent content in richness on Folgert Karsdorp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
+    <lastBuildDate>Mon, 11 Apr 2022 00:00:00 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/richness/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estimating Richness under Sampling without Replacement</title>
+      <link>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</link>
+      <pubDate>Mon, 11 Apr 2022 00:00:00 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</guid>
+      <description>Introduction Unseen Species Models such as Chao1 assume that the sample being studied was created with replacement. This means that calculations are based on the assumption that certain individuals can or have been repeatedly observed. It also implies that the observation of one individual does not influence the observation of the next individual. That is to say: observations are independent. Take, for example, an ecologist who want to use Chao1 to estimate the number of unique animal species that live in a given environment.</description>
+    </item>
+    
+    <item>
+      <title>Demystifying Chao1 with Good-Turing</title>
+      <link>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</guid>
+      <description>To estimate the &amp;ldquo;biodiversity&amp;rdquo; in a particular area &amp;ndash; or, in other words, the number of unique species living in a given environment &amp;ndash; ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting &amp;ldquo;bias&amp;rdquo; between the number of species that was observerd and the true number of unique species in an area.</description>
+    </item>
+    
+  </channel>
+</rss>

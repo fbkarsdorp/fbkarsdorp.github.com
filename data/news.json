@@ -1,0 +1,14 @@
+{
+   "list": [
+      {
+         "name": "New article in Science on estimating cultural loss",
+         "url": "https://www.science.org/doi/10.1126/science.abl7655",
+          "desc": "We recently published an article in Science about estimating the amount of medieval lost books using ecological models. As part of our communication efforts, we also created an accompanying [website](https://forgotten-books.netlify.app), which provide some additional details about the project. Last but not least, we made an [author explanation video](https://vimeo.com/677201737?embedded=true&source=video_title&owner=166691811), in which collaborators involved in this project provide a high-level explanation of our project and results."
+      },
+      {
+         "name":"Humanities Data Analysis is now Open Access",
+         "url":"https://www.humanitiesdataanalysis.org/",
+         "desc":"Humanities Data Analysis: Case Studies with Python is a practical guide to data-intensive humanities research using the Python programming language. The book, written by me together with Mike Kestemont and Allen Riddell, was originally published with Princeton University Press in 2021 (for a printed version of the book, see the publisher’s website), and is now available as an Open Access interactive Juptyer Book."
+      }
+   ]
+}

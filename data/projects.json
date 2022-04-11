@@ -1,0 +1,29 @@
+{
+   "list": [
+      {
+         "name": "Forgotten Books: The Application of Unseen Species Models to the Survival of Culture",
+         "url": "https://www.science.org/doi/10.1126/science.abl7655",
+         "desc": "Science, 2022"
+      },
+      {
+         "name":"Humanities Data Analysis: Case Studies with Python",
+         "url":"https://www.humanitiesdataanalysis.org/",
+         "desc":"Princeton University Press, 2021"
+      },
+      {
+         "name":"Classifying Evolutionary Forces in Language Change Using Neural Networks",
+         "url":"https://doi.org/10.1017/ehs.2020.52",
+         "desc":"Evolutionary Human Sciences, 2020"
+      },
+      {
+         "name":"Cultural Entrenchment of Folktales is Encoded in Language",
+         "url":"https://doi.org/10.1057/s41599-019-0234-9",
+         "desc":"Palgrave Communications, 2019"
+      },
+      {
+         "name":"Learning Similarity Metrics for Melody Retrieval",
+         "url":"https://archives.ismir.net/ismir2019/paper/000057.pdf",
+         "desc":"Proceedings of the 20th International Society for Music Information Retrieval Conference 2019"
+      }     
+   ]
+}

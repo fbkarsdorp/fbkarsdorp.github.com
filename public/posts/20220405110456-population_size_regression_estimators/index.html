@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Population Size Estimation as a Regression Problem | Folgert Karsdorp</title>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/'>
+  <meta name="description" content="I&#39;m a researcher in Computational Humanities and Cultural Evolution at
+  the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal Netherlands Academy
+  of Arts and Sciences (Amsterdam, the Netherlands).
+
+  My research focuses on why some cultural phenomena are adopted and persist through time,
+  while others change or disappear. Additionally, I&#39;m interested in measuring cultural
+  diversity and compositional complexity, and how we can account for biases in our
+  estimations of diversity. To do that, I use computational models from Machine Learning,
+  Cultural Evolution, and Besides.
+
+  Ecology cultural change and diversity, I&#39;m also interested in teaching about computer
+  programming in the context of the Humanities. I published a text book with [Princeton
+  University
+  Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
+  about using Python for Humanities data analysis. Check out the open access edition of
+  our book [here](https://www.humanitiesdataanalysis.org)!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Population Size Estimation as a Regression Problem" />
+<meta property="og:description" content="Unseen heterogeneity Unseen Species Models such as Chao1 assume that the studied sample is homogeneous. That is, in the case of animal species, for example, all species are equally likely to be observed. Of course, this is a simplifying assumption. SOme species are simply more difficult to spot than others, and so most samples contain unseen heterogeneity. When heterogeneity is present in a sample, Chao&rsquo;s estimate represents a lower bound of the actual population size." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-09T00:00:00+00:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Population Size Estimation as a Regression Problem"/>
+<meta name="twitter:description" content="Unseen heterogeneity Unseen Species Models such as Chao1 assume that the studied sample is homogeneous. That is, in the case of animal species, for example, all species are equally likely to be observed. Of course, this is a simplifying assumption. SOme species are simply more difficult to spot than others, and so most samples contain unseen heterogeneity. When heterogeneity is present in a sample, Chao&rsquo;s estimate represents a lower bound of the actual population size."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.113434789f3c21bf5b57e90215ead36599790c0ce86e3492f239ce88648708a3dcced805b389721cf2f244af1fa951706872cadf838cb7fcc0321d7cdfa6afc8.css" integrity="sha512-ETQ0eJ88Ib9bV&#43;kCFerTZZl5DAzobjSS8jnOiGSHCKPcztgFs4lyHPLyRK8fqVFwaHLK34OMt/zAMh1836avyA=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/#news">News</a></li>
+         
+        <li><a href="/#publications">Publications</a></li>
+         
+        <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&text=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&is_video=false&description=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&name=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&description=Unseen%20heterogeneity%20Unseen%20Species%20Models%20such%20as%20Chao1%20assume%20that%20the%20studied%20sample%20is%20homogeneous.%20That%20is%2c%20in%20the%20case%20of%20animal%20species%2c%20for%20example%2c%20all%20species%20are%20equally%20likely%20to%20be%20observed.%20Of%20course%2c%20this%20is%20a%20simplifying%20assumption.%20SOme%20species%20are%20simply%20more%20difficult%20to%20spot%20than%20others%2c%20and%20so%20most%20samples%20contain%20unseen%20heterogeneity.%20When%20heterogeneity%20is%20present%20in%20a%20sample%2c%20Chao%26rsquo%3bs%20estimate%20represents%20a%20lower%20bound%20of%20the%20actual%20population%20size." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&t=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#unseen-heterogeneity">Unseen heterogeneity</a></li>
+    <li><a href="#chao1-in-a-likelihood-framework">Chao1 in a likelihood framework</a></li>
+    <li><a href="#adding-covariates-to-chao-s-estimator">Adding Covariates to Chao&rsquo;s estimator</a></li>
+    <li><a href="#experimenting-with-bayesian-regression">Experimenting with Bayesian regression</a>
+      <ul>
+        <li><a href="#simulation-model">Simulation Model</a></li>
+        <li><a href="#data-preparation">Data preparation</a></li>
+        <li><a href="#regression-model">Regression model</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Population Size Estimation as a Regression Problem
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-04-09 00:00:00 &#43;0000 UTC" itemprop="datePublished">2022-04-09</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          8 minute read
+        </div>
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/unseen-species" rel="tag">unseen species</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/chao1" rel="tag">chao1</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/heterogeneity" rel="tag">heterogeneity</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/pymc3" rel="tag">pymc3</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/regression" rel="tag">regression</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="unseen-heterogeneity">Unseen heterogeneity</h2>
+<p>Unseen Species Models such as Chao1 assume that the studied sample is homogeneous. That
+is, in the case of animal species, for example, all species are equally likely to be
+observed. Of course, this is a simplifying assumption. SOme species are simply more
+difficult to spot than others, and so most samples contain unseen heterogeneity. When
+heterogeneity is present in a sample, Chao&rsquo;s estimate represents a lower bound of the
+actual population size. What happens when we do have knowledge about (some parts of) the
+the origin of the heterogeneity? Is there a way to use that information to correct for
+some of the bias of Chao&rsquo;s estimator?</p>
+<p>In a series of articles, Dankmar Böhning and colleagues show how information about
+covariates (e.g., certain characteristics of animal species) can help to reduce this bias
+(Böhning, Dankmar and {van der Heijden}, Peter G. M., 2009,
+Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013). The crucial insight in these articles is the
+conceptualisation of Unseen Species Models as maximum likelihood estimators for a
+truncated Poisson likelihood. That insight allows that authors to develop a regression
+method for population size estimation that incorporates information about covariates and
+is a generalization of Chao1.</p>
+<h2 id="chao1-in-a-likelihood-framework">Chao1 in a likelihood framework</h2>
+<p>As I described in more detail in <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>, the Chao1 estimator
+developed in (Chao, Anne, 1984) takes the form of \(f^2_1 /
+(2f_2)\), where \(f_1\) indicates how many species occur once, and \(f_2\) how many occur
+exactly 2 times. The estimator thus only works with \(f_1\) and \(f_2\) (everything that
+occurs more often, or not at all, is ignored), and that is why we can speak of a
+<em>truncated distribution</em>. To be more specific: Chao1 assumes that the observed species
+follow a Poisson distribution, and thus by only considering \(f_1\) and \(f_2\), we are
+dealing with a truncated Poisson distribution. A Poisson distribution has one parameter
+\(\lambda\) that represents the expected outcome value, such as the expected number of
+observations or sightings of an animal species:</p>
+<p>\begin{equation}
+y \sim \text{Poisson}(\lambda)
+\end{equation}</p>
+<p>An exciting insight from (Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013) is that in the
+case of a <em>truncated</em> Poisson distribution, the parameter \(\lambda\) can be estimated with
+a binomial likelihood. To understand this, we need to consider that a truncated Poisson
+with \(y \in {1, 2}\) is in fact a binomial distribution with a binary outcome: something
+occurs once of something occurs twice. We can thus calculate the probability that
+something occurs twice and not once, i.e., \(P(y=2)\). That probability is maximised by
+\(\hat{p} = f_2 / (f_1 + f_2)\). With \(\lambda = 2p/(1 - p)\), we can use \(p\) to obtain an
+estimate for \(\lambda\).</p>
+<h2 id="adding-covariates-to-chao-s-estimator">Adding Covariates to Chao&rsquo;s estimator</h2>
+<p>(Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013) subsequently show that can also estimate
+\(\hat{p}\) using logistic regression (see also
+Böhning, Dankmar and {van der Heijden}, Peter G. M., 2009). And by doing so, it becomes possible to
+include information on covariates. These covariates, then, provide information about the
+probability of an item occuring once or twice in the sample under investigation. In a
+logistic regression, the outcome probability \(p_i\) is connected to a linear model via a
+logit link:</p>
+<p>\begin{align*}
+y_i &amp; \sim \text{Binomial}(1, p_i) \\
+\text{logit}(p_i) &amp; = \alpha \\
+\end{align*}</p>
+<p>where \(\alpha\) represents the intercept. This specification allows us to easily add
+covariates (also called predictors) to the linear model as follows:</p>
+<p>\begin{align*}
+y_i &amp; \sim \text{Binomial}(1, p_i) \\
+\text{logit}(p_i) &amp; = \alpha + \beta_x x_i\\
+\end{align*}</p>
+<p>where \(x_i\) represents the value of a given predictor and \(\beta_x\) the coefficient
+of predictor \(x\). After estimating \(p_i\) we can estimate the parameter \(\lambda_i\) with:</p>
+<p>\begin{equation}
+\hat{\lambda}_i = 2 \frac{\hat{p}_i}{1 - \hat{p}_i}
+\end{equation}</p>
+<p>What remains is to use the estimate \(\lambda_i\) to calculate the number of unseen items,
+\(f_0\). (Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013)  show that \(f_0\) and the population
+size \(\hat{N}\) can be estimated with:</p>
+<p>\begin{equation}
+\hat{N} = n + \sum^{f_1 + f_2}_{i = 1} \frac{1}{\hat{\lambda}_i + \hat{\lambda}_i^2 / 2}
+\end{equation}</p>
+<p>For proofs and theorems of this equation, I refer to the note by
+(Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013). In the remainder of this notebook, I want
+to concentrate on showing how \(\lambda_i\) and \(p_i\) can be estimated in practice using a
+Bayesian generalised linear model.</p>
+<h2 id="experimenting-with-bayesian-regression">Experimenting with Bayesian regression</h2>
+<h3 id="simulation-model">Simulation Model</h3>
+<p>In this section, I aim to get a better idea of the effect of heterogeneity in a sample on
+the quality of population size estimation. In order to do so systematically, it is useful
+to define a function with which we can simulate data. Below, I define a simple function in
+Python, <code>generate_population</code>, which lets us generate populations of size \(N\) in which the
+number of occurrences of each item \(i\) is sampled from a Poisson distribution:
+een Poisson verdeling:</p>
+<p>\begin{align*}
+N_i &amp; \sim \text{Poisson}(\lambda_i) \\
+\text{log}(\lambda_i) &amp; = \alpha + \beta x_i \\
+\end{align*}</p>
+<p>In this equation, \(\alpha\) represents the log-scale intercept (i.e., the mean expected
+abundance on a log scale), and \(\beta\) the effect (the slope) of predictor \(x\). \(x_i\)
+takes on a binary value, thus representing two categories (e.g., male en female animals).
+A translation into Python code is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">generate_population</span>(N, alpha, beta):
+</span></span><span style="display:flex;"><span>    X <span style="color:#666">=</span> np<span style="color:#666">.</span>zeros(N)
+</span></span><span style="display:flex;"><span>    X[N<span style="color:#666">//</span><span style="color:#40a070">2</span>:] <span style="color:#666">=</span> <span style="color:#40a070">1</span>
+</span></span><span style="display:flex;"><span>    Lambda <span style="color:#666">=</span> np<span style="color:#666">.</span>exp(alpha <span style="color:#666">+</span> beta<span style="color:#666">*</span>X)
+</span></span><span style="display:flex;"><span>    counts <span style="color:#666">=</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>poisson(Lambda, size<span style="color:#666">=</span>N)
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> pd<span style="color:#666">.</span>DataFrame({<span style="color:#4070a0">&#34;counts&#34;</span>: counts, <span style="color:#4070a0">&#34;X&#34;</span>: X})
+</span></span></code></pre></div><p>Let&rsquo;s test the function. Below, I generate a population of 1000 unique items. To first get
+a feel for how the estimator works with heterogeneity, we&rsquo;ll set beta to 1:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">seaborn</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">sns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pop <span style="color:#666">=</span> generate_population(<span style="color:#40a070">1000</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">0.5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax <span style="color:#666">=</span> sns<span style="color:#666">.</span>catplot(
+</span></span><span style="display:flex;"><span>    data<span style="color:#666">=</span>pop<span style="color:#666">.</span>groupby(<span style="color:#4070a0">&#34;X&#34;</span>)[<span style="color:#4070a0">&#34;counts&#34;</span>]<span style="color:#666">.</span>value_counts()<span style="color:#666">.</span>reset_index(name<span style="color:#666">=</span><span style="color:#4070a0">&#34;f&#34;</span>),
+</span></span><span style="display:flex;"><span>    kind<span style="color:#666">=</span><span style="color:#4070a0">&#34;bar&#34;</span>, x<span style="color:#666">=</span><span style="color:#4070a0">&#34;counts&#34;</span>, y<span style="color:#666">=</span><span style="color:#4070a0">&#34;f&#34;</span>, hue<span style="color:#666">=</span><span style="color:#4070a0">&#34;X&#34;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#666">.</span>set(xlabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;count&#34;</span>, ylabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;f&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/47da96bc2244686693b69a1035fac4a126819c2c.png"/>
+</figure>
+
+<p>The total number of unseen items as well the number os unseen items per group can be
+recovered with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#39;Total number of missing items is </span><span style="color:#70a0d0;font-style:italic">{</span>(pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>)<span style="color:#666">.</span>sum()<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#39;Number of missing items with X=1 is </span><span style="color:#70a0d0;font-style:italic">{</span>((pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>) <span style="color:#666">&amp;</span> (pop[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">1</span>))<span style="color:#666">.</span>sum()<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#39;Number of missing items with X=0 is </span><span style="color:#70a0d0;font-style:italic">{</span>((pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>) <span style="color:#666">&amp;</span> (pop[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>))<span style="color:#666">.</span>sum()<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Total number of missing items is 288
+</span></span><span style="display:flex;"><span>Number of missing items with X=1 is 104
+</span></span><span style="display:flex;"><span>Number of missing items with X=0 is 184
+</span></span></code></pre></div><p>Thus, the chance of unseen items with \(x_i=1\) is much smaller than when \(x_i=0\).</p>
+<h3 id="data-preparation">Data preparation</h3>
+<p>As said, we aim to estimate the parameters of the truncated Poisson distribution by means
+of logistic regression. To this end, we reduce our generate sample to only contain items
+that occur once or twice. And subsequently, we add a binary indicator variable \(y\) that
+equal 1 if the count of item \(i\) is 2, and 0 otherwise. This binary variable, then, will
+be the outcome variable in the binomial regression model.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data <span style="color:#666">=</span> pop<span style="color:#666">.</span>copy()[pop[<span style="color:#4070a0">&#34;counts&#34;</span>]<span style="color:#666">.</span>isin((<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>))]
+</span></span><span style="display:flex;"><span>data[<span style="color:#4070a0">&#34;y&#34;</span>] <span style="color:#666">=</span> (data[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">2</span>)<span style="color:#666">.</span>astype(<span style="color:#007020">int</span>)
+</span></span><span style="display:flex;"><span>data <span style="color:#666">=</span> data<span style="color:#666">.</span>reset_index(drop<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span>data<span style="color:#666">.</span>sample(<span style="color:#40a070">5</span>)<span style="color:#666">.</span>head()
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th>counts</th>
+<th>X</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>332</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>95</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>201</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>45</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>169</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regression-model">Regression model</h3>
+<p>We will use the PyMC3 library for doing probabilistic programming in Python to perfom our
+regression analysis and thus to estimate the parameter \(\hat{p}_i\) and corresponding
+parameter \(\lambda_i\) through \(\hat{\lambda}_i = 2 \frac{\hat{p}_i}{1 - \hat{p}_i}\). PyMC3
+has an intuitive model specification syntax, which allows us to easily code down our
+model, while maintaining flexibility:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pymc3</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pm</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">with</span> pm<span style="color:#666">.</span>Model() <span style="color:#007020;font-weight:bold">as</span> model:
+</span></span><span style="display:flex;"><span>    alpha <span style="color:#666">=</span> pm<span style="color:#666">.</span>Normal(<span style="color:#4070a0">&#39;alpha&#39;</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">5</span>)  <span style="color:#60a0b0;font-style:italic"># prior on alpha</span>
+</span></span><span style="display:flex;"><span>    beta <span style="color:#666">=</span> pm<span style="color:#666">.</span>Normal(<span style="color:#4070a0">&#39;beta&#39;</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">5</span>)  <span style="color:#60a0b0;font-style:italic"># prior on beta</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#666">=</span> pm<span style="color:#666">.</span>Deterministic(<span style="color:#4070a0">&#34;p&#34;</span>, pm<span style="color:#666">.</span>math<span style="color:#666">.</span>invlogit(alpha <span style="color:#666">+</span> beta<span style="color:#666">*</span>data[<span style="color:#4070a0">&#34;X&#34;</span>]))
+</span></span><span style="display:flex;"><span>    f2 <span style="color:#666">=</span> pm<span style="color:#666">.</span>Binomial(<span style="color:#4070a0">&#34;f2&#34;</span>, <span style="color:#40a070">1</span>, p, observed<span style="color:#666">=</span>data[<span style="color:#4070a0">&#34;y&#34;</span>])
+</span></span><span style="display:flex;"><span>    trace <span style="color:#666">=</span> pm<span style="color:#666">.</span>sample(<span style="color:#40a070">1000</span>, tune<span style="color:#666">=</span><span style="color:#40a070">2000</span>, return_inferencedata<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">True</span>)
+</span></span></code></pre></div><p>I assume that most lines of code in this model definition are easy to understand. The
+deterministic variable \(p\) is there for convenience allowing us to work with estimated
+values on the probability scale later on. PyMC3 is closely integrated with the ArviZ
+library, which is the go-to library in Python for exploratory analyses of Bayesian models.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">arviz</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">az</span>
+</span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>summary(trace, var_names<span style="color:#666">=</span>[<span style="color:#4070a0">&#34;alpha&#34;</span>, <span style="color:#4070a0">&#34;beta&#34;</span>])
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th>mean</th>
+<th>sd</th>
+<th>hdi_3%</th>
+<th>hdi_97%</th>
+<th>mcse_mean</th>
+<th>mcse_sd</th>
+<th>ess_bulk</th>
+<th>ess_tail</th>
+<th>r_hat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpha</td>
+<td>-0.742</td>
+<td>0.132</td>
+<td>-0.988</td>
+<td>-0.494</td>
+<td>0.004</td>
+<td>0.003</td>
+<td>1329</td>
+<td>1202</td>
+<td>1</td>
+</tr>
+<tr>
+<td>beta</td>
+<td>0.515</td>
+<td>0.181</td>
+<td>0.14</td>
+<td>0.824</td>
+<td>0.005</td>
+<td>0.004</td>
+<td>1348</td>
+<td>1159</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Looking at the table, it appears that the sampling process was succesful, which is aslo
+confirmed by the good mixing of the chains in the following trace plot:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_trace(trace);
+</span></span></code></pre></div><figure><img src="/ox-hugo/9dab6cf4874aa4ef3695898799b942de25b7229f.png"/>
+</figure>
+
+<p>Now that we have an estimate of \(\hat{p}\), we can use that to obtain our estimate of the
+population size following the equations above. First, we extract 1,000 posterior samples
+from each chain resulting in 4,000 posterior samples. We then compute the \(\lambda_i\)
+values for each item \(i\) in the data set. And finally, we compute \(f_0\) and add that to
+the observed population size to obtain an estimate of the true population size.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>post <span style="color:#666">=</span> az<span style="color:#666">.</span>extract_dataset(trace) <span style="color:#60a0b0;font-style:italic"># stack all chains</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#666">=</span> (pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>)<span style="color:#666">.</span>sum()
+</span></span><span style="display:flex;"><span>p <span style="color:#666">=</span> post[<span style="color:#4070a0">&#34;p&#34;</span>]<span style="color:#666">.</span>values
+</span></span><span style="display:flex;"><span>l <span style="color:#666">=</span> (<span style="color:#40a070">2</span> <span style="color:#666">*</span> p) <span style="color:#666">/</span> (<span style="color:#40a070">1</span> <span style="color:#666">-</span> p)
+</span></span><span style="display:flex;"><span>f0 <span style="color:#666">=</span> (<span style="color:#40a070">1</span> <span style="color:#666">/</span> (l <span style="color:#666">+</span> (l<span style="color:#666">**</span><span style="color:#40a070">2</span>) <span style="color:#666">/</span> <span style="color:#40a070">2</span>))
+</span></span><span style="display:flex;"><span>N <span style="color:#666">=</span> n <span style="color:#666">+</span> f0<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_posterior(N, point_estimate<span style="color:#666">=</span><span style="color:#4070a0">&#34;mean&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/cd19e1799e6e6c9478df699c99f22f5937f1d526.png"/>
+</figure>
+
+<p>The cool thing about using a Bayesian regression analysis, is that our estimate of
+\(\hat{N}\) becomes a distribution of estimates. We observe that the mean estimate is
+relatively close to the true value of \(N=1000\). Note that the bias for the original Chao1
+method is somewhat larger for this sample with a point-estimate of 952.</p>
+<p>An additional benefit of the regression approach is that we can easily obtain posterior
+population size estimates for different covariates. Below, we plot the estimates for \(x=0\)
+(left panel) and \(x=1\) (right panel).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig, axes <span style="color:#666">=</span> plt<span style="color:#666">.</span>subplots(ncols<span style="color:#666">=</span><span style="color:#40a070">2</span>, figsize<span style="color:#666">=</span>(<span style="color:#40a070">8</span>, <span style="color:#40a070">4</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>labeller <span style="color:#666">=</span> az<span style="color:#666">.</span>labels<span style="color:#666">.</span>MapLabeller(var_name_map<span style="color:#666">=</span>{<span style="color:#4070a0">&#34;x&#34;</span>: <span style="color:#4070a0">r</span><span style="color:#4070a0">&#34;$x=0$&#34;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n0 <span style="color:#666">=</span> ((pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>) <span style="color:#666">&amp;</span> (pop[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>))<span style="color:#666">.</span>sum()
+</span></span><span style="display:flex;"><span>l <span style="color:#666">=</span> (<span style="color:#40a070">2</span> <span style="color:#666">*</span> p) <span style="color:#666">/</span> (<span style="color:#40a070">1</span> <span style="color:#666">-</span> p)
+</span></span><span style="display:flex;"><span>f0_x0 <span style="color:#666">=</span> (<span style="color:#40a070">1</span> <span style="color:#666">/</span> (l <span style="color:#666">+</span> (l<span style="color:#666">**</span><span style="color:#40a070">2</span>) <span style="color:#666">/</span> <span style="color:#40a070">2</span>)) <span style="color:#666">*</span> (data[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>)<span style="color:#666">.</span>astype(<span style="color:#007020">int</span>)<span style="color:#666">.</span>values[:, <span style="color:#007020;font-weight:bold">None</span>]
+</span></span><span style="display:flex;"><span>S_x0 <span style="color:#666">=</span> n0 <span style="color:#666">+</span> f0_x0<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_posterior(S_x0, ax<span style="color:#666">=</span>axes[<span style="color:#40a070">0</span>], labeller<span style="color:#666">=</span>labeller);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>labeller <span style="color:#666">=</span> az<span style="color:#666">.</span>labels<span style="color:#666">.</span>MapLabeller(var_name_map<span style="color:#666">=</span>{<span style="color:#4070a0">&#34;x&#34;</span>: <span style="color:#4070a0">r</span><span style="color:#4070a0">&#34;$x=1$&#34;</span>})
+</span></span><span style="display:flex;"><span>n1 <span style="color:#666">=</span> ((pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>) <span style="color:#666">&amp;</span> (pop[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">1</span>))<span style="color:#666">.</span>sum()
+</span></span><span style="display:flex;"><span>l <span style="color:#666">=</span> (<span style="color:#40a070">2</span> <span style="color:#666">*</span> p) <span style="color:#666">/</span> (<span style="color:#40a070">1</span> <span style="color:#666">-</span> p)
+</span></span><span style="display:flex;"><span>f0_x1 <span style="color:#666">=</span> (<span style="color:#40a070">1</span> <span style="color:#666">/</span> (l <span style="color:#666">+</span> (l<span style="color:#666">**</span><span style="color:#40a070">2</span>) <span style="color:#666">/</span> <span style="color:#40a070">2</span>)) <span style="color:#666">*</span> (data[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">1</span>)<span style="color:#666">.</span>astype(<span style="color:#007020">int</span>)<span style="color:#666">.</span>values[:, <span style="color:#007020;font-weight:bold">None</span>]
+</span></span><span style="display:flex;"><span>S_x1 <span style="color:#666">=</span> n1 <span style="color:#666">+</span> f0_x1<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_posterior(S_x1, ax<span style="color:#666">=</span>axes[<span style="color:#40a070">1</span>], labeller<span style="color:#666">=</span>labeller);
+</span></span></code></pre></div><figure><img src="/ox-hugo/b8092bde23f9a7ed7c4e21a19ae5f975799fa1ef.png"/>
+</figure>
+
+<h2 id="references">References</h2>
+<p>Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark (2013). <em>A Generalization of Chao&rsquo;s Estimator for Covariate Information</em>, Biometrics.</p>
+<p>Böhning, Dankmar and {van der Heijden}, Peter G. M. (2009). <em>A Covariate Adjustment for Zero-Truncated Approaches to Estimating the Size of Hidden and Elusive Populations</em>, The Annals of Applied Statistics.</p>
+<p>Chao, Anne (1984). <em>Nonparametric Estimation of the Number of Classes in a Population</em>, Scandinavian Journal of Statistics.</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/#news">News</a></li>
+         
+          <li><a href="/#publications">Publications</a></li>
+         
+          <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#unseen-heterogeneity">Unseen heterogeneity</a></li>
+    <li><a href="#chao1-in-a-likelihood-framework">Chao1 in a likelihood framework</a></li>
+    <li><a href="#adding-covariates-to-chao-s-estimator">Adding Covariates to Chao&rsquo;s estimator</a></li>
+    <li><a href="#experimenting-with-bayesian-regression">Experimenting with Bayesian regression</a>
+      <ul>
+        <li><a href="#simulation-model">Simulation Model</a></li>
+        <li><a href="#data-preparation">Data preparation</a></li>
+        <li><a href="#regression-model">Regression model</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&text=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&is_video=false&description=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&name=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&description=Unseen%20heterogeneity%20Unseen%20Species%20Models%20such%20as%20Chao1%20assume%20that%20the%20studied%20sample%20is%20homogeneous.%20That%20is%2c%20in%20the%20case%20of%20animal%20species%2c%20for%20example%2c%20all%20species%20are%20equally%20likely%20to%20be%20observed.%20Of%20course%2c%20this%20is%20a%20simplifying%20assumption.%20SOme%20species%20are%20simply%20more%20difficult%20to%20spot%20than%20others%2c%20and%20so%20most%20samples%20contain%20unseen%20heterogeneity.%20When%20heterogeneity%20is%20present%20in%20a%20sample%2c%20Chao%26rsquo%3bs%20estimate%20represents%20a%20lower%20bound%20of%20the%20actual%20population%20size." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&t=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Folgert Karsdorp; made with Hugo and Org-mode 
+  </div>
+  <div class="footer-right">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>

@@ -1,0 +1,105 @@
+baseURL = 'https://www.karsdorp.io'
+languageCode = 'en-us'
+title = 'Folgert Karsdorp'
+theme = "cactus"
+copyright = "Folgert Karsdorp; made with Hugo and Org-mode"
+refLinksErrorLevel = "WARNING"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "News"
+url = "/#news"
+weight = 3
+
+[[menu.main]]
+name = "Publications"
+url = "/#publications"
+weight = 4
+
+[[menu.main]]
+name = "Archive"
+url = "/posts"
+weight = 5
+
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = false
+    noClasses = true
+    style = "friendly" # friendly
+    tabWidth = 4
+
+[params]
+
+  colortheme = "white" # dark, light, white, or classic
+  rss = true # generate rss feed. default value is false
+  showAllPostsArchive = true # default
+
+  # Home page settings
+  
+  description = """I'm a researcher in Computational Humanities and Cultural Evolution at
+  the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal Netherlands Academy
+  of Arts and Sciences (Amsterdam, the Netherlands).
+
+  My research focuses on why some cultural phenomena are adopted and persist through time,
+  while others change or disappear. Additionally, I'm interested in measuring cultural
+  diversity and compositional complexity, and how we can account for biases in our
+  estimations of diversity. To do that, I use computational models from Machine Learning,
+  Cultural Evolution, and Besides.
+
+  Ecology cultural change and diversity, I'm also interested in teaching about computer
+  programming in the context of the Humanities. I published a text book with [Princeton
+  University
+  Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
+  about using Python for Humanities data analysis. Check out the open access edition of
+  our book [here](https://www.humanitiesdataanalysis.org)!"""
+  
+  mainSection = "posts" # your main section
+  mainSectionTitle = "Notebooks"
+  showAllPostsOnHomePage = false # default
+  postsOnHomePage = 10 # this option will be ignored if showAllPostsOnHomePage is set to true
+  tagsOverview = true # show tags overview by default.
+  showProjectsList = true # show projects list by default (if projects data file exists).
+  showNewsList = true
+
+  # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+  dateFormat = "2006-01-02" # default
+
+  # Post page settings
+  show_updated = true # default
+  showReadTime = true # default
+
+  mathjax = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+
+[params.comments]
+    enabled = false # default
+
+  # the value of name should be an valid font awesome icon name (brands type)
+  # https://fontawesome.com/icons?d=gallery&s=brands
+  [[params.social]]
+    name = "github"
+    link = "https://github.com/fbkarsdorp"
+  [[params.social]]
+    name = "twitter"
+    link = "https://www.twitter.com/FolgertK"
+  [[params.social]]
+    name = "email"
+    link = "folgert.karsdorp@meertens.knaw.nl"  # no need for "mailto:" in the head
+    
