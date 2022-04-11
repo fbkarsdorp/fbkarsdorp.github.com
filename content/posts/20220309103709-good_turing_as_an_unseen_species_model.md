@@ -177,9 +177,6 @@ can provide an unbiased estimate of the number of unique species, or say, cultur
 artefacts, such as medieval stories that exist in a given area -- including the ones that
 have not been seen.
 
-
-## References {#references}
-
 ## References
 
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
