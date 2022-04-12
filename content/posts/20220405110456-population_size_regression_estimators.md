@@ -1,6 +1,8 @@
 +++
 title = "Population Size Estimation as a Regression Problem"
 author = ["Folgert Karsdorp"]
+date = 2022-04-12T00:00:00+02:00
+tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity"]
 draft = true
 +++
 
@@ -17,18 +19,21 @@ some of the bias of Chao's estimator?
 
 In a series of articles, Dankmar Böhning and colleagues show how information about
 covariates (e.g., certain characteristics of animal species) can help to reduce this bias
-(Böhning, Dankmar and {van der Heijden}, Peter G. M., 2009,
-Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013). The crucial insight in these articles is the
+(<a href="#citeproc_bib_item_2">Böhning and van der Heijden 2009</a>; <a href="#citeproc_bib_item_1">Bohning et al. 2013</a>). The crucial insight in these articles is the
 conceptualisation of Unseen Species Models as maximum likelihood estimators for a
-truncated Poisson likelihood. That insight allows that authors to develop a regression
-method for population size estimation that incorporates information about covariates and
-is a generalization of Chao1.
+truncated Poisson likelihood. That insight allows
+Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) to develop a regression method for
+population size estimation that incorporates information about covariates and is a
+generalization of Chao1. Simlarly, Böhning and van der Heijden (<a href="#citeproc_bib_item_2">2009</a>)
+use this insight to generalize the Zelterman estimator
+(<a href="#citeproc_bib_item_4">Zelterman 1988</a>) to incorporate information about
+covariates.
 
 
 ## Chao1 in a likelihood framework {#chao1-in-a-likelihood-framework}
 
 As I described in more detail in [Demystifying Chao1 with Good-Turing]({{< relref "20220309103709-good_turing_as_an_unseen_species_model.md" >}}), the Chao1 estimator
-developed in (Chao, Anne, 1984) takes the form of \\(f^2\_1 /
+developed in Chao (<a href="#citeproc_bib_item_3">1984</a>) takes the form of \\(f^2\_1 /
 (2f\_2)\\), where \\(f\_1\\) indicates how many species occur once, and \\(f\_2\\) how many occur
 exactly 2 times. The estimator thus only works with \\(f\_1\\) and \\(f\_2\\) (everything that
 occurs more often, or not at all, is ignored), and that is why we can speak of a
@@ -42,7 +47,7 @@ observations or sightings of an animal species:
 y \sim \text{Poisson}(\lambda)
 \end{equation}
 
-An exciting insight from (Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013) is that in the
+An exciting insight from Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) is that in the
 case of a _truncated_ Poisson distribution, the parameter \\(\lambda\\) can be estimated with
 a binomial likelihood. To understand this, we need to consider that a truncated Poisson
 with \\(y \in {1, 2}\\) is in fact a binomial distribution with a binary outcome: something
@@ -54,9 +59,8 @@ estimate for \\(\lambda\\).
 
 ## Adding Covariates to Chao's estimator {#adding-covariates-to-chao-s-estimator}
 
-(Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013) subsequently show that can also estimate
-\\(\hat{p}\\) using logistic regression (see also
-Böhning, Dankmar and {van der Heijden}, Peter G. M., 2009). And by doing so, it becomes possible to
+Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) subsequently show that can also estimate
+\\(\hat{p}\\) using logistic regression (see also <a href="#citeproc_bib_item_2">Böhning and van der Heijden 2009</a>). And by doing so, it becomes possible to
 include information on covariates. These covariates, then, provide information about the
 probability of an item occuring once or twice in the sample under investigation. In a
 logistic regression, the outcome probability \\(p\_i\\) is connected to a linear model via a
@@ -83,7 +87,7 @@ of predictor \\(x\\). After estimating \\(p\_i\\) we can estimate the parameter 
 \end{equation}
 
 What remains is to use the estimate \\(\lambda\_i\\) to calculate the number of unseen items,
-\\(f\_0\\). (Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013)  show that \\(f\_0\\) and the population
+\\(f\_0\\). Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>)  show that \\(f\_0\\) and the population
 size \\(\hat{N}\\) can be estimated with:
 
 \begin{equation}
@@ -91,7 +95,7 @@ size \\(\hat{N}\\) can be estimated with:
 \end{equation}
 
 For proofs and theorems of this equation, I refer to the note by
-(Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark, 2013). In the remainder of this notebook, I want
+Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>). In the remainder of this notebook, I want
 to concentrate on showing how \\(\lambda\_i\\) and \\(p\_i\\) can be estimated in practice using a
 Bayesian generalised linear model.
 
@@ -282,11 +286,11 @@ az.plot_posterior(S_x1, ax=axes[1], labeller=labeller);
 
 {{< figure src="/ox-hugo/b8092bde23f9a7ed7c4e21a19ae5f975799fa1ef.png" >}}
 
+## References
 
-## References {#references}
-
-Böhning, Dankmar and {Vidal-Diez}, Alberto and Lerdsuwansri, Rattana and Viwatwongkasem, Chukiat and Arnold, Mark (2013). _A Generalization of Chao's Estimator for Covariate Information_, Biometrics.
-
-Böhning, Dankmar and {van der Heijden}, Peter G. M. (2009). _A Covariate Adjustment for Zero-Truncated Approaches to Estimating the Size of Hidden and Elusive Populations_, The Annals of Applied Statistics.
-
-Chao, Anne (1984). _Nonparametric Estimation of the Number of Classes in a Population_, Scandinavian Journal of Statistics.
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bohning, Dankmar, Alberto Vidal-Diez, Rattana Lerdsuwansri, Chukiat Viwatwongkasem, and Mark Arnold. 2013. “A Generalization of Chao’s Estimator for Covariate Information.” <i>Biometrics</i> 69: 1033–42. <a href="https://doi.org/10.1111/biom.12082">https://doi.org/10.1111/biom.12082</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Böhning, Dankmar, and Peter G. M. van der Heijden. 2009. “A Covariate Adjustment for Zero-Truncated Approaches to Estimating the Size of Hidden and Elusive Populations.” <i>The Annals of Applied Statistics</i> 3 (2). <a href="https://doi.org/10.1214/08-AOAS214">https://doi.org/10.1214/08-AOAS214</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
+</div>

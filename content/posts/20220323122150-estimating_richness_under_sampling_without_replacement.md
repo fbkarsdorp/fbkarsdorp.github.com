@@ -2,49 +2,46 @@
 title = "Estimating Richness under Sampling without Replacement"
 author = ["Folgert Karsdorp"]
 date = 2022-04-11T00:00:00+02:00
-tags = ["richness", "chao1", "replacement", "bias"]
+tags = ["richness", "chao1", "replacement", "bias", "sampling"]
 draft = false
 +++
-
-## Introduction {#introduction}
 
 [Unseen Species Models]({{< relref "20220228153558-unseen_species_model.md" >}}) such as [Chao1]({{< relref "20220228153400-chao1_estimator.md" >}}) assume that the sample being studied was created with
 replacement. This means that calculations are based on the assumption that certain
 individuals can or have been repeatedly observed. It also implies that the observation of
 one individual does not influence the observation of the next individual. That is to say:
-observations are independent. Take, for example, an ecologist who want to use Chao1 to
+observations are independent. Take, for example, an ecologist who wants to use Chao1 to
 estimate the number of unique animal species that live in a given environment. Assuming
-for the moment that the precens of the researcher in that environment does not introduce
+for the moment that the presence of the researcher in that environment does not introduce
 any observation biases, we can think of the observation process as a sample with
 replacement: upon registration, animals are _re-placed_ into the environment, and thus
 there is chance that ecologist is observing the same animal twice.
 
 However, it also happens that animals, in particular insects, are killed upon capture. In
-that case, the assumption of **sampling with replacement** no longer holds. In that case,
-individuals are no longer independently sampled, meaning that the capture of one
-invidividual positively or negatively impacts the capture probability of another
-individual. When applied to the cultural domain, and especially when working with cultural
-collections, one could argue that the assumption of sampling with replacement is often
-quite problematic. Cultural collections are, by definition, finite samples created
-_without_ replacement. The same applies to the example of estimating the vocabulary size
-of a text based on a snippet of text, as I explained in an earlier post (see [Demystifying
-Chao1 with Good-Turing]({{< relref "20220309103709-good_turing_as_an_unseen_species_model.md" >}})). Here, too the assumption of replacement is clearly violated.
+that case, the assumption of **sampling with replacement** no longer holds. Individuals are
+no longer independently sampled, meaning that the capture of one invidividual (positively
+or negatively) impacts the capture probability of another individual. When applied to the
+cultural domain, and especially when working with cultural collections, one could argue
+that the assumption of sampling with replacement is often quite problematic. Cultural
+collections are, by definition, finite samples created _without_ replacement. The same
+applies to the example of estimating the vocabulary size of a text based on a snippet of
+text, as I explained in an earlier post (see [Demystifying Chao1 with Good-Turing]({{< relref "20220309103709-good_turing_as_an_unseen_species_model.md" >}})). Here,
+too the assumption of replacement is clearly violated.
 
-This isssue of which sampling strategy underlies our data potentially has major
-implications for the quality of the estimates of species richness but also for cultural
-diversity. In Kestemont et al. (<a href="#citeproc_bib_item_3">2022</a>), for example, we assume that
-the samples we have of medieval narratives are the result of a sampling process _with_
-replacement. Clearly, this is not realistic. The question then is to what extent this
-assumption impacts the estimates. In this notebook, I try to get a better idea of the
-impact of sampling strategies on the quality and bias of estimates computed with Chao1. I
-will show that when samples are created _without_ replacement and the sample fraction is
-relatively large, Chao1 no longer forms a lower-bound and thus greatly overestimates the
-true richness. However, when the sampling fraction is small
-(as in <a href="#citeproc_bib_item_3">Kestemont et al. 2022</a>), Chao1 remains a lower-bound and the
-difference between samples with and without replacement is negligible. To compensate for
-biases introduced by sampling without replacement, I investigate the Unseen Species Model
-proposed by Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>), which was specifically desgined to
-work with samples created _without_ replacement.
+This isssue of recognizing which sampling strategy underlies our data potentially has
+major implications for the quality of the estimates made by unseen species models. In
+Kestemont et al. (<a href="#citeproc_bib_item_3">2022</a>), for example, we assume that the samples
+we have of medieval narratives are the result of a sampling process _with_ replacement.
+Clearly, this is not realistic. The question, then, is to what extent this assumption
+impacts the estimates. In this notebook, I try to get a better idea of the impact of
+sampling strategies on the quality and bias of estimates computed with Chao1. I will show
+that when samples are created _without_ replacement and the sample fraction is relatively
+large, Chao1 no longer forms a lower-bound and thus greatly overestimates the true
+richness. However, when the sampling fraction is small, Chao1 remains a lower-bound and
+the difference between samples with and without replacement is negligible. To compensate
+for estimation biases introduced by sampling without replacement, I investigate the Unseen
+Species Model proposed by Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>), which was
+specifically desgined to work with samples created _without_ replacement.
 
 
 ## Chao &amp; Lin (2012) {#chao-and-lin--2012}
@@ -72,21 +69,22 @@ def chao_wor(x, q):
     x = x[x > 0]
     n = x.sum() # sample size
     t = len(x)  # number of unique items
-    f1 = np.count_nonzero(x == 1)
-    f2 = np.count_nonzero(x == 2)
+    f1 = (x == 1).sum() # number of singletons
+    f2 = (x == 2).sum() # number of doubletons
     return t + (f1**2) / ((n / (n - 1)) * 2*f2 + (q / (1 - q)) * f1)
 ```
 
 For reference, Chao1 can be implemented using similar lines of code (see the Python
-package [copia](https://copia.readthedocs.io) for a more robust implementation as well as other estimateors):
+package [copia](https://copia.readthedocs.io) or the R package [iNEXT](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html) for more robust implementations as well as other
+estimators):
 
 ```python
 def chao1(x):
     x = x[x > 0]
     n = x.sum()
     t = len(x)
-    f1 = np.count_nonzero(x == 1)
-    f2 = np.count_nonzero(x == 2)
+    f1 = (x == 1).sum()
+    f2 = (x == 2).sum()
     if f2 > 0:
         return t + (n-1)/n * (f1**2 / (2*f2))
     return t + (n-1)/n * f1*(f1-1) / 2*(f2+1)
@@ -106,7 +104,7 @@ By means of illustration, I will apply the models to a case of textual data. Her
 is the estimate the vocabulary size of some text based on a snippet of that text. Such a
 snippet can be seen a a contiguous sample created without replacement. This is an
 interesting application as it allows us to work with real-world data, without having to
-compromise on having knowlegde about the true population and vocabulary size. The text we
+compromise on having knowledge about the true population and vocabulary size. The text we
 will be working with is Shakespeare's _Hamlet_, which can be downloaded from the Folger
 Digital Text collection with the following lines of Python code (for more information
 about parsing this corpus with Python, please see <a href="#citeproc_bib_item_2">Karsdorp, Kestemont, and Riddell 2021</a>):
@@ -144,7 +142,7 @@ The text consists of N=31928 words and V=5288 unique words.
 
 To set a baseline, I will first illustrate how Chao1 performs when estimating the
 vocabulary size \\(V\\) for samples of the text generated _with_ replacement. Here we create
-samples with \\(q\\) in the range [0.01 0.999], and plot the estimates for different values of
+samples with \\(q\\) in the range [0.001 0.999], and plot the estimates for different values of
 \\(q\\):
 
 ```python
@@ -194,7 +192,7 @@ When working with texts, however, it is more common to deal with samples created
 replacement. Suppose we find a snippet of a text. Such a snippet represents a contiguous
 sample of the original text, one that was created without replacing words. Let's
 investigate what happens if we create a sample without replacement, and use Chao1 to
-estimate the true value \\(V\\) based on these samples:
+estimate the true value \\(V\\) based on such a sample:
 
 ```python
 est_wor = np.zeros((n_experiments, n_steps))
@@ -216,19 +214,23 @@ ax.axhline(V, color="grey", ls="--");
 
 When samples are generated without replacement, Chao1 clearly no longer provides a
 lower-bound estimate of the vocabulary size for sample fractions \\(q \gtrapprox 0.2\\). In
-fact, as the plot illustrates, this positive bias can be quite dramatic, for larger
+fact, as the plot illustrates, this positive bias can be quite dramatic for larger
 fraction sizes. It is important to note, however, that Chao1 still provides a lower-bound
 of the richness for small sample sizes, and that for these sizes estimates based on
 sampling with and sampling without replacement do not diverge too much
 (Kestemont et al. (<a href="#citeproc_bib_item_3">2022</a>), for example, computed their estimations
-based on a sample fraction of \\(q \approx 0.09\\)):
+based on a sample fraction of \\(q \approx 0.09\\). While their sample may not be created with
+replacement, this fraction is small enough to employ the Chao1 estimator.):
 
 ```python
 fig, ax = plt.subplots()
-ci_plot(
-    fractions[:6], est_wr[:, :6], n=3, color="C0", ax=ax, label="with replacement")
-ci_plot(
-    fractions[:6], est_wor[:, :6], n=3, color="C1", ax=ax, label="without replacement")
+
+labels = "with replacement", "without replacement"
+estimations = est_wr, est_wor
+
+for i, (label, est) in enumerate(zip(labels, estimations)):
+    ci_plot(fractions[:6], est[:, :6], n=3, color=f"C{i}", ax=ax, label=label)
+
 ax.set(ylabel="$\hat{V}$", xlabel="$q$")
 
 handles, labels = plt.gca().get_legend_handles_labels()
@@ -245,8 +247,8 @@ For larger sample fractions, however, Chao1 can greatly overestimate the true di
 a sample. Precisely to overcome this problem, Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>)
 developed their lower-bound estimator for samples without replacement. Below, I will
 demonstrate how this estimator can be used to deal with samples for which we cannot and
-_should_ not assume that they were created _with_ replacement. Recall that the estimator of
-Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) assumes that \\(N\\) is know (or that \\(q\\) is known,
+_should not_ assume that they were created _with_ replacement. Recall that the estimator of
+Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) assumes that \\(N\\) is known (or that \\(q\\) is known,
 depending on the perspective). If we apply this estimator to our samples created without
 replacement, we obtain the following graph:
 
@@ -270,10 +272,10 @@ ax.axhline(V, color="grey", ls="--");
 
 As clearly shown by the graph, _if_ we know \\(q\\), the modified estimator behaves like Chao1
 for samples _with_ replacement and acts as a proper lower-bound of the vocabulary size.
-But of course, we only rarely know about \\(q\\) or \\(N\\). Most of the time, we have no
-knowledge whatsoever about the true population size. When such information is absent,
+But of course, we only rarely know about \\(q\\) or \\(N\\). More often, we have no knowledge
+whatsoever about the true population size. When such information is absent,
 Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) suggest to estimate the vocabulary size using
-different hypothetical values of \\(q\\). Below we generate samples with different values of
+different hypothetical values of \\(q\\). Below, we generate samples with different values of
 \\(q\\), and for each of those, we estimate the vocabulary size using several hypothetical \\(q\\)
 values, \\(\hat{q}\\):
 
