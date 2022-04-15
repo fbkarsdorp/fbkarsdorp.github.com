@@ -1,7 +1,7 @@
 +++
 title = "Population Size Estimation as a Regression Problem 🚧🚧"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-04-15T20:57:52+02:00
+lastmod = 2022-04-15T21:03:44+02:00
 tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity", "zelterman"]
 draft = false
 +++
@@ -272,7 +272,7 @@ N = n + f0.sum(0)
 az.plot_posterior(N, point_estimate="mean");
 ```
 
-{{< figure src="./.ob-jupyter/0bf94dbb855952a156c51d2f1e13bf7130c181d9.png" >}}
+{{< figure src="/ox-hugo/0bf94dbb855952a156c51d2f1e13bf7130c181d9.png" >}}
 
 The cool thing about using a Bayesian regression analysis is that our estimate of
 \\(\hat{N}\\) becomes a distribution of estimates. We observe that the mean estimate is
@@ -316,7 +316,7 @@ S_x1 = n1 + f0_x1.sum(0)
 az.plot_posterior(S_x1, ax=axes[1], labeller=labeller);
 ```
 
-{{< figure src="/ox-hugo/b8e3552547054dcbe8cff81faf558bebbd7eb1be.png" >}}
+{{< figure src="/ox-hugo/88579ba2283e146ff0b63a22a2269279c5358d6b.png" >}}
 
 Note that the mean estimates of the two groups add up to the global estimate of the
 population size. This, however, is not the case when we apply Chao1 to each group
