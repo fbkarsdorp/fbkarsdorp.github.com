@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bias on Folgert Karsdorp</title>
-    <link>https://www.karsdorp.io/tags/bias/</link>
-    <description>Recent content in bias on Folgert Karsdorp</description>
+    <title>sampling on Folgert Karsdorp</title>
+    <link>https://www.karsdorp.io/tags/sampling/</link>
+    <description>Recent content in sampling on Folgert Karsdorp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Tue, 12 Apr 2022 12:35:33 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/bias/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Apr 2022 12:35:33 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/sampling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Estimating Richness under Sampling without Replacement</title>
       <link>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</link>

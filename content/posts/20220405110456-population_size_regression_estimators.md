@@ -1,7 +1,7 @@
 +++
 title = "Population Size Estimation as a Regression Problem"
 author = ["Folgert Karsdorp"]
-date = 2022-04-12T00:00:00+02:00
+lastmod = 2022-04-12T12:37:57+02:00
 tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity"]
 draft = true
 +++
@@ -27,7 +27,8 @@ population size estimation that incorporates information about covariates and is
 generalization of Chao1. Simlarly, Böhning and van der Heijden (<a href="#citeproc_bib_item_2">2009</a>)
 use this insight to generalize the Zelterman estimator
 (<a href="#citeproc_bib_item_4">Zelterman 1988</a>) to incorporate information about
-covariates.
+covariates. Below, I will briefly describe both generalizations, after which I will put
+them to test in a simulation study.
 
 
 ## Chao1 in a likelihood framework {#chao1-in-a-likelihood-framework}
@@ -57,7 +58,7 @@ something occurs twice and not once, i.e., \\(P(y=2)\\). That probability is max
 estimate for \\(\lambda\\).
 
 
-## Adding Covariates to Chao's estimator {#adding-covariates-to-chao-s-estimator}
+### Adding Covariates to Chao's estimator {#adding-covariates-to-chao-s-estimator}
 
 Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) subsequently show that can also estimate
 \\(\hat{p}\\) using logistic regression (see also <a href="#citeproc_bib_item_2">Böhning and van der Heijden 2009</a>). And by doing so, it becomes possible to
@@ -100,6 +101,21 @@ to concentrate on showing how \\(\lambda\_i\\) and \\(p\_i\\) can be estimated i
 Bayesian generalised linear model.
 
 
+## Zelterman's estimator in a likelihood framework {#zelterman-s-estimator-in-a-likelihood-framework}
+
+Given the probability of an item not being observed, \\(p(y=0)\\), the probability of
+observing an item equals \\(1 - p(y=0)\\). It follows that the population size \\(N\\) is equal to
+\\((1 - p(y=0)) N + p(y=0) N\\) which in turn is equal to \\(n + p(y=0) N\\), with \\(n\\) being the
+observed sample size. With this information, the Horvitz-Thompson estimator provides an
+estimate of the true population size \\(\hat{N}\\):
+
+\begin{equation}
+\hat{N} = \frac{n}{1 - p(y=0)}
+\end{equation}
+
+To compute this number, we need to estimate \\(p(y=0)\\).
+
+
 ## Experimenting with Bayesian regression {#experimenting-with-bayesian-regression}
 
 
@@ -140,7 +156,7 @@ a feel for how the estimator works with heterogeneity, we'll set beta to 1:
 ```python
 import seaborn as sns
 
-pop = generate_population(1000, 0, 0.5)
+pop = generate_population(1000, 1, 0.1)
 
 ax = sns.catplot(
     data=pop.groupby("X")["counts"].value_counts().reset_index(name="f"),
@@ -148,7 +164,7 @@ ax = sns.catplot(
 ax.set(xlabel="count", ylabel="f");
 ```
 
-{{< figure src="/ox-hugo/47da96bc2244686693b69a1035fac4a126819c2c.png" >}}
+{{< figure src="/ox-hugo/14c15df1835b66ca04784a4c8743448369c2aeac.png" >}}
 
 The total number of unseen items as well the number os unseen items per group can be
 recovered with:
@@ -160,9 +176,9 @@ print(f'Number of missing items with X=0 is {((pop["counts"] == 0) & (pop["X"] =
 ```
 
 ```text
-Total number of missing items is 288
-Number of missing items with X=1 is 104
-Number of missing items with X=0 is 184
+Total number of missing items is 60
+Number of missing items with X=1 is 27
+Number of missing items with X=0 is 33
 ```
 
 Thus, the chance of unseen items with \\(x\_i=1\\) is much smaller than when \\(x\_i=0\\).
@@ -185,11 +201,11 @@ data.sample(5).head()
 
 |     | counts | X | y |
 |-----|--------|---|---|
-| 332 | 1      | 1 | 0 |
-| 95  | 2      | 0 | 1 |
-| 201 | 1      | 0 | 0 |
-| 45  | 1      | 0 | 0 |
-| 169 | 2      | 0 | 1 |
+| 360 | 1      | 1 | 0 |
+| 139 | 1      | 0 | 0 |
+| 7   | 1      | 0 | 0 |
+| 271 | 1      | 1 | 0 |
+| 119 | 2      | 0 | 1 |
 
 
 ### Regression model {#regression-model}
@@ -221,10 +237,10 @@ import arviz as az
 az.summary(trace, var_names=["alpha", "beta"])
 ```
 
-|       | mean   | sd    | hdi_3% | hdi_97% | mcse_mean | mcse_sd | ess_bulk | ess_tail | r_hat |
-|-------|--------|-------|--------|---------|-----------|---------|----------|----------|-------|
-| alpha | -0.742 | 0.132 | -0.988 | -0.494  | 0.004     | 0.003   | 1329     | 1202     | 1     |
-| beta  | 0.515  | 0.181 | 0.14   | 0.824   | 0.005     | 0.004   | 1348     | 1159     | 1     |
+|       | mean  | sd    | hdi_3% | hdi_97% | mcse_mean | mcse_sd | ess_bulk | ess_tail | r_hat |
+|-------|-------|-------|--------|---------|-----------|---------|----------|----------|-------|
+| alpha | 0.413 | 0.149 | 0.13   | 0.699   | 0.004     | 0.003   | 1507     | 1893     | 1     |
+| beta  | 0.007 | 0.213 | -0.415 | 0.38    | 0.006     | 0.004   | 1487     | 1884     | 1     |
 
 Looking at the table, it appears that the sampling process was succesful, which is aslo
 confirmed by the good mixing of the chains in the following trace plot:
@@ -233,7 +249,7 @@ confirmed by the good mixing of the chains in the following trace plot:
 az.plot_trace(trace);
 ```
 
-{{< figure src="/ox-hugo/9dab6cf4874aa4ef3695898799b942de25b7229f.png" >}}
+{{< figure src="/ox-hugo/74027c32af2caa8515b78e0319d5c1734cda4830.png" >}}
 
 Now that we have an estimate of \\(\hat{p}\\), we can use that to obtain our estimate of the
 population size following the equations above. First, we extract 1,000 posterior samples
@@ -252,7 +268,11 @@ N = n + f0.sum(0)
 az.plot_posterior(N, point_estimate="mean");
 ```
 
-{{< figure src="/ox-hugo/cd19e1799e6e6c9478df699c99f22f5937f1d526.png" >}}
+{{< figure src="/ox-hugo/0f2e0d370e1461b021e59e07dad93f5c14d3e754.png" >}}
+
+```python
+WW = (1 / (1 - np.exp(-l))).sum(0)
+```
 
 The cool thing about using a Bayesian regression analysis, is that our estimate of
 \\(\hat{N}\\) becomes a distribution of estimates. We observe that the mean estimate is
@@ -284,7 +304,7 @@ S_x1 = n1 + f0_x1.sum(0)
 az.plot_posterior(S_x1, ax=axes[1], labeller=labeller);
 ```
 
-{{< figure src="/ox-hugo/b8092bde23f9a7ed7c4e21a19ae5f975799fa1ef.png" >}}
+{{< figure src="/ox-hugo/324d91767a487e7ac6829ef1391be5caf77415d2.png" >}}
 
 ## References
 

@@ -7,58 +7,94 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Mon, 11 Apr 2022 00:00:00 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>bias</title>
-      <link>https://www.karsdorp.io/tags/bias/</link>
-      <pubDate>Mon, 11 Apr 2022 00:00:00 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/bias/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Fri, 15 Apr 2022 09:01:06 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>chao1</title>
       <link>https://www.karsdorp.io/tags/chao1/</link>
-      <pubDate>Mon, 11 Apr 2022 00:00:00 +0200</pubDate>
+      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/chao1/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>replacement</title>
-      <link>https://www.karsdorp.io/tags/replacement/</link>
-      <pubDate>Mon, 11 Apr 2022 00:00:00 +0200</pubDate>
+      <title>diversity</title>
+      <link>https://www.karsdorp.io/tags/diversity/</link>
+      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
       
-      <guid>https://www.karsdorp.io/tags/replacement/</guid>
+      <guid>https://www.karsdorp.io/tags/diversity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>homogeneity</title>
+      <link>https://www.karsdorp.io/tags/homogeneity/</link>
+      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/homogeneity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>richness</title>
       <link>https://www.karsdorp.io/tags/richness/</link>
-      <pubDate>Mon, 11 Apr 2022 00:00:00 +0200</pubDate>
+      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/richness/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>sampling</title>
-      <link>https://www.karsdorp.io/tags/sampling/</link>
-      <pubDate>Mon, 11 Apr 2022 00:00:00 +0200</pubDate>
+      <title>shakespeare</title>
+      <link>https://www.karsdorp.io/tags/shakespeare/</link>
+      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
       
-      <guid>https://www.karsdorp.io/tags/sampling/</guid>
+      <guid>https://www.karsdorp.io/tags/shakespeare/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>diversity</title>
-      <link>https://www.karsdorp.io/tags/diversity/</link>
-      <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>
+      <title>unseen-species</title>
+      <link>https://www.karsdorp.io/tags/unseen-species/</link>
+      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
       
-      <guid>https://www.karsdorp.io/tags/diversity/</guid>
+      <guid>https://www.karsdorp.io/tags/unseen-species/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zelterman</title>
+      <link>https://www.karsdorp.io/tags/zelterman/</link>
+      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/zelterman/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bias</title>
+      <link>https://www.karsdorp.io/tags/bias/</link>
+      <pubDate>Tue, 12 Apr 2022 12:35:33 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/bias/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>replacement</title>
+      <link>https://www.karsdorp.io/tags/replacement/</link>
+      <pubDate>Tue, 12 Apr 2022 12:35:33 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/replacement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sampling</title>
+      <link>https://www.karsdorp.io/tags/sampling/</link>
+      <pubDate>Tue, 12 Apr 2022 12:35:33 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/sampling/</guid>
       <description></description>
     </item>
     

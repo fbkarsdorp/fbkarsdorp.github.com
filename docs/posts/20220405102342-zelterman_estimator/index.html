@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Zelterman&#39;s Estimator of Population Size | Folgert Karsdorp</title>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/'>
+  <meta name="description" content="I&#39;m a researcher in Computational Humanities and Cultural Evolution at
+  the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal Netherlands Academy
+  of Arts and Sciences (Amsterdam, the Netherlands).
+
+  My research focuses on why some cultural phenomena are adopted and persist through time,
+  while others change or disappear. Additionally, I&#39;m interested in measuring cultural
+  diversity and compositional complexity, and how we can account for biases in our
+  estimations of diversity. To do that, I use computational models from Machine Learning,
+  Cultural Evolution, and Besides.
+
+  Ecology cultural change and diversity, I&#39;m also interested in teaching about computer
+  programming in the context of the Humanities. I published a text book with [Princeton
+  University
+  Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
+  about using Python for Humanities data analysis. Check out the open access edition of
+  our book [here](https://www.humanitiesdataanalysis.org)!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Zelterman&#39;s Estimator of Population Size" />
+<meta property="og:description" content="Zelterman&rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/" /><meta property="article:section" content="posts" />
+
+<meta property="article:modified_time" content="2022-04-15T09:01:06+02:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Zelterman&#39;s Estimator of Population Size"/>
+<meta name="twitter:description" content="Zelterman&rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.113434789f3c21bf5b57e90215ead36599790c0ce86e3492f239ce88648708a3dcced805b389721cf2f244af1fa951706872cadf838cb7fcc0321d7cdfa6afc8.css" integrity="sha512-ETQ0eJ88Ib9bV&#43;kCFerTZZl5DAzobjSS8jnOiGSHCKPcztgFs4lyHPLyRK8fqVFwaHLK34OMt/zAMh1836avyA=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/#news">News</a></li>
+         
+        <li><a href="/#publications">Publications</a></li>
+         
+        <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&text=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&is_video=false&description=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Zelterman%27s%20Estimator%20of%20Population%20Size&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=Zelterman%26rsquo%3bs%20Estimator%20In%20Demystifying%20Chao1%20with%20Good-Turing%2c%20I%20introduced%20and%20explained%20the%20Chao1%20estimator%20as%20an%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%20notebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%20Zelterman%20%281988%29%2c%20which%20has%20been%20popular%20in%20applications%20such%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%20robust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&t=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#zelterman-s-estimator">Zelterman&rsquo;s Estimator</a></li>
+    <li><a href="#testing-the-zelterman-estimator">Testing the Zelterman estimator</a></li>
+    <li><a href="#how-many-words-did-shakespeare-know">How many words did Shakespeare know?</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Zelterman&#39;s Estimator of Population Size
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-04-15 09:01:06 &#43;0200 CEST" itemprop="datePublished">2022-04-15</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          5 minute read
+        </div>
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/unseen-species" rel="tag">unseen-species</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/diversity" rel="tag">diversity</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/homogeneity" rel="tag">homogeneity</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/richness" rel="tag">richness</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/zelterman" rel="tag">zelterman</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/chao1" rel="tag">chao1</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/shakespeare" rel="tag">shakespeare</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="zelterman-s-estimator">Zelterman&rsquo;s Estimator</h2>
+<p>In <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>, I introduced and explained the <a href="">Chao1 estimator</a> as
+an example of a well-known model for estimating the number of unseen species. In this
+notebook, I study some aspects of another, alternative estimator developed in
+Zelterman (<a href="#citeproc_bib_item_5">1988</a>), which has been popular in applications
+such as drug user studies. This estimator has particular properties that make it more
+robust or less sensitive to violations of the underlying model. As such, it would be
+interesting to study how well the estimator performs when applied to cultural data. In
+what follows, I base my descriptions on the original paper by
+Zelterman (<a href="#citeproc_bib_item_5">1988</a>) as well as the more recent application of
+the method by Böhning and van der Heijden (<a href="#citeproc_bib_item_1">2009</a>).</p>
+<p>All unseen species estimators are based on estimating the probability of an item not being
+observed, i.e. \(p(y = 0)\). Inversely, the probability that we do observe an item then
+equals \(1 - p(y = 0)\). It follows that the population size \(N\) is equal to \((1 - p(y = 0))
+N + p(y = 0) N\). In other words, the population size is the sum of the fraction of unseen
+items and the fraction of seen items. This can be rewritten to \(n + p(y=0) N\), since \(n\)
+represents the observed and thus known population size. Given information about \(n\) and
+\(p(y=0)\), Horvitz and Thompson (<a href="#citeproc_bib_item_4">1952</a>) demonstrate that \(N\) can
+be estimated with:</p>
+<p>\begin{equation}
+\hat{N} = \sum^n_{i = 1} \frac{1}{p(y_i &gt; 0)}.
+\end{equation}</p>
+<p>Here, each item \(i\) is weighted by the inverse of its observation probability. If all
+items have the same observation probability \(p(y &gt; 0)\), this can be simplified to:</p>
+<p>\begin{equation}
+\hat{N} = \frac{n}{1 - p(y=0)}
+\end{equation}</p>
+<p>To be able to compute this equations, we require knowledge of \(p(y=0)\), and if that&rsquo;s not
+available, we need to estimate it. If we assume that the counts \(y\) follow a Poisson
+distribution, this amounts to estimating \(e^{-\lambda}\), with \(\lambda\) being the Poisson
+rate parameter. When the \(y\) follows a homogeneous Poisson, we can estimate \(\lambda\) with
+maximum likelihood (<a href="#citeproc_bib_item_1">Böhning and van der Heijden 2009</a>). However, this
+homogeneous assumption is often violated, as not all values of \(y\) adhere to the Poisson
+distribution.</p>
+<p>This is where Zelterman (<a href="#citeproc_bib_item_5">1988</a>) comes in. Zelterman argues
+that while the Poisson assumption might not be valid for the complete range of \(y\), it may
+apply to smaller ranges, such as from \(r\) to \(r + 1\). If we represent the number of items
+occurring \(r\) times as \(f_r\), Zelterman proposes to use \(f_r\) and \(f_{r + 1}\) to estimate
+\(\lambda_r\). Thus, to estimate \(\lambda_{r = 1}\), we can use:</p>
+<p>\begin{equation}
+\hat{\lambda}_1 = \frac{(r+1)f_{r + 1}}{f_r} = \frac{2f_2}{f_1}.
+\end{equation}</p>
+<p>Interestingly, \(\hat{\lambda}_r\) is computed using the exact same formula as Turing and
+Good proposed to obtain their unnormalized, adjusted counts \(r^*\)
+(see <a href="#citeproc_bib_item_3">Good 1953</a> and <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1
+with Good-Turing</a>). Zelterman&rsquo;s estimator of \(\lambda\) is said to be robust as it only
+takes into account items that occur once or twice, and as such deviations from the Poisson
+in higher order counts do not impact the estimation. Put differently, the distribution
+only needs to look like a Poisson for \(f_1\) and \(f_2\). If we plug Zelterman&rsquo;s estimate of
+\(\lambda\) into the estimator by (<a href="#citeproc_bib_item_4">Horvitz and Thompson 1952</a>), we
+obtain an estimate of the population size \(\hat{N}\) with \(\frac{n}{1 - e^{-\hat{\lambda}}}\)
+(see <a href="#citeproc_bib_item_1">Böhning and van der Heijden 2009</a> for further details).</p>
+<h2 id="testing-the-zelterman-estimator">Testing the Zelterman estimator</h2>
+<p>To get a feeling of how the Zelterman estimator behaves, let&rsquo;s apply it to some simulated
+data. Below, I define a function in Python which generates a population that follows a
+Poisson distribution:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">generate_population</span>(V, alpha):
+</span></span><span style="display:flex;"><span>    counts <span style="color:#666">=</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>poisson(np<span style="color:#666">.</span>exp(alpha), size<span style="color:#666">=</span>V)
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> {<span style="color:#4070a0">&#34;counts&#34;</span>: counts, <span style="color:#4070a0">&#34;V&#34;</span>: V, <span style="color:#4070a0">&#34;N&#34;</span>: counts<span style="color:#666">.</span>sum()}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pop <span style="color:#666">=</span> generate_population(<span style="color:#40a070">100</span>, <span style="color:#40a070">0</span>)
+</span></span></code></pre></div><p>Using this function we can generate populations, such as the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series(pop[<span style="color:#4070a0">&#34;counts&#34;</span>])<span style="color:#666">.</span>value_counts()<span style="color:#666">.</span>sort_index()<span style="color:#666">.</span>plot(kind<span style="color:#666">=</span><span style="color:#4070a0">&#34;bar&#34;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#666">.</span>set(xlabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;$r$&#34;</span>, ylabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;$f_r$&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/d0a65d8ac157f513a9fb8026088c30885bd9cb45.png"/>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Total number of observed items n = 89
+</span></span><span style="display:flex;"><span>Total number of unique items V = 100
+</span></span><span style="display:flex;"><span>Total number of missing items is 45
+</span></span></code></pre></div><p>We will use the Zelterman estimator to obtain estimates for \(\hat{N}\) and \(\hat{V}\). The
+estimator is easy to implement, as demonstrated by the following lines of code:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">horvitz_thompson_estimator</span>(n, l):
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> n <span style="color:#666">/</span> (<span style="color:#40a070">1</span> <span style="color:#666">-</span> np<span style="color:#666">.</span>exp(<span style="color:#666">-</span>l))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">zelterman_estimator</span>(f1, f2):
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> (<span style="color:#40a070">2</span> <span style="color:#666">*</span> f2) <span style="color:#666">/</span> f1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">estimate_population_size</span>(x):
+</span></span><span style="display:flex;"><span>    x <span style="color:#666">=</span> x[x <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>]
+</span></span><span style="display:flex;"><span>    f1 <span style="color:#666">=</span> (x <span style="color:#666">==</span> <span style="color:#40a070">1</span>)<span style="color:#666">.</span>sum()
+</span></span><span style="display:flex;"><span>    f2 <span style="color:#666">=</span> (x <span style="color:#666">==</span> <span style="color:#40a070">2</span>)<span style="color:#666">.</span>sum()
+</span></span><span style="display:flex;"><span>    l <span style="color:#666">=</span> zelterman_estimator(f1, f2)
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;N&#34;</span>: horvitz_thompson_estimator(x<span style="color:#666">.</span>sum(), l),
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;V&#34;</span>: horvitz_thompson_estimator(x<span style="color:#666">.</span>shape[<span style="color:#40a070">0</span>], l)
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Applying the estimator to our simulated population, we obtain the following estimates of
+\(V\) and \(N\):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>estimate_population_size(pop[<span style="color:#4070a0">&#34;counts&#34;</span>])
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N</td>
+<td>:</td>
+<td>151.82741330117702</td>
+<td>V</td>
+<td>:</td>
+<td>93.8259295681431</td>
+</tr>
+</tbody>
+</table>
+<p>Note that these estimates are very similar to the ones obtained by applying the <a href="">Chao1
+estimator</a>:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N</td>
+<td>:</td>
+<td>127.1003745318352</td>
+<td>V</td>
+<td>:</td>
+<td>93.1003745318352</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-many-words-did-shakespeare-know">How many words did Shakespeare know?</h2>
+<p>In the 1970s. pioneers Efron and Thisted applied <a href="">Unseen Species Model</a>s to cultural data.
+In Efron and Thisted (<a href="#citeproc_bib_item_2">1976</a>), they attempt to estimate how many unique
+words Shakespeare knew but did not use. How large, so to speak, was his passive
+vocabulary, and how large was his total vocabulary?
+Efron and Thisted (<a href="#citeproc_bib_item_2">1976</a>) estimate these numbers in part based on the
+Good-Turing estimator (see <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>). They calculate that
+Shakespeare must have known at least approximately 35,000 additional words on top of the
+31,543 he used in his works.</p>
+<p>Below, I will apply the Zelterman estimator to make an alternative estimate of
+Shakespeare&rsquo;s vocabulary. For this purpose, I will use the word counts as mentioned in
+Efron and Thisted (<a href="#citeproc_bib_item_2">1976</a>):</p>
+<table>
+<thead>
+<tr>
+<th>\(f_1\)</th>
+<th>\(f_2\)</th>
+<th>\(V\)</th>
+<th>\(N\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14,376</td>
+<td>4,343</td>
+<td>31,534</td>
+<td>884,647</td>
+</tr>
+</tbody>
+</table>
+<p>Based on these counts, we can easily plug the numbers into the Zelterman formula. We first
+calculate \(\lambda_{r = 1}\) with \(\lambda_{r=1} = (2 \times 4343) / 14376 = 0.6042\).
+Subsequently, we apply the Horvitz-Thompson estimator to arrive at our estimate of the
+vocabulary: \(\hat{V} = 31534 / (1 - \text{exp}(-0.6042)) = 69536\) unique words. With this,
+the Zelterman estimator estimates Shakespeare&rsquo;s vocabulary as being slightly larger, but
+in the same ballpark as the one by Efron and Thisted (<a href="#citeproc_bib_item_2">1976</a>).</p>
+<h2 id="references">References</h2>
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Böhning, Dankmar, and Peter G. M. van der Heijden. 2009. “A Covariate Adjustment for Zero-Truncated Approaches to Estimating the Size of Hidden and Elusive Populations.” <i>The Annals of Applied Statistics</i> 3 (2). <a href="https://doi.org/10.1214/08-AOAS214">https://doi.org/10.1214/08-AOAS214</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Efron, Bradley, and Ronald Thisted. 1976. “Estimating the Number of Unsen Species: How Many Words Did Shakespeare Know?” <i>Biometrika</i> 63 (3): 435. <a href="https://doi.org/10.2307/2335721">https://doi.org/10.2307/2335721</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Good, I. J. 1953. “The Population Frequencies of Species and the Estimation of Population Parameters.” <i>Biometrika</i> 40 (3-4): 237–64. <a href="https://doi.org/10.1093/biomet/40.3-4.237">https://doi.org/10.1093/biomet/40.3-4.237</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Horvitz, D. G., and D. J. Thompson. 1952. “A Generalization of Sampling without Replacement from a Finite Universe.” <i>Journal of the American Statistical Association</i> 47 (260): 663–85. <a href="https://doi.org/10.1080/01621459.1952.10483446">https://doi.org/10.1080/01621459.1952.10483446</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
+</div>
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/#news">News</a></li>
+         
+          <li><a href="/#publications">Publications</a></li>
+         
+          <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#zelterman-s-estimator">Zelterman&rsquo;s Estimator</a></li>
+    <li><a href="#testing-the-zelterman-estimator">Testing the Zelterman estimator</a></li>
+    <li><a href="#how-many-words-did-shakespeare-know">How many words did Shakespeare know?</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&text=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&is_video=false&description=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Zelterman%27s%20Estimator%20of%20Population%20Size&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=Zelterman%26rsquo%3bs%20Estimator%20In%20Demystifying%20Chao1%20with%20Good-Turing%2c%20I%20introduced%20and%20explained%20the%20Chao1%20estimator%20as%20an%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%20notebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%20Zelterman%20%281988%29%2c%20which%20has%20been%20popular%20in%20applications%20such%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%20robust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&t=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Folgert Karsdorp; made with Hugo and Org-mode 
+  </div>
+  <div class="footer-right">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>
