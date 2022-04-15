@@ -7,11 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Fri, 15 Apr 2022 09:01:06 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/diversity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Apr 2022 12:43:29 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/diversity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Population Size Estimation as a Regression Problem 🚧🚧</title>
+      <link>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</link>
+      <pubDate>Fri, 15 Apr 2022 12:43:29 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</guid>
+      <description>Unseen heterogeneity Unseen Species Models such as Chao1 provide accurate point-estimates of the population size when the rare species in studied sample are homogeneous. That is, in the case of animal species, for example, all species are equally likely to be observed. Of course, this is a simplifying assumption. Some species are simply more difficult to spot than others, and so most samples contain unseen heterogeneity. When such heterogeneity is present in a sample, the Chao1 estimate reduces to a lower bound of the actual population size.</description>
+    </item>
+    
     <item>
       <title>Zelterman&#39;s Estimator of Population Size</title>
       <link>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</link>
-      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
+      <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</guid>
       <description>Zelterman&amp;rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model.</description>

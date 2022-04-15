@@ -1,21 +1,22 @@
 +++
-title = "Population Size Estimation as a Regression Problem"
+title = "Population Size Estimation as a Regression Problem 🚧🚧"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-04-12T12:37:57+02:00
-tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity"]
-draft = true
+lastmod = 2022-04-15T12:43:29+02:00
+tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity", "zelterman"]
+draft = false
 +++
 
 ## Unseen heterogeneity {#unseen-heterogeneity}
 
-[Unseen Species Model]({{< relref "20220228153558-unseen_species_model.md" >}})s such as [Chao1]({{< relref "20220228153400-chao1_estimator.md" >}}) assume that the studied sample is homogeneous. That
-is, in the case of animal species, for example, all species are equally likely to be
-observed. Of course, this is a simplifying assumption. SOme species are simply more
-difficult to spot than others, and so most samples contain unseen heterogeneity. When
-heterogeneity is present in a sample, Chao's estimate represents a lower bound of the
-actual population size. What happens when we do have knowledge about (some parts of) the
-the origin of the heterogeneity? Is there a way to use that information to correct for
-some of the bias of Chao's estimator?
+[Unseen Species Model]({{< relref "20220228153558-unseen_species_model.md" >}})s such as [Chao1]({{< relref "20220228153400-chao1_estimator.md" >}}) provide accurate point-estimates of the population
+size when the rare species in studied sample are homogeneous. That is, in the case of
+animal species, for example, all species are equally likely to be observed. Of course,
+this is a simplifying assumption. Some species are simply more difficult to spot than
+others, and so most samples contain unseen heterogeneity. When such heterogeneity is
+present in a sample, the Chao1 estimate reduces to a lower bound of the actual population
+size. What happens when we do have knowledge about (some parts of) the the origin of the
+heterogeneity? Is there a way to use that information to correct for some of the bias of
+Chao's estimator?
 
 In a series of articles, Dankmar Böhning and colleagues show how information about
 covariates (e.g., certain characteristics of animal species) can help to reduce this bias
@@ -25,13 +26,16 @@ truncated Poisson likelihood. That insight allows
 Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) to develop a regression method for
 population size estimation that incorporates information about covariates and is a
 generalization of Chao1. Simlarly, Böhning and van der Heijden (<a href="#citeproc_bib_item_2">2009</a>)
-use this insight to generalize the Zelterman estimator
+use this insight to generalize the [Zelterman estimator]({{< relref "20220405102342-zelterman_estimator.md" >}})
 (<a href="#citeproc_bib_item_4">Zelterman 1988</a>) to incorporate information about
 covariates. Below, I will briefly describe both generalizations, after which I will put
 them to test in a simulation study.
 
 
-## Chao1 in a likelihood framework {#chao1-in-a-likelihood-framework}
+## Unseen Species Models in a Likelihood Framework {#unseen-species-models-in-a-likelihood-framework}
+
+
+### The Chao1 estimator {#the-chao1-estimator}
 
 As I described in more detail in [Demystifying Chao1 with Good-Turing]({{< relref "20220309103709-good_turing_as_an_unseen_species_model.md" >}}), the Chao1 estimator
 developed in Chao (<a href="#citeproc_bib_item_3">1984</a>) takes the form of \\(f^2\_1 /
@@ -56,9 +60,6 @@ occurs once of something occurs twice. We can thus calculate the probability tha
 something occurs twice and not once, i.e., \\(P(y=2)\\). That probability is maximised by
 \\(\hat{p} = f\_2 / (f\_1 + f\_2)\\). With \\(\lambda = 2p/(1 - p)\\), we can use \\(p\\) to obtain an
 estimate for \\(\lambda\\).
-
-
-### Adding Covariates to Chao's estimator {#adding-covariates-to-chao-s-estimator}
 
 Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) subsequently show that can also estimate
 \\(\hat{p}\\) using logistic regression (see also <a href="#citeproc_bib_item_2">Böhning and van der Heijden 2009</a>). And by doing so, it becomes possible to
@@ -101,19 +102,21 @@ to concentrate on showing how \\(\lambda\_i\\) and \\(p\_i\\) can be estimated i
 Bayesian generalised linear model.
 
 
-## Zelterman's estimator in a likelihood framework {#zelterman-s-estimator-in-a-likelihood-framework}
+### The Zelterman estimator {#the-zelterman-estimator}
 
-Given the probability of an item not being observed, \\(p(y=0)\\), the probability of
-observing an item equals \\(1 - p(y=0)\\). It follows that the population size \\(N\\) is equal to
-\\((1 - p(y=0)) N + p(y=0) N\\) which in turn is equal to \\(n + p(y=0) N\\), with \\(n\\) being the
-observed sample size. With this information, the Horvitz-Thompson estimator provides an
-estimate of the true population size \\(\hat{N}\\):
+In [Zelterman's Estimator of Population Size]({{< relref "20220405102342-zelterman_estimator.md" >}}), I briefly introduced the Zelterman estimator,
+which, combined with the [Horvitz-Thompson estimator]({{< relref "20220405101628-horvitz_thompson_estimator.md" >}}), can be used as an estimator of the
+population size, \\(\hat{N}\\). Böhning and van der Heijden (<a href="#citeproc_bib_item_2">2009</a>) apply
+the same framework to develop a version of the Zelterman estimator which can incorporate
+information about covariates. Recall the the Horvitz-Thompson estimator takes the form of:
 
 \begin{equation}
-\hat{N} = \frac{n}{1 - p(y=0)}
+\hat{N} = \frac{n}{1 - e^{-\lambda}}
 \end{equation}
 
-To compute this number, we need to estimate \\(p(y=0)\\).
+Thus, we can use the same binomial regression framework to estimate the probability \\(p\\)
+that something occur twice and not once, which is uniquely connected to \\(\lambda = 2p/(1 -
+p)\\) (see <a href="#citeproc_bib_item_2">Böhning and van der Heijden 2009</a> for further details).
 
 
 ## Experimenting with Bayesian regression {#experimenting-with-bayesian-regression}
@@ -156,7 +159,7 @@ a feel for how the estimator works with heterogeneity, we'll set beta to 1:
 ```python
 import seaborn as sns
 
-pop = generate_population(1000, 1, 0.1)
+pop = generate_population(1000, 0, 1)
 
 ax = sns.catplot(
     data=pop.groupby("X")["counts"].value_counts().reset_index(name="f"),
@@ -164,7 +167,7 @@ ax = sns.catplot(
 ax.set(xlabel="count", ylabel="f");
 ```
 
-{{< figure src="/ox-hugo/14c15df1835b66ca04784a4c8743448369c2aeac.png" >}}
+{{< figure src="/ox-hugo/32657db773fe6da7a55233439daf3091e4727948.png" >}}
 
 The total number of unseen items as well the number os unseen items per group can be
 recovered with:
@@ -176,9 +179,9 @@ print(f'Number of missing items with X=0 is {((pop["counts"] == 0) & (pop["X"] =
 ```
 
 ```text
-Total number of missing items is 60
-Number of missing items with X=1 is 27
-Number of missing items with X=0 is 33
+Total number of missing items is 228
+Number of missing items with X=1 is 31
+Number of missing items with X=0 is 197
 ```
 
 Thus, the chance of unseen items with \\(x\_i=1\\) is much smaller than when \\(x\_i=0\\).
@@ -201,11 +204,11 @@ data.sample(5).head()
 
 |     | counts | X | y |
 |-----|--------|---|---|
-| 360 | 1      | 1 | 0 |
-| 139 | 1      | 0 | 0 |
-| 7   | 1      | 0 | 0 |
-| 271 | 1      | 1 | 0 |
-| 119 | 2      | 0 | 1 |
+| 242 | 1      | 0 | 0 |
+| 17  | 1      | 0 | 0 |
+| 311 | 1      | 1 | 0 |
+| 376 | 1      | 1 | 0 |
+| 338 | 2      | 1 | 1 |
 
 
 ### Regression model {#regression-model}
@@ -237,19 +240,20 @@ import arviz as az
 az.summary(trace, var_names=["alpha", "beta"])
 ```
 
-|       | mean  | sd    | hdi_3% | hdi_97% | mcse_mean | mcse_sd | ess_bulk | ess_tail | r_hat |
-|-------|-------|-------|--------|---------|-----------|---------|----------|----------|-------|
-| alpha | 0.413 | 0.149 | 0.13   | 0.699   | 0.004     | 0.003   | 1507     | 1893     | 1     |
-| beta  | 0.007 | 0.213 | -0.415 | 0.38    | 0.006     | 0.004   | 1487     | 1884     | 1     |
+|       | mean   | sd    | hdi_3% | hdi_97% | mcse_mean | mcse_sd | ess_bulk | ess_tail | r_hat |
+|-------|--------|-------|--------|---------|-----------|---------|----------|----------|-------|
+| alpha | -0.676 | 0.131 | -0.92  | -0.431  | 0.004     | 0.003   | 1352     | 1938     | 1     |
+| beta  | 1.322  | 0.2   | 0.953  | 1.684   | 0.005     | 0.004   | 1353     | 1847     | 1     |
 
-Looking at the table, it appears that the sampling process was succesful, which is aslo
+Looking at the table, it appears that the sampling process was succesful, which is also
 confirmed by the good mixing of the chains in the following trace plot:
 
 ```python
-az.plot_trace(trace);
+az.plot_trace(trace)
+plt.tight_layout();
 ```
 
-{{< figure src="/ox-hugo/74027c32af2caa8515b78e0319d5c1734cda4830.png" >}}
+{{< figure src="/ox-hugo/2c9f059ee0e5d2813126ffeb579d8fb570f71d1e.png" >}}
 
 Now that we have an estimate of \\(\hat{p}\\), we can use that to obtain our estimate of the
 population size following the equations above. First, we extract 1,000 posterior samples
@@ -268,16 +272,24 @@ N = n + f0.sum(0)
 az.plot_posterior(N, point_estimate="mean");
 ```
 
-{{< figure src="/ox-hugo/0f2e0d370e1461b021e59e07dad93f5c14d3e754.png" >}}
+{{< figure src="/ox-hugo/0d7114e7bc5d9978de26841f2e149305e53dc47b.png" >}}
+
+The cool thing about using a Bayesian regression analysis is that our estimate of
+\\(\hat{N}\\) becomes a distribution of estimates. We observe that the mean estimate is
+relatively close to the true value of \\(N=1000\\).
+
+Note that the estimate is rather similar to the lower-bound of Chao1, which has a slightly
+more negative bias:
 
 ```python
-WW = (1 / (1 - np.exp(-l))).sum(0)
+import copia
+
+print(round(copia.chao1(pop["counts"])))
 ```
 
-The cool thing about using a Bayesian regression analysis, is that our estimate of
-\\(\hat{N}\\) becomes a distribution of estimates. We observe that the mean estimate is
-relatively close to the true value of \\(N=1000\\). Note that the bias for the original Chao1
-method is somewhat larger for this sample with a point-estimate of 952.
+```text
+906
+```
 
 An additional benefit of the regression approach is that we can easily obtain posterior
 population size estimates for different covariates. Below, we plot the estimates for \\(x=0\\)
@@ -304,7 +316,26 @@ S_x1 = n1 + f0_x1.sum(0)
 az.plot_posterior(S_x1, ax=axes[1], labeller=labeller);
 ```
 
-{{< figure src="/ox-hugo/324d91767a487e7ac6829ef1391be5caf77415d2.png" >}}
+{{< figure src="/ox-hugo/bbd9e74fd9732f31280e05e0edbb299c043cf40e.png" >}}
+
+Note that the mean estimates of the two groups add up to the global estimate of the
+population size. This, however, is not the case when we apply Chao1 to each group
+individually:
+
+```python
+N0 = round(copia.chao1(pop.loc[pop["X"] == 0, "counts"]))
+N1 = round(copia.chao1(pop.loc[pop["X"] == 1, "counts"]))
+
+print(f"Estimate for N for X=0 equals {N0}")
+print(f"Estimate for N for X=1 equals {N1}")
+print(f"The sum of the group estimates equals {N0 + N1}.")
+```
+
+```text
+Estimate for N for X=0 equals 473
+Estimate for N for X=1 equals 488
+The sum of the group estimates equals 961.
+```
 
 ## References
 

@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Fri, 15 Apr 2022 09:01:06 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/homogeneity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Apr 2022 12:43:51 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/homogeneity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Zelterman&#39;s Estimator of Population Size</title>
       <link>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</link>
-      <pubDate>Fri, 15 Apr 2022 09:01:06 +0200</pubDate>
+      <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</guid>
       <description>Zelterman&amp;rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model.</description>

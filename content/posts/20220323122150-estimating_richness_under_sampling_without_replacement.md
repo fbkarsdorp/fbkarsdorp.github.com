@@ -1,7 +1,7 @@
 +++
 title = "Estimating Richness under Sampling without Replacement"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-04-12T12:35:33+02:00
+lastmod = 2022-03-31T12:35:33+02:00
 tags = ["richness", "chao1", "replacement", "bias", "sampling"]
 draft = false
 +++

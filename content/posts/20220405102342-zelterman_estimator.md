@@ -1,7 +1,7 @@
 +++
 title = "Zelterman's Estimator of Population Size"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-04-15T09:01:06+02:00
+lastmod = 2022-04-01T12:43:51+02:00
 tags = ["unseen-species", "diversity", "homogeneity", "richness", "zelterman", "chao1", "shakespeare"]
 draft = false
 +++
@@ -39,13 +39,13 @@ items have the same observation probability \\(p(y > 0)\\), this can be simplifi
 \hat{N} = \frac{n}{1 - p(y=0)}
 \end{equation}
 
-To be able to compute this equations, we require knowledge of \\(p(y=0)\\), and if that's not
+To be able to compute this equation, we require knowledge of \\(p(y=0)\\), and if that's not
 available, we need to estimate it. If we assume that the counts \\(y\\) follow a Poisson
 distribution, this amounts to estimating \\(e^{-\lambda}\\), with \\(\lambda\\) being the Poisson
-rate parameter. When the \\(y\\) follows a homogeneous Poisson, we can estimate \\(\lambda\\) with
-maximum likelihood (<a href="#citeproc_bib_item_1">Böhning and van der Heijden 2009</a>). However, this
-homogeneous assumption is often violated, as not all values of \\(y\\) adhere to the Poisson
-distribution.
+rate parameter. When the counts \\(y\\) follow a homogeneous Poisson, we can estimate
+\\(\lambda\\) with maximum likelihood (<a href="#citeproc_bib_item_1">Böhning and van der Heijden 2009</a>).
+However, this homogeneous assumption is often violated, as not all values of \\(y\\) adhere to
+the Poisson distribution.
 
 This is where Zelterman (<a href="#citeproc_bib_item_5">1988</a>) comes in. Zelterman argues
 that while the Poisson assumption might not be valid for the complete range of \\(y\\), it may

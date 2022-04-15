@@ -35,7 +35,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/" /><meta property="article:section" content="posts" />
 
-<meta property="article:modified_time" content="2022-04-15T09:01:06+02:00" />
+<meta property="article:modified_time" content="2022-04-01T12:43:51+02:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -98,6 +98,12 @@
           </a>
         </li>
         
+        
+        <li>
+          <a class="icon" href="https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
         
         <li>
           <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
@@ -197,7 +203,7 @@
         
         <div class="postdate">
           
-          <time datetime="2022-04-15 09:01:06 &#43;0200 CEST" itemprop="datePublished">2022-04-15</time>
+          <time datetime="2022-04-01 12:43:51 &#43;0200 CEST" itemprop="datePublished">2022-04-01</time>
           
         </div>
         
@@ -269,13 +275,13 @@ items have the same observation probability \(p(y &gt; 0)\), this can be simplif
 <p>\begin{equation}
 \hat{N} = \frac{n}{1 - p(y=0)}
 \end{equation}</p>
-<p>To be able to compute this equations, we require knowledge of \(p(y=0)\), and if that&rsquo;s not
+<p>To be able to compute this equation, we require knowledge of \(p(y=0)\), and if that&rsquo;s not
 available, we need to estimate it. If we assume that the counts \(y\) follow a Poisson
 distribution, this amounts to estimating \(e^{-\lambda}\), with \(\lambda\) being the Poisson
-rate parameter. When the \(y\) follows a homogeneous Poisson, we can estimate \(\lambda\) with
-maximum likelihood (<a href="#citeproc_bib_item_1">Böhning and van der Heijden 2009</a>). However, this
-homogeneous assumption is often violated, as not all values of \(y\) adhere to the Poisson
-distribution.</p>
+rate parameter. When the counts \(y\) follow a homogeneous Poisson, we can estimate
+\(\lambda\) with maximum likelihood (<a href="#citeproc_bib_item_1">Böhning and van der Heijden 2009</a>).
+However, this homogeneous assumption is often violated, as not all values of \(y\) adhere to
+the Poisson distribution.</p>
 <p>This is where Zelterman (<a href="#citeproc_bib_item_5">1988</a>) comes in. Zelterman argues
 that while the Poisson assumption might not be valid for the complete range of \(y\), it may
 apply to smaller ranges, such as from \(r\) to \(r + 1\). If we represent the number of items
@@ -426,6 +432,7 @@ in the same ballpark as the one by Efron and Thisted (<a href="#citeproc_bib_ite
   <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Horvitz, D. G., and D. J. Thompson. 1952. “A Generalization of Sampling without Replacement from a Finite Universe.” <i>Journal of the American Statistical Association</i> 47 (260): 663–85. <a href="https://doi.org/10.1080/01621459.1952.10483446">https://doi.org/10.1080/01621459.1952.10483446</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
 </div>
+
     </div>
   </article>
 
