@@ -19,14 +19,14 @@
   while others change or disappear. Additionally, I&#39;m interested in measuring cultural
   diversity and compositional complexity, and how we can account for biases in our
   estimations of diversity. To do that, I use computational models from Machine Learning,
-  Cultural Evolution, and Besides.
+  Cultural Evolution, and Ecology.
 
-  Ecology cultural change and diversity, I&#39;m also interested in teaching about computer
+  Besides cultural change and diversity, I&#39;m also interested in teaching about computer
   programming in the context of the Humanities. I published a text book with [Princeton
   University
   Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
-  about using Python for Humanities data analysis. Check out the open access edition of
-  our book [here](https://www.humanitiesdataanalysis.org)!">
+  about using Python for Humanities data analysis. Check out the open access edition
+  [here](https://www.humanitiesdataanalysis.org)!">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
@@ -35,7 +35,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/" /><meta property="article:section" content="posts" />
 
-<meta property="article:modified_time" content="2022-04-15T12:43:29+02:00" />
+<meta property="article:modified_time" content="2022-04-15T20:57:52+02:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -79,10 +79,6 @@
       <ul>
          
         <li><a href="/">Home</a></li>
-         
-        <li><a href="/#news">News</a></li>
-         
-        <li><a href="/#publications">Publications</a></li>
          
         <li><a href="/posts">Archive</a></li>
         
@@ -188,6 +184,7 @@
         <li><a href="#simulation-model">Simulation Model</a></li>
         <li><a href="#data-preparation">Data preparation</a></li>
         <li><a href="#regression-model">Regression model</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
       </ul>
     </li>
     <li><a href="#references">References</a></li>
@@ -208,7 +205,7 @@
         
         <div class="postdate">
           
-          <time datetime="2022-04-15 12:43:29 &#43;0200 CEST" itemprop="datePublished">2022-04-15</time>
+          <time datetime="2022-04-15 20:57:52 &#43;0200 CEST" itemprop="datePublished">2022-04-15</time>
           
         </div>
         
@@ -216,7 +213,7 @@
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          9 minute read
+          11 minute read
         </div>
         
         
@@ -272,7 +269,7 @@ Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) to develop a regression
 population size estimation that incorporates information about covariates and is a
 generalization of Chao1. Simlarly, Böhning and van der Heijden (<a href="#citeproc_bib_item_2">2009</a>)
 use this insight to generalize the <a href="/posts/20220405102342-zelterman_estimator/">Zelterman estimator</a>
-(<a href="#citeproc_bib_item_4">Zelterman 1988</a>) to incorporate information about
+(<a href="#citeproc_bib_item_5">Zelterman 1988</a>) to incorporate information about
 covariates. Below, I will briefly describe both generalizations, after which I will put
 them to test in a simulation study.</p>
 <h2 id="unseen-species-models-in-a-likelihood-framework">Unseen Species Models in a Likelihood Framework</h2>
@@ -376,7 +373,7 @@ a feel for how the estimator works with heterogeneity, we&rsquo;ll set beta to 1
 </span></span><span style="display:flex;"><span>    data<span style="color:#666">=</span>pop<span style="color:#666">.</span>groupby(<span style="color:#4070a0">&#34;X&#34;</span>)[<span style="color:#4070a0">&#34;counts&#34;</span>]<span style="color:#666">.</span>value_counts()<span style="color:#666">.</span>reset_index(name<span style="color:#666">=</span><span style="color:#4070a0">&#34;f&#34;</span>),
 </span></span><span style="display:flex;"><span>    kind<span style="color:#666">=</span><span style="color:#4070a0">&#34;bar&#34;</span>, x<span style="color:#666">=</span><span style="color:#4070a0">&#34;counts&#34;</span>, y<span style="color:#666">=</span><span style="color:#4070a0">&#34;f&#34;</span>, hue<span style="color:#666">=</span><span style="color:#4070a0">&#34;X&#34;</span>)
 </span></span><span style="display:flex;"><span>ax<span style="color:#666">.</span>set(xlabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;count&#34;</span>, ylabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;f&#34;</span>);
-</span></span></code></pre></div><figure><img src="/ox-hugo/32657db773fe6da7a55233439daf3091e4727948.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/84331342e22b29d14f27dcd8019d4c3da488f712.png"/>
 </figure>
 
 <p>The total number of unseen items as well the number os unseen items per group can be
@@ -384,9 +381,9 @@ recovered with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#39;Total number of missing items is </span><span style="color:#70a0d0;font-style:italic">{</span>(pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>)<span style="color:#666">.</span>sum()<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#39;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#39;Number of missing items with X=1 is </span><span style="color:#70a0d0;font-style:italic">{</span>((pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>) <span style="color:#666">&amp;</span> (pop[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">1</span>))<span style="color:#666">.</span>sum()<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#39;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#39;Number of missing items with X=0 is </span><span style="color:#70a0d0;font-style:italic">{</span>((pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>) <span style="color:#666">&amp;</span> (pop[<span style="color:#4070a0">&#34;X&#34;</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>))<span style="color:#666">.</span>sum()<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#39;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Total number of missing items is 228
-</span></span><span style="display:flex;"><span>Number of missing items with X=1 is 31
-</span></span><span style="display:flex;"><span>Number of missing items with X=0 is 197
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Total number of missing items is 233
+</span></span><span style="display:flex;"><span>Number of missing items with X=1 is 40
+</span></span><span style="display:flex;"><span>Number of missing items with X=0 is 193
 </span></span></code></pre></div><p>Thus, the chance of unseen items with \(x_i=1\) is much smaller than when \(x_i=0\).</p>
 <h3 id="data-preparation">Data preparation</h3>
 <p>As said, we aim to estimate the parameters of the truncated Poisson distribution by means
@@ -409,34 +406,34 @@ be the outcome variable in the binomial regression model.</p>
 </thead>
 <tbody>
 <tr>
-<td>242</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>17</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>311</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>376</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>338</td>
+<td>275</td>
 <td>2</td>
 <td>1</td>
 <td>1</td>
+</tr>
+<tr>
+<td>163</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>360</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>65</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>226</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -478,26 +475,26 @@ library, which is the go-to library in Python for exploratory analyses of Bayesi
 <tbody>
 <tr>
 <td>alpha</td>
-<td>-0.676</td>
+<td>-0.59</td>
 <td>0.131</td>
-<td>-0.92</td>
-<td>-0.431</td>
-<td>0.004</td>
+<td>-0.841</td>
+<td>-0.354</td>
 <td>0.003</td>
-<td>1352</td>
-<td>1938</td>
+<td>0.002</td>
+<td>1602</td>
+<td>2034</td>
 <td>1</td>
 </tr>
 <tr>
 <td>beta</td>
-<td>1.322</td>
-<td>0.2</td>
-<td>0.953</td>
-<td>1.684</td>
+<td>1.15</td>
+<td>0.196</td>
+<td>0.758</td>
+<td>1.491</td>
 <td>0.005</td>
 <td>0.004</td>
-<td>1353</td>
-<td>1847</td>
+<td>1422</td>
+<td>1724</td>
 <td>1</td>
 </tr>
 </tbody>
@@ -506,7 +503,7 @@ library, which is the go-to library in Python for exploratory analyses of Bayesi
 confirmed by the good mixing of the chains in the following trace plot:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_trace(trace)
 </span></span><span style="display:flex;"><span>plt<span style="color:#666">.</span>tight_layout();
-</span></span></code></pre></div><figure><img src="/ox-hugo/2c9f059ee0e5d2813126ffeb579d8fb570f71d1e.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/fda179b06caa7577686126fee2039d5ed0668555.png"/>
 </figure>
 
 <p>Now that we have an estimate of \(\hat{p}\), we can use that to obtain our estimate of the
@@ -522,7 +519,7 @@ the observed population size to obtain an estimate of the true population size.<
 </span></span><span style="display:flex;"><span>N <span style="color:#666">=</span> n <span style="color:#666">+</span> f0<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_posterior(N, point_estimate<span style="color:#666">=</span><span style="color:#4070a0">&#34;mean&#34;</span>);
-</span></span></code></pre></div><figure><img src="/ox-hugo/0d7114e7bc5d9978de26841f2e149305e53dc47b.png"/>
+</span></span></code></pre></div><figure><img src="./.ob-jupyter/0bf94dbb855952a156c51d2f1e13bf7130c181d9.png"/>
 </figure>
 
 <p>The cool thing about using a Bayesian regression analysis is that our estimate of
@@ -533,7 +530,7 @@ more negative bias:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">copia</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#007020">round</span>(copia<span style="color:#666">.</span>chao1(pop[<span style="color:#4070a0">&#34;counts&#34;</span>])))
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>906
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>901
 </span></span></code></pre></div><p>An additional benefit of the regression approach is that we can easily obtain posterior
 population size estimates for different covariates. Below, we plot the estimates for \(x=0\)
 (left panel) and \(x=1\) (right panel).</p>
@@ -555,7 +552,7 @@ population size estimates for different covariates. Below, we plot the estimates
 </span></span><span style="display:flex;"><span>S_x1 <span style="color:#666">=</span> n1 <span style="color:#666">+</span> f0_x1<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_posterior(S_x1, ax<span style="color:#666">=</span>axes[<span style="color:#40a070">1</span>], labeller<span style="color:#666">=</span>labeller);
-</span></span></code></pre></div><figure><img src="/ox-hugo/bbd9e74fd9732f31280e05e0edbb299c043cf40e.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/b8e3552547054dcbe8cff81faf558bebbd7eb1be.png"/>
 </figure>
 
 <p>Note that the mean estimates of the two groups add up to the global estimate of the
@@ -567,15 +564,146 @@ individually:</p>
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimate for N for X=0 equals </span><span style="color:#70a0d0;font-style:italic">{</span>N0<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimate for N for X=1 equals </span><span style="color:#70a0d0;font-style:italic">{</span>N1<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;The sum of the group estimates equals </span><span style="color:#70a0d0;font-style:italic">{</span>N0 <span style="color:#666">+</span> N1<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">.&#34;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Estimate for N for X=0 equals 473
-</span></span><span style="display:flex;"><span>Estimate for N for X=1 equals 488
-</span></span><span style="display:flex;"><span>The sum of the group estimates equals 961.
-</span></span></code></pre></div><h2 id="references">References</h2>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Estimate for N for X=0 equals 461
+</span></span><span style="display:flex;"><span>Estimate for N for X=1 equals 484
+</span></span><span style="display:flex;"><span>The sum of the group estimates equals 945.
+</span></span></code></pre></div><h3 id="evaluation">Evaluation</h3>
+<p>A major advantage of the regression approach and certainly regression in a Bayesian
+framework is that it makes all the usual tools for model evaluation and model comparison
+available. In this way, it becomes possible to more accurately and systematically
+investigate whether the assumption of certain covariates leads to a better predictive
+model, and thus whether the assumption of heterogeneity in the dataset was justified and
+possibly even necessary to arrive at less biased population size estimates.</p>
+<p>ArviZ implements several well-known evelation criteria, such as WAIC and Leave-one-out
+Cross-validation (LOO). Below, I compare two models using LOO: one with only an intercept
+(effectively assuming homogeneity), and the previously presented model with an additional
+coefficient \(\beta\). Before we proceed, let&rsquo;s fit the intercept-only model:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">with</span> pm<span style="color:#666">.</span>Model() <span style="color:#007020;font-weight:bold">as</span> intercept_model:
+</span></span><span style="display:flex;"><span>    alpha <span style="color:#666">=</span> pm<span style="color:#666">.</span>Normal(<span style="color:#4070a0">&#39;alpha&#39;</span>, <span style="color:#40a070">0</span>, <span style="color:#40a070">5</span>)  <span style="color:#60a0b0;font-style:italic"># prior on alpha</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#666">=</span> pm<span style="color:#666">.</span>Deterministic(<span style="color:#4070a0">&#34;p&#34;</span>, pm<span style="color:#666">.</span>math<span style="color:#666">.</span>invlogit(alpha))
+</span></span><span style="display:flex;"><span>    f2 <span style="color:#666">=</span> pm<span style="color:#666">.</span>Binomial(<span style="color:#4070a0">&#34;f2&#34;</span>, <span style="color:#40a070">1</span>, p, observed<span style="color:#666">=</span>data[<span style="color:#4070a0">&#34;y&#34;</span>])
+</span></span><span style="display:flex;"><span>    intercept_trace <span style="color:#666">=</span> pm<span style="color:#666">.</span>sample(<span style="color:#40a070">1000</span>, tune<span style="color:#666">=</span><span style="color:#40a070">2000</span>, return_inferencedata<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">True</span>)
+</span></span></code></pre></div><p>The model appears to have converged decently:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">arviz</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">az</span>
+</span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>summary(intercept_trace, var_names<span style="color:#666">=</span>[<span style="color:#4070a0">&#34;alpha&#34;</span>])
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th>mean</th>
+<th>sd</th>
+<th>hdi_3%</th>
+<th>hdi_97%</th>
+<th>mcse_mean</th>
+<th>mcse_sd</th>
+<th>ess_bulk</th>
+<th>ess_tail</th>
+<th>r_hat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpha</td>
+<td>-0.056</td>
+<td>0.09</td>
+<td>-0.225</td>
+<td>0.11</td>
+<td>0.002</td>
+<td>0.002</td>
+<td>1612</td>
+<td>2631</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Without coefficients, the regression version of Chao1 reduces to the original Chao1
+estimate (<a href="#citeproc_bib_item_1">Bohning et al. 2013</a>). Thus, unsurprisingly yet
+reassuringly, the mean estimate of the intercept model is approximately equal to the
+point-estimate of Chao1:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>post <span style="color:#666">=</span> az<span style="color:#666">.</span>extract_dataset(intercept_trace) <span style="color:#60a0b0;font-style:italic"># stack all chains</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#666">=</span> (pop[<span style="color:#4070a0">&#34;counts&#34;</span>] <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>)<span style="color:#666">.</span>sum()
+</span></span><span style="display:flex;"><span>nu  <span style="color:#666">=</span> (post[<span style="color:#4070a0">&#34;alpha&#34;</span>]<span style="color:#666">.</span>values <span style="color:#666">*</span> np<span style="color:#666">.</span>ones(data<span style="color:#666">.</span>shape[<span style="color:#40a070">0</span>])[:, <span style="color:#007020;font-weight:bold">None</span>])
+</span></span><span style="display:flex;"><span>p <span style="color:#666">=</span> np<span style="color:#666">.</span>exp(nu) <span style="color:#666">/</span> (<span style="color:#40a070">1</span> <span style="color:#666">+</span> np<span style="color:#666">.</span>exp(nu))
+</span></span><span style="display:flex;"><span>l <span style="color:#666">=</span> (<span style="color:#40a070">2</span> <span style="color:#666">*</span> p) <span style="color:#666">/</span> (<span style="color:#40a070">1</span> <span style="color:#666">-</span> p)
+</span></span><span style="display:flex;"><span>f0 <span style="color:#666">=</span> (<span style="color:#40a070">1</span> <span style="color:#666">/</span> (l <span style="color:#666">+</span> (l<span style="color:#666">**</span><span style="color:#40a070">2</span>) <span style="color:#666">/</span> <span style="color:#40a070">2</span>))
+</span></span><span style="display:flex;"><span>N <span style="color:#666">=</span> n <span style="color:#666">+</span> f0<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_posterior(N, point_estimate<span style="color:#666">=</span><span style="color:#4070a0">&#34;mean&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/a5bb2ee6085541ae4c223dd4d2aac7a1a54c068f.png"/>
+</figure>
+
+<p>ArviZ provides the neat function <code>az.compare()</code> to compare the out-of-sample predictive
+fit of different models. Here, we compute the LOO for both models and display the results
+in a DataFrame:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>loo_comparison <span style="color:#666">=</span> az<span style="color:#666">.</span>compare(
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;covariate-model&#34;</span>: trace,
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;intercept-model&#34;</span>: intercept_trace,
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>loo_comparison
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th>rank</th>
+<th>loo</th>
+<th>p_loo</th>
+<th>d_loo</th>
+<th>weight</th>
+<th>se</th>
+<th>dse</th>
+<th>warning</th>
+<th>loo_scale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>covariate-model</td>
+<td>0</td>
+<td>-324.945</td>
+<td>2.0769</td>
+<td>0</td>
+<td>0.967038</td>
+<td>6.17537</td>
+<td>0</td>
+<td>False</td>
+<td>log</td>
+</tr>
+<tr>
+<td>intercept-model</td>
+<td>1</td>
+<td>-343.226</td>
+<td>1.00932</td>
+<td>18.2808</td>
+<td>0.0329623</td>
+<td>0.627712</td>
+<td>6.1465</td>
+<td>False</td>
+<td>log</td>
+</tr>
+</tbody>
+</table>
+<p>The covariate model is ranked first, and received almost all of the weight (which can
+loosely be interpreted as the probability of a model being true compared to the other
+model and given the data). Thus, the model comparison confirms what we already knew: the
+data is heterogeneously generated, and knowlegde about the nature of this heterogeneity
+should help specifying a better model.</p>
+<p>ArviZ also provides a function to create a summary plot much like the ones in
+McElreath (<a href="#citeproc_bib_item_4">2016</a>)&rsquo;s <em>Statistical Rethinking</em> book. The
+open circles in the plot below represent the LOO values, and the error bars represent the
+standard deviation of these LOO values. Again, the plot confirms what we already knew, but
+that&rsquo;s reassuring if we want to apply the method to real-world case.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>az<span style="color:#666">.</span>plot_compare(loo_comparison, insample_dev<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">False</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/9bb9b9d25a40d7e23fa3e9d91aa37b4bc652f2ce.png"/>
+</figure>
+
+<h2 id="references">References</h2>
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bohning, Dankmar, Alberto Vidal-Diez, Rattana Lerdsuwansri, Chukiat Viwatwongkasem, and Mark Arnold. 2013. “A Generalization of Chao’s Estimator for Covariate Information.” <i>Biometrics</i> 69: 1033–42. <a href="https://doi.org/10.1111/biom.12082">https://doi.org/10.1111/biom.12082</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Böhning, Dankmar, and Peter G. M. van der Heijden. 2009. “A Covariate Adjustment for Zero-Truncated Approaches to Estimating the Size of Hidden and Elusive Populations.” <i>The Annals of Applied Statistics</i> 3 (2). <a href="https://doi.org/10.1214/08-AOAS214">https://doi.org/10.1214/08-AOAS214</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70.</div>
-  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>McElreath, Richard. 2016. <i>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</i>. First. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9781315372495">https://doi.org/10.1201/9781315372495</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
 </div>
     </div>
   </article>
@@ -595,10 +723,6 @@ individually:</p>
       <ul>
          
           <li><a href="/">Home</a></li>
-         
-          <li><a href="/#news">News</a></li>
-         
-          <li><a href="/#publications">Publications</a></li>
          
           <li><a href="/posts">Archive</a></li>
         
@@ -621,6 +745,7 @@ individually:</p>
         <li><a href="#simulation-model">Simulation Model</a></li>
         <li><a href="#data-preparation">Data preparation</a></li>
         <li><a href="#regression-model">Regression model</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
       </ul>
     </li>
     <li><a href="#references">References</a></li>
@@ -709,10 +834,6 @@ individually:</p>
     Copyright  &copy; 2022  Folgert Karsdorp; made with Hugo and Org-mode 
   </div>
   <div class="footer-right">
-    
-    
-    
-    
     
     
     

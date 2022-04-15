@@ -1,7 +1,7 @@
 +++
 title = "Population Size Estimation as a Regression Problem 🚧🚧"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-04-15T12:43:29+02:00
+lastmod = 2022-04-15T20:57:52+02:00
 tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity", "zelterman"]
 draft = false
 +++
@@ -27,7 +27,7 @@ Bohning et al. (<a href="#citeproc_bib_item_1">2013</a>) to develop a regression
 population size estimation that incorporates information about covariates and is a
 generalization of Chao1. Simlarly, Böhning and van der Heijden (<a href="#citeproc_bib_item_2">2009</a>)
 use this insight to generalize the [Zelterman estimator]({{< relref "20220405102342-zelterman_estimator.md" >}})
-(<a href="#citeproc_bib_item_4">Zelterman 1988</a>) to incorporate information about
+(<a href="#citeproc_bib_item_5">Zelterman 1988</a>) to incorporate information about
 covariates. Below, I will briefly describe both generalizations, after which I will put
 them to test in a simulation study.
 
@@ -167,7 +167,7 @@ ax = sns.catplot(
 ax.set(xlabel="count", ylabel="f");
 ```
 
-{{< figure src="/ox-hugo/32657db773fe6da7a55233439daf3091e4727948.png" >}}
+{{< figure src="/ox-hugo/84331342e22b29d14f27dcd8019d4c3da488f712.png" >}}
 
 The total number of unseen items as well the number os unseen items per group can be
 recovered with:
@@ -179,9 +179,9 @@ print(f'Number of missing items with X=0 is {((pop["counts"] == 0) & (pop["X"] =
 ```
 
 ```text
-Total number of missing items is 228
-Number of missing items with X=1 is 31
-Number of missing items with X=0 is 197
+Total number of missing items is 233
+Number of missing items with X=1 is 40
+Number of missing items with X=0 is 193
 ```
 
 Thus, the chance of unseen items with \\(x\_i=1\\) is much smaller than when \\(x\_i=0\\).
@@ -204,11 +204,11 @@ data.sample(5).head()
 
 |     | counts | X | y |
 |-----|--------|---|---|
-| 242 | 1      | 0 | 0 |
-| 17  | 1      | 0 | 0 |
-| 311 | 1      | 1 | 0 |
-| 376 | 1      | 1 | 0 |
-| 338 | 2      | 1 | 1 |
+| 275 | 2      | 1 | 1 |
+| 163 | 1      | 0 | 0 |
+| 360 | 1      | 1 | 0 |
+| 65  | 1      | 0 | 0 |
+| 226 | 1      | 0 | 0 |
 
 
 ### Regression model {#regression-model}
@@ -240,10 +240,10 @@ import arviz as az
 az.summary(trace, var_names=["alpha", "beta"])
 ```
 
-|       | mean   | sd    | hdi_3% | hdi_97% | mcse_mean | mcse_sd | ess_bulk | ess_tail | r_hat |
-|-------|--------|-------|--------|---------|-----------|---------|----------|----------|-------|
-| alpha | -0.676 | 0.131 | -0.92  | -0.431  | 0.004     | 0.003   | 1352     | 1938     | 1     |
-| beta  | 1.322  | 0.2   | 0.953  | 1.684   | 0.005     | 0.004   | 1353     | 1847     | 1     |
+|       | mean  | sd    | hdi_3% | hdi_97% | mcse_mean | mcse_sd | ess_bulk | ess_tail | r_hat |
+|-------|-------|-------|--------|---------|-----------|---------|----------|----------|-------|
+| alpha | -0.59 | 0.131 | -0.841 | -0.354  | 0.003     | 0.002   | 1602     | 2034     | 1     |
+| beta  | 1.15  | 0.196 | 0.758  | 1.491   | 0.005     | 0.004   | 1422     | 1724     | 1     |
 
 Looking at the table, it appears that the sampling process was succesful, which is also
 confirmed by the good mixing of the chains in the following trace plot:
@@ -253,7 +253,7 @@ az.plot_trace(trace)
 plt.tight_layout();
 ```
 
-{{< figure src="/ox-hugo/2c9f059ee0e5d2813126ffeb579d8fb570f71d1e.png" >}}
+{{< figure src="/ox-hugo/fda179b06caa7577686126fee2039d5ed0668555.png" >}}
 
 Now that we have an estimate of \\(\hat{p}\\), we can use that to obtain our estimate of the
 population size following the equations above. First, we extract 1,000 posterior samples
@@ -272,7 +272,7 @@ N = n + f0.sum(0)
 az.plot_posterior(N, point_estimate="mean");
 ```
 
-{{< figure src="/ox-hugo/0d7114e7bc5d9978de26841f2e149305e53dc47b.png" >}}
+{{< figure src="./.ob-jupyter/0bf94dbb855952a156c51d2f1e13bf7130c181d9.png" >}}
 
 The cool thing about using a Bayesian regression analysis is that our estimate of
 \\(\hat{N}\\) becomes a distribution of estimates. We observe that the mean estimate is
@@ -288,7 +288,7 @@ print(round(copia.chao1(pop["counts"])))
 ```
 
 ```text
-906
+901
 ```
 
 An additional benefit of the regression approach is that we can easily obtain posterior
@@ -316,7 +316,7 @@ S_x1 = n1 + f0_x1.sum(0)
 az.plot_posterior(S_x1, ax=axes[1], labeller=labeller);
 ```
 
-{{< figure src="/ox-hugo/bbd9e74fd9732f31280e05e0edbb299c043cf40e.png" >}}
+{{< figure src="/ox-hugo/b8e3552547054dcbe8cff81faf558bebbd7eb1be.png" >}}
 
 Note that the mean estimates of the two groups add up to the global estimate of the
 population size. This, however, is not the case when we apply Chao1 to each group
@@ -332,10 +332,99 @@ print(f"The sum of the group estimates equals {N0 + N1}.")
 ```
 
 ```text
-Estimate for N for X=0 equals 473
-Estimate for N for X=1 equals 488
-The sum of the group estimates equals 961.
+Estimate for N for X=0 equals 461
+Estimate for N for X=1 equals 484
+The sum of the group estimates equals 945.
 ```
+
+
+### Evaluation {#evaluation}
+
+A major advantage of the regression approach and certainly regression in a Bayesian
+framework is that it makes all the usual tools for model evaluation and model comparison
+available. In this way, it becomes possible to more accurately and systematically
+investigate whether the assumption of certain covariates leads to a better predictive
+model, and thus whether the assumption of heterogeneity in the dataset was justified and
+possibly even necessary to arrive at less biased population size estimates.
+
+ArviZ implements several well-known evelation criteria, such as WAIC and Leave-one-out
+Cross-validation (LOO). Below, I compare two models using LOO: one with only an intercept
+(effectively assuming homogeneity), and the previously presented model with an additional
+coefficient \\(\beta\\). Before we proceed, let's fit the intercept-only model:
+
+```python
+with pm.Model() as intercept_model:
+    alpha = pm.Normal('alpha', 0, 5)  # prior on alpha
+    p = pm.Deterministic("p", pm.math.invlogit(alpha))
+    f2 = pm.Binomial("f2", 1, p, observed=data["y"])
+    intercept_trace = pm.sample(1000, tune=2000, return_inferencedata=True)
+```
+
+The model appears to have converged decently:
+
+```python
+import arviz as az
+az.summary(intercept_trace, var_names=["alpha"])
+```
+
+|       | mean   | sd   | hdi_3% | hdi_97% | mcse_mean | mcse_sd | ess_bulk | ess_tail | r_hat |
+|-------|--------|------|--------|---------|-----------|---------|----------|----------|-------|
+| alpha | -0.056 | 0.09 | -0.225 | 0.11    | 0.002     | 0.002   | 1612     | 2631     | 1     |
+
+Without coefficients, the regression version of Chao1 reduces to the original Chao1
+estimate (<a href="#citeproc_bib_item_1">Bohning et al. 2013</a>). Thus, unsurprisingly yet
+reassuringly, the mean estimate of the intercept model is approximately equal to the
+point-estimate of Chao1:
+
+```python
+post = az.extract_dataset(intercept_trace) # stack all chains
+n = (pop["counts"] > 0).sum()
+nu  = (post["alpha"].values * np.ones(data.shape[0])[:, None])
+p = np.exp(nu) / (1 + np.exp(nu))
+l = (2 * p) / (1 - p)
+f0 = (1 / (l + (l**2) / 2))
+N = n + f0.sum(0)
+
+az.plot_posterior(N, point_estimate="mean");
+```
+
+{{< figure src="/ox-hugo/a5bb2ee6085541ae4c223dd4d2aac7a1a54c068f.png" >}}
+
+ArviZ provides the neat function `az.compare()` to compare the out-of-sample predictive
+fit of different models. Here, we compute the LOO for both models and display the results
+in a DataFrame:
+
+```python
+loo_comparison = az.compare(
+    {
+        "covariate-model": trace,
+        "intercept-model": intercept_trace,
+    })
+loo_comparison
+```
+
+|                 | rank | loo      | p_loo   | d_loo   | weight    | se       | dse    | warning | loo_scale |
+|-----------------|------|----------|---------|---------|-----------|----------|--------|---------|-----------|
+| covariate-model | 0    | -324.945 | 2.0769  | 0       | 0.967038  | 6.17537  | 0      | False   | log       |
+| intercept-model | 1    | -343.226 | 1.00932 | 18.2808 | 0.0329623 | 0.627712 | 6.1465 | False   | log       |
+
+The covariate model is ranked first, and received almost all of the weight (which can
+loosely be interpreted as the probability of a model being true compared to the other
+model and given the data). Thus, the model comparison confirms what we already knew: the
+data is heterogeneously generated, and knowlegde about the nature of this heterogeneity
+should help specifying a better model.
+
+ArviZ also provides a function to create a summary plot much like the ones in
+McElreath (<a href="#citeproc_bib_item_4">2016</a>)'s _Statistical Rethinking_ book. The
+open circles in the plot below represent the LOO values, and the error bars represent the
+standard deviation of these LOO values. Again, the plot confirms what we already knew, but
+that's reassuring if we want to apply the method to real-world case.
+
+```python
+az.plot_compare(loo_comparison, insample_dev=False);
+```
+
+{{< figure src="/ox-hugo/9bb9b9d25a40d7e23fa3e9d91aa37b4bc652f2ce.png" >}}
 
 ## References
 
@@ -343,5 +432,6 @@ The sum of the group estimates equals 961.
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bohning, Dankmar, Alberto Vidal-Diez, Rattana Lerdsuwansri, Chukiat Viwatwongkasem, and Mark Arnold. 2013. “A Generalization of Chao’s Estimator for Covariate Information.” <i>Biometrics</i> 69: 1033–42. <a href="https://doi.org/10.1111/biom.12082">https://doi.org/10.1111/biom.12082</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Böhning, Dankmar, and Peter G. M. van der Heijden. 2009. “A Covariate Adjustment for Zero-Truncated Approaches to Estimating the Size of Hidden and Elusive Populations.” <i>The Annals of Applied Statistics</i> 3 (2). <a href="https://doi.org/10.1214/08-AOAS214">https://doi.org/10.1214/08-AOAS214</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70.</div>
-  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>McElreath, Richard. 2016. <i>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</i>. First. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9781315372495">https://doi.org/10.1201/9781315372495</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
 </div>
