@@ -1,0 +1,43 @@
+#+title: Publications
+#+hugo_section: publications
+#+cite_export: csl apa_bare.csl
+#+bibliography: ../../static/references.bib
+
+
+[cite/n:
+@2022:kestemont_forgotten;
+@2021a:karsdorp_book;
+@2021:fonteyn_karsdorp;
+@2020b:kestemont;
+@2020a:manjavacas;
+@2020a:karsdorp;
+@2019i:karsdorp_willekeur;
+@2019h:haverals_syllables;
+@2019g:karsdorp_hiphop;
+@2019f:manjavacas_hip_hop_generation;
+@2019e:karsdorp_melody_sims;
+@2019d:karsdorp_cultural_entrenchment;
+@2019c:haverals_vooys;
+@2019b:manjavacas_hip_hop_generation;
+@2019a:lassche_repetition_popularity;
+@2019a:kestemont;
+@2017a:manjavacas_writing_science_fiction;
+@2017a:karsdorp_synthetische_literatuur;
+@2016a:meder_dfd;
+@2016a:kestemont_caesar;
+@2016a:karsdorp_story_networks;
+@2015c:karsdorp_love_equation;
+@2015b:karsdorp_momfer;
+@2015a:karsdorp_animacy_detection;
+@2014a:vankranenburg_cadence;
+@2014a:kestemont_time_mining;
+@2013b:karsdorp_motif_topic_models;
+@2013a:karsdorp_formules;
+@2012c:karsdorp_casting;
+@2012b:karsdorp:analogie;
+@2012a:karsdorp_motif_annotations;
+@2010a:karsdorp_regelmaat;
+]
+
+
+#+print_bibliography: :title "Publications"
