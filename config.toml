@@ -63,7 +63,7 @@ weight = 5
   showAllPostsOnHomePage = true # default
   postsOnHomePage = 10 # this option will be ignored if showAllPostsOnHomePage is set to true
   tagsOverview = true # show tags overview by default.
-  showProjectsList = false # show projects list by default (if projects data file exists).
+  showProjectsList = true # show projects list by default (if projects data file exists).
   showNewsList = false
 
   # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
