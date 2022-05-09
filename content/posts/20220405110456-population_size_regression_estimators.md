@@ -1,7 +1,7 @@
 +++
-title = "Population Size Estimation as a Regression Problem 🚧🚧"
+title = "Population Size Estimation as a Regression Problem"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-04-15T21:03:44+02:00
+lastmod = 2022-04-23T09:37:34+02:00
 tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity", "zelterman"]
 draft = false
 +++
@@ -415,7 +415,7 @@ data is heterogeneously generated, and knowlegde about the nature of this hetero
 should help specifying a better model.
 
 ArviZ also provides a function to create a summary plot much like the ones in
-McElreath (<a href="#citeproc_bib_item_4">2016</a>)'s _Statistical Rethinking_ book. The
+McElreath (<a href="#citeproc_bib_item_4">2018</a>)'s _Statistical Rethinking_ book. The
 open circles in the plot below represent the LOO values, and the error bars represent the
 standard deviation of these LOO values. Again, the plot confirms what we already knew, but
 that's reassuring if we want to apply the method to real-world case.
@@ -432,6 +432,6 @@ az.plot_compare(loo_comparison, insample_dev=False);
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bohning, Dankmar, Alberto Vidal-Diez, Rattana Lerdsuwansri, Chukiat Viwatwongkasem, and Mark Arnold. 2013. “A Generalization of Chao’s Estimator for Covariate Information.” <i>Biometrics</i> 69: 1033–42. <a href="https://doi.org/10.1111/biom.12082">https://doi.org/10.1111/biom.12082</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Böhning, Dankmar, and Peter G. M. van der Heijden. 2009. “A Covariate Adjustment for Zero-Truncated Approaches to Estimating the Size of Hidden and Elusive Populations.” <i>The Annals of Applied Statistics</i> 3 (2). <a href="https://doi.org/10.1214/08-AOAS214">https://doi.org/10.1214/08-AOAS214</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70.</div>
-  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>McElreath, Richard. 2016. <i>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</i>. First. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9781315372495">https://doi.org/10.1201/9781315372495</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>McElreath, Richard. 2018. <i>Statistical Rethinking: A Bayesian Course with Examples in R and Stan</i>. First. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9781315372495">https://doi.org/10.1201/9781315372495</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Zelterman, Daniel. 1988. “Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.” <i>Journal of Statistical Planning and Inference</i> 18 (2): 225–37. <a href="https://doi.org/10.1016/0378-3758(88)90007-9">https://doi.org/10.1016/0378-3758(88)90007-9</a>.</div>
 </div>
