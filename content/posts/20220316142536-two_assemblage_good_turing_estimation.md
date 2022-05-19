@@ -1,7 +1,7 @@
 +++
 title = "Estimating Unseen Shared Cultural Diversity"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-05-09T18:26:32+02:00
+lastmod = 2022-05-14T09:03:02+02:00
 tags = ["shared-richness", "chao1", "richness", "unseen-species", "folktales"]
 draft = false
 +++
@@ -66,9 +66,9 @@ first collection but not in the second collection. Finally, we want to calculate
 number of unseen shared stories. We denote that number by \\(f\_{0, 0}\\). Based on all these
 numbers, we can calculate the true number of shared stories:
 
-\begin{equation}
+\\[
 S\_{\textrm{shared}} = S\_{\textrm{shared}, \textrm{obs}} + f\_{0, +} + f\_{ +, 0} + f\_{0, 0}
-\end{equation}
+\\]
 
 
 ## Mean relative frequencies of shared items {#mean-relative-frequencies-of-shared-items}
@@ -80,51 +80,51 @@ following section. With minimal modifications, we can use the same strategy to c
 the average relative frequency \\(\alpha\_{r+}\\) of folk tales that occur \\(r\\) times collection
 1 and at least once (hence the '+' sign) in collection 2. The formula looks like this:
 
-\begin{equation}
+\\[
 \alpha\_{r+} = \frac{(r + 1)f\_{r+1, +}}{(n\_1 - r)f\_{r, +}}
-\end{equation}
+\\]
 
 Of course, we can also compute the average relative frequency \\(\alpha\_{+, v}\\) of folk
 tales occurring \\(v\\) times in collection 2 and at least once in collection 1:
 
-\begin{equation}
+\\[
 \alpha\_{+, v} = \frac{(v + 1)f\_{ +, v+1}}{(n\_2 - r)f\_{ +, v}}
-\end{equation}
+\\]
 
 If a folk type occurs equally often in both collections, we can calculate the average
 relative frequency \\(\alpha\_{rr}\\) with:
 
-\begin{equation}
+\\[
 \alpha\_{rr} = \frac{(r + 1)^2 f\_{r+1, r+1}}{(n\_1 - r) (n\_2 - r)f\_{r, r}}
-\end{equation}
+\\]
 
 Back to the calculation of \\(v\_{\textrm{shared}}\\). Just as we have seen in [Demystifying
 Chao1 with Good-Turing]({{< relref "20220309103709-good_turing_as_an_unseen_species_model.md" >}}), we cannot compute \\(f\_{0, +}\\) and \\(f\_{ +, 0}\\) directly, since we
-have no knowledge about \\(\alpha\_{0, +}\\) en \\(\alpha\_{ +, 0}\\). In other words, we don't know
+have no knowledge about \\(\alpha\_{0,q +}\\) en \\(\alpha\_{ +, 0}\\). In other words, we don't know
 the frequency with which shared folk tales occur in one of the collections but not in the
 other. What we do know, however, is that \\(\frac{\alpha\_{0, +} f\_{0, +}}{\alpha\_{0, +}}
 \geq \frac{\alpha\_{0, +} f\_{0, +}}{\alpha\_{1, +}}\\). And that last term can be calculated
 with:
 
-\begin{equation}
+\\[
 f\_{0, +} = \frac{\alpha\_{0, +} f\_{0,
 +}}{\alpha\_{0, +}} \geq \frac{\alpha\_{0, +} f\_{0, +}}{\alpha\_{1, +}} = \frac{\frac{f\_{1, +}}{n\_1}}{\frac{2f\_{2, +}}{(n\_1 - 1)f\_{1, +}}} = \frac{(n\_1 - 1)}{n\_1} \frac{f^2\_{1, +}}{2f\_{2, +}}
-\end{equation}
+\\]
 
 Conversely, the frequency with which shared folk tales occur in collection 1 but not in
-collection 2 (\\(f\_{+, 0}\\)), can be calculated with:
+collection 2 (\\(f\_{+, 0}\\)) can be calculated with:
 
-\begin{equation}
+\\[
 f\_{+, 0} = \frac{\alpha\_{ +, 0} f\_{ +,
 0}}{\alpha\_{ +, 0}} \geq \frac{\alpha\_{ +, 0} f\_{ +, 0}}{\alpha\_{ +, 1}} = \frac{\frac{f\_{ +, 1}}{n\_2}}{\frac{2f\_{ +, 2}}{(n\_2 - 1)f\_{ +, 1}}} = \frac{(n\_2 - 1)}{n\_2} \frac{f^2\_{ +, 1}}{2f\_{ +, 2}}
-\end{equation}
+\\]
 
 All that remains is computing \\(f\_{0, 0}\\), for which we may also assume that \\(\alpha\_{0, 0}
 \leq \alpha\_{1, 1}\\). That leads to:
 
-\begin{equation}
+\\[
 f\_{0, 0} = \frac{\alpha\_{0, 0} f\_{0, 0}}{\alpha\_{0, 0}} \geq \frac{\alpha\_{0, 0} f\_{0, 0}}{\alpha\_{1, 1}} = \frac{\frac{f\_{1, 1}}{n\_1, n\_2}}{\frac{4f\_{2, 2}}{(n\_1 - 1) (n\_2 - 1)f\_{1, 1}}} = \frac{(n\_1 - 1)}{n\_1} \frac{(n\_2 - 1)}{n\_2} \frac{f^2\_{1, 1}}{4f\_{2, 2}}
-\end{equation}
+\\]
 
 We apply these formulas to our invented story collections to calculate the actual shared
 repertoire. For \\(f\_{0, + }\\), we have \\(\frac{(n\_1 - 1)}{n\_1} \frac{f^2\_{1, +}}{2f\_{2, +}} =
@@ -134,9 +134,9 @@ repertoire. For \\(f\_{0, + }\\), we have \\(\frac{(n\_1 - 1)}{n\_1} \frac{f^2\_
 1}}{4f\_{2, 2}} = \frac{22}{23} \frac{20}{21} \frac{1^2}{4} = 0.2\\). Finally we compute
 \\(S\_{\text{shared}}\\):
 
-\begin{equation}
+\\[
 S\_{\textrm{shared}} = 7 + 2.2 + 1.4 + 0.2 = 11
-\end{equation}
+\\]
 
 
 ## Shared Richness in the Dutch Folktale Database {#shared-richness-in-the-dutch-folktale-database}
