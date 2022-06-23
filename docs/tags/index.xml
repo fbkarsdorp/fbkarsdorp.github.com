@@ -7,11 +7,65 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Mon, 09 May 2022 18:26:32 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 12:31:36 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bias</title>
+      <link>https://www.karsdorp.io/tags/bias/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/bias/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diversity</title>
+      <link>https://www.karsdorp.io/tags/diversity/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/diversity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FAD</title>
+      <link>https://www.karsdorp.io/tags/fad/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/fad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>functional</title>
+      <link>https://www.karsdorp.io/tags/functional/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/functional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sampling</title>
+      <link>https://www.karsdorp.io/tags/sampling/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/sampling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>similarity</title>
+      <link>https://www.karsdorp.io/tags/similarity/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/similarity/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>chao1</title>
       <link>https://www.karsdorp.io/tags/chao1/</link>
-      <pubDate>Mon, 09 May 2022 18:26:32 +0200</pubDate>
+      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/chao1/</guid>
       <description></description>
@@ -20,7 +74,7 @@
     <item>
       <title>folktales</title>
       <link>https://www.karsdorp.io/tags/folktales/</link>
-      <pubDate>Mon, 09 May 2022 18:26:32 +0200</pubDate>
+      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/folktales/</guid>
       <description></description>
@@ -29,7 +83,7 @@
     <item>
       <title>richness</title>
       <link>https://www.karsdorp.io/tags/richness/</link>
-      <pubDate>Mon, 09 May 2022 18:26:32 +0200</pubDate>
+      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/richness/</guid>
       <description></description>
@@ -38,7 +92,7 @@
     <item>
       <title>shared-richness</title>
       <link>https://www.karsdorp.io/tags/shared-richness/</link>
-      <pubDate>Mon, 09 May 2022 18:26:32 +0200</pubDate>
+      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/shared-richness/</guid>
       <description></description>
@@ -47,18 +101,9 @@
     <item>
       <title>unseen-species</title>
       <link>https://www.karsdorp.io/tags/unseen-species/</link>
-      <pubDate>Mon, 09 May 2022 18:26:32 +0200</pubDate>
+      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/unseen-species/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>diversity</title>
-      <link>https://www.karsdorp.io/tags/diversity/</link>
-      <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/diversity/</guid>
       <description></description>
     </item>
     
@@ -117,29 +162,11 @@
     </item>
     
     <item>
-      <title>bias</title>
-      <link>https://www.karsdorp.io/tags/bias/</link>
-      <pubDate>Thu, 31 Mar 2022 12:35:33 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/bias/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>replacement</title>
       <link>https://www.karsdorp.io/tags/replacement/</link>
       <pubDate>Thu, 31 Mar 2022 12:35:33 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/replacement/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sampling</title>
-      <link>https://www.karsdorp.io/tags/sampling/</link>
-      <pubDate>Thu, 31 Mar 2022 12:35:33 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/sampling/</guid>
       <description></description>
     </item>
     

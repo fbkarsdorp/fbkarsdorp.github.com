@@ -35,7 +35,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/" /><meta property="article:section" content="posts" />
 
-<meta property="article:modified_time" content="2022-05-09T18:26:32+02:00" />
+<meta property="article:modified_time" content="2022-05-14T09:03:02+02:00" />
 
 
   <meta name="twitter:card" content="summary"/>
@@ -94,6 +94,12 @@
           </a>
         </li>
         
+        
+        <li>
+          <a class="icon" href="https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
         
         <li>
           <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
@@ -194,7 +200,7 @@
         
         <div class="postdate">
           
-          <time datetime="2022-05-09 18:26:32 &#43;0200 CEST" itemprop="datePublished">2022-05-09</time>
+          <time datetime="2022-05-14 09:03:02 &#43;0200 CEST" itemprop="datePublished">2022-05-14</time>
           
         </div>
         
@@ -356,9 +362,9 @@ Conversely, we use \(f_{ +, 0}\) for the number of stories that occur at least o
 first collection but not in the second collection. Finally, we want to calculate the
 number of unseen shared stories. We denote that number by \(f_{0, 0}\). Based on all these
 numbers, we can calculate the true number of shared stories:</p>
-<p>\begin{equation}
+<p>\[
 S_{\textrm{shared}} = S_{\textrm{shared}, \textrm{obs}} + f_{0, +} + f_{ +, 0} + f_{0, 0}
-\end{equation}</p>
+\]</p>
 <h2 id="mean-relative-frequencies-of-shared-items">Mean relative frequencies of shared items</h2>
 <p>In <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>, I explained how we can calculate the true average
 relative frequency of species or words (or some other category) that occur \(r\) times using
@@ -366,41 +372,41 @@ the Good-Turing framework. You will need to read that post in order to understan
 following section. With minimal modifications, we can use the same strategy to calculate
 the average relative frequency \(\alpha_{r+}\) of folk tales that occur \(r\) times collection
 1 and at least once (hence the &lsquo;+&rsquo; sign) in collection 2. The formula looks like this:</p>
-<p>\begin{equation}
+<p>\[
 \alpha_{r+} = \frac{(r + 1)f_{r+1, +}}{(n_1 - r)f_{r, +}}
-\end{equation}</p>
+\]</p>
 <p>Of course, we can also compute the average relative frequency \(\alpha_{+, v}\) of folk
 tales occurring \(v\) times in collection 2 and at least once in collection 1:</p>
-<p>\begin{equation}
+<p>\[
 \alpha_{+, v} = \frac{(v + 1)f_{ +, v+1}}{(n_2 - r)f_{ +, v}}
-\end{equation}</p>
+\]</p>
 <p>If a folk type occurs equally often in both collections, we can calculate the average
 relative frequency \(\alpha_{rr}\) with:</p>
-<p>\begin{equation}
+<p>\[
 \alpha_{rr} = \frac{(r + 1)^2 f_{r+1, r+1}}{(n_1 - r) (n_2 - r)f_{r, r}}
-\end{equation}</p>
+\]</p>
 <p>Back to the calculation of \(v_{\textrm{shared}}\). Just as we have seen in <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying
 Chao1 with Good-Turing</a>, we cannot compute \(f_{0, +}\) and \(f_{ +, 0}\) directly, since we
-have no knowledge about \(\alpha_{0, +}\) en \(\alpha_{ +, 0}\). In other words, we don&rsquo;t know
+have no knowledge about \(\alpha_{0,q +}\) en \(\alpha_{ +, 0}\). In other words, we don&rsquo;t know
 the frequency with which shared folk tales occur in one of the collections but not in the
 other. What we do know, however, is that \(\frac{\alpha_{0, +} f_{0, +}}{\alpha_{0, +}}
 \geq \frac{\alpha_{0, +} f_{0, +}}{\alpha_{1, +}}\). And that last term can be calculated
 with:</p>
-<p>\begin{equation}
+<p>\[
 f_{0, +} = \frac{\alpha_{0, +} f_{0,
 +}}{\alpha_{0, +}} \geq \frac{\alpha_{0, +} f_{0, +}}{\alpha_{1, +}} = \frac{\frac{f_{1, +}}{n_1}}{\frac{2f_{2, +}}{(n_1 - 1)f_{1, +}}} = \frac{(n_1 - 1)}{n_1} \frac{f^2_{1, +}}{2f_{2, +}}
-\end{equation}</p>
+\]</p>
 <p>Conversely, the frequency with which shared folk tales occur in collection 1 but not in
-collection 2 (\(f_{+, 0}\)), can be calculated with:</p>
-<p>\begin{equation}
+collection 2 (\(f_{+, 0}\)) can be calculated with:</p>
+<p>\[
 f_{+, 0} = \frac{\alpha_{ +, 0} f_{ +,
 0}}{\alpha_{ +, 0}} \geq \frac{\alpha_{ +, 0} f_{ +, 0}}{\alpha_{ +, 1}} = \frac{\frac{f_{ +, 1}}{n_2}}{\frac{2f_{ +, 2}}{(n_2 - 1)f_{ +, 1}}} = \frac{(n_2 - 1)}{n_2} \frac{f^2_{ +, 1}}{2f_{ +, 2}}
-\end{equation}</p>
+\]</p>
 <p>All that remains is computing \(f_{0, 0}\), for which we may also assume that \(\alpha_{0, 0}
 \leq \alpha_{1, 1}\). That leads to:</p>
-<p>\begin{equation}
+<p>\[
 f_{0, 0} = \frac{\alpha_{0, 0} f_{0, 0}}{\alpha_{0, 0}} \geq \frac{\alpha_{0, 0} f_{0, 0}}{\alpha_{1, 1}} = \frac{\frac{f_{1, 1}}{n_1, n_2}}{\frac{4f_{2, 2}}{(n_1 - 1) (n_2 - 1)f_{1, 1}}} = \frac{(n_1 - 1)}{n_1} \frac{(n_2 - 1)}{n_2} \frac{f^2_{1, 1}}{4f_{2, 2}}
-\end{equation}</p>
+\]</p>
 <p>We apply these formulas to our invented story collections to calculate the actual shared
 repertoire. For \(f_{0, + }\), we have \(\frac{(n_1 - 1)}{n_1} \frac{f^2_{1, +}}{2f_{2, +}} =
 \frac{22}{23} \frac{3^2}{4} = 2.2\). And for \(f_{ +, 0}\), we have that \(\frac{(n_2 -
@@ -408,9 +414,9 @@ repertoire. For \(f_{0, + }\), we have \(\frac{(n_1 - 1)}{n_1} \frac{f^2_{1, +}}
 \(f_{0, 0}\), then, we compute \(\frac{(n_1 - 1)}{n_1} \frac{(n_2 - 1)}{n_2} \frac{f^2_{1,
 1}}{4f_{2, 2}} = \frac{22}{23} \frac{20}{21} \frac{1^2}{4} = 0.2\). Finally we compute
 \(S_{\text{shared}}\):</p>
-<p>\begin{equation}
+<p>\[
 S_{\textrm{shared}} = 7 + 2.2 + 1.4 + 0.2 = 11
-\end{equation}</p>
+\]</p>
 <h2 id="shared-richness-in-the-dutch-folktale-database">Shared Richness in the Dutch Folktale Database</h2>
 <p>Having applied Chao&rsquo;s shared richness estimator to a toy example, it would be interesting
 to apply it to a real case. Below, I apply the estimator to the <a href="https://www.verhalenbank.nl">Dutch Folktale Database</a>, a

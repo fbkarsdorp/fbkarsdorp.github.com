@@ -7,11 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Mon, 09 May 2022 18:26:32 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 12:31:36 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Undetected Functional Attribute Diversity</title>
+      <link>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</guid>
+      <description>Functional Diversity In some previous notebooks (see, for example, here, here, and here), I have discussed the concept of cultural diversity and how methods from ecology can be used to estimate the lower bound of unseen cultural diversity. In these notebooks, diversity was understood simply as the number of unique items in a collection (e.g., species, narratives, pictures, melodies, etc.), with all elements being considered as equidistant, or, in other words, categorically different.</description>
+    </item>
+    
     <item>
       <title>Estimating Unseen Shared Cultural Diversity</title>
       <link>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</link>
-      <pubDate>Mon, 09 May 2022 18:26:32 +0200</pubDate>
+      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</guid>
       <description>Shared Species Estimation In Demystifying Chao1 with Good-Turing, I tried to explain the intuition behind the Chao1 estimator (Chao 1984) for unseen species using the Good-Turing estimator as described in Chao et al. (2017). The latter article discusses another set of diversity measures within that same framework of Turing. The number of unique species or the number of unique cultural artifacts in a given environment is only one diversity measure, but we can also study the shared diversity between two cultural collections, for example.</description>

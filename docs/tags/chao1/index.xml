@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Mon, 09 May 2022 18:26:32 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/chao1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 May 2022 09:03:02 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/chao1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Estimating Unseen Shared Cultural Diversity</title>
       <link>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</link>
-      <pubDate>Mon, 09 May 2022 18:26:32 +0200</pubDate>
+      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</guid>
       <description>Shared Species Estimation In Demystifying Chao1 with Good-Turing, I tried to explain the intuition behind the Chao1 estimator (Chao 1984) for unseen species using the Good-Turing estimator as described in Chao et al. (2017). The latter article discusses another set of diversity measures within that same framework of Turing. The number of unique species or the number of unique cultural artifacts in a given environment is only one diversity measure, but we can also study the shared diversity between two cultural collections, for example.</description>
