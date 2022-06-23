@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Undetected Functional Attribute Diversity | Folgert Karsdorp</title>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/'>
+  <meta name="description" content="I&#39;m a researcher in Computational Humanities and Cultural Evolution at
+  the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal Netherlands Academy
+  of Arts and Sciences (Amsterdam, the Netherlands).
+
+  My research focuses on why some cultural phenomena are adopted and persist through time,
+  while others change or disappear. Additionally, I&#39;m interested in measuring cultural
+  diversity and compositional complexity, and how we can account for biases in our
+  estimations of diversity. To do that, I use computational models from Machine Learning,
+  Cultural Evolution, and Ecology.
+
+  Besides cultural change and diversity, I&#39;m also interested in teaching about computer
+  programming in the context of the Humanities. I published a text book with [Princeton
+  University
+  Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
+  about using Python for Humanities data analysis. Check out the open access edition
+  [here](https://www.humanitiesdataanalysis.org)!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Undetected Functional Attribute Diversity" />
+<meta property="og:description" content="Functional Diversity In some previous notebooks (see, for example, here, here, and here), I have discussed the concept of cultural diversity and how methods from ecology can be used to estimate the lower bound of unseen cultural diversity. In these notebooks, diversity was understood simply as the number of unique items in a collection (e.g., species, narratives, pictures, melodies, etc.), with all elements being considered as equidistant, or, in other words, categorically different." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/" /><meta property="article:section" content="posts" />
+
+<meta property="article:modified_time" content="2022-06-23T12:31:36+02:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Undetected Functional Attribute Diversity"/>
+<meta name="twitter:description" content="Functional Diversity In some previous notebooks (see, for example, here, here, and here), I have discussed the concept of cultural diversity and how methods from ecology can be used to estimate the lower bound of unseen cultural diversity. In these notebooks, diversity was understood simply as the number of unique items in a collection (e.g., species, narratives, pictures, melodies, etc.), with all elements being considered as equidistant, or, in other words, categorically different."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.113434789f3c21bf5b57e90215ead36599790c0ce86e3492f239ce88648708a3dcced805b389721cf2f244af1fa951706872cadf838cb7fcc0321d7cdfa6afc8.css" integrity="sha512-ETQ0eJ88Ib9bV&#43;kCFerTZZl5DAzobjSS8jnOiGSHCKPcztgFs4lyHPLyRK8fqVFwaHLK34OMt/zAMh1836avyA=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&text=Undetected%20Functional%20Attribute%20Diversity" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&title=Undetected%20Functional%20Attribute%20Diversity" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&is_video=false&description=Undetected%20Functional%20Attribute%20Diversity" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Undetected%20Functional%20Attribute%20Diversity&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&title=Undetected%20Functional%20Attribute%20Diversity" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&title=Undetected%20Functional%20Attribute%20Diversity" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&name=Undetected%20Functional%20Attribute%20Diversity&description=Functional%20Diversity%20In%20some%20previous%20notebooks%20%28see%2c%20for%20example%2c%20here%2c%20here%2c%20and%20here%29%2c%20I%20have%20discussed%20the%20concept%20of%20cultural%20diversity%20and%20how%20methods%20from%20ecology%20can%20be%20used%20to%20estimate%20the%20lower%20bound%20of%20unseen%20cultural%20diversity.%20In%20these%20notebooks%2c%20diversity%20was%20understood%20simply%20as%20the%20number%20of%20unique%20items%20in%20a%20collection%20%28e.g.%2c%20species%2c%20narratives%2c%20pictures%2c%20melodies%2c%20etc.%29%2c%20with%20all%20elements%20being%20considered%20as%20equidistant%2c%20or%2c%20in%20other%20words%2c%20categorically%20different." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&t=Undetected%20Functional%20Attribute%20Diversity" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#functional-diversity">Functional Diversity</a>
+      <ul>
+        <li><a href="#functional-diversity-in-the-dutch-folktale-database">Functional Diversity in the Dutch Folktale Database</a></li>
+      </ul>
+    </li>
+    <li><a href="#unseen-functional-diversity">Unseen Functional Diversity</a>
+      <ul>
+        <li><a href="#unseen-functional-diversity-in-the-dutch-folktale-database">Unseen Functional Diversity in the Dutch Folktale Database</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Undetected Functional Attribute Diversity
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-06-23 12:31:36 &#43;0200 CEST" itemprop="datePublished">2022-06-23</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          10 minute read
+        </div>
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/functional" rel="tag">functional</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/diversity" rel="tag">diversity</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/fad" rel="tag">FAD</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/similarity" rel="tag">similarity</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/bias" rel="tag">bias</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/sampling" rel="tag">sampling</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="functional-diversity">Functional Diversity</h2>
+<p>In some previous notebooks (see, for example, <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">here</a>, <a href="/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">here</a>, and <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">here</a>), I have discussed the
+concept of cultural diversity and how methods from ecology can be used to estimate the
+lower bound of unseen cultural diversity. In these notebooks, diversity was understood
+simply as the number of unique items in a collection (e.g., species, narratives, pictures,
+melodies, etc.), with all elements being considered as equidistant, or, in other words,
+categorically different. Of course, it only rarely, if ever, happens that all items are
+exactly equally different from each other. It is much more likely that some species are
+more similar than others. And the same is true of cultural artefacts.</p>
+<p>Imagine two populations &ldquo;A&rdquo; and &ldquo;B&rdquo;, each consisting of 100 unique items. In terms of
+categorical diversity, both populations have a diversity index of 100. We can, however,
+also describe each item in terms of certain characteristics and properties, as shown
+below, in which the items are represented as points in a two-dimensional space
+(representing weight and height, for example):</p>
+<figure><img src="/ox-hugo/64ff902eee21dde59ec2258fba83d89afe17f853.png"/>
+</figure>
+
+<p>Clearly, the items in population B can grouped into three clusters, whereas there does not
+appear to be any clustering structure in population A, and as a whole the distance between
+all individual items seems larger in population A than in B. In short, if we treat
+diversity as a scalar phenomenon rather than a categorical one and thus incorporate
+similarities between items in our definition of diversity, it is clear that population A
+is more diverse than population B.</p>
+<p>In ecology, several diversity measures have been developed that account for differences
+between species and individuals. Most of these measures attempt to estimate functional
+diversity in terms of the similarities between certain attributes. Based on these
+attributes, then, we can compute pairwise distances between species using well-known
+distance metrics (such as the &ldquo;Euclidean distance&rdquo; or &ldquo;Jaccard dissimilarity index&rdquo;).
+&ldquo;Functional Attribute Diversity&rdquo; (FAD) (<a href="#citeproc_bib_item_3">Walker, Kinzig, and Langridge 1999</a>), is an
+example of such a measure that expresses functional diversity as the sum of the pairwise
+distances between species:</p>
+<p>\[
+\textrm{FAD} = \sum^S_{i = 1} \sum^S_{j = 1} d_{ij}
+\]</p>
+<p>Here, \(S\) represents the number of unique species, and \(d_{ij}\) the distance between
+species \(i\) and \(j\).</p>
+<h3 id="functional-diversity-in-the-dutch-folktale-database">Functional Diversity in the Dutch Folktale Database</h3>
+<p>To get a feel for the FAD measure compared to other more common measures such as
+&ldquo;richness&rdquo; (i.e., the number of unique elements), I apply the measure to a collection of
+Dutch folktales from the <a href="https://www.verhalenbank.nl">Dutch Folktale Database</a> (also see <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">Estimating Unseen Shared
+Cultural Diversity</a>). Many stories in the database have been categorised according to the
+Aarne-Thompson-Uther index (<a href="#citeproc_bib_item_2">Uther 2004</a>), which is an
+international index for categorising folktales. This index distinguishes numerous
+different folktale types, that are defined on the basis of a set of motifs that often
+occur in instantiations these types. Each story type in the index provides a short summary
+of the most common plot developments along with a sequence of motifs from Thompson&rsquo;s
+<em>Motif Index</em>. An example of such a description reads as follows:</p>
+<blockquote>
+<p>ATU 327A, <strong>Hansel and Gretel</strong>. A (poor) father (persuaded by the stepmother) abandons his
+children (a boy and a girl) in the forest [S321, S143]. Twice the children find their way
+back home, following scattered pebbles [R135]. On the third night, birds eat the scattered
+peas (bread-crumbs) [R135.1]. The children come upon a gingerbread house which belongs to
+a witch (ogress) [G401, F771.1.10, G412.1]. She takes them into her house. The boy is
+fattened [G82], while the girl must do house-work. The witch asks the boy to show his
+finger in order to test how fat he is [G82.1], but he shows her a bone(stick) [G82.1.1].
+When the witch wants to cook the boy, the sister deceives her by feigning ignorance and
+pushes her into the oven [G526, G512.3.2]. [. . . ] The children escape, carrying the
+witch’s treasure with them. Birds and beasts(angels) help them across water. They return
+home.</p>
+</blockquote>
+<p>This example shows that the tale type ATU 327A contains twelve motifs, such as S321
+<em>Destitute parents abandon children</em>, G401 <em>Children wander into ogre’s house</em>, G82.1
+<em>Cannibal cuts captive’s finger to test fatness</em>, and G526 <em>Ogre deceived by feigned
+ignorance of hero</em>.</p>
+<p>Below, I will use use these motif sequences to compute the distances between stories, and
+subsequently, the FAD of the folktale collection. We start with loading the data:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dfd <span style="color:#666">=</span> pd<span style="color:#666">.</span>read_csv(<span style="color:#4070a0">&#34;data/dfd-motifs.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>dfd<span style="color:#666">.</span>head()
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th>count</th>
+<th>storytype</th>
+<th>motifs</th>
+<th>category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>ATU 1</td>
+<td>K371.1</td>
+<td>Animal Tales</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>ATU 2</td>
+<td>K1021</td>
+<td>Animal Tales</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>ATU 2A</td>
+<td>K1021.1</td>
+<td>Animal Tales</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>ATU 15</td>
+<td>K372</td>
+<td>Animal Tales</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>ATU 20C</td>
+<td>Z43.3</td>
+<td>Animal Tales</td>
+</tr>
+</tbody>
+</table>
+<p>An rudimentary yet important measure of diversity is the number of unique items or
+&ldquo;richness&rdquo; in an assemblage or collection. The richness of the folktale collection is
+simply the number of unique story types:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dfd[<span style="color:#4070a0">&#39;storytype&#39;</span>]<span style="color:#666">.</span>nunique()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>348
+</span></span></code></pre></div><p>Similarly, we can compute this richness per folktale type category. The index defines
+seven categories (Tales of Magic I and II are essentially one category) with the following
+richness diversity:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dfd[<span style="color:#4070a0">&#34;category&#34;</span>]<span style="color:#666">.</span>value_counts()
+</span></span></code></pre></div><p>Let us now compute the Functional Attribute Diversity of the folktale collection as a
+whole and per category. As our distance measure, we will compute the Jaccard
+dissimilarity index, which is a set-based dissimilarity measure:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">itertools</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">jaccard_distance</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#40a070">1</span> <span style="color:#666">-</span> <span style="color:#007020">len</span>(a<span style="color:#666">.</span>intersection(b)) <span style="color:#666">/</span> <span style="color:#007020">len</span>(a<span style="color:#666">.</span>union(b))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FAD <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+</span></span><span style="display:flex;"><span>motifs <span style="color:#666">=</span> dfd[<span style="color:#4070a0">&#34;motifs&#34;</span>]<span style="color:#666">.</span>str<span style="color:#666">.</span>split(<span style="color:#4070a0">&#34;;&#34;</span>)<span style="color:#666">.</span>apply(<span style="color:#007020">set</span>)<span style="color:#666">.</span>values
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> a, b <span style="color:#007020;font-weight:bold">in</span> itertools<span style="color:#666">.</span>combinations(motifs, <span style="color:#40a070">2</span>):
+</span></span><span style="display:flex;"><span>     d <span style="color:#666">=</span> jaccard_distance(a, b)
+</span></span><span style="display:flex;"><span>     <span style="color:#007020;font-weight:bold">assert</span> d <span style="color:#666">&lt;=</span> <span style="color:#40a070">1</span>
+</span></span><span style="display:flex;"><span>     FAD <span style="color:#666">+=</span> d <span style="color:#666">*</span> <span style="color:#40a070">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;FAD = </span><span style="color:#70a0d0;font-style:italic">{</span><span style="color:#007020">round</span>(FAD)<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>FAD = 131374
+</span></span></code></pre></div><p>By themselves, these numbers are rather difficult to interpret. I&rsquo;m not quite sure how to
+interpret the value of 131374. It becomes more interesting and interpretable when we
+compare the FAD of different categories. So, let&rsquo;s do that and compute the FAD of the
+seven categories and compare their diversity measures:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>FADs <span style="color:#666">=</span> {}
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> category <span style="color:#007020;font-weight:bold">in</span> df[<span style="color:#4070a0">&#34;category&#34;</span>]<span style="color:#666">.</span>unique():
+</span></span><span style="display:flex;"><span>    FAD <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+</span></span><span style="display:flex;"><span>    motifs <span style="color:#666">=</span> dfd<span style="color:#666">.</span>loc[dfd[<span style="color:#4070a0">&#34;category&#34;</span>] <span style="color:#666">==</span> category, <span style="color:#4070a0">&#34;motifs&#34;</span>]<span style="color:#666">.</span>str<span style="color:#666">.</span>split(<span style="color:#4070a0">&#34;;&#34;</span>)<span style="color:#666">.</span>apply(<span style="color:#007020">set</span>)<span style="color:#666">.</span>values
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> a, b <span style="color:#007020;font-weight:bold">in</span> itertools<span style="color:#666">.</span>combinations(motifs, <span style="color:#40a070">2</span>):
+</span></span><span style="display:flex;"><span>         d <span style="color:#666">=</span> jaccard_distance(a, b)
+</span></span><span style="display:flex;"><span>         FAD <span style="color:#666">+=</span> d <span style="color:#666">*</span> <span style="color:#40a070">2</span>
+</span></span><span style="display:flex;"><span>    FADs[category] <span style="color:#666">=</span> FAD
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> category <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">sorted</span>(FADs, key<span style="color:#666">=</span>FADs<span style="color:#666">.</span>get, reverse<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">True</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#007020">print</span>(category, <span style="color:#007020">round</span>(FADs[category]))
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Anecdotes and Jokes 19736
+</span></span><span style="display:flex;"><span>Animal Tales 4966
+</span></span><span style="display:flex;"><span>Tales of Magic I 2548
+</span></span><span style="display:flex;"><span>Tales of Magic II 866
+</span></span><span style="display:flex;"><span>Realistic Tales 812
+</span></span><span style="display:flex;"><span>Religious Tales 450
+</span></span><span style="display:flex;"><span>Tales of the Stupid Ogre 240
+</span></span><span style="display:flex;"><span>Formula Tales 6
+</span></span></code></pre></div><p>The FAD measure shows more pronounced differences between the categories. For example,
+when &ldquo;Anecdotes and Jokes&rdquo; has about twice the number of unique stories than &ldquo;Animal
+Tales&rdquo;. This difference becomes even larger for the FAD, for which Anecdotes and Jokes has
+a FAD that is \(\frac{19736}{4966} \approx 4\) times larger than that of Animal Tales.</p>
+<h2 id="unseen-functional-diversity">Unseen Functional Diversity</h2>
+<p>The ATU index is a collection of all defined story types. However, in actual folktales
+collections, we rarely encounter all of these types, as they often represent incomplete
+samples, offering only limited insight into the potential diversity of folktales. The same
+problem arises in ecology. When bioregistration campaigns are used to measure categorical
+or functional diversity in a given area, there is always a chance that not all species and
+therefore not thee full feature space had been observed. Can we somehow correct the bias
+introduced by this by estimating how much <em>functional</em> diversity is unobserved?</p>
+<p>Chao et al. (<a href="#citeproc_bib_item_1">2017</a>) propose an estimator of undetected fuctional
+diversity to correct for this bias. Their method is based on the Good-Turing framework I
+discussed in <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>. The method estimates a lower-bound of
+the unseen FAD in way comparable to the estimation of the number of unseen species
+<em>shared</em> between two assemlages (see <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">Estimating Unseen Shared Cultural Diversity</a>).
+(<a href="#citeproc_bib_item_1">Chao et al. 2017</a>) show that the a lower-bound of the true FAD
+can be expressed as the sum of the following four terms:</p>
+<p>\[
+\textrm{FAD} = \textrm{FAD}_{\textrm{obs}} + \textrm{F}_{0+} + \textrm{F}_{+0} + \textrm{F}_{00}.
+\]</p>
+<p>Here, \(\textrm{FAD}_{\textrm{obs}}\) represents the FAD of the observed sample. \(F_{0+}\)
+and \(F_{+0}\) represent the unseen FAD of pairs of items in which one item is missing from
+the sample. Finally, \(F_{00}\) represents the FAD for items that are both missing from the
+sample.</p>
+<p>Just as I explained before in <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a> and <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">Estimating Unseen
+Shared Cultural Diversity</a>, we aim to compute the mean distance \(\theta_{rr}\) of any two
+pair of items (or species) that occur exactly \(r\) times. To do that,
+(<a href="#citeproc_bib_item_1">Chao et al. 2017</a>) propose the estimator \(\theta_{rr}\):</p>
+<p>\[
+\hat{\theta}_{rr} = \frac{(r + 1)^2 F_{r + 1, r + 1}}{(n - 2r)(n - 2r - 1)F_{rr}}, r = 0, 1, 2, \ldots
+\]</p>
+<p>Unfortunately, we do not know \(F_{00}\) nor do we know about \(\theta_{00}\). We do know,
+however, that \(\frac{F_{11}}{n}\) is a good estimate of the product of \(\theta_{00}\) and
+\(F_{00}\). And like with the Good-Turing derivation of Chao1, it should intuitively hold
+that \(\theta_{00} \leq \theta_{11}\). And if that is the case we can compute a lower bound
+for \(F_{00}\) with:</p>
+<p>\begin{align*}
+F_{00} = \frac{\theta_{00} F_{00}}{\theta_{00}} \geq \frac{\theta_{00} F_{00}}{\theta_{11}} &amp; = \frac{\frac{F_{11}}{n(n - 1)}}{\frac{4F_{22}}{(n - 2)(n - 3)F_{11}}} \\
+&amp; = \frac{(n - 2)}{n} \frac{(n - 3)}{(n - 1)} \frac{F^2_{11}}{4F_{22}}
+\end{align*}</p>
+<p>For \(F_{0+}\) and \(F_{+0}\), we apply the same strategy as explained in <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">Estimating Unseen
+Shared Cultural Diversity</a>, which gives us the following expression to compute a
+lower-bound for the true functional diversity in an assemblage:</p>
+<p>\[
+\textrm{FAD}_{\textrm{Chao1}} = \textrm{FAD}_{\textrm{obs}} + \frac{(n - 1)}{n} \frac{F^2_{1+}}{2F_{2+}}  + \frac{(n - 1)}{n} \frac{F^2_{+1}}{2F_{+2}} + \frac{(n - 2)}{n} \frac{(n - 3)}{(n - 1)} \frac{F^2_{11}}{4F_{22}}
+\]</p>
+<h3 id="unseen-functional-diversity-in-the-dutch-folktale-database">Unseen Functional Diversity in the Dutch Folktale Database</h3>
+<p>To conclude this notebook, let us apply the \(\textrm{FAD}_{\textrm{Chao1}}\) to the
+folktale database to estimate its unseen functional diversity. We start by implementing
+the FAD estimator in the following lines of code:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">compute_fad_chao1</span>(dm, counts):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    FAD_obs <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(dm[counts <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>][:, counts <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>])
+</span></span><span style="display:flex;"><span>    mean_distance <span style="color:#666">=</span> np<span style="color:#666">.</span>mean(dm)
+</span></span><span style="display:flex;"><span>    F1p <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(dm[counts <span style="color:#666">==</span> <span style="color:#40a070">1</span>][:, counts <span style="color:#666">&gt;=</span> <span style="color:#40a070">1</span>])
+</span></span><span style="display:flex;"><span>    Fp1 <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(dm[counts <span style="color:#666">&gt;=</span> <span style="color:#40a070">1</span>][:, counts <span style="color:#666">==</span> <span style="color:#40a070">1</span>])
+</span></span><span style="display:flex;"><span>    F2p <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(dm[counts <span style="color:#666">==</span> <span style="color:#40a070">2</span>][:, counts <span style="color:#666">&gt;=</span> <span style="color:#40a070">1</span>])
+</span></span><span style="display:flex;"><span>    F2p <span style="color:#666">=</span> <span style="color:#007020">max</span>(F2p, mean_distance)
+</span></span><span style="display:flex;"><span>    Fp2 <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(dm[counts <span style="color:#666">&gt;=</span> <span style="color:#40a070">1</span>][:, counts <span style="color:#666">==</span> <span style="color:#40a070">2</span>])
+</span></span><span style="display:flex;"><span>    Fp2 <span style="color:#666">=</span> <span style="color:#007020">max</span>(Fp2, mean_distance)
+</span></span><span style="display:flex;"><span>    F11 <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(dm[counts <span style="color:#666">==</span> <span style="color:#40a070">1</span>][:, counts <span style="color:#666">==</span> <span style="color:#40a070">1</span>])
+</span></span><span style="display:flex;"><span>    F22 <span style="color:#666">=</span> np<span style="color:#666">.</span>sum(dm[counts <span style="color:#666">==</span> <span style="color:#40a070">2</span>][:, counts <span style="color:#666">==</span> <span style="color:#40a070">2</span>])
+</span></span><span style="display:flex;"><span>    F22 <span style="color:#666">=</span> <span style="color:#007020">max</span>(F22, mean_distance)
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">assert</span> <span style="color:#007020">round</span>(F1p) <span style="color:#666">==</span> <span style="color:#007020">round</span>(Fp1), (F1p, Fp1)
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">assert</span> <span style="color:#007020">round</span>(F2p) <span style="color:#666">==</span> <span style="color:#007020">round</span>(Fp2), (F2p, Fp2)
+</span></span><span style="display:flex;"><span>    n <span style="color:#666">=</span> <span style="color:#007020">sum</span>(counts)
+</span></span><span style="display:flex;"><span>    k <span style="color:#666">=</span> (n <span style="color:#666">-</span> <span style="color:#40a070">1</span>) <span style="color:#666">/</span> n
+</span></span><span style="display:flex;"><span>    F0p <span style="color:#666">=</span> k <span style="color:#666">*</span> (F1p <span style="color:#666">**</span> <span style="color:#40a070">2</span>) <span style="color:#666">/</span> (<span style="color:#40a070">2</span> <span style="color:#666">*</span> F2p)
+</span></span><span style="display:flex;"><span>    Fp0 <span style="color:#666">=</span> k <span style="color:#666">*</span> (Fp1 <span style="color:#666">**</span> <span style="color:#40a070">2</span>) <span style="color:#666">/</span> (<span style="color:#40a070">2</span> <span style="color:#666">*</span> Fp2)
+</span></span><span style="display:flex;"><span>    F00 <span style="color:#666">=</span> ((n <span style="color:#666">-</span> <span style="color:#40a070">2</span>) <span style="color:#666">/</span> n) <span style="color:#666">*</span> ((n <span style="color:#666">-</span> <span style="color:#40a070">3</span>) <span style="color:#666">/</span> (n <span style="color:#666">-</span> <span style="color:#40a070">1</span>)) <span style="color:#666">*</span> ((F11 <span style="color:#666">**</span> <span style="color:#40a070">2</span>) <span style="color:#666">/</span> (<span style="color:#40a070">4</span> <span style="color:#666">*</span> F22))
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;obs&#34;</span>: <span style="color:#007020">round</span>(FAD_obs),
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;F0+&#34;</span>: <span style="color:#007020">round</span>(F0p),
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;F+0&#34;</span>: <span style="color:#007020">round</span>(Fp0),
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;F00&#34;</span>: <span style="color:#007020">round</span>(F00),
+</span></span><span style="display:flex;"><span>        <span style="color:#4070a0">&#34;FAD&#34;</span>: <span style="color:#007020">round</span>(FAD_obs <span style="color:#666">+</span> F0p <span style="color:#666">+</span> Fp0 <span style="color:#666">+</span> F00)
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Next, we implement the following wrapper function, which makes it slightly more convenient
+to compute the FAD for different folktale categories:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">estimate_fad</span>(df, category<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">if</span> category <span style="color:#007020;font-weight:bold">is</span> <span style="color:#007020;font-weight:bold">not</span> <span style="color:#007020;font-weight:bold">None</span>:
+</span></span><span style="display:flex;"><span>        df <span style="color:#666">=</span> df<span style="color:#666">.</span>loc[df[<span style="color:#4070a0">&#34;category&#34;</span>] <span style="color:#666">==</span> category]
+</span></span><span style="display:flex;"><span>    counts <span style="color:#666">=</span> df[<span style="color:#4070a0">&#34;count&#34;</span>]<span style="color:#666">.</span>values
+</span></span><span style="display:flex;"><span>    motifs <span style="color:#666">=</span> df[<span style="color:#4070a0">&#34;motifs&#34;</span>]<span style="color:#666">.</span>str<span style="color:#666">.</span>split(<span style="color:#4070a0">&#34;;&#34;</span>)<span style="color:#666">.</span>apply(<span style="color:#007020">set</span>)<span style="color:#666">.</span>values
+</span></span><span style="display:flex;"><span>    V <span style="color:#666">=</span> counts<span style="color:#666">.</span>shape[<span style="color:#40a070">0</span>]
+</span></span><span style="display:flex;"><span>    dm <span style="color:#666">=</span> np<span style="color:#666">.</span>zeros((V, V))
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(V):
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">for</span> j <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(V):
+</span></span><span style="display:flex;"><span>            dm[i, j] <span style="color:#666">=</span> dm[j, i] <span style="color:#666">=</span> jaccard_distance(motifs[i], motifs[j])
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> compute_fad_chao1(dm, counts)
+</span></span></code></pre></div><p>Let us first apply the estimator to the complete collection. Below, I compute the FAD as
+well as the ratio between the observed FAD and the estimated lower-bound of the true FAD:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fad <span style="color:#666">=</span> estimate_fad(dfd)
+</span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Observed FAD: </span><span style="color:#70a0d0;font-style:italic">{</span>fad[<span style="color:#4070a0">&#39;obs&#39;</span>]<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">, Estimated FAD: </span><span style="color:#70a0d0;font-style:italic">{</span>fad[<span style="color:#4070a0">&#39;FAD&#39;</span>]<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">, FAD coverage: </span><span style="color:#70a0d0;font-style:italic">{</span>fad[<span style="color:#4070a0">&#39;obs&#39;</span>] <span style="color:#666">/</span> fad[<span style="color:#4070a0">&#39;FAD&#39;</span>]<span style="color:#70a0d0;font-style:italic">:</span><span style="color:#4070a0">.2f</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Observed FAD: 131374, Estimated FAD: 287015, FAD coverage: 0.46
+</span></span></code></pre></div><p>We estimate a FAD of 287015, of which 46% is already available in the folktale database.
+This means that still a considerate amount of variation is not yet part of the database.
+It is also to be expected that the FAD coverage varies by story category. Therefore, I
+calculate the FAD again below for each folktale category, in order to identify any
+differences:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> category <span style="color:#007020;font-weight:bold">in</span> dfd[<span style="color:#4070a0">&#34;category&#34;</span>]<span style="color:#666">.</span>unique():
+</span></span><span style="display:flex;"><span>    fad <span style="color:#666">=</span> estimate_fad(dfd, category)
+</span></span><span style="display:flex;"><span>    <span style="color:#007020">print</span>(category, <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;coverage: </span><span style="color:#70a0d0;font-style:italic">{</span>fad[<span style="color:#4070a0">&#39;obs&#39;</span>] <span style="color:#666">/</span> fad[<span style="color:#4070a0">&#39;FAD&#39;</span>]<span style="color:#70a0d0;font-style:italic">:</span><span style="color:#4070a0">.2f</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Animal Tales coverage: 0.39
+</span></span><span style="display:flex;"><span>Tales of Magic I coverage: 0.24
+</span></span><span style="display:flex;"><span>Tales of Magic II coverage: 0.46
+</span></span><span style="display:flex;"><span>Religious Tales coverage: 0.54
+</span></span><span style="display:flex;"><span>Realistic Tales coverage: 0.43
+</span></span><span style="display:flex;"><span>Tales of the Stupid Ogre coverage: 0.36
+</span></span><span style="display:flex;"><span>Anecdotes and Jokes coverage: 0.58
+</span></span><span style="display:flex;"><span>Formula Tales coverage: 0.50
+</span></span></code></pre></div><p>These number show that the functional diversity in &ldquo;Anecdotes and Jokes&rdquo; is relatively
+well covered by the folktale database, while &ldquo;Tales of Magic I&rdquo; (24%) and &ldquo;Animal Tales&rdquo;
+(39%) have a much lower diversity coverage.</p>
+<h2 id="references">References</h2>
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Chao, Anne, Chiu Chun‐Huo, Robert K. Colwell, Luiz Fernando S. Magnago, Robin L. Chazdon, and Nicholas J. Gotelli. 2017. “Deciphering the Enigma of Undetected Species, Phylogenetic, and Functional Diversity Based on Good‐Turing Theory.” <i>Ecology</i> 98 (11): 2914–29. <a href="https://doi.org/10.1002/ecy.2000">https://doi.org/10.1002/ecy.2000</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Uther, Hans-Jörg. 2004. <i>He Types of International Folktales: A Classification and Bibliography, Based on the System of Antti Aarne and Stith Thompson</i>. 284-286. Suomalainen Tiedeakatemia, Academia Scientiarum Fennica.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Walker, Brian, Ann Kinzig, and Jenny Langridge. 1999. “Plant Attribute Diversity, Resilience, and Ecosystem Function: The Nature and Significance of Dominant and Minor Species.” <i>Ecosystems</i> 2: 95–113.</div>
+</div>
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Archive</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#functional-diversity">Functional Diversity</a>
+      <ul>
+        <li><a href="#functional-diversity-in-the-dutch-folktale-database">Functional Diversity in the Dutch Folktale Database</a></li>
+      </ul>
+    </li>
+    <li><a href="#unseen-functional-diversity">Unseen Functional Diversity</a>
+      <ul>
+        <li><a href="#unseen-functional-diversity-in-the-dutch-folktale-database">Unseen Functional Diversity in the Dutch Folktale Database</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&text=Undetected%20Functional%20Attribute%20Diversity" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&title=Undetected%20Functional%20Attribute%20Diversity" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&is_video=false&description=Undetected%20Functional%20Attribute%20Diversity" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Undetected%20Functional%20Attribute%20Diversity&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&title=Undetected%20Functional%20Attribute%20Diversity" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&title=Undetected%20Functional%20Attribute%20Diversity" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&name=Undetected%20Functional%20Attribute%20Diversity&description=Functional%20Diversity%20In%20some%20previous%20notebooks%20%28see%2c%20for%20example%2c%20here%2c%20here%2c%20and%20here%29%2c%20I%20have%20discussed%20the%20concept%20of%20cultural%20diversity%20and%20how%20methods%20from%20ecology%20can%20be%20used%20to%20estimate%20the%20lower%20bound%20of%20unseen%20cultural%20diversity.%20In%20these%20notebooks%2c%20diversity%20was%20understood%20simply%20as%20the%20number%20of%20unique%20items%20in%20a%20collection%20%28e.g.%2c%20species%2c%20narratives%2c%20pictures%2c%20melodies%2c%20etc.%29%2c%20with%20all%20elements%20being%20considered%20as%20equidistant%2c%20or%2c%20in%20other%20words%2c%20categorically%20different." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220610145347-undetected_functional_diversity%2f&t=Undetected%20Functional%20Attribute%20Diversity" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Folgert Karsdorp; made with Hugo and Org-mode 
+  </div>
+  <div class="footer-right">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>

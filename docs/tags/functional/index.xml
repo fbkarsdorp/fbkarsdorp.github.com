@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>functional on Folgert Karsdorp</title>
+    <link>https://www.karsdorp.io/tags/functional/</link>
+    <description>Recent content in functional on Folgert Karsdorp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
+    <lastBuildDate>Thu, 23 Jun 2022 12:31:36 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/functional/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Undetected Functional Attribute Diversity</title>
+      <link>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</link>
+      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
+      
+      <guid>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</guid>
+      <description>Functional Diversity In some previous notebooks (see, for example, here, here, and here), I have discussed the concept of cultural diversity and how methods from ecology can be used to estimate the lower bound of unseen cultural diversity. In these notebooks, diversity was understood simply as the number of unique items in a collection (e.g., species, narratives, pictures, melodies, etc.), with all elements being considered as equidistant, or, in other words, categorically different.</description>
+    </item>
+    
+  </channel>
+</rss>
