@@ -91,6 +91,9 @@ weight = 5
     name = "twitter"
     link = "https://www.twitter.com/FolgertK"
   [[params.social]]
+    name = "mastodon"
+    link = "https://akademienl.social/@folgertk"    
+  [[params.social]]
     name = "email"
     link = "folgert.karsdorp@meertens.knaw.nl"  # no need for "mailto:" in the head
   [[params.social]]
