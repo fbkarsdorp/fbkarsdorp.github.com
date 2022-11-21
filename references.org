@@ -1,0 +1,13 @@
+#+title: List of publications
+#+cite_export: csl chicago-date-sorted.csl
+#+bibliography: static/references.bib
+#+hugo_layout: staticpage
+#+date: [2022-11-20 Sun]
+
+[cite/nocite:@*]
+
+#+print_bibliography:
+
+# Local Variables:
+# org-cite-global-bibliography: nil
+# End:

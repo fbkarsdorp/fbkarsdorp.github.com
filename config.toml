@@ -12,9 +12,14 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-name = "Archive"
+name = "Notebooks"
 url = "/posts"
 weight = 5
+
+[[menu.main]]
+name = "Publications"
+url = "/references"
+weight=10
 
 
 [markup]
