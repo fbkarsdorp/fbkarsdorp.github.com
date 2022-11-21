@@ -46,9 +46,9 @@ weight=10
 
   # Home page settings
   
-  description = """I'm a researcher in Computational Humanities and Cultural Evolution at
-  the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal Netherlands Academy
-  of Arts and Sciences (Amsterdam, the Netherlands).
+  description = """I'm a researcher working on Computational Humanities and Cultural
+  Evolution at the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal
+  Netherlands Academy of Arts and Sciences (Amsterdam, the Netherlands).
 
   My research focuses on why some cultural phenomena are adopted and persist through time,
   while others change or disappear. Additionally, I'm interested in measuring cultural
