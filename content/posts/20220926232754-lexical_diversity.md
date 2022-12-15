@@ -1,7 +1,7 @@
 +++
 title = "Functional Diversity as a Generalization of Lexical Diversity"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-12-15T14:14:57+01:00
+lastmod = 2022-12-15T14:26:54+01:00
 tags = ["diversity", "richness", "semantics", "hill-numbers", "similarity"]
 draft = false
 +++
@@ -67,7 +67,7 @@ size of a functional group, then, we take all tokens of a word type, for instanc
 plus a fraction of the tokens of any other word type, like apple, that is functionally
 indistinctive of pear.
 
-<video autoplay loop><source src="/videos/ProportionalContribution_0001.mp4" type="video/mp4"></video>
+<video autoplay loop playsinline><source src="/videos/ProportionalContribution_0001.mp4" type="video/mp4"></video>
 
 The higher the threshold for \\(\tau\\), the more word types are merged into functional
 groups. Here we add the word _computer_, which has a distance of 0.8 to _apple_ and 1
