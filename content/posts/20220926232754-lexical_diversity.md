@@ -1,7 +1,7 @@
 +++
 title = "Functional Diversity as a Generalization of Lexical Diversity"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-12-15T13:13:45+01:00
+lastmod = 2022-12-15T14:07:46+01:00
 tags = ["diversity", "richness", "semantics", "hill-numbers", "similarity"]
 draft = false
 +++
@@ -56,7 +56,7 @@ these two words is measured to be 0.4. If we set the threshold \\(\tau\\) to a v
 equal or smaller than this 0.4, then each word type forms its own functional group. So,
 one group for apple, and one for pear – which yields a total functional diversity of 2.
 
-<video autoplay loop><source src="/videos/ProportionalContribution_0000.mp4" type="video/mp4"></video>
+<video controls autoplay loop><source src="/videos/ProportionalContribution_0000.mp4" type="video/mp4"></video>
 
 Beyond this first level, where \\(\tau\\) is set to the minimal distance, we start allowing words
 to form groups. For example, if we set the distance threshold to 0.6, apple and pear are
@@ -101,7 +101,10 @@ relied on [MacBERTh](https://macberth.netlify.app/), which is a historical langu
 architecture and parameterization of BERT base uncased (<a href="#citeproc_bib_item_3">Manjavacas and Fonteyn 2022</a>).
 
 
-## Why is FD useful (1) {#why-is-fd-useful--1}
+## Results {#results}
+
+
+### Functional diversity is affected less by increased orthographic variation {#functional-diversity-is-affected-less-by-increased-orthographic-variation}
 
 Our analyses and results led to two important insights. First, we found that diversity at
 the level of functional groups is affected less by non-meaningful variation such as OCR
@@ -111,7 +114,7 @@ more about these results, we refer to Section 4.1 in the paper.
 {{< figure src="/ox-hugo/2022-12-15_12-53-43_scramble-impact-diversity.png" >}}
 
 
-## Why is FD useful (2) {#why-is-fd-useful--2}
+### Functional diversity is a theoretically relevant complement to lexical diversity {#functional-diversity-is-a-theoretically-relevant-complement-to-lexical-diversity}
 
 We also found that approaching the ‘vocabulary richness’ of a text through the lens of the
 attribute diversity framework allowed us to identify text pairs that had approximately the
