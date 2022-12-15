@@ -1,7 +1,7 @@
 +++
 title = "Functional Diversity as a Generalization of Lexical Diversity"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-12-15T14:07:46+01:00
+lastmod = 2022-12-15T14:12:22+01:00
 tags = ["diversity", "richness", "semantics", "hill-numbers", "similarity"]
 draft = false
 +++
@@ -56,7 +56,7 @@ these two words is measured to be 0.4. If we set the threshold \\(\tau\\) to a v
 equal or smaller than this 0.4, then each word type forms its own functional group. So,
 one group for apple, and one for pear – which yields a total functional diversity of 2.
 
-<video controls autoplay loop><source src="/videos/ProportionalContribution_0000.mp4" type="video/mp4"></video>
+<video autoplay loop playsinline><source src="/videos/ProportionalContribution_0000.mp4" type="video/mp4"></video>
 
 Beyond this first level, where \\(\tau\\) is set to the minimal distance, we start allowing words
 to form groups. For example, if we set the distance threshold to 0.6, apple and pear are
