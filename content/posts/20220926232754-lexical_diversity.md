@@ -1,7 +1,7 @@
 +++
 title = "Functional Diversity as a Generalization of Lexical Diversity"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-12-15T14:12:22+01:00
+lastmod = 2022-12-15T14:14:57+01:00
 tags = ["diversity", "richness", "semantics", "hill-numbers", "similarity"]
 draft = false
 +++
@@ -75,13 +75,13 @@ _pear_. With \\(\tau\\) set to 0.6, _computer_ still forms its own functional gr
 a value of 0.8 or higher, it is partially merged with _apple_. Note that this also updates
 the composition of the apple functional group.
 
-<video autoplay loop><source src="/videos/ProportionalContribution_0002.mp4" type="video/mp4"></video>
+<video autoplay loop playsinline><source src="/videos/ProportionalContribution_0002.mp4" type="video/mp4"></video>
 
 We can continue increasing the threshold value, until eventually all words will belong to
 the same functional group. In other words, this method enables us to not just talk about
 diversity at one level, but at a continuum of levels.
 
-<video autoplay loop><source src="/videos/ProportionalContribution_0003.mp4" type="video/mp4"></video>
+<video autoplay loop playsinline><source src="/videos/ProportionalContribution_0003.mp4" type="video/mp4"></video>
 
 
 ## Representation of words and their distances {#representation-of-words-and-their-distances}
