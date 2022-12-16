@@ -1,7 +1,7 @@
 +++
-title = "What shall we do with the unseen sailor?"
+title = "What Shall We Do with the Unseen Sailor?"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-12-16T19:50:18+01:00
+lastmod = 2022-12-16T19:59:23+01:00
 tags = ["chao1", "diversity", "loss", "replacement", "voc", "bias", "history", "sampling"]
 draft = false
 +++
