@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> What shall we do with the unseen sailor? | Folgert Karsdorp</title>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/'>
+  <meta name="description" content="I&#39;m a researcher working on Computational Humanities and Cultural
+  Evolution at the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal
+  Netherlands Academy of Arts and Sciences (Amsterdam, the Netherlands).
+
+  My research focuses on why some cultural phenomena are adopted and persist through time,
+  while others change or disappear. Additionally, I&#39;m interested in measuring cultural
+  diversity and compositional complexity, and how we can account for biases in our
+  estimations of diversity. To do that, I use computational models from Machine Learning,
+  Cultural Evolution, and Ecology.
+
+  Besides cultural change and diversity, I&#39;m also interested in teaching about computer
+  programming in the context of the Humanities. I published a text book with [Princeton
+  University
+  Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
+  about using Python for Humanities data analysis. Check out the open access edition
+  [here](https://www.humanitiesdataanalysis.org)!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="What shall we do with the unseen sailor?" />
+<meta property="og:description" content="Bias in historical records At the Computational Humanities Research conference 2022 held in Antwerp from December 12 to 14, I co-presented a new paper with Melvin Wevers on missing data in historical archives. The paper was pubslished with CEUR-WS and can be found here: https://ceur-ws.org/Vol-3290/short_paper1793.pdf. Missing data is rather the norm than the exception in historical archives. There are virtually endless reasons why records did not survive the test of time: they might have been lost due to natural causes, such as fires, decisions on the level of archival policy making, but also due to content production biases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/" /><meta property="article:section" content="posts" />
+
+<meta property="article:modified_time" content="2022-12-16T19:50:18+01:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="What shall we do with the unseen sailor?"/>
+<meta name="twitter:description" content="Bias in historical records At the Computational Humanities Research conference 2022 held in Antwerp from December 12 to 14, I co-presented a new paper with Melvin Wevers on missing data in historical archives. The paper was pubslished with CEUR-WS and can be found here: https://ceur-ws.org/Vol-3290/short_paper1793.pdf. Missing data is rather the norm than the exception in historical archives. There are virtually endless reasons why records did not survive the test of time: they might have been lost due to natural causes, such as fires, decisions on the level of archival policy making, but also due to content production biases."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.113434789f3c21bf5b57e90215ead36599790c0ce86e3492f239ce88648708a3dcced805b389721cf2f244af1fa951706872cadf838cb7fcc0321d7cdfa6afc8.css" integrity="sha512-ETQ0eJ88Ib9bV&#43;kCFerTZZl5DAzobjSS8jnOiGSHCKPcztgFs4lyHPLyRK8fqVFwaHLK34OMt/zAMh1836avyA=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Notebooks</a></li>
+         
+        <li><a href="/references">Publications</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://www.karsdorp.io/posts/20220926232754-lexical_diversity/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&text=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&title=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&is_video=false&description=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&title=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&title=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&name=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f&description=Bias%20in%20historical%20records%20At%20the%20Computational%20Humanities%20Research%20conference%202022%20held%20in%20Antwerp%20from%20December%2012%20to%2014%2c%20I%20co-presented%20a%20new%20paper%20with%20Melvin%20Wevers%20on%20missing%20data%20in%20historical%20archives.%20The%20paper%20was%20pubslished%20with%20CEUR-WS%20and%20can%20be%20found%20here%3a%20https%3a%2f%2fceur-ws.org%2fVol-3290%2fshort_paper1793.pdf.%20Missing%20data%20is%20rather%20the%20norm%20than%20the%20exception%20in%20historical%20archives.%20There%20are%20virtually%20endless%20reasons%20why%20records%20did%20not%20survive%20the%20test%20of%20time%3a%20they%20might%20have%20been%20lost%20due%20to%20natural%20causes%2c%20such%20as%20fires%2c%20decisions%20on%20the%20level%20of%20archival%20policy%20making%2c%20but%20also%20due%20to%20content%20production%20biases." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&t=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bias-in-historical-records">Bias in historical records</a></li>
+    <li><a href="#archives">Archives</a></li>
+    <li><a href="#estimating-unseen-individuals">Estimating Unseen Individuals</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#future-work">Future work</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        What shall we do with the unseen sailor?
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2022-12-16 19:50:18 &#43;0100 CET" itemprop="datePublished">2022-12-16</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          7 minute read
+        </div>
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/chao1" rel="tag">chao1</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/diversity" rel="tag">diversity</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/loss" rel="tag">loss</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/replacement" rel="tag">replacement</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/voc" rel="tag">voc</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/bias" rel="tag">bias</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/history" rel="tag">history</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/sampling" rel="tag">sampling</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="bias-in-historical-records">Bias in historical records</h2>
+<p>At the <a href="https://2022.computational-humanities-research.org">Computational Humanities Research conference 2022</a> held in Antwerp from December 12
+to 14, I co-presented a new paper with <a href="http://www.melvinwevers.nl/">Melvin Wevers</a> on missing data in historical
+archives. The paper was pubslished with CEUR-WS and can be found here:
+<a href="https://ceur-ws.org/Vol-3290/short_paper1793.pdf">https://ceur-ws.org/Vol-3290/short_paper1793.pdf</a>. Missing data is rather the norm than the
+exception in historical archives. There are virtually endless reasons why records did not
+survive the test of time: they might have been lost due to natural causes, such as fires,
+decisions on the level of archival policy making, but also due to content production
+biases. When working with incomplete data archives, we run into all kinds of risk, such as
+overestimating the impact of specific historical events, misrepresenting class, and
+underestimating casualties. For this reason, we need to critically evaluate whether the
+data we are left with is representative of the archival collection or historical period
+from which its stems.</p>
+<p>Our paper is concerned with data loss in the archives of the <a href="https://en.wikipedia.org/wiki/Dutch_East_India_Company">Dutch East India
+Company</a>, a large trade company in that operated between 1602 and 1796. The company kept
+detailed records about its employees, but a significant part these records did not
+survive. More specifically, we do not know how the loss of records is distributed
+temporally, and we also lack information on the number of unique individuals hired by the
+VOC. To estimate the loss of records over time and the unique number of individuals, we
+apply an unseen species model from ecology, which aim to estimate the number of unseen
+classes given a frequency distribution of observed classes. (I&rsquo;ve written about unseen
+species before, see for example <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>, <a href="/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">Estimating Richness
+under Sampling without Replacement</a>, and <a href="/posts/20220405110456-population_size_regression_estimators/">Population Size Estimation as a Regression
+Problem</a>.)</p>
+<h2 id="archives">Archives</h2>
+<p>The paper makes use of two data sources. The first one, `VOC: CAREERS&rsquo; (VOCCAR) contains
+about 775k digitized contracts that were issued between 1633 and 1795. The contracts
+specify, among other things, the name, rank, place of birth of the contractee, the date of
+sailing, and the ship on which they sailed. The original ledgers could contain multiple
+contracts belonging to the same person. These records have been disambiguated, allowing us
+to trace the same person in the data. This disambiguation is not complete, however.
+Approximately 547k records have been succesfully clustered and this set amounts to ~460k
+unique seafarers.</p>
+<figure><img src="/ox-hugo/2022-12-16_16-27-16_total_contracts.png"/>
+</figure>
+
+<p>The figure above displays the number of contracts throughout the 17th and 18th century. We
+observe a sharp increase during the 17th century and also noticeable gaps in the 18th
+century. The low number of records in the 17th century is likely due to missing data, as
+well as unresolved records. Based on the observed and disambiguated data alone, we would
+thus severely underestimate the number of unique employees of the company.</p>
+<p>Complemantary to the VOCCAR dataset, we use a dataset that provided an overview of the
+number of ships that sailed out from the Dutch republic. This data is available from the
+source `Dutch Asiatic Shipping in the 17th and 18th centuries&rsquo; (DAS). DAS describes 4,352
+sea voyages between 1633 and 1795. For around 91 percent of these voyages, DAS provides
+information on the number of people that boarded the vessel. We imputed the missing 9
+percent by calculating the mean voyagers per ship for periods of twenty-five years using
+the data we do have.</p>
+<h2 id="estimating-unseen-individuals">Estimating Unseen Individuals</h2>
+<p>So, we know for a fact that many records were lost. Moreover, not all records have been
+disambiguated, so we do not know which individuals they refer to. So how then can we find
+out how many unique individuals were employed by the East India Company? To answer that
+question, we used an Unseen Species Model. Unseen species models were originally developed
+to estimate the number of species in a given environment based on incomplete survey data.
+Recently, this type of model has also been applied in the cultural domain, with for
+example an application of medieval forgotten books
+(<a href="#citeproc_bib_item_3">Kestemont et al. 2022</a>). Here, we want to apply the model to
+estimate how many unique individuals have been lost due to lost ledgers, or have not yet
+been disambiguated and are therefore still unseen.</p>
+<p><video autoplay loop playsinline><source src="/videos/ObservationBias.mp4" type="video/mp4"></video></p>
+<p>One of the most well-known unseen species models is the Chao1 model, named after its
+creator Anne Chao (<a href="#citeproc_bib_item_1">Chao 1984</a>) (for some more background
+about the model, see <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>). Unfortunately, this model
+cannot be applied to our data because the model assumes samples to be formed with
+replacement (see <a href="/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">Estimating Richness under Sampling without Replacement</a> for more details).
+When an ecologist does a census in a particular area, she or he may observe the same
+animal – that is, the same individual – several times. And this repeated observation forms
+the basis for the calculation of Chao1. Important to the underlying assumption of the
+model is that as long as the ecologist sits for long enough – and the observed animals
+live long enough – the researcher can, in principle, make an infinite number of
+observations. Again, and again, certain animals are spotted. In other words, the Chao1
+estimator assumes an “infinite population”.</p>
+<p>Our data is different in an important way. In our case too, we have repeated observations
+of individuals, but, and this is crucial, that repetition is not potentially infinite. As
+such, we are dealing with a finite population, of which the log files of the East India
+Company hold a sample. That difference between finite and infinite populations is key.
+Just like knowing whether your data is formed with or without replacement. Because if we
+apply Chao1 to data samples without replacement, it can greatly overestimate the true
+number of unseen things, and the estimates thus become highly unreliable. I will come back
+to this when discussing the results.</p>
+<p><video autoplay loop playsinline><source src="/videos/SamplingWithoutReplacement.mp4" type="video/mp4"></video></p>
+<p>A better fit to our data is an extension of Chao1 developed by
+Chao and Lin (<a href="#citeproc_bib_item_2">2012</a>) specifically for data sampled without
+replacement. As in the original Chao1 model, we need information about the number of items
+that occur once, and the number of items that occur twice. The difference between the
+extension and Chao1 is that the extension requires information about the size of the total
+population. Because several log books have disappeared, we do not have that information,
+but we can make a reasonable estimate. For the exact details about how we do that, please
+have a look at the paper. But simply put, we estimate the total population \(N\) by taking
+the mean number of sailors from all known ships and multiplying that by the number of
+voyages of the East India Company. We know the total number of voyages, just not how many
+people were involved with each of them. This number may not be precisely accurate, but it
+gives us a relatively good and robust estimate of the total population.</p>
+<h2 id="results">Results</h2>
+<p>The application of this model yielded the following three main results and insights.
+First, the model estimates that at least 36% of the individuals employed by the East India
+Company are unseen. Or, conversely, the survival rate is about 64%. In addition, we see
+large differences in the survival rates over time. The plot here shows that far fewer
+individuals are known from the early years, and thus the survival rate is much lower. The
+difference in this period between observed and estimated ranges between 45% in 1683-1708
+to as high as 96% between 1633-1658.</p>
+<figure><img src="/ox-hugo/2022-12-16_17-51-06_25year_plot.png"/>
+</figure>
+
+<p>Finally, the model estimates that about 715k individuals were employed by the company.
+This number is much more conservative than the estimate of the Chao1 model, which
+estimates that there must have been more than 2 million employees. This number is
+obviously wrong, because that would mean that the number of individuals is many times
+larger than the total number of observations. I tried to capture this in the animation
+below. Here the ship has a maximum capacity of \(N\) employees. We first fill the ship with
+the 460k observed seafarers in green. We add to that the additional 255k unseen sailors,
+making a total of 715k sailors. An estimation with Chao1, however, would overflow the ship
+immediately with its 2.3 million individuals.</p>
+<p><video autoplay loop playsinline><source src="/videos/ShipScene.mp4" type="video/mp4"></video></p>
+<h2 id="future-work">Future work</h2>
+<p>Our results provide a concrete answer to the question of how many people were employed by
+the Dutch East India Company. In addition, the study highlights the importance of having
+knowledge about the sampling process underlying the data when applying these unseen
+species models. The lesson here is that a wrong assumption can lead to completely
+implausible or even impossible(!) results.</p>
+<p>For our data, we are fortunate to be able to provide a relatively reliable estimate of
+\(N\), but that is by no means the case for all historical databases. Therefore, for future
+work, we want to investigate the impact of uncertainty about \(N\) on the quality of the
+estimates. In addition, we want to investigate how adding information about the records
+can further improve the quality of the estimates. Chao1 assumes all unseen data to be
+equally unlikely. Yet, this is obviously not necessarily true. By including information
+that explains differences in occurrence probabilities, we hope to make our estimates more
+precise (see <a href="/posts/20220405110456-population_size_regression_estimators/">Population Size Estimation as a Regression Problem</a> for more information).</p>
+<h2 id="references">References</h2>
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Chao, Anne, and Chih-Wei Lin. 2012. “Nonparametric Lower Bounds for Species Richness and Shared Species Richness under Sampling without Replacement.” <i>Biometrics</i> 68 (3): 912–21. <a href="https://doi.org/10.1111/j.1541-0420.2011.01739.x">https://doi.org/10.1111/j.1541-0420.2011.01739.x</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Kestemont, Mike, Folgert Karsdorp, Elisabeth de Bruijn, Matthew Driscoll, Katarzyna A. Kapitan, Pádraig Ó Macháin, Daniel Sawyer, Remco Sleiderink, and Anne Chao. 2022. “Forgotten Books: The Application of Unseen Species Models to the Survival of Culture.” <i>Science</i> 375 (6582): 765–69. <a href="https://doi.org/10.1126/science.abl7655">https://doi.org/10.1126/science.abl7655</a>.</div>
+</div>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Notebooks</a></li>
+         
+          <li><a href="/references">Publications</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bias-in-historical-records">Bias in historical records</a></li>
+    <li><a href="#archives">Archives</a></li>
+    <li><a href="#estimating-unseen-individuals">Estimating Unseen Individuals</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#future-work">Future work</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&text=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&title=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&is_video=false&description=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&title=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&title=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&name=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f&description=Bias%20in%20historical%20records%20At%20the%20Computational%20Humanities%20Research%20conference%202022%20held%20in%20Antwerp%20from%20December%2012%20to%2014%2c%20I%20co-presented%20a%20new%20paper%20with%20Melvin%20Wevers%20on%20missing%20data%20in%20historical%20archives.%20The%20paper%20was%20pubslished%20with%20CEUR-WS%20and%20can%20be%20found%20here%3a%20https%3a%2f%2fceur-ws.org%2fVol-3290%2fshort_paper1793.pdf.%20Missing%20data%20is%20rather%20the%20norm%20than%20the%20exception%20in%20historical%20archives.%20There%20are%20virtually%20endless%20reasons%20why%20records%20did%20not%20survive%20the%20test%20of%20time%3a%20they%20might%20have%20been%20lost%20due%20to%20natural%20causes%2c%20such%20as%20fires%2c%20decisions%20on%20the%20level%20of%20archival%20policy%20making%2c%20but%20also%20due%20to%20content%20production%20biases." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20221215175357-what_shall_we_do_with_the_unseen_sailor%2f&t=What%20shall%20we%20do%20with%20the%20unseen%20sailor%3f" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  Folgert Karsdorp; made with Hugo and Org-mode 
+  </div>
+  <div class="footer-right">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>

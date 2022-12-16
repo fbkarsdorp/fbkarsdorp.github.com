@@ -2,6 +2,7 @@
 title = "Demystifying Chao1 with Good-Turing"
 author = ["Folgert Karsdorp"]
 date = 2022-03-15T00:00:00+01:00
+lastmod = 2022-12-15T18:09:05+01:00
 tags = ["chao1", "turing", "richness", "loss", "diversity"]
 draft = false
 +++

@@ -2,38 +2,59 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.karsdorp.io/tags/bias/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/chao1/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
+  </url><url>
     <loc>https://www.karsdorp.io/tags/diversity/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <loc>https://www.karsdorp.io/tags/history/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/hill-numbers/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <loc>https://www.karsdorp.io/tags/loss/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/richness/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <loc>https://www.karsdorp.io/tags/replacement/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/semantics/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/similarity/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <loc>https://www.karsdorp.io/tags/sampling/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/</loc>
-    <lastmod>2022-12-15T14:26:54+01:00</lastmod>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/voc/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</loc>
+    <lastmod>2022-12-16T19:50:18+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</loc>
+    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/hill-numbers/</loc>
+    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/richness/</loc>
+    <lastmod>2022-12-15T18:09:05+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/semantics/</loc>
+    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/similarity/</loc>
+    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/references/</loc>
     <lastmod>2022-11-21T09:51:01+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/bias/</loc>
-    <lastmod>2022-06-23T12:31:36+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/fad/</loc>
     <lastmod>2022-06-23T12:31:36+02:00</lastmod>
@@ -41,14 +62,8 @@
     <loc>https://www.karsdorp.io/tags/functional/</loc>
     <lastmod>2022-06-23T12:31:36+02:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/sampling/</loc>
-    <lastmod>2022-06-23T12:31:36+02:00</lastmod>
-  </url><url>
     <loc>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</loc>
     <lastmod>2022-06-23T12:31:36+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/chao1/</loc>
-    <lastmod>2022-05-14T09:03:02+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</loc>
     <lastmod>2022-05-14T09:03:02+02:00</lastmod>
@@ -89,17 +104,11 @@
     <loc>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</loc>
     <lastmod>2022-03-31T12:35:33+02:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/replacement/</loc>
-    <lastmod>2022-03-31T12:35:33+02:00</lastmod>
-  </url><url>
     <loc>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</loc>
-    <lastmod>2022-03-15T00:00:00+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/loss/</loc>
-    <lastmod>2022-03-15T00:00:00+01:00</lastmod>
+    <lastmod>2022-12-15T18:09:05+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/turing/</loc>
-    <lastmod>2022-03-15T00:00:00+01:00</lastmod>
+    <lastmod>2022-12-15T18:09:05+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/categories/</loc>
   </url>

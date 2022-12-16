@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>replacement on Folgert Karsdorp</title>
-    <link>https://www.karsdorp.io/tags/replacement/</link>
-    <description>Recent content in replacement on Folgert Karsdorp</description>
+    <title>voc on Folgert Karsdorp</title>
+    <link>https://www.karsdorp.io/tags/voc/</link>
+    <description>Recent content in voc on Folgert Karsdorp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Fri, 16 Dec 2022 19:50:18 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/replacement/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Dec 2022 19:50:18 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/voc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What shall we do with the unseen sailor?</title>
       <link>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</link>
@@ -15,15 +15,6 @@
       
       <guid>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</guid>
       <description>Bias in historical records At the Computational Humanities Research conference 2022 held in Antwerp from December 12 to 14, I co-presented a new paper with Melvin Wevers on missing data in historical archives. The paper was pubslished with CEUR-WS and can be found here: https://ceur-ws.org/Vol-3290/short_paper1793.pdf. Missing data is rather the norm than the exception in historical archives. There are virtually endless reasons why records did not survive the test of time: they might have been lost due to natural causes, such as fires, decisions on the level of archival policy making, but also due to content production biases.</description>
-    </item>
-    
-    <item>
-      <title>Estimating Richness under Sampling without Replacement</title>
-      <link>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</link>
-      <pubDate>Thu, 31 Mar 2022 12:35:33 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</guid>
-      <description>Unseen Species Models such as Chao1 assume that the sample being studied was created with replacement. This means that calculations are based on the assumption that certain individuals can or have been repeatedly observed. It also implies that the observation of one individual does not influence the observation of the next individual. That is to say: observations are independent. Take, for example, an ecologist who wants to use Chao1 to estimate the number of unique animal species that live in a given environment.</description>
     </item>
     
   </channel>

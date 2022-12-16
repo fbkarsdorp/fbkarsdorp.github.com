@@ -7,20 +7,83 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Thu, 15 Dec 2022 14:26:54 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Dec 2022 19:50:18 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bias</title>
+      <link>https://www.karsdorp.io/tags/bias/</link>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/bias/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chao1</title>
+      <link>https://www.karsdorp.io/tags/chao1/</link>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/chao1/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>diversity</title>
       <link>https://www.karsdorp.io/tags/diversity/</link>
-      <pubDate>Thu, 15 Dec 2022 14:26:54 +0100</pubDate>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/diversity/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>history</title>
+      <link>https://www.karsdorp.io/tags/history/</link>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/history/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>loss</title>
+      <link>https://www.karsdorp.io/tags/loss/</link>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/loss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>replacement</title>
+      <link>https://www.karsdorp.io/tags/replacement/</link>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/replacement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sampling</title>
+      <link>https://www.karsdorp.io/tags/sampling/</link>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/sampling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>voc</title>
+      <link>https://www.karsdorp.io/tags/voc/</link>
+      <pubDate>Fri, 16 Dec 2022 19:50:18 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/voc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>hill-numbers</title>
       <link>https://www.karsdorp.io/tags/hill-numbers/</link>
-      <pubDate>Thu, 15 Dec 2022 14:26:54 +0100</pubDate>
+      <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/hill-numbers/</guid>
       <description></description>
@@ -29,7 +92,7 @@
     <item>
       <title>richness</title>
       <link>https://www.karsdorp.io/tags/richness/</link>
-      <pubDate>Thu, 15 Dec 2022 14:26:54 +0100</pubDate>
+      <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/richness/</guid>
       <description></description>
@@ -38,7 +101,7 @@
     <item>
       <title>semantics</title>
       <link>https://www.karsdorp.io/tags/semantics/</link>
-      <pubDate>Thu, 15 Dec 2022 14:26:54 +0100</pubDate>
+      <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/semantics/</guid>
       <description></description>
@@ -47,18 +110,9 @@
     <item>
       <title>similarity</title>
       <link>https://www.karsdorp.io/tags/similarity/</link>
-      <pubDate>Thu, 15 Dec 2022 14:26:54 +0100</pubDate>
+      <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/similarity/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bias</title>
-      <link>https://www.karsdorp.io/tags/bias/</link>
-      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/bias/</guid>
       <description></description>
     </item>
     
@@ -77,24 +131,6 @@
       <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/functional/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sampling</title>
-      <link>https://www.karsdorp.io/tags/sampling/</link>
-      <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/sampling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>chao1</title>
-      <link>https://www.karsdorp.io/tags/chao1/</link>
-      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/chao1/</guid>
       <description></description>
     </item>
     
@@ -176,24 +212,6 @@
       <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/shakespeare/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>replacement</title>
-      <link>https://www.karsdorp.io/tags/replacement/</link>
-      <pubDate>Thu, 31 Mar 2022 12:35:33 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/replacement/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>loss</title>
-      <link>https://www.karsdorp.io/tags/loss/</link>
-      <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/loss/</guid>
       <description></description>
     </item>
     

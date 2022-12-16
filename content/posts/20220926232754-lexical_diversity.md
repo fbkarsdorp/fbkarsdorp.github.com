@@ -1,7 +1,7 @@
 +++
 title = "Functional Diversity as a Generalization of Lexical Diversity"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-12-15T14:26:54+01:00
+lastmod = 2022-12-15T16:58:56+01:00
 tags = ["diversity", "richness", "semantics", "hill-numbers", "similarity"]
 draft = false
 +++
@@ -35,11 +35,12 @@ only historical spelling variants of the same word.
 In our paper, we investigate the application of a new measure of lexical diversity, which
 takes the semantic differences between words into account. This measure is called
 “Functional Diversity”, which we borrow from the field of ecology where a similar problem
-exists. Compare for example these two ponds. In both ponds, we find 4 unique animal
-species. As such, we could conclude that the biodiversity is the same in both ponds. But
-intuitively, that categorical measure of diversity doesn’t seem right: the pond on the
-right looks much more diverse than the pond on the left. Functional diversity recognizes
-this intuition by including the similarities and differences in species’ traits.
+exists (also see [Undetected Functional Attribute Diversity]({{< relref "20220610145347-undetected_functional_diversity.md" >}})). Compare for example these two
+ponds. In both ponds, we find 4 unique animal species. As such, we could conclude that the
+biodiversity is the same in both ponds. But intuitively, that categorical measure of
+diversity doesn’t seem right: the pond on the right looks much more diverse than the pond
+on the left. Functional diversity recognizes this intuition by including the similarities
+and differences in species’ traits.
 
 {{< figure src="/ox-hugo/2022-12-15_11-14-44_ponds2.png" >}}
 
