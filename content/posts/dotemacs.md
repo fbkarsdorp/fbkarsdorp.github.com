@@ -1,7 +1,7 @@
 +++
 title = "My Literate Emacs Configuration"
 author = ["Folgert Karsdorp"]
-lastmod = 2022-12-24T16:59:19+01:00
+lastmod = 2022-12-24T17:08:32+01:00
 tags = ["emacs", "org-mode", "python", "jupyter", "gtd"]
 draft = false
 +++
@@ -16,6 +16,8 @@ just a little bit better or different so that it fits my workflow better. Here's
 screenshot of my current setup:
 
 {{< figure src="/ox-hugo/2022-12-21_16-30-53_Screenshot 2022-12-21 at 16.30.30.png" >}}
+
+This document is also on GitHub. See <https://github.com/fbkarsdorp/.emacs.d>
 
 
 ## Startup {#startup}
