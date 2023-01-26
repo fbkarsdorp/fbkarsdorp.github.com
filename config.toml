@@ -21,7 +21,6 @@ name = "Publications"
 url = "/references"
 weight=10
 
-
 [markup]
   [markup.tableOfContents]
     endLevel = 4
