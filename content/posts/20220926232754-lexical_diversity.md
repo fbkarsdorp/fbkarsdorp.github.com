@@ -9,6 +9,8 @@ draft = false
 This is a transcript of a [talk](https://youtu.be/z8OCu9tB-jY) given at the [CHR2022](https://2022.computational-humanities-research.org) conference. For the corresponding
 paper, see <https://ceur-ws.org/Vol-3290/short_paper2780.pdf>.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z8OCu9tB-jY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 ## Lexical diversity {#lexical-diversity}
 
