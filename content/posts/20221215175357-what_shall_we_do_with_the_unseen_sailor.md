@@ -99,7 +99,9 @@ apply Chao1 to data samples without replacement, it can greatly overestimate the
 number of unseen things, and the estimates thus become highly unreliable. I will come back
 to this when discussing the results.
 
+<a href="https://gist.github.com/fbkarsdorp/d8351d1361fb2f5e7d078c157560a193">
 <video autoplay loop playsinline><source src="/videos/SamplingWithoutReplacement.mp4" type="video/mp4"></video>
+</a>
 
 A better fit to our data is an extension of Chao1 developed by
 Chao and Lin (<a href="#citeproc_bib_item_2">2012</a>) specifically for data sampled without
@@ -137,8 +139,9 @@ the 460k observed seafarers in green. We add to that the additional 255k unseen 
 making a total of 715k sailors. An estimation with Chao1, however, would overflow the ship
 immediately with its 2.3 million individuals.
 
+<a href="https://gist.github.com/fbkarsdorp/dacd7fed8beb7fc3821eef592f1ddb75">
 <video autoplay loop playsinline><source src="/videos/ShipScene.mp4" type="video/mp4"></video>
-
+</a>
 
 ## Future work {#future-work}
 
