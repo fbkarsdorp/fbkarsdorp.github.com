@@ -1,0 +1,1891 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ydnt/global//global/global}
+    \entry{2022:karsdorp_functional_diversity}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=34d8bc4a025f4f19103a42c096989b1f}{%
+           family={Fonteyn},
+           familyi={F\bibinitperiod},
+           given={Lauren},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Antwerp, Belgium}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{f938e3e90a60975b6db25036abf1be3f}
+      \strng{bibnamehash}{f938e3e90a60975b6db25036abf1be3f}
+      \strng{authorbibnamehash}{f938e3e90a60975b6db25036abf1be3f}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{f938e3e90a60975b6db25036abf1be3f}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the Computational Humanities Research Conference, 2022}
+      \field{title}{Introducing functional diversity: a novel approach to lexical diversity in (historical) corpora}
+      \field{year}{2022}
+      \true{nocite}
+    \endentry
+    \entry{2022:wevers_karsdorp}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=749b35d9e08f2ccc2a8916e3d43559ca}{%
+           family={Wevers},
+           familyi={W\bibinitperiod},
+           given={Melvin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3280ba8794d456f2dcacb0836283fe5a}{%
+           family={Lottum},
+           familyi={L\bibinitperiod},
+           given={Jelle\bibnamedelima {van}},
+           giveni={J\bibinitperiod\bibinitdelim v\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Antwerp, Belgium}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{01d7401aead326bb9b83904563873350}
+      \strng{bibnamehash}{01d7401aead326bb9b83904563873350}
+      \strng{authorbibnamehash}{01d7401aead326bb9b83904563873350}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{01d7401aead326bb9b83904563873350}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the Computational Humanities Research Conference, 2022}
+      \field{title}{What shall we do with the unseen sailor? Estimating the size of the Dutch East India Company using an unseen species model}
+      \field{year}{2022}
+      \true{nocite}
+    \endentry
+    \entry{2022:kestemont_forgotten}{article}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bcf8e4eb8b15f44adf27e40ad8173dd6}{%
+           family={Bruijn},
+           familyi={B\bibinitperiod},
+           given={Elisabeth},
+           giveni={E\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=18fe23edae7af6b08e64ab158a163a9a}{%
+           family={Driscoll},
+           familyi={D\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1173189bcebfb7f81598f4e2f1dc5399}{%
+           family={Kapitan},
+           familyi={K\bibinitperiod},
+           given={Katarzyna\bibnamedelima A.},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2eb174d48f0a60990ca208469841fb8a}{%
+           family={Macháin},
+           familyi={M\bibinitperiod},
+           given={Pádraig\bibnamedelima Ó},
+           giveni={P\bibinitperiod\bibinitdelim Ó\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=764c17ebc36ada5f8a1e75a8781db75d}{%
+           family={Sawyer},
+           familyi={S\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dd2776043101749c521450c4c6c31318}{%
+           family={Sleiderink},
+           familyi={S\bibinitperiod},
+           given={Remco},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d9e2039c6f24906d2866a881a5be343e}{%
+           family={Chao},
+           familyi={C\bibinitperiod},
+           given={Anne},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b48c5c87627c88ef300eea5826ac6486}
+      \strng{fullhash}{b81cfa1c06316afa7afb7bd4c5e9cfea}
+      \strng{bibnamehash}{b81cfa1c06316afa7afb7bd4c5e9cfea}
+      \strng{authorbibnamehash}{b81cfa1c06316afa7afb7bd4c5e9cfea}
+      \strng{authornamehash}{b48c5c87627c88ef300eea5826ac6486}
+      \strng{authorfullhash}{b81cfa1c06316afa7afb7bd4c5e9cfea}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The study of ancient cultures is hindered by the incomplete survival of material artifacts, so we commonly underestimate the diversity of cultural production in historic societies. To correct this survivorship bias, we applied unseen species models from ecology to gauge the loss of narratives from medieval Europe, such as the romances about King Arthur. The estimates obtained are compatible with the scant historic evidence. In addition to events such as library fires, we identified the original evenness of cultural populations as an overlooked factor in these assemblages’ stability in the face of immaterial loss. We link the elevated evenness in island literatures to analogous accounts of ecological and cultural diversity in insular communities. These analyses call for a wider application of these methods across the heritage sciences.}
+      \field{issue}{375}
+      \field{journaltitle}{Science}
+      \field{number}{6582}
+      \field{title}{Forgotten Books: The Application of Unseen Species Models to the Survival of Culture}
+      \field{year}{2022}
+      \true{nocite}
+      \field{pages}{765\bibrangedash 769}
+      \range{pages}{5}
+      \verb{urlraw}
+      \verb https://doi.org/10.1126/science.abl7655
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1126/science.abl7655
+      \endverb
+    \endentry
+    \entry{2021:fonteyn_karsdorp}{inbook}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=34d8bc4a025f4f19103a42c096989b1f}{%
+           family={Fonteyn},
+           familyi={F\bibinitperiod},
+           given={Lauren},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=0e8c9bab295eea52a8b449b7e4a79338}{%
+           family={{Van der Sijs}},
+           familyi={V\bibinitperiod},
+           given={Nicoline},
+           giveni={N\bibinitperiod}}}%
+        {{hash=34d8bc4a025f4f19103a42c096989b1f}{%
+           family={Fonteyn},
+           familyi={F\bibinitperiod},
+           given={Lauren},
+           giveni={L\bibinitperiod}}}%
+        {{hash=8c2b6d4cf5bd3a6d1d86d72c1dd086f1}{%
+           family={{Van der Meulen}},
+           familyi={V\bibinitperiod},
+           given={Marten},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sterck \& {De Vreese}}%
+      }
+      \strng{namehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{fullhash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{bibnamehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{authorbibnamehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{authornamehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{authorfullhash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{editorbibnamehash}{0d6081ced62edbb6508e3162fa3d884a}
+      \strng{editornamehash}{f95151b71d455b525c0d28d7cd2a8748}
+      \strng{editorfullhash}{0d6081ced62edbb6508e3162fa3d884a}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Wat gebeurt er in het Nederlands?! Over taal, frequentie en variatie}
+      \field{title}{Telkens weer hetzelfde verhaal}
+      \field{year}{2021}
+      \true{nocite}
+      \field{pages}{153\bibrangedash 157}
+      \range{pages}{5}
+    \endentry
+    \entry{2021a:karsdorp_book}{book}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f0d8885ad4c012b0ced0ee95cdf2729}{%
+           family={Riddell},
+           familyi={R\bibinitperiod},
+           given={Allen},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{f2c1e73b2feed83c8641adc54991a58e}
+      \strng{bibnamehash}{f2c1e73b2feed83c8641adc54991a58e}
+      \strng{authorbibnamehash}{f2c1e73b2feed83c8641adc54991a58e}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{f2c1e73b2feed83c8641adc54991a58e}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The use of quantitative methods in the humanities and related social sciences has increased considerably in recent years, allowing researchers to discover patterns in a vast range of source materials. Despite this growth, there are few resources addressed to students and scholars who wish to take advantage of these powerful tools. Humanities Data Analysis offers the first intermediate-level guide to quantitative data analysis for humanities students and scholars using the Python programming language. This practical textbook, which assumes a basic knowledge of Python, teaches readers the necessary skills for conducting humanities research in the rapidly developing digital environment.}
+      \field{title}{Humanities Data Analysis. Case Studies with Python}
+      \field{year}{2021}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis
+      \endverb
+      \verb{url}
+      \verb https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis
+      \endverb
+    \endentry
+    \entry{2020a:karsdorp}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=34d8bc4a025f4f19103a42c096989b1f}{%
+           family={Fonteyn},
+           familyi={F\bibinitperiod},
+           given={Lauren},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{bd951789b902aa51e92f0369f5da8be3}
+      \strng{bibnamehash}{bd951789b902aa51e92f0369f5da8be3}
+      \strng{authorbibnamehash}{bd951789b902aa51e92f0369f5da8be3}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{bd951789b902aa51e92f0369f5da8be3}
+      \field{extraname}{4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A fundamental problem in research into language and cultural change is the difficulty of distinguishing processes of stochastic drift (also known as neutral evolution) from processes that are subject to selection pressures. In this article, we describe a new technique based on Deep Neural Networks, in which we reformulate the detection of evolutionary forces in cultural change as a binary classification task. Using Residual Networks for time series trained on artificially generated samples of cultural change, we demonstrate that this technique is able to efficiently, accurately and consistently learn which aspects of the time series are distinctive for drift and selection respectively. We compare the model to a recently proposed statistical test, the Frequency Increment Test, and show that the neural time series classification system provides a possible solution to some of the key problems associated with this test.}
+      \field{journaltitle}{Evolutionary Human Sciences}
+      \field{title}{Classifying Evolutionary Forces in Language Change Using Neural Networks}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://doi.org/10.1017/ehs.2020.52
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1017/ehs.2020.52
+      \endverb
+    \endentry
+    \entry{2020b:kestemont}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{fullhash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{bibnamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authorbibnamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authornamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authorfullhash}{84239ee2bfebfe973e54e970678d4d33}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The century-long loss of documents is one of the major impediments to the study of historic literature. Here we focus on Middle Dutch chivalric epics (ca. 1200-1450), a genre for which little archival records exist that shed light on the survival rates of works and documents. We cast the quantitative estimation of these survival rates as a variant of the unseen species problem from ecodiversity. We apply an established non-parametric method ( Chao1 ) and compare it to a number of common alternatives on simulated data. Finally, we discuss the implications of our results for conventional philology: our numbers suggest that the losses sustained on the level of works may be more dramatic than previously imagined, whereas those at the document-level align surprisingly well with existing estimates in book history, although these were based on completely different data sources.}
+      \field{journaltitle}{Proceedings of the Workshop on Computational Humanities Research (CHR2020)}
+      \field{title}{Estimating the Loss of Medieval Literature with an Unseen Species Model from Ecodiversity}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{urlraw}
+      \verb http://ceur-ws.org/Vol-2723/short10.pdf
+      \endverb
+      \verb{url}
+      \verb http://ceur-ws.org/Vol-2723/short10.pdf
+      \endverb
+    \endentry
+    \entry{2020a:manjavacas}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{fullhash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \strng{bibnamehash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \strng{authorbibnamehash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \strng{authornamehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{authorfullhash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Intertextuality is a highly productive concept in literary theory. The pervasiveness of intertextuality in literary texts has lead simultaneously to a proliferation of applications with often divergent interpretations of the concept of intertextuality, as well as a recurrent interest in studying it from a computational point of view. Despite the potential of data-driven, bottom-up approaches, most computational research into intertextuality has focused on the matter of text reuse detection, exploiting surface-level properties to improve the performance of retrieval systems. In the present study, we utilize the Patrologia Latina -- a substantial collection of religious texts spanning over a millennium of Latin writing (3rd to 13th centuries) -- to provide a large-scale systematic study of biblical intertexts. On the basis of multi-level statistical models, we investigate two axes of intertexts: the degree of lexical similarity, and the degree to which intertexts are thematically embedded in the context. Furthermore, we investigate the extent to which the following contextual sources of variation help explain the distribution of intertexts along the aforementioned axes: first, we analyze the effect of authorship: do authors differ in the way they compose their intertexts? Secondly, we inspect factors related to the source collection (i.e. the Bible) to elucidate whether the authority and tradition of particular books exert an influence on the observed intertexts: do certain books trigger a more allusive or quotational intertext type? Finally, we take into account the dominant topic surrounding the intertext location and examine associations between the distribution of dominant topics and intertext types. On the one hand, our analysis indicates that both axes (lexical similarity and thematic embedding) play partially complementary roles in our computational account of intertextual types. On the other hand, we find that biblical books and, more strongly, dominant topics constitute important factors of variation, while the authorial signal remains comparatively weak.}
+      \field{journaltitle}{Proceedings of the Workshop on Computational Humanities Research (CHR2020)}
+      \field{title}{A Statistical Foray into Contextual Aspects of Intertextuality}
+      \field{year}{2020}
+      \true{nocite}
+      \verb{urlraw}
+      \verb http://ceur-ws.org/Vol-2723/long28.pdf
+      \endverb
+      \verb{url}
+      \verb http://ceur-ws.org/Vol-2723/long28.pdf
+      \endverb
+    \endentry
+    \entry{2019h:haverals_syllables}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=90eb5dc01693e59d84d83980813e75fb}{%
+           family={Haverals},
+           familyi={H\bibinitperiod},
+           given={Wouter},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d9006b9ba5efd937a20c72eea9180cdf}
+      \strng{fullhash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \strng{bibnamehash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \strng{authorbibnamehash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \strng{authornamehash}{d9006b9ba5efd937a20c72eea9180cdf}
+      \strng{authorfullhash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The task of automatically separating Middle Dutch words into syllables is a challenging one. A first method was presented by Bouma and Hermans (2012), who combined a rule-based finite-state component with data-driven error correction. Achieving an average word accuracy of 96.5\%, their system surely is a satisfactory one, although it leaves room for improvement. Generally speaking, rule-based methods are less attractive for dealing with a medieval language like Middle Dutch, where not only each dialect has its own spelling preferences, but where there is also much idiosyncratic variation among scribes. This paper presents a different method for the task of automatically syllabifying Middle Dutch words, which does not rely on a set of pre-defined linguistic information. Using a Recurrent Neural Network (RNN) with Long-Short-Term Memory cells (LSTM), we obtain a system which outperforms the rule-based method both in robustness and in effort.}
+      \field{issue}{12}
+      \field{journaltitle}{Digital Medievalist}
+      \field{number}{1}
+      \field{title}{Data-Driven Syllabification for Middle Dutch}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{1\bibrangedash 23}
+      \range{pages}{23}
+      \verb{urlraw}
+      \verb https://doi.org/10.16995/dm.83
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.16995/dm.83
+      \endverb
+    \endentry
+    \entry{2019c:haverals_vooys}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=90eb5dc01693e59d84d83980813e75fb}{%
+           family={Haverals},
+           familyi={H\bibinitperiod},
+           given={Wouter},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d9006b9ba5efd937a20c72eea9180cdf}
+      \strng{fullhash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \strng{bibnamehash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \strng{authorbibnamehash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \strng{authornamehash}{d9006b9ba5efd937a20c72eea9180cdf}
+      \strng{authorfullhash}{3fbb9f872aad0c1e7bd71e8529552682}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Kunnen we een robot het metrum van een historisch Nederlands lied laten voorspellen? Die uitdaging gingen Wouter Haverals, Mike Kestemont (beiden Universiteit Antwerpen) en Folgert Karsdorp (Meertens Instituut) aan. In dit artikel schrijven ze over de voortgang van dit project waarin gebruik wordt gemaakt van recente, veelbelovende ontwikkelingen binnen de kunstmatige intelligentie en dan vooral machine learning. Hun data komt van de Nederlandse Liederenbank, die een fenomenale hoeveelheid gegevens bevat over de historische lyriek in het Nederlandse taalgebied. Door een samenwerking met de DBNL is deze collectie recent verrijkt met meer dan 50.000 links naar volledige liedteksten. De ontwikkeling van een ‘scansierobot’ voor deze teksten is een flinke klus omdat er voor historische taalvarianten minder computationele middelen voorhanden zijn dan voor hun moderne tegenhangers. Haverals, Karsdorp en Kestemont beschrijven stapsgewijs hun aanpak van dit probleem en zien een glansrijke toekomst voor een diachroon onderzoek naar de evolutie van het Nederlandse metrum.}
+      \field{issue}{37}
+      \field{journaltitle}{Vooys. Tijdschrift voor letteren}
+      \field{number}{3}
+      \field{title}{Rekenen op ritme. Een datagedreven oplossing voor het automatisch scanderen van de historische lyriek in de DBNL}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{6\bibrangedash 17}
+      \range{pages}{12}
+    \endentry
+    \entry{2019i:karsdorp_willekeur}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{fullhash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{bibnamehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{authorbibnamehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{authornamehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{authorfullhash}{6f68e1a26b24a7ebfe52209d83699780}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This article argues in favour of studying processes of random cultural change in the humanities. Studies of cultural change are of limited value if they are not embedded in or contrasted with a formalized and systematic theory of random change. To situate the discussion, this article first provides a brief overview of historical and more recent accounts of random cultural change. While quantitative, cultural evolutionary studies have for long considered random copying to be fundamental to cultural change, it has received hardly any attention in the humanities literature. Accounts of cultural change in the humanities typically concentrate on informal, narrative descriptions of non-random factors of change, and downplay, reject or simply ignore random change as an alternative explanation. The paper reflects on several reasons pertaining to this lack of attention and highlights the benefits of an integrated quantitative framework of chance for the study of cultural change.}
+      \field{issue}{135}
+      \field{journaltitle}{Tijdschrift voor Nederlands Taal- en Letterkunde}
+      \field{number}{4}
+      \field{title}{Willekeur in culturele verandering}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{303\bibrangedash 315}
+      \range{pages}{13}
+    \endentry
+    \entry{2019d:karsdorp_cultural_entrenchment}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=34d8bc4a025f4f19103a42c096989b1f}{%
+           family={Fonteyn},
+           familyi={F\bibinitperiod},
+           given={Lauren},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{fullhash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{bibnamehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{authorbibnamehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{authornamehash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \strng{authorfullhash}{51c8d3bcd36d1e56f1033b10bdb0bc47}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this interdisciplinary study, we explore the understudied effects of growing cultural entrenchment on the form of stories with a long reproduction history. Drawing on insight from literary theory, theoretical linguistics, and cultural evolution theory, we argue that changes in the cultural entrenchment of fairy tales and folk stories are reflected in (small) structural ‘mutations’ in the story. More specifically, we aim to show that with the increasing familiarity of“Little Red Riding Hood”, its story frame and characters have gradually become part of the author and audience’s shared world knowledge, which is encoded in the type of linguistic devices used to introduce the characters. To this end, we performed a Bayesian logistic regression analysis on a diachronic collection (late 18th century – 2015) of the world’s most iconic fairy tale, using automatically generated time estimations for a subset of undated reproductions in the story lineage, and including these estimates and approximated measurement errors in the statistical model. Results show that there is indeed a marked increase of linguistic markers that indicate that the characters are already known or “accessible” to the audience. This development reflects the author’s changing intuitions and beliefs about the familiarity of the story, and, indirectly, the changing expectations of the story’s audience regarding the appearance of certain characters in the story frame. Notably, this study is the first to quantitatively describe the diachronic development of a story (and the concepts associated with it) into the realm of ‘shared knowledge’, showing that it is a slow and gradual process. The results help refine our understanding of cultural evolution as well as the workings of speaker-addressee dynamics. Conceptualising the observed linguistic mutations as an instance of guided variation, we argue that the increase of definite first mentions as a function of cultural entrenchment can be treated as an example of variation guided by pragmatic principles such as Grice’s Maxim of Quantity, making character introductions as informative as (and not more informative than) required.}
+      \field{issue}{5}
+      \field{journaltitle}{Palgrave Communications}
+      \field{number}{25}
+      \field{title}{Cultural Entrenchment of Folktales is Encoded in Language}
+      \field{year}{2019}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.1057/s41599-019-0234-9
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1057/s41599-019-0234-9
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1057/s41599-019-0234-9
+      \endverb
+    \endentry
+    \entry{2019g:karsdorp_hiphop}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{3d1d70f75ccbc7062c2b5a418542538b}
+      \strng{bibnamehash}{3d1d70f75ccbc7062c2b5a418542538b}
+      \strng{authorbibnamehash}{3d1d70f75ccbc7062c2b5a418542538b}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{3d1d70f75ccbc7062c2b5a418542538b}
+      \field{extraname}{5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Through advances in neural language modeling, it has become possible to generate artificial texts in a variety of genres and styles. While the semantic coherence of such texts should not be over-estimated, the grammatical correctness and stylistic qualities of these artificial texts are at times remarkably convincing. In this paper, we report a study into crowd-sourced authenticity judgments for such artificially generated texts. As a case study, we have turned to rap lyrics, an established sub-genre of present-day popular music, known for its explicit content and unique rhythmical delivery of lyrics. The empirical basis of our study is an experiment carried out in the context of a large, mainstream contemporary music festival in the Netherlands. Apart from more generic factors, we model a diverse set of linguistic characteristics of the input that might have functioned as authenticity cues. It is shown that participants are only marginally capable of distinguishing between authentic and generated materials. By scrutinizing the linguistic features that influence the participants’ authenticity judgments, it is shown that linguistic properties such as ‘syntactic complexity’, ‘lexical diversity’ and ‘rhyme density’ add to the user’s perception of texts being authentic. This research contributes to the improvement of the quality and credibility of generated text. Additionally, it enhances our understanding of the perception of authentic and artificial art.}
+      \field{issue}{14}
+      \field{journaltitle}{PLoS ONE}
+      \field{number}{10}
+      \field{title}{Keepin' it real: linguistic models of authenticity judgments for artificially generated rap lyrics}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{e0224152}
+      \range{pages}{-1}
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pone.0224152
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1371/journal.pone.0224152
+      \endverb
+    \endentry
+    \entry{2019e:karsdorp_melody_sims}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a8cd00834f4dbdf93b53b755d9d5870a}{%
+           family={Kranenburg},
+           familyi={K\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{29dedce8093a09753ea29b8f5cc7bb94}
+      \strng{bibnamehash}{29dedce8093a09753ea29b8f5cc7bb94}
+      \strng{authorbibnamehash}{29dedce8093a09753ea29b8f5cc7bb94}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{29dedce8093a09753ea29b8f5cc7bb94}
+      \field{extraname}{6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Similarity measures are indispensable in music information retrieval. In recent years, various proposals have been made for measuring melodic similarity in symbolically encoded scores. Many of these approaches are ultimately based on a dynamic programming approach such as sequence alignment or edit distance, which has various drawbacks. First, the similarity scores are not necessarily metrics and are not directly comparable. Second, the algorithms are mostly first-order and of quadratic time-complexity, and finally, the features and weights need to be defined precisely. We propose an alternative approach which employs deep neural networks for end-to-end similarity metric learning. We contrast and compare different recurrent neural architectures (LSTM and GRU) for representing symbolic melodies as continuous vectors, and demonstrate how duplet and triplet loss functions can be employed to learn compact distributional representations of symbolic music in an induced melody space. This approach is contrasted with an alignment-based approach. We present results for the Meertens Tune Collections, which consists of a large number of vocal and instrumental monophonic pieces from Dutch musical sources, spanning five centuries, and demonstrate the robustness of the learned similarity metrics.}
+      \field{journaltitle}{Proceedings of the 20th International Society for Music Information Retrieval Conference 2019 (ISMIR 2019)}
+      \field{month}{10}
+      \field{title}{Learning Similarity Metrics for Melody Retrieval}
+      \field{year}{2019}
+      \true{nocite}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+      \verb{urlraw}
+      \verb http://archives.ismir.net/ismir2019/paper/000057.pdf
+      \endverb
+      \verb{url}
+      \verb http://archives.ismir.net/ismir2019/paper/000057.pdf
+      \endverb
+    \endentry
+    \entry{2019a:kestemont}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{fullhash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{bibnamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authorbibnamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authornamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authorfullhash}{84239ee2bfebfe973e54e970678d4d33}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{It is well known that the study of historical literature is impeded by the incomplete transmission of sources: due to a century-long loss of sources, inevitably, a large number of texts is no longer known to us. As such, our current perspective on the literary diversity of the past is probably underestimating the actual wealth of texts that once existed. Statistical methods from eco-diversity can assist us in adjusting this estimate in a quantitative and precise manner. Applied to Middle Dutch chivalric epics, these methods suggest that prior estimates of text loss may be too conservative: the methods estimate that up to half of the original texts have been lost (and possibly many more).}
+      \field{issue}{61}
+      \field{journaltitle}{Spiegel der Letteren}
+      \field{number}{3}
+      \field{title}{Het Atlantis van de Middelnederlandse ridderepiek. Een schatting van het tekstverlies met methodes uit de ecodiversiteit}
+      \field{year}{2019}
+      \true{nocite}
+    \endentry
+    \entry{2019a:lassche_repetition_popularity}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=d108a50b0ff1168172b171ec47724cdf}{%
+           family={Lassche},
+           familyi={L\bibinitperiod},
+           given={Alie},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=832ea1729e0febe43dd59a28afa81852}{%
+           family={Stronks},
+           familyi={S\bibinitperiod},
+           given={Els},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Utrecht, The Netherlands}%
+      }
+      \strng{namehash}{dd2f1b4ccbf1a70d69cc3f3ffa917483}
+      \strng{fullhash}{9b9c0b9693b1f93b8aac2b25fe264940}
+      \strng{bibnamehash}{9b9c0b9693b1f93b8aac2b25fe264940}
+      \strng{authorbibnamehash}{9b9c0b9693b1f93b8aac2b25fe264940}
+      \strng{authornamehash}{dd2f1b4ccbf1a70d69cc3f3ffa917483}
+      \strng{authorfullhash}{9b9c0b9693b1f93b8aac2b25fe264940}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This study explores the relation between repetition and popularity in Dutch historical songs. Previous studies on song lyrics have shown that contemporary songs stand a greater chance of reaching \#1 of the Billboard’s hit chart when their lyrics are more repetitive (Nunes, Ordanini, and Valsesia 2015; Alexander 1996; Ellis et al. 2015; Bradlow and Fader 2001). This preference for repetitive structures is a well-known cognitive bias (see e.g. Rubin 1995), yet little is known about whether similar preferences were at play in historical popular song lyrics. The current study aims to address this question by quantitatively modelling the relationship between popularity and various forms of repetition in the lyrics of a large-scale collection of historical songs and, subsequently, relating our findings to observations in the modern era. While we acknowledge the effect of musical repetition on a song’s popularity and the way this can affect our results, we focus in this study on textual repetition.}
+      \field{journaltitle}{Proceedings of the 2019 Digital Humanities conference}
+      \field{month}{7}
+      \field{title}{Repetition and Popularity in Early Modern Songs}
+      \field{year}{2019}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/en/publications/repetition-and-popularity-in-early-modern-songs(4a56b6f6-4e6c-4757-a28e-010e8c6b8d28).html
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/en/publications/repetition-and-popularity-in-early-modern-songs(4a56b6f6-4e6c-4757-a28e-010e8c6b8d28).html
+      \endverb
+    \endentry
+    \entry{2019f:manjavacas_hip_hop_generation}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Tokyo, Japan}%
+      }
+      \strng{namehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{fullhash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \strng{bibnamehash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \strng{authorbibnamehash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \strng{authornamehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{authorfullhash}{b1fed23cfad7e425ff66a38fe12dfe8d}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper addresses Hip-Hop lyric generation with conditional Neural Language Models. We develop a simple yet effective mechanism to extract and apply conditional templates from text snippets, and show -- on the basis of a large-scale crowd-sourced manual evaluation -- that these templates significantly improve the quality and realism of the generated snippets. Importantly, the proposed approach enables end-to-end training, targeting formal properties of text such as rhythm and rhyme, which are central characteristics of rap texts. Additionally, we explore how generating text at different scales (e.g. character-level or word-level) affects the quality of the output. We find that a hybrid form -- a hierarchical model that aims to integrate Language Modeling at both word and character-level scales -- yields significant improvements in text quality, yet surprisingly, cannot exploit conditional templates to their fullest extent. Our findings highlight that text generation models based on Recurrent Neural Networks (RNN) are sensitive to the modeling scale and call for further research on the observed differences in effectiveness of the conditioning mechanism at different scales.}
+      \field{journaltitle}{Proceedings of the 12th International Conference on Natural Language Generation}
+      \field{month}{11}
+      \field{title}{Generation of Hip-Hop Lyrics with Hierarchical Modeling and Conditional Templates}
+      \field{year}{2019}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.inlg2019.com/assets/papers/46_Paper.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.inlg2019.com/assets/papers/46_Paper.pdf
+      \endverb
+    \endentry
+    \entry{2019b:manjavacas_hip_hop_generation}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Utrecht, The Netherlands}%
+      }
+      \strng{namehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{fullhash}{c76bd19b251eb3e5146e84d2206ee7b5}
+      \strng{bibnamehash}{c76bd19b251eb3e5146e84d2206ee7b5}
+      \strng{authorbibnamehash}{c76bd19b251eb3e5146e84d2206ee7b5}
+      \strng{authornamehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{authorfullhash}{c76bd19b251eb3e5146e84d2206ee7b5}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This study aims to advance and enhance our understanding of the properties that contribute to the perceived authenticity of a specific art form: Hip-Hop lyrics. The basis of our study is an experiment carried out in the context of a large, mainstream contemporary music festival. We crowdsourced a large dataset of authenticity judgements for both authentic and neurally generated Hip-Hop lyrics, which enable us to quantitatively assess human biases toward artificially generated text as well as which linguistic characteristics are perceived as authenticity cues. Additionally, the dataset provides solid ground for evaluating different neural language generation systems with respect to their perceived credibility. We compare a variety of language models and techniques. Our experiments contribute equally to improving the credibility of generated text and enhancing our understanding of the cognitive processes at play in the perception of authentic and artificial art.}
+      \field{journaltitle}{Proceedings of the 2019 Digital Humanities conference}
+      \field{month}{7}
+      \field{title}{A Robot’s Street Credibility: Modeling authenticity judgments for artificially generated Hip-Hop lyrics}
+      \field{year}{2019}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/en/publications/a-robots-street-credibility-modeling-authenticity-judgments-for-artificially-generated-hiphop-lyrics(80a790fe-e9cd-459d-9af4-29ccbec320ef).html
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/en/publications/a-robots-street-credibility-modeling-authenticity-judgments-for-artificially-generated-hiphop-lyrics(80a790fe-e9cd-459d-9af4-29ccbec320ef).html
+      \endverb
+    \endentry
+    \entry{2017a:karsdorp_synthetische_literatuur}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=88c45c617c1987d9633b0d55413c8af7}{%
+           family={Burtenshaw},
+           familyi={B\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{ed19e8a28d52e891bbcef5e6d80e0f5f}
+      \strng{bibnamehash}{ed19e8a28d52e891bbcef5e6d80e0f5f}
+      \strng{authorbibnamehash}{ed19e8a28d52e891bbcef5e6d80e0f5f}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{ed19e8a28d52e891bbcef5e6d80e0f5f}
+      \field{extraname}{7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ronald Giphart doet een literair experiment door samen met een intelligente robot een verhaal te schrijven. Hij gebruikt zowel een oude tekstgenerator als nieuwe recurrente neurale netwerken. Het resultaat lijkt veelbelovend. De Stichting CPNB organiseert ieder jaar de campagne Nederland Leest! ter promotie van het Nederlandse boek. Het thema van 2017 is ‘Robotica’, waarbij aandacht besteed wordt aan de maatschappelijke mogelijkheden en uitdagingen die gepaard gaan met de toenemende rol van artificiële intelligentie in ons dagelijks leven. Een centraal onderdeel van de campagne is de heruitgave van de beroemde sciencefiction-verhalenbundel ‘I, Robot’ van Isaac Asimov (1950). Ik, Robot Het boek van Asimov is in het Nederlands vertaald door Leo Zeldersin 1966. De bundel bestaat uit negen korte verhalen, verschenen in het magazine Astounding Science Fiction tussen 1940 en 1950. Het is vooral beroemd om de ‘Drie Wetten van de Robotica’ van Asimov. Om het debat over de rol van artificiële intelligentie in literatuur aan te zwengelen, wil het CPNB aan de heruitgave van ‘Ik, Robot’ een tiende verhaal toevoegen. Dit is geschreven door Ronald Giphart, bekend van romans zoals ‘Phileine zegt sorry’ en ‘Ik ook van jou’. Ronald Giphart schrijft het verhaal samen met een computer. Hoe gaat deze samenwerking in z’n werk?}
+      \field{journaltitle}{DIXIT: tijdschrift over taal- en spraaktechnologie}
+      \field{title}{Synthetische literatuur: neurale netwerken als coauteur}
+      \field{volume}{14}
+      \field{year}{2017}
+      \true{nocite}
+      \field{pages}{17\bibrangedash 18}
+      \range{pages}{2}
+      \verb{urlraw}
+      \verb https://notas.nl/dixit/dixit_2017_ai.pdf
+      \endverb
+      \verb{url}
+      \verb https://notas.nl/dixit/dixit_2017_ai.pdf
+      \endverb
+    \endentry
+    \entry{2017a:manjavacas_writing_science_fiction}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=fa67099dd91746e5121aa045e1000bfb}{%
+           family={Manjavacas},
+           familyi={M\bibinitperiod},
+           given={Enrique},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=88c45c617c1987d9633b0d55413c8af7}{%
+           family={Burtenshaw},
+           familyi={B\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{fullhash}{1585f87f2e6d0c1bc1b28f00cfe30253}
+      \strng{bibnamehash}{1585f87f2e6d0c1bc1b28f00cfe30253}
+      \strng{authorbibnamehash}{1585f87f2e6d0c1bc1b28f00cfe30253}
+      \strng{authornamehash}{742f077fbba1fbd37066d63a92ed5550}
+      \strng{authorfullhash}{1585f87f2e6d0c1bc1b28f00cfe30253}
+      \field{extraname}{4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper describes a co-creative text generation system applied within a science fiction setting to be used by an established novelist. The project was initiated as part of The Dutch Book Week, and the generated text will be published within a volume of science fiction stories. We explore the ramifications of applying Natural Language Generation within a cocreative process, and examine where the cocreative setting challenges both writer and machine. We employ a character-level language model to generate text based on a large corpus of Dutch novels that exposes a number of tunable parameters to the user. The system is used through a custom graphical user interface, that helps the writer to elicit, modify and incorporate suggestions by the text generation system. Besides a literary work, the output of the present project also includes user-generated meta-data that is expected to contribute to the quantitative evaluation of the text-generation system and the co-creative process involved.}
+      \field{journaltitle}{Proceedings of the Workshop on Computational Creativity in Natural Language Generation (CC-NLG 2017)}
+      \field{title}{Synthetic literature: Writing science fiction in a co-creative process}
+      \field{year}{2017}
+      \true{nocite}
+      \field{pages}{29\bibrangedash 37}
+      \range{pages}{9}
+      \verb{urlraw}
+      \verb http://aclweb.org/anthology/W17-3904
+      \endverb
+      \verb{url}
+      \verb http://aclweb.org/anthology/W17-3904
+      \endverb
+    \endentry
+    \entry{2016a:karsdorp_story_networks}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75711e4bc04176ea21398e35d4085af8}{%
+           family={Bosch},
+           familyi={B\bibinitperiod},
+           given={Antal},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \strng{namehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{fullhash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{bibnamehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{authorbibnamehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{authornamehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{authorfullhash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{With this study, we advance the understanding about the processes through which stories are retold. A collection of story retellings can be considered as a network of stories, in which links between stories represent pre-textual (or ancestral) relationships. This study provides a mechanistic understanding of the structure and evolution of such story networks: we construct a story network for a large diachronic collection of Dutch literary retellings of Red Riding Hood, and compare this network to one derived from a corpus of paper chain letters. In the analysis, we first provide empirical evidence that the formation of these story networks is subject to age-dependent selection processes with a strong lopsidedness towards shorter time-spans between stories and their pre-texts (i.e. ‘young’ story versions are preferred in producing new versions). Subsequently, we systematically compare these findings with and among predictions of various formal models of network growth to determine more precisely which kinds of attractiveness are also at play or might even be preferred as explicatory models. By carefully studying the structure and evolution of the two story networks, then, we show that existing stories are differentially preferred to function as a new version's pre-text given three types of attractiveness: (i) frequency-based and (ii) model-based attractiveness which (iii) decays in time.}
+      \field{journaltitle}{Royal Society Open Science}
+      \field{title}{The Structure and Evolution of Story Networks}
+      \field{volume}{3}
+      \field{year}{2016}
+      \true{nocite}
+      \field{pages}{160071}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1098/rsos.160071
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1098/rsos.160071
+      \endverb
+    \endentry
+    \entry{2016a:kestemont_caesar}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3870f422fa8f2600ebc400384ce1260b}{%
+           family={Stover},
+           familyi={S\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e0e5f34facf1485d1829751269471217}{%
+           family={Koppel},
+           familyi={K\bibinitperiod},
+           given={Moshe},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=de80d83604a86dc9aff51ca1ce3069e6}{%
+           family={Daelemans},
+           familyi={D\bibinitperiod},
+           given={Walter},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{b48c5c87627c88ef300eea5826ac6486}
+      \strng{fullhash}{c380f99f87fa34eb8f9088e54464c862}
+      \strng{bibnamehash}{c380f99f87fa34eb8f9088e54464c862}
+      \strng{authorbibnamehash}{c380f99f87fa34eb8f9088e54464c862}
+      \strng{authornamehash}{b48c5c87627c88ef300eea5826ac6486}
+      \strng{authorfullhash}{c380f99f87fa34eb8f9088e54464c862}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we shed new light on the authenticity of the Corpus Caesarianum, a group of five commentaries describing the campaigns of Julius Caesar (100–44 BC), the founder of the Roman empire. While Caesar himself has authored at least part of these commentaries, the authorship of the rest of the texts remains a puzzle that has persisted for nineteen centuries. In particular, the role of Caesar’s general Aulus Hirtius, who has claimed a role in shaping the corpus, has remained in contention. Determining the authorship of documents is an increasingly important authentication problem in information and computer science, with valuable applications, ranging from the domain of art history to counter-terrorism research. We describe two state-of-the-art authorship verification systems and benchmark them on 6 present-day evaluation corpora, as well as a Latin benchmark dataset. Regarding Caesar’s writings, our analyses allow us to establish that Hirtius’s claims to part of the corpus must be considered legitimate. We thus demonstrate how computational methods constitute a valuable methodological complement to traditional, expert-based approaches to document authentication.}
+      \field{journaltitle}{Expert Systems with Applications}
+      \field{title}{Authenticating the writings of Julius Caesar}
+      \field{volume}{63}
+      \field{year}{2016}
+      \true{nocite}
+      \field{pages}{86\bibrangedash 96}
+      \range{pages}{11}
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/j.eswa.2016.06.029
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/j.eswa.2016.06.029
+      \endverb
+    \endentry
+    \entry{2016a:meder_dfd}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=e7a6ad52d6b862799d574d82d782973e}{%
+           family={Meder},
+           familyi={M\bibinitperiod},
+           given={Theo},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c33c0c3b0bb53cc08bb1b97cd5e6a563}{%
+           family={Nguyen},
+           familyi={N\bibinitperiod},
+           given={Dong},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d9b5e5613eca95c11ce0eeecc626fc4c}{%
+           family={Theune},
+           familyi={T\bibinitperiod},
+           given={Mariët},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b3920c448f377dd7ef611cd255b1988c}{%
+           family={Trieschnigg},
+           familyi={T\bibinitperiod},
+           given={Dolf},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4e26f7353ac273042267323271158b0d}{%
+           family={Muiser},
+           familyi={M\bibinitperiod},
+           given={Iwe},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7d86ab3c4d5edf500a4394654becdcc3}
+      \strng{fullhash}{1960cac57dabf66d9e23acd4d330460c}
+      \strng{bibnamehash}{1960cac57dabf66d9e23acd4d330460c}
+      \strng{authorbibnamehash}{1960cac57dabf66d9e23acd4d330460c}
+      \strng{authornamehash}{7d86ab3c4d5edf500a4394654becdcc3}
+      \strng{authorfullhash}{1960cac57dabf66d9e23acd4d330460c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper describes the development of the Dutch Folktale Database as a digital archive of intangible heritage and a sophisticated research instrument. Current research focuses on automating the assignment of metadata to folktales and on obtaining a better understanding of classifications of folktales into types, as well as an understanding of motif sequences. These studies are useful for future fundamental research into patterns and structures, such as historical and geographical variation in oral tradition, on an international scale.}
+      \field{issue}{511}
+      \field{journaltitle}{Journal of American Folklore}
+      \field{title}{Automatic Enrichment and Classification of Folktales in the Dutch Folktale Database}
+      \field{volume}{129}
+      \field{year}{2016}
+      \true{nocite}
+      \field{pages}{78\bibrangedash 96}
+      \range{pages}{19}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/files/2337691/JAF_VVB.pdf
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/files/2337691/JAF_VVB.pdf
+      \endverb
+    \endentry
+    \entry{2015c:karsdorp_love_equation}{inbook}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f756f97faee96e839223aa563d9c4b05}{%
+           family={Schöch},
+           familyi={S\bibinitperiod},
+           given={Christof},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75711e4bc04176ea21398e35d4085af8}{%
+           family={Bosch},
+           familyi={B\bibinitperiod},
+           given={Antal},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=a125817205145b231f1bb7d99c8a9411}{%
+           family={Finlayson},
+           familyi={F\bibinitperiod},
+           given={Mark\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=cb5e7176c48b9ec0176d772d8a08ba0c}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2fc7055876ddb7c63166bc05277bf7a2}{%
+           family={Lieto},
+           familyi={L\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=74e7546b2f66658dcd1ac9f8c388a3ea}{%
+           family={Ronfard},
+           familyi={R\bibinitperiod},
+           given={Remi},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Dagstuhl, Germany}%
+      }
+      \list{publisher}{1}{%
+        {Schloss Dagstuhl--Leibniz-Zentrum fuer Informatik}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{bf557c94d6f8138b3eec4305e7c91ba9}
+      \strng{bibnamehash}{bf557c94d6f8138b3eec4305e7c91ba9}
+      \strng{authorbibnamehash}{bf557c94d6f8138b3eec4305e7c91ba9}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{bf557c94d6f8138b3eec4305e7c91ba9}
+      \strng{editorbibnamehash}{c8b5d252c563b91539ca6880af6fb8ce}
+      \strng{editornamehash}{726df351ea898a76659a58c58ab9c7d6}
+      \strng{editorfullhash}{c8b5d252c563b91539ca6880af6fb8ce}
+      \field{extraname}{8}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We report on building a computational model of romantic relationships in a corpus of historical literary texts. We frame this task as a ranking problem in which, for a given character, we try to assign the highest rank to the character with whom (s)he is most likely to be romantically involved. As data we use a publicly available corpus of French 17th and 18th century plays (http://www.theatre-classique.fr/) which is well suited for this type of analysis because of the rich markup it provides (e.g. indications of characters speaking). We focus on distributional, so-called second-order features, which capture how speakers are contextually embedded in the texts. At a mean reciprocal rate (MRR) of 0.9 and MRR@1 of 0.81, our results are encouraging, suggesting that this approach might be successfully extended to other forms of social interactions in literature, such as antagonism or social power relations.}
+      \field{annotation}{Keywords: French drama, social relations, neural network, representation learning}
+      \field{booktitle}{6th Workshop on Computational Models of Narrative (CMN 2015)}
+      \field{isbn}{978-3-939897-93-4}
+      \field{issn}{2190-6807}
+      \field{series}{OpenAccess Series in Informatics (OASIcs)}
+      \field{title}{{The Love Equation: Computational Modeling of Romantic Relationships in French Classical Drama}}
+      \field{volume}{45}
+      \field{year}{2015}
+      \true{nocite}
+      \field{pages}{98\bibrangedash 107}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.4230/OASIcs.CMN.2015.98
+      \endverb
+      \verb{urlraw}
+      \verb http://drops.dagstuhl.de/opus/volltexte/2015/5283
+      \endverb
+      \verb{url}
+      \verb http://drops.dagstuhl.de/opus/volltexte/2015/5283
+      \endverb
+    \endentry
+    \entry{2015a:karsdorp_animacy_detection}{inbook}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=50c37d7abe6bdafe9e655aba35546833}{%
+           family={Meulen},
+           familyi={M\bibinitperiod},
+           given={Marten},
+           giveni={M\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e7a6ad52d6b862799d574d82d782973e}{%
+           family={Meder},
+           familyi={M\bibinitperiod},
+           given={Theo},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75711e4bc04176ea21398e35d4085af8}{%
+           family={Bosch},
+           familyi={B\bibinitperiod},
+           given={Antal},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=a125817205145b231f1bb7d99c8a9411}{%
+           family={Finlayson},
+           familyi={F\bibinitperiod},
+           given={Mark\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=cb5e7176c48b9ec0176d772d8a08ba0c}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+        {{hash=2fc7055876ddb7c63166bc05277bf7a2}{%
+           family={Lieto},
+           familyi={L\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=74e7546b2f66658dcd1ac9f8c388a3ea}{%
+           family={Ronfard},
+           familyi={R\bibinitperiod},
+           given={Remi},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Dagstuhl, Germany}%
+      }
+      \list{publisher}{1}{%
+        {Schloss Dagstuhl--Leibniz-Zentrum fuer Informatik}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \strng{bibnamehash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \strng{authorbibnamehash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \strng{editorbibnamehash}{c8b5d252c563b91539ca6880af6fb8ce}
+      \strng{editornamehash}{726df351ea898a76659a58c58ab9c7d6}
+      \strng{editorfullhash}{c8b5d252c563b91539ca6880af6fb8ce}
+      \field{extraname}{9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper presents a linguistically uninformed computational model for animacy classification. The model makes use of word n-grams in combination with lower dimensional word embedding representations that are learned from a web-scale corpus. We compare the model to a number of linguistically informed models that use features such as dependency tags and show competitive results. We apply our animacy classifier to a large collection of Dutch folktales to obtain a list of all characters in the stories. We then draw a semantic map of all automatically extracted characters which provides a unique entrance point to the collection.}
+      \field{booktitle}{6th Workshop on Computational Models of Narrative (CMN 2015)}
+      \field{series}{OpenAccess Series in Informatics (OASIcs)}
+      \field{title}{Animacy Detection in Stories}
+      \field{volume}{45}
+      \field{year}{2015}
+      \true{nocite}
+      \field{pages}{82\bibrangedash 97}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.4230/OASIcs.CMN.2015.82
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.4230/OASIcs.CMN.2015.82
+      \endverb
+    \endentry
+    \entry{2015b:karsdorp_momfer}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=50c37d7abe6bdafe9e655aba35546833}{%
+           family={Meulen},
+           familyi={M\bibinitperiod},
+           given={Marten},
+           giveni={M\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e7a6ad52d6b862799d574d82d782973e}{%
+           family={Meder},
+           familyi={M\bibinitperiod},
+           given={Theo},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75711e4bc04176ea21398e35d4085af8}{%
+           family={Bosch},
+           familyi={B\bibinitperiod},
+           given={Antal},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \strng{bibnamehash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \strng{authorbibnamehash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{c6fa6824c23e4d778cacc13ccaed3c84}
+      \field{extraname}{10}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{More than fifty years after the first edition of Thompson’s seminal Motif-Index of Folk Literature, we present an online search engine tailored to fully disclose the index digitally. This search engine, called MOMFER, greatly enhances the searchability of the Motif-Index and provides exciting new ways to explore the collection. This is enabled by our use of modern techniques from both natural language processing and information retrieval. The key feature of the search tool is the way in which it allows users to search the Motif-Index for semantic concepts, such as ‘mythical animals’, ‘mortality’, or ‘emotions’. This paper will explain the motivations for creating the search tool, explicate the production process, and show in a number of case studies how the search tool can be used to explore the index in innovative ways.}
+      \field{journaltitle}{Folklore}
+      \field{number}{1}
+      \field{title}{MOMFER: A Search Engine of Thompson's Motif-Index of Folk Literature}
+      \field{volume}{126}
+      \field{year}{2015}
+      \true{nocite}
+      \field{pages}{37\bibrangedash 52}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1080/0015587X.2015.1006954
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1080/0015587X.2015.1006954
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1080/0015587X.2015.1006954
+      \endverb
+    \endentry
+    \entry{2014a:kestemont_time_mining}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=671cb6efacacfc83504d148d2c732900}{%
+           family={Düring},
+           familyi={D\bibinitperiod},
+           given={Marten},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Sweden}%
+      }
+      \strng{namehash}{b48c5c87627c88ef300eea5826ac6486}
+      \strng{fullhash}{003f78a8094e3e2b7201ace59e9ffcfe}
+      \strng{bibnamehash}{003f78a8094e3e2b7201ace59e9ffcfe}
+      \strng{authorbibnamehash}{003f78a8094e3e2b7201ace59e9ffcfe}
+      \strng{authornamehash}{b48c5c87627c88ef300eea5826ac6486}
+      \strng{authorfullhash}{003f78a8094e3e2b7201ace59e9ffcfe}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper we report on an explorative study of the history of the twentieth century from a lexical point of view. As data, we use a diachronic collection of 270,000+ English-language articles harvested from the electronic archive of the well-known Time Magazine (1923–2006). We attempt to automatically identify significant shifts in the vocabulary used in this corpus using efficient, yet unsupervised computational methods, such as Parsimonious Language Models. We offer a qualitative interpretation of the outcome of our experiments in the light of momentous events in the twentieth century, such as the Second World War or the rise of the Internet. This paper follows up on a recent string of frequentist approaches to studying cultural history (‘Culturomics’), in which the evolution of human culture is studied from a quantitative perspective, on the basis of lexical statistics extracted from large, textual data sets.}
+      \field{journaltitle}{Proceedings of the 8th Workshop on Language Technology for Cultural Heritage, Social Sciences, and Humanities (LaTeCH), E-ACL}
+      \field{title}{Mining the Twentieth Century's History of from the Time Magazine Corpus}
+      \field{year}{2014}
+      \true{nocite}
+      \field{pages}{62\bibrangedash 70}
+      \range{pages}{9}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/files/1071098/Karsdorp_2014_ACL.pdf
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/files/1071098/Karsdorp_2014_ACL.pdf
+      \endverb
+    \endentry
+    \entry{2014a:vankranenburg_cadence}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a8cd00834f4dbdf93b53b755d9d5870a}{%
+           family={Kranenburg},
+           familyi={K\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{bd870835a7d7cb23158d200e6fdd4457}
+      \strng{fullhash}{bd870835a7d7cb23158d200e6fdd4457}
+      \strng{bibnamehash}{bd870835a7d7cb23158d200e6fdd4457}
+      \strng{authorbibnamehash}{bd870835a7d7cb23158d200e6fdd4457}
+      \strng{authornamehash}{bd870835a7d7cb23158d200e6fdd4457}
+      \strng{authorfullhash}{bd870835a7d7cb23158d200e6fdd4457}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Many Western songs are hierarchically structured in stanzas and phrases. The melody of the song is repeated for each stanza, while the lyrics vary. Each stanza is subdivided into phrases. It is to be expected that melodic and textual formulas at the end of the phrases offer intrinsic clues of closure to a listener or singer. In the current paper we aim at a method to detect such cadences in symbolically encoded folk songs. We take a trigram approach in which we classify trigrams of notes and pitches as cadential or as non-cadential. We use pitch, contour, rhythmic, textual, and contextual features, and a group of features based on the conditions of closure as stated by Narmour [11]. We employ a random forest classification algorithm. The precision of the classifier is considerably improved by taking the class labels of adjacent trigrams into account. An ablation study shows that none of the kinds of features is sufficient to account for good classification, while some of the groups perform moderately well on their own.}
+      \field{journaltitle}{15th International Society for Music Information Retrieval Conference (ISMIR 2014)}
+      \field{title}{Cadence Detection in Western Traditional Stanzaic Songs using Melodic and Textual Features}
+      \field{year}{2014}
+      \true{nocite}
+      \field{pages}{391\bibrangedash 396}
+      \range{pages}{6}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/files/943009/Kranenburg_2014_ismir.pdf
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/files/943009/Kranenburg_2014_ismir.pdf
+      \endverb
+    \endentry
+    \entry{2013a:karsdorp_formules}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{fullhash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{bibnamehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{authorbibnamehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{authornamehash}{6f68e1a26b24a7ebfe52209d83699780}
+      \strng{authorfullhash}{6f68e1a26b24a7ebfe52209d83699780}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Different folktale genres make use of various conventional ways of starting a story. How well can we predict the genre of a folktale based on these opening formulas? In this paper I show by means of computational analysis that Dutch and Frisian folktale formulas in many cases already provide enough information to correctly classify a folktale according to its genre. A more in-depth analysis reveals that idiomatic, fully lexically-specified opening phrases serve not only as predictors of genre but also as more abstract schemas with open slots at different levels of abstraction. I characterize the formulas by classifying them according to their primary communicative functions.}
+      \field{journaltitle}{Tijdschrift voor Nederlands Taal- en Letterkunde}
+      \field{number}{4}
+      \field{title}{{Het is groen en leeft nog lang en gelukkig. Classificatie van volksverhaalgenres op basis van formules}}
+      \field{volume}{129}
+      \field{year}{2013}
+      \true{nocite}
+      \field{pages}{274\bibrangedash 288}
+      \range{pages}{15}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/files/2546821/309_449_1_PB.pdf
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/files/2546821/309_449_1_PB.pdf
+      \endverb
+    \endentry
+    \entry{2013b:karsdorp_motif_topic_models}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75711e4bc04176ea21398e35d4085af8}{%
+           family={Bosch},
+           familyi={B\bibinitperiod},
+           given={Antal},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Nijmegen, The Netherlands}%
+      }
+      \strng{namehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{fullhash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{bibnamehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{authorbibnamehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{authornamehash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \strng{authorfullhash}{b3d41ec041d4a00f0fcb0e473d2e7abe}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{With the undertake of various folktale digitalization initiatives, the need for computational aids to explore these collections is increasing. In this paper we compare Labeled LDA (L-LDA) to a simple retrieval model on the task of identifying motifs in folktales. We show that both methods are well able to successfully discriminate between relevant and irrelevant motifs. L-LDA represents motifs as distributions over words. In a second experiment we compare the quality of these distributions to those of a simple baseline that ranks words using a TF·IDF weighting scheme. We show that both models produce representations that match relatively well to a manually constructed motif classification system used in folktale research. Finally we show that unlike L-LDA, this simple baseline is capable of representing abstract motifs as generalizations over more specific motifs.}
+      \field{journaltitle}{Proceedings of BENELEARN 2013}
+      \field{title}{Identifying motifs in folktales using topic models}
+      \field{year}{2013}
+      \true{nocite}
+      \field{pages}{41\bibrangedash 49}
+      \range{pages}{9}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/files/458984/Karsdorp_VdBosch.pdf
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/files/458984/Karsdorp_VdBosch.pdf
+      \endverb
+    \endentry
+    \entry{2012b:karsdorp:analogie}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0a3fb157fcbb50c95b57a02b96bf222}{%
+           family={Hüning},
+           familyi={H\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{05de8da52f5eeec752ef63016979cb8b}
+      \strng{fullhash}{05de8da52f5eeec752ef63016979cb8b}
+      \strng{bibnamehash}{05de8da52f5eeec752ef63016979cb8b}
+      \strng{authorbibnamehash}{05de8da52f5eeec752ef63016979cb8b}
+      \strng{authornamehash}{05de8da52f5eeec752ef63016979cb8b}
+      \strng{authorfullhash}{05de8da52f5eeec752ef63016979cb8b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In deze bijdrage willen we aandacht besteden aan de rol die analogie speelt in het theoretisch model van Construction Morphology zoals ontwikkeld door Booij (2010). In Construction Morphology worden woordvormingspatronen en productiviteit verantwoord door constructionele schema‘s en subschema‘s. Analogie wordt geïnterpreteerd als strikt locale analogie die kan leiden tot een nieuwvorming op basis van een modelwoord. Schema‘s en analogie zijn dus complementair en verschillen in de graad van abstractie, waarbij analogie het uitgangspunt kan zijn voor het ontstaan van een schema. Regelmatige productieve woordvorming en analogische nieuwvorming zijn in deze benadering – anders dan bijvoorbeeld in generatieve benaderingen – geen absolute tegenstellingen, maar ze moeten desondanks volgens Booij wel duidelijk worden onderscheiden van elkaar. Wij willen echter laten zien dat het model wel degelijk ruimte biedt voor een ruimer analogiebegrip, waarbij analogie kan worden gezien als het centrale mechanisme van (ook productieve) woordvorming.}
+      \field{issue}{2}
+      \field{journaltitle}{Nederlandse Taalkunde}
+      \field{title}{De relatie tussen schema’s en analogische verbindingen}
+      \field{volume}{17}
+      \field{year}{2012}
+      \true{nocite}
+      \field{pages}{261\bibrangedash 267}
+      \range{pages}{7}
+      \verb{urlraw}
+      \verb http://neon.niederlandistik.fu-berlin.de/static/mh/Karsdorp_Huening_2012.pdf
+      \endverb
+      \verb{url}
+      \verb http://neon.niederlandistik.fu-berlin.de/static/mh/Karsdorp_Huening_2012.pdf
+      \endverb
+    \endentry
+    \entry{2012a:karsdorp_motif_annotations}{inbook}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a8cd00834f4dbdf93b53b755d9d5870a}{%
+           family={Kranenburg},
+           familyi={K\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e7a6ad52d6b862799d574d82d782973e}{%
+           family={Meder},
+           familyi={M\bibinitperiod},
+           given={Theo},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b3920c448f377dd7ef611cd255b1988c}{%
+           family={Trieschnigg},
+           familyi={T\bibinitperiod},
+           given={Dolf},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75711e4bc04176ea21398e35d4085af8}{%
+           family={Bosch},
+           familyi={B\bibinitperiod},
+           given={Antal},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=2e4dae71d711cabc60d6e8329758c73c}{%
+           family={Finlayson},
+           familyi={F\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Turkey, Istanbul}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{390aa8ea793693292830d25e7cb8920b}
+      \strng{bibnamehash}{390aa8ea793693292830d25e7cb8920b}
+      \strng{authorbibnamehash}{390aa8ea793693292830d25e7cb8920b}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{390aa8ea793693292830d25e7cb8920b}
+      \strng{editorbibnamehash}{2e4dae71d711cabc60d6e8329758c73c}
+      \strng{editornamehash}{2e4dae71d711cabc60d6e8329758c73c}
+      \strng{editorfullhash}{2e4dae71d711cabc60d6e8329758c73c}
+      \field{extraname}{11}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present ongoing research on the role of motifs in oral transmission of stories. We assume that motifs constitute the primary buildingblocks of stories. On the basis of a quantitative analysis we show that the level of motif annotation utilized in the Aarne-Thompson-Utherfolktale type catalogue is well suited to analyze two genres of folktales in terms of motif sequences. However, for the other five genres in the catalogue the annotation level is not apt, because it is unable to bring to front the commonalities between stories.}
+      \field{booktitle}{Proceedings of the 2012 Computational Models of Narrative Workshop}
+      \field{title}{In search of an appropriate abstraction level for motif annotations}
+      \field{year}{2012}
+      \true{nocite}
+      \field{pages}{22\bibrangedash 26}
+      \range{pages}{5}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/files/467034/CMN.2012.karsdorp.pdf
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/files/467034/CMN.2012.karsdorp.pdf
+      \endverb
+    \endentry
+    \entry{2012c:karsdorp_casting}{inbook}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a8cd00834f4dbdf93b53b755d9d5870a}{%
+           family={Kranenburg},
+           familyi={K\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e7a6ad52d6b862799d574d82d782973e}{%
+           family={Meder},
+           familyi={M\bibinitperiod},
+           given={Theo},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75711e4bc04176ea21398e35d4085af8}{%
+           family={Bosch},
+           familyi={B\bibinitperiod},
+           given={Antal},
+           giveni={A\bibinitperiod},
+           givenun=0,
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=b71cea18228365428d29abf89670cfbb}{%
+           family={Mambrini},
+           familyi={M\bibinitperiod},
+           given={F},
+           giveni={F\bibinitperiod}}}%
+        {{hash=1fc226b2acacc5b583fc3fb58254a97d}{%
+           family={Passarotti},
+           familyi={P\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b265958af8e5328c1df98d47ba024266}{%
+           family={Sporleder},
+           familyi={S\bibinitperiod},
+           given={C},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{fullhash}{cbc449144458b834460d4a9d806d6786}
+      \strng{bibnamehash}{cbc449144458b834460d4a9d806d6786}
+      \strng{authorbibnamehash}{cbc449144458b834460d4a9d806d6786}
+      \strng{authornamehash}{f2ba4df4b95e3437927af2b68216716a}
+      \strng{authorfullhash}{cbc449144458b834460d4a9d806d6786}
+      \strng{editorbibnamehash}{6d5606bc0881e48f2c79927d9818ab19}
+      \strng{editornamehash}{f1ded338203601245cfc45a25e5e5800}
+      \strng{editorfullhash}{6d5606bc0881e48f2c79927d9818ab19}
+      \field{extraname}{12}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a system to extract ranked lists of actors from fairytales ordered by importance. This task requires more than a straightforward application of generic methods such as Named Entity Recognition. We show that by focusing on two specific linguistic constructions that reflect the intentionality of a subject, direct and indirec t speech, we obtain a high-precision method to extract the cast of a story. The system we propose contains a new method based on the dispersion of terms to rank the different cast members on a scale of importance to the story.}
+      \field{booktitle}{Proceedings of the Second Workshop on Annotation of Corpora for Research in het Humanities (ACRH-2)}
+      \field{title}{Casting a Spell: Indentification and Ranking of Actors in Folktales}
+      \field{year}{2012}
+      \true{nocite}
+      \field{pages}{39\bibrangedash 50}
+      \range{pages}{12}
+      \verb{urlraw}
+      \verb https://pure.knaw.nl/portal/files/481270/karsdorp_et_al2012b.pdf
+      \endverb
+      \verb{url}
+      \verb https://pure.knaw.nl/portal/files/481270/karsdorp_et_al2012b.pdf
+      \endverb
+    \endentry
+    \entry{2010a:karsdorp_regelmaat}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d4eb8bcc08b7f3dce758ab52014893b1}{%
+           family={Beekhuizen},
+           familyi={B\bibinitperiod},
+           given={Barend},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{69f37b14ab71353293ec0b3e14c8f809}
+      \strng{fullhash}{69f37b14ab71353293ec0b3e14c8f809}
+      \strng{bibnamehash}{69f37b14ab71353293ec0b3e14c8f809}
+      \strng{authorbibnamehash}{69f37b14ab71353293ec0b3e14c8f809}
+      \strng{authornamehash}{69f37b14ab71353293ec0b3e14c8f809}
+      \strng{authorfullhash}{69f37b14ab71353293ec0b3e14c8f809}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we show that analogy is a possible cognitive mechanism behind linguistic categorization. Given a formalized stochastic model that shows preference for certain forms as analogues over other forms, the argument that analogy is a void notion because it is unrestricted (Chomsky 1986) no longer applies. As a test case we tried to predict the alternation between the two patterns of forming the superlative in Dutch. Using the Memory-Based Learning model (Daelemans & Van den Bosch 2005), we can predict 67\% of the variation on the basis of three features. In a follow-up experiment , the effect of a fourth factor, collocational attraction between the adjective and the noun, was investigated. Starting from a different level of exemplar granularity, this model accounted for 93\% of the cases in the data-set.}
+      \field{journaltitle}{Voortgang, jaarboek van de Neerlandistiek}
+      \field{title}{Regelmaat in een regelloos systeem. De Nederlandse superlatief}
+      \field{year}{2010}
+      \true{nocite}
+      \field{pages}{29\bibrangedash 50}
+      \range{pages}{22}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

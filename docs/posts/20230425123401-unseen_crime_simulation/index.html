@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  
+  
+  
+  
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Unseen Crime Simulation | Folgert Karsdorp</title>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/'>
+  <meta name="description" content="I&#39;m a researcher working on Computational Humanities and Cultural
+  Evolution at the [Meertens Institute](https://www.meertens.knaw.nl) of the Royal
+  Netherlands Academy of Arts and Sciences (Amsterdam, the Netherlands).
+
+  My research focuses on cultural change, measuring cultural diversity and
+  compositional complexity, and how we can account for biases in our estimations
+  of diversity and complexity. To do that, I use computational models from
+  Machine Learning, Cultural Evolution, and Ecology.
+
+  Besides cultural change and diversity, I&#39;m also interested in teaching about computer
+  programming in the context of the Humanities. I published a text book with [Princeton
+  University
+  Press](https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis)
+  about using Python for Humanities data analysis. Check out the open access edition
+  [here](https://www.humanitiesdataanalysis.org)!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Unseen Crime Simulation" />
+<meta property="og:description" content="Motivation In a recent set of experiments, we aim to use Unseen Species Models such as the Chao1 estimator (see Demystifying Chao1 with Good-Turing) to correct for biases in historical criminology data. Specifically, we aim to estimate the true number of criminals active during a particular year in 19th century Brussels and Antwerp. For these experiments, we rely on police reports, which list the apprensions of individuals at different moments in time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/" /><meta property="article:section" content="posts" />
+
+<meta property="article:modified_time" content="2023-04-25T15:59:36+02:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Unseen Crime Simulation"/>
+<meta name="twitter:description" content="Motivation In a recent set of experiments, we aim to use Unseen Species Models such as the Chao1 estimator (see Demystifying Chao1 with Good-Turing) to correct for biases in historical criminology data. Specifically, we aim to estimate the true number of criminals active during a particular year in 19th century Brussels and Antwerp. For these experiments, we rely on police reports, which list the apprensions of individuals at different moments in time."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.50cc9e352fbdba2d38136c853dcabec397f3b0a91b03f412fd1008a66462d865a86f48e7b581b638856c6425c2eb91b4b20e7ccb10f7118c88af0713cd0075b0.css" integrity="sha512-UMyeNS&#43;9ui04E2yFPcq&#43;w5fzsKkbA/QS/RAIpmRi2GWob0jntYG2OIVsZCXC65G0sg58yxD3EYyIrwcTzQB1sA=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Notebooks</a></li>
+         
+        <li><a href="/references">Publications</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://www.karsdorp.io/posts/dotemacs/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&text=Unseen%20Crime%20Simulation" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&title=Unseen%20Crime%20Simulation" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&is_video=false&description=Unseen%20Crime%20Simulation" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Unseen%20Crime%20Simulation&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&title=Unseen%20Crime%20Simulation" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&title=Unseen%20Crime%20Simulation" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&name=Unseen%20Crime%20Simulation&description=Motivation%20In%20a%20recent%20set%20of%20experiments%2c%20we%20aim%20to%20use%20Unseen%20Species%20Models%20such%20as%20the%20Chao1%20estimator%20%28see%20Demystifying%20Chao1%20with%20Good-Turing%29%20to%20correct%20for%20biases%20in%20historical%20criminology%20data.%20Specifically%2c%20we%20aim%20to%20estimate%20the%20true%20number%20of%20criminals%20active%20during%20a%20particular%20year%20in%2019th%20century%20Brussels%20and%20Antwerp.%20For%20these%20experiments%2c%20we%20rely%20on%20police%20reports%2c%20which%20list%20the%20apprensions%20of%20individuals%20at%20different%20moments%20in%20time." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&t=Unseen%20Crime%20Simulation" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#simulation-model">Simulation model</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Unseen Crime Simulation
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2023-04-25 15:59:36 &#43;0200 CEST" itemprop="datePublished">2023-04-25</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          5 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="motivation">Motivation</h2>
+<p>In a recent set of experiments, we aim to use Unseen Species Models such as the
+<a href="">Chao1 estimator</a> (see <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>) to correct for biases
+in historical criminology data. Specifically, we aim to estimate the true number
+of criminals active during a particular year in 19th century Brussels and
+Antwerp. For these experiments, we rely on police reports, which list the
+apprensions of individuals at different moments in time. Since the way these
+data are constructed is in many ways different from registration campaigns done
+by ecologists, we want to obtain a more mechanistic understanding of how such
+data could be generated and how this generation process affects the accuracy of
+<a href="">Unseen Species Models</a>.</p>
+<h2 id="simulation-model">Simulation model</h2>
+<p>In the simulation model below, we assume that a population of \(N\) criminals is
+monitored during \(T\) timesteps. At each timestep \(t\), each criminal \(j\) can be
+observed and successively apprehended with a constant probability \(p\).
+Apprehended invididuals are the taken out of the population (i.e. put in jail)
+for \(t\) timesteps, \(t \sim \textrm{Poisson}(\lambda)\), where \(\lambda\)
+represents the average jail time rate. Naturally, individuals in jail cannot be
+observed.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">numpy</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">np</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">simulate_population</span>(popsize, p_observe, timesteps, jailrate<span style="color:#666">=</span><span style="color:#40a070">0</span>):
+</span></span><span style="display:flex;"><span>    arrests <span style="color:#666">=</span> np<span style="color:#666">.</span>zeros((timesteps, popsize), dtype<span style="color:#666">=</span><span style="color:#007020">int</span>)
+</span></span><span style="display:flex;"><span>    free <span style="color:#666">=</span> np<span style="color:#666">.</span>ones((timesteps, popsize), dtype<span style="color:#666">=</span><span style="color:#007020">int</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> t <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(timesteps):
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(popsize):
+</span></span><span style="display:flex;"><span>            arrest <span style="color:#666">=</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>binomial(<span style="color:#40a070">1</span>, p_observe <span style="color:#666">*</span> free[t, i])
+</span></span><span style="display:flex;"><span>            arrests[t, i] <span style="color:#666">+=</span> arrest
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">if</span> arrest <span style="color:#007020;font-weight:bold">and</span> jailrate <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
+</span></span><span style="display:flex;"><span>                free[t:t <span style="color:#666">+</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>poisson(jailrate), i] <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">return</span> arrests
+</span></span></code></pre></div><p>We run the simulation for \(T=10\) timesteps, with a true population of \(N=100\)
+and an apprehension probabililty at each timestep of \(p=0.1\):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>arrests <span style="color:#666">=</span> simulate_population(<span style="color:#40a070">100</span>, <span style="color:#40a070">0.1</span>, <span style="color:#40a070">10</span>)<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(arrests)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[0 0 1 0 2 0 0 1 1 0 2 0 0 0 1 1 0 2 3 1 2 0 0 0 1 1 0 0 1 2 2 0 0 1 0 1 0
+</span></span><span style="display:flex;"><span> 1 1 1 3 0 2 1 1 2 2 0 1 1 3 2 0 2 2 0 3 0 4 2 0 1 0 1 1 4 1 1 1 2 1 1 1 0
+</span></span><span style="display:flex;"><span> 1 0 2 1 1 1 2 0 1 1 2 0 1 2 0 1 0 1 1 1 1 0 0 1 0 0]
+</span></span></code></pre></div><p>With the apprehension probability set to \(p=0.1\), most individuals are
+apprehended a single time, and a relatively large fraction has not been observed
+at all:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">matplotlib.pyplot</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">plt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#666">.</span>bar(<span style="color:#007020">list</span>(<span style="color:#007020">range</span>(arrests<span style="color:#666">.</span>max() <span style="color:#666">+</span> <span style="color:#40a070">1</span>)), np<span style="color:#666">.</span>bincount(arrests));
+</span></span></code></pre></div><figure><img src="/ox-hugo/8b0178fc26be0a6b20bdee3d8b4044e2560a5be7.png"/>
+</figure>
+
+<p>The goal then is to estimate the size of this missing fraction. For this, we use
+Chao&rsquo;s Unseen Species Model &ldquo;Chao1&rdquo;
+(<a href="#citeproc_bib_item_1">Chao 1984</a>), as implemented in the Python
+package Copia:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">copia</span> <span style="color:#007020;font-weight:bold">import</span> diversity
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020">int</span>(diversity(arrests, method<span style="color:#666">=</span><span style="color:#4070a0">&#34;chao1&#34;</span>))
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>107
+</span></span></code></pre></div><p>In this particular case, the Chao1 estimator slightly overestimates the true
+population size of criminals. In what follows, I try to obtain a more
+comprehensive understanding of the interplay of the different variables. The
+goal is to learn more about the conditions under which we can trust the
+predictions of the different unseen species models.</p>
+<h2 id="results">Results</h2>
+<p>First, let&rsquo;s study the effect of the jail time parameter \(\lambda\) in relation
+to the number of registration moments (i.e., timesteps). The jail time parameter
+specifies the number of timesteps an individual is taken out of the population
+once apprehended. The following figure illustrates some settings:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig, axes <span style="color:#666">=</span> plt<span style="color:#666">.</span>subplots(ncols<span style="color:#666">=</span><span style="color:#40a070">4</span>, figsize<span style="color:#666">=</span>(<span style="color:#40a070">9</span>, <span style="color:#40a070">3</span>), layout<span style="color:#666">=</span><span style="color:#4070a0">&#34;constrained&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> i, l <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>((<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">10</span>)):
+</span></span><span style="display:flex;"><span>    dist <span style="color:#666">=</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>poisson(l, size<span style="color:#666">=</span><span style="color:#40a070">1000</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>hist(dist, bins<span style="color:#666">=</span><span style="color:#4070a0">&#34;fd&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0;font-style:italic">{</span>l<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">$&#34;</span>)
+</span></span></code></pre></div><figure><img src="/ox-hugo/35c62f83307eda3b77f257f941c7ab3181c1e9d7.png"/>
+</figure>
+
+<p>With \(\lambda=1\), jail time is mostly limited to 1 or even 0 timesteps. By
+contrast, with \(\lambda=5\) or \(\lambda=10\), the mean jail time increases to
+approximately 5 and 10 timesteps respectively. Let&rsquo;s study the effect of
+\(\lambda\) on the estimation accuracy. The code below estimates the true
+population size for populations generated with \(\lambda \in \{ 0, 1, 2, 5, 8, 10
+\}\) and \(T \in \{ 1, 5, 10, 25, 50, 100 \}\). In all experiments, \(N\) is set to
+500, and \(p\) to 0.1.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">matplotlib.pyplot</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">plt</span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">pandas</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">pd</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#666">.</span>style<span style="color:#666">.</span>use(<span style="color:#4070a0">&#34;bmh&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, axes <span style="color:#666">=</span> plt<span style="color:#666">.</span>subplots(ncols<span style="color:#666">=</span><span style="color:#40a070">3</span>, nrows<span style="color:#666">=</span><span style="color:#40a070">2</span>, figsize<span style="color:#666">=</span>(<span style="color:#40a070">9</span>, <span style="color:#40a070">6</span>), layout<span style="color:#666">=</span><span style="color:#4070a0">&#34;constrained&#34;</span>)
+</span></span><span style="display:flex;"><span>axes <span style="color:#666">=</span> axes<span style="color:#666">.</span>flatten()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>N_criminals, p_detect <span style="color:#666">=</span> <span style="color:#40a070">500</span>, <span style="color:#40a070">0.1</span>
+</span></span><span style="display:flex;"><span>n_timesteps <span style="color:#666">=</span> <span style="color:#40a070">1</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">10</span>, <span style="color:#40a070">25</span>, <span style="color:#40a070">50</span>, <span style="color:#40a070">100</span>
+</span></span><span style="display:flex;"><span>jailrates <span style="color:#666">=</span> <span style="color:#40a070">0</span>, <span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">8</span>, <span style="color:#40a070">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> i, rate <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(jailrates):
+</span></span><span style="display:flex;"><span>    results <span style="color:#666">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> timesteps <span style="color:#007020;font-weight:bold">in</span> n_timesteps:
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">for</span> _ <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">100</span>):
+</span></span><span style="display:flex;"><span>            pop <span style="color:#666">=</span> simulate_population(N_criminals, p_detect,
+</span></span><span style="display:flex;"><span>                                      timesteps, jailrate<span style="color:#666">=</span>rate)<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>                estimate <span style="color:#666">=</span> diversity(pop, method<span style="color:#666">=</span><span style="color:#4070a0">&#34;chao1&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">except</span> <span style="color:#007020">ValueError</span>:
+</span></span><span style="display:flex;"><span>                estimate <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+</span></span><span style="display:flex;"><span>            results<span style="color:#666">.</span>append({<span style="color:#4070a0">&#34;timesteps&#34;</span>: timesteps, <span style="color:#4070a0">&#34;estimate&#34;</span>: estimate})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
+</span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;timesteps&#34;</span>, ax<span style="color:#666">=</span>axes[i])
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0;font-style:italic">{</span>rate<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">$&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>axhline(N_criminals, ls<span style="color:#666">=</span><span style="color:#4070a0">&#34;--&#34;</span>, color<span style="color:#666">=</span><span style="color:#4070a0">&#34;C1&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_yscale(<span style="color:#4070a0">&#34;log&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;# registration moments (e.g. days)&#34;</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Estimated population size&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/9a8218fdb1fb4ecea9255ddd7d1c6d35cf171ffa.png"/>
+</figure>
+
+<p>With only a single registration moment &ndash; which would be the equivalent of a
+single day in the police reports &ndash; the model seems to consistently overestimate
+the true poopulation size. Additionaly, removing arrested individuals from the
+population affects the accuracy of the estimator negatively, up until \(T=25\).
+However, it is misleading to conclude that a sufficient number of registration
+moments solves our issues. With the combination of \(T \ge 25\) and \(p = 0.1\),
+almost the entire population has been observed at least once. The following plot
+makes that more clear:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig, axes <span style="color:#666">=</span> plt<span style="color:#666">.</span>subplots(ncols<span style="color:#666">=</span><span style="color:#40a070">3</span>, nrows<span style="color:#666">=</span><span style="color:#40a070">2</span>, figsize<span style="color:#666">=</span>(<span style="color:#40a070">9</span>, <span style="color:#40a070">6</span>), constrained_layout<span style="color:#666">=</span><span style="color:#007020;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span>axes <span style="color:#666">=</span> axes<span style="color:#666">.</span>flatten()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> i, rate <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(jailrates):
+</span></span><span style="display:flex;"><span>    results <span style="color:#666">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> timesteps <span style="color:#007020;font-weight:bold">in</span> n_timesteps:
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">for</span> _ <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">100</span>):
+</span></span><span style="display:flex;"><span>            pop <span style="color:#666">=</span> simulate_population(N_criminals, p_detect, timesteps, jailrate<span style="color:#666">=</span>rate)<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>            results<span style="color:#666">.</span>append({<span style="color:#4070a0">&#34;timesteps&#34;</span>: timesteps, <span style="color:#4070a0">&#34;estimate&#34;</span>: (pop <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>)<span style="color:#666">.</span>sum() <span style="color:#666">/</span> N_criminals})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
+</span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;timesteps&#34;</span>, ax<span style="color:#666">=</span>axes[i])
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0;font-style:italic">{</span>rate<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">$&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;# registration moments (e.g. days)&#34;</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Fraction observed population&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/11309ca0818af425df10ca3ecaab6fd0056fcd47.png"/>
+</figure>
+
+<p>The probability of observation thus interacts with the number of registration
+moments as well as with the jail time parameter \(\lambda\). The plot below
+studies this relationship in a bit more detail. Here we investigate different
+values of \(p\), ($p ∈ \{0.001, 0.01, 0.1, 0.5 \}), combined with an increasing
+number of registrations:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig, axes <span style="color:#666">=</span> plt<span style="color:#666">.</span>subplots(ncols<span style="color:#666">=</span><span style="color:#40a070">3</span>, nrows<span style="color:#666">=</span><span style="color:#40a070">2</span>, figsize<span style="color:#666">=</span>(<span style="color:#40a070">9</span>, <span style="color:#40a070">6</span>), layout<span style="color:#666">=</span><span style="color:#4070a0">&#34;constrained&#34;</span>)
+</span></span><span style="display:flex;"><span>axes <span style="color:#666">=</span> axes<span style="color:#666">.</span>flatten()
+</span></span><span style="display:flex;"><span>apprehension_probabilities <span style="color:#666">=</span> <span style="color:#40a070">0.001</span>, <span style="color:#40a070">0.01</span>, <span style="color:#40a070">0.1</span>, <span style="color:#40a070">0.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> i, timesteps <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(n_timesteps):
+</span></span><span style="display:flex;"><span>    results <span style="color:#666">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> j, p_detect <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(apprehension_probabilities):
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">for</span> _ <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">100</span>):
+</span></span><span style="display:flex;"><span>            pop <span style="color:#666">=</span> simulate_population(N_criminals, p_detect, timesteps, jailrate<span style="color:#666">=</span><span style="color:#40a070">2</span>)<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>                estimate <span style="color:#666">=</span> diversity(pop, method<span style="color:#666">=</span><span style="color:#4070a0">&#34;chao1&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#007020;font-weight:bold">except</span> <span style="color:#007020">ValueError</span>:
+</span></span><span style="display:flex;"><span>                estimate <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+</span></span><span style="display:flex;"><span>            results<span style="color:#666">.</span>append({<span style="color:#4070a0">&#34;p_detect&#34;</span>: p_detect, <span style="color:#4070a0">&#34;estimate&#34;</span>: estimate})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
+</span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;p_detect&#34;</span>, ax<span style="color:#666">=</span>axes[i])
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;# registrations = </span><span style="color:#70a0d0;font-style:italic">{</span>timesteps<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>axhline(N_criminals, ls<span style="color:#666">=</span><span style="color:#4070a0">&#34;--&#34;</span>, color<span style="color:#666">=</span><span style="color:#4070a0">&#34;C1&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_yscale(<span style="color:#4070a0">&#34;log&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;probability of apprehension&#34;</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Estimated population size&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/0dc187bba0d09f3ca78ae0bf5c478ae279efd5d1.png"/>
+</figure>
+
+<p>Finaly, the relationship between detection probability and registration moments in terms
+of poulation coverage becomes more clear from the following plot:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig, axes <span style="color:#666">=</span> plt<span style="color:#666">.</span>subplots(ncols<span style="color:#666">=</span><span style="color:#40a070">3</span>, nrows<span style="color:#666">=</span><span style="color:#40a070">2</span>, figsize<span style="color:#666">=</span>(<span style="color:#40a070">9</span>, <span style="color:#40a070">6</span>), layout<span style="color:#666">=</span><span style="color:#4070a0">&#34;constrained&#34;</span>)
+</span></span><span style="display:flex;"><span>axes <span style="color:#666">=</span> axes<span style="color:#666">.</span>flatten()
+</span></span><span style="display:flex;"><span>apprehension_probabilities <span style="color:#666">=</span> <span style="color:#40a070">0.001</span>, <span style="color:#40a070">0.01</span>, <span style="color:#40a070">0.1</span>, <span style="color:#40a070">0.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> i, timesteps <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(n_timesteps):
+</span></span><span style="display:flex;"><span>    results <span style="color:#666">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> j, p_detect <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(apprehension_probabilities):
+</span></span><span style="display:flex;"><span>        <span style="color:#007020;font-weight:bold">for</span> _ <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">100</span>):
+</span></span><span style="display:flex;"><span>            pop <span style="color:#666">=</span> simulate_population(N_criminals, p_detect, timesteps, jailrate<span style="color:#666">=</span><span style="color:#40a070">2</span>)<span style="color:#666">.</span>sum(<span style="color:#40a070">0</span>)
+</span></span><span style="display:flex;"><span>            results<span style="color:#666">.</span>append({<span style="color:#4070a0">&#34;p_detect&#34;</span>: p_detect, <span style="color:#4070a0">&#34;estimate&#34;</span>: (pop <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>)<span style="color:#666">.</span>sum() <span style="color:#666">/</span> N_criminals})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
+</span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;p_detect&#34;</span>, ax<span style="color:#666">=</span>axes[i])
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;# registrations = </span><span style="color:#70a0d0;font-style:italic">{</span>timesteps<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;Probability of apprehension&#34;</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Estimated population size&#34;</span>);
+</span></span></code></pre></div><figure><img src="/ox-hugo/7b6aed402f16263be510b64992098c6a26d5942a.png"/>
+</figure>
+
+<h2 id="references">References</h2>
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70. <a href="https://www.jstor.org/stable/4615964">https://www.jstor.org/stable/4615964</a>.</div>
+</div>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Notebooks</a></li>
+         
+          <li><a href="/references">Publications</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#simulation-model">Simulation model</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&text=Unseen%20Crime%20Simulation" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&title=Unseen%20Crime%20Simulation" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&is_video=false&description=Unseen%20Crime%20Simulation" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Unseen%20Crime%20Simulation&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&title=Unseen%20Crime%20Simulation" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&title=Unseen%20Crime%20Simulation" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&name=Unseen%20Crime%20Simulation&description=Motivation%20In%20a%20recent%20set%20of%20experiments%2c%20we%20aim%20to%20use%20Unseen%20Species%20Models%20such%20as%20the%20Chao1%20estimator%20%28see%20Demystifying%20Chao1%20with%20Good-Turing%29%20to%20correct%20for%20biases%20in%20historical%20criminology%20data.%20Specifically%2c%20we%20aim%20to%20estimate%20the%20true%20number%20of%20criminals%20active%20during%20a%20particular%20year%20in%2019th%20century%20Brussels%20and%20Antwerp.%20For%20these%20experiments%2c%20we%20rely%20on%20police%20reports%2c%20which%20list%20the%20apprensions%20of%20individuals%20at%20different%20moments%20in%20time." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&t=Unseen%20Crime%20Simulation" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2023  Folgert Karsdorp; made with Hugo and Org-mode 
+  </div>
+  <div class="footer-right">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+  
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</html>

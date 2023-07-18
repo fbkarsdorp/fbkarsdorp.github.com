@@ -1,5 +1,5 @@
 #+title: List of publications
-#+cite_export: csl chicago-date-sorted.csl
+#+cite_export: csl static/chicago-date-sorted.csl
 #+bibliography: static/references.bib
 #+hugo_layout: pubs
 #+date: [2022-11-20 Sun]
