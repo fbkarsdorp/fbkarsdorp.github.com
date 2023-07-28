@@ -19,6 +19,52 @@
 
 \refsection{0}
   \datalist[entry]{ydnt/global//global/global}
+    \entry{2023:kandler}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=0726b8f2d348ec3015fa849b9fc6a132}{%
+           family={Kandler},
+           familyi={K\bibinitperiod},
+           given={Anne},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9a3642a141e68eef9913793b44416297}{%
+           family={Fogarty},
+           familyi={F\bibinitperiod},
+           given={Laurel},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ae40c279ab29ef325f17eea429a78a2d}
+      \strng{fullhash}{d8c49d5a72dc007930f0cdee77d2936c}
+      \strng{bibnamehash}{d8c49d5a72dc007930f0cdee77d2936c}
+      \strng{authorbibnamehash}{d8c49d5a72dc007930f0cdee77d2936c}
+      \strng{authornamehash}{ae40c279ab29ef325f17eea429a78a2d}
+      \strng{authorfullhash}{d8c49d5a72dc007930f0cdee77d2936c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{7}
+      \field{journaltitle}{PLOS Computational Biology}
+      \field{number}{19}
+      \field{title}{The interplay between age structure and cultural transmission}
+      \field{year}{2023}
+      \true{nocite}
+      \field{pages}{e1011297}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb https://doi.org/10.1371/journal.pcbi.1011297
+      \endverb
+    \endentry
     \entry{2022:karsdorp_functional_diversity}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
@@ -62,6 +108,14 @@
       \field{title}{Introducing functional diversity: a novel approach to lexical diversity in (historical) corpora}
       \field{year}{2022}
       \true{nocite}
+      \field{pages}{114\bibrangedash 126}
+      \range{pages}{13}
+      \verb{urlraw}
+      \verb https://ceur-ws.org/Vol-3290/short_paper2780.pdf
+      \endverb
+      \verb{url}
+      \verb https://ceur-ws.org/Vol-3290/short_paper2780.pdf
+      \endverb
     \endentry
     \entry{2022:wevers_karsdorp}{article}{}
       \name{author}{3}{}{%
@@ -106,6 +160,14 @@
       \field{title}{What shall we do with the unseen sailor? Estimating the size of the Dutch East India Company using an unseen species model}
       \field{year}{2022}
       \true{nocite}
+      \field{pages}{189\bibrangedash 197}
+      \range{pages}{9}
+      \verb{urlraw}
+      \verb https://ceur-ws.org/Vol-3290/short_paper1793.pdf
+      \endverb
+      \verb{url}
+      \verb https://ceur-ws.org/Vol-3290/short_paper1793.pdf
+      \endverb
     \endentry
     \entry{2022:kestemont_forgotten}{article}{}
       \name{author}{9}{}{%

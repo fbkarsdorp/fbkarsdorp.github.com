@@ -1,20 +1,20 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[71] biber-darwin:340> INFO - === Fri Oct 14, 2022, 16:48:11
-[90] Biber.pm:418> INFO - Reading 'main.bcf'
-[177] Biber.pm:969> INFO - Using all citekeys in bib section 0
-[191] Biber.pm:4383> INFO - Processing section 0
-[200] Biber.pm:4574> INFO - Looking for bibtex file '../static/references.bib' for section 0
-[205] bibtex.pm:1713> INFO - LaTeX decoding ...
-[248] bibtex.pm:1518> INFO - Found BibTeX data source '../static/references.bib'
-[525] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[525] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[526] Biber.pm:4203> INFO - Sorting list 'ydnt/global//global/global' of type 'entry' with template 'ydnt' and locale 'en-US'
-[526] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
-[562] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[594] bbl.pm:757> INFO - Output to main.bbl
-[595] Biber.pm:130> WARN - legacy month field 'November' in entry '2019f:manjavacas_hip_hop_generation' is not an integer - this will probably not sort properly.
-[595] Biber.pm:130> WARN - legacy month field 'July' in entry '2019a:lassche_repetition_popularity' is not an integer - this will probably not sort properly.
-[595] Biber.pm:130> WARN - legacy month field 'October' in entry '2019e:karsdorp_melody_sims' is not an integer - this will probably not sort properly.
-[595] Biber.pm:130> WARN - legacy month field 'July' in entry '2019b:manjavacas_hip_hop_generation' is not an integer - this will probably not sort properly.
-[595] Biber.pm:132> INFO - WARNINGS: 4
+[82] biber-darwin:340> INFO - === Fri Jul 28, 2023, 10:21:45
+[102] Biber.pm:418> INFO - Reading 'main.bcf'
+[195] Biber.pm:969> INFO - Using all citekeys in bib section 0
+[210] Biber.pm:4383> INFO - Processing section 0
+[222] Biber.pm:4574> INFO - Looking for bibtex file '../static/references.bib' for section 0
+[228] bibtex.pm:1713> INFO - LaTeX decoding ...
+[283] bibtex.pm:1518> INFO - Found BibTeX data source '../static/references.bib'
+[615] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[615] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[615] Biber.pm:4203> INFO - Sorting list 'ydnt/global//global/global' of type 'entry' with template 'ydnt' and locale 'en-US'
+[615] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[663] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[710] bbl.pm:757> INFO - Output to main.bbl
+[710] Biber.pm:130> WARN - legacy month field 'November' in entry '2019f:manjavacas_hip_hop_generation' is not an integer - this will probably not sort properly.
+[710] Biber.pm:130> WARN - legacy month field 'July' in entry '2019a:lassche_repetition_popularity' is not an integer - this will probably not sort properly.
+[710] Biber.pm:130> WARN - legacy month field 'October' in entry '2019e:karsdorp_melody_sims' is not an integer - this will probably not sort properly.
+[710] Biber.pm:130> WARN - legacy month field 'July' in entry '2019b:manjavacas_hip_hop_generation' is not an integer - this will probably not sort properly.
+[710] Biber.pm:132> INFO - WARNINGS: 4
