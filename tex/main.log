@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.30)  28 JUL 2023 10:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.30)  5 AUG 2023 08:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -946,7 +946,7 @@ local/texlive/2022/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.p
 fb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond
 -Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8
 a.pfb>
-Output written on main.pdf (8 pages, 340347 bytes).
+Output written on main.pdf (8 pages, 340321 bytes).
 PDF statistics:
  153 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams
