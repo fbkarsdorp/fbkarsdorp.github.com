@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.30)  5 AUG 2023 08:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.30)  23 OCT 2023 15:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -922,8 +922,39 @@ LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/it' will be
  [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- [4]
-[5] [6] [7] [8] (./main.aux)
+LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on i
+nput line 173.
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/ebgaramond/TS1EBGaramond-OsF.fd
+File: TS1EBGaramond-OsF.fd 2019/10/22 (autoinst) Font definitions for TS1/EBGar
+amond-OsF.
+)
+LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/m/n' in size <12> not availa
+ble
+(Font)              Font shape `TS1/EBGaramond-OsF/regular/n' tried instead on 
+input line 173.
+LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 12.0pt on input line 173.
+Package microtype Info: Character `textthreeoldstyle ' is missing
+(microtype)             in font `TS1/EBGaramond-OsF/regular/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textfouroldstyle ' is missing
+(microtype)             in font `TS1/EBGaramond-OsF/regular/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textsevenoldstyle ' is missing
+(microtype)             in font `TS1/EBGaramond-OsF/regular/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textlbrackdbl ' is missing
+(microtype)             in font `TS1/EBGaramond-OsF/regular/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textrbrackdbl ' is missing
+(microtype)             in font `TS1/EBGaramond-OsF/regular/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `texttildelow ' is missing
+(microtype)             in font `TS1/EBGaramond-OsF/regular/n/12'.
+(microtype)             Ignoring protrusion settings for this character.
+
+[4] [5] [6] [7] [8] [9] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -931,14 +962,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22802 strings out of 478268
- 419237 string characters out of 5846347
- 1283709 words of memory out of 5000000
- 40496 multiletter control sequences out of 15000+600000
- 531873 words of font info for 139 fonts, out of 8000000 for 9000
+ 22868 strings out of 478268
+ 421159 string characters out of 5846347
+ 1282709 words of memory out of 5000000
+ 40547 multiletter control sequences out of 15000+600000
+ 532824 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,5n,118p,2326b,5305s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_ljow5q.en
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_ld6df2.en
+c}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_ljow5q.en
 c}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2022/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_tcdnmr.enc}</usr/local/t
 exlive/2022/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Bold.pfb></usr/
@@ -946,10 +978,10 @@ local/texlive/2022/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.p
 fb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond
 -Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8
 a.pfb>
-Output written on main.pdf (8 pages, 340321 bytes).
+Output written on main.pdf (9 pages, 342419 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
- 44 named destinations out of 1000 (max. 500000)
- 32257 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 161 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 36353 words of extra memory for PDF output out of 42996 (max. 10000000)
 

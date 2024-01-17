@@ -7,7 +7,52 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Sat, 24 Dec 2022 17:08:32 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jan 2024 11:23:27 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bias</title>
+      <link>https://www.karsdorp.io/tags/bias/</link>
+      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/bias/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chao2</title>
+      <link>https://www.karsdorp.io/tags/chao2/</link>
+      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/chao2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diversity</title>
+      <link>https://www.karsdorp.io/tags/diversity/</link>
+      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/diversity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>folktales</title>
+      <link>https://www.karsdorp.io/tags/folktales/</link>
+      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/folktales/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>incidence</title>
+      <link>https://www.karsdorp.io/tags/incidence/</link>
+      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/incidence/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>emacs</title>
       <link>https://www.karsdorp.io/tags/emacs/</link>
@@ -54,29 +99,11 @@
     </item>
     
     <item>
-      <title>bias</title>
-      <link>https://www.karsdorp.io/tags/bias/</link>
-      <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/bias/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>chao1</title>
       <link>https://www.karsdorp.io/tags/chao1/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/chao1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>diversity</title>
-      <link>https://www.karsdorp.io/tags/diversity/</link>
-      <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/diversity/</guid>
       <description></description>
     </item>
     
@@ -176,15 +203,6 @@
       <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
       
       <guid>https://www.karsdorp.io/tags/functional/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>folktales</title>
-      <link>https://www.karsdorp.io/tags/folktales/</link>
-      <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/folktales/</guid>
       <description></description>
     </item>
     

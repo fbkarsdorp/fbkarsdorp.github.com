@@ -2,11 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.karsdorp.io/tags/bias/</loc>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/chao2/</loc>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</loc>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/diversity/</loc>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+  </url><url>
     <loc>https://www.karsdorp.io/</loc>
-    <lastmod>2023-04-25T15:59:36+02:00</lastmod>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/folktales/</loc>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/incidence/</loc>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/</loc>
-    <lastmod>2023-04-25T15:59:36+02:00</lastmod>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/</loc>
+    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/</loc>
     <lastmod>2023-04-25T15:59:36+02:00</lastmod>
@@ -29,16 +50,7 @@
     <loc>https://www.karsdorp.io/tags/python/</loc>
     <lastmod>2022-12-24T17:08:32+01:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/</loc>
-    <lastmod>2022-12-24T17:08:32+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/bias/</loc>
-    <lastmod>2022-12-16T19:59:23+01:00</lastmod>
-  </url><url>
     <loc>https://www.karsdorp.io/tags/chao1/</loc>
-    <lastmod>2022-12-16T19:59:23+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/diversity/</loc>
     <lastmod>2022-12-16T19:59:23+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/history/</loc>
@@ -87,9 +99,6 @@
     <lastmod>2022-06-23T12:31:36+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</loc>
-    <lastmod>2022-05-14T09:03:02+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/folktales/</loc>
     <lastmod>2022-05-14T09:03:02+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/shared-richness/</loc>
