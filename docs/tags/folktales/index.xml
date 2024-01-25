@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Wed, 17 Jan 2024 11:23:27 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/folktales/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jan 2024 15:12:17 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/folktales/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Explorers and Exploiters: Deviations from Rarefaction Curves</title>
+      <link>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>
+      <pubDate>Thu, 25 Jan 2024 15:12:17 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</guid>
+      <description>This notebook is the second in of a series of notebooks based on a talk I gave at the CUDAN 2023 conference in Tallinn, Estonia (https://cudan.tlu.ee/conference/) together with Melvin Wevers and Mike Kestemont, titled Steady Formulas, Shifting Spells: Estimating Folktale Diversity.
+Collector&amp;rsquo;s curves In a previous discussion, I delved into how we can use ecological concepts to understand cultural diversity, focusing on what we call &amp;lsquo;cultural richness.&amp;rsquo; This term refers to the variety of unique items found in different collections.</description>
+    </item>
+    
     <item>
       <title>Coverage-based Comparisons of Cultural Diversity</title>
       <link>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>

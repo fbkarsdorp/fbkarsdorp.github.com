@@ -7,13 +7,58 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Wed, 17 Jan 2024 11:23:27 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jan 2024 15:12:17 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>accumulation</title>
+      <link>https://www.karsdorp.io/tags/accumulation/</link>
+      <pubDate>Thu, 25 Jan 2024 15:12:17 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/accumulation/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>bias</title>
       <link>https://www.karsdorp.io/tags/bias/</link>
-      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
+      <pubDate>Thu, 25 Jan 2024 15:12:17 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/bias/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>collection</title>
+      <link>https://www.karsdorp.io/tags/collection/</link>
+      <pubDate>Thu, 25 Jan 2024 15:12:17 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/collection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diversity</title>
+      <link>https://www.karsdorp.io/tags/diversity/</link>
+      <pubDate>Thu, 25 Jan 2024 15:12:17 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/diversity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>folktales</title>
+      <link>https://www.karsdorp.io/tags/folktales/</link>
+      <pubDate>Thu, 25 Jan 2024 15:12:17 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/folktales/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rarefaction</title>
+      <link>https://www.karsdorp.io/tags/rarefaction/</link>
+      <pubDate>Thu, 25 Jan 2024 15:12:17 +0100</pubDate>
+      
+      <guid>https://www.karsdorp.io/tags/rarefaction/</guid>
       <description></description>
     </item>
     
@@ -23,24 +68,6 @@
       <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
       
       <guid>https://www.karsdorp.io/tags/chao2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>diversity</title>
-      <link>https://www.karsdorp.io/tags/diversity/</link>
-      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/diversity/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>folktales</title>
-      <link>https://www.karsdorp.io/tags/folktales/</link>
-      <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
-      
-      <guid>https://www.karsdorp.io/tags/folktales/</guid>
       <description></description>
     </item>
     

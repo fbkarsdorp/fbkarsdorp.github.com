@@ -2,8 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.karsdorp.io/tags/accumulation/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
     <loc>https://www.karsdorp.io/tags/bias/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/collection/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/diversity/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/folktales/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/posts/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/rarefaction/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/</loc>
+    <lastmod>2024-01-25T15:12:17+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/chao2/</loc>
     <lastmod>2024-01-17T11:23:27+01:00</lastmod>
@@ -11,22 +38,7 @@
     <loc>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</loc>
     <lastmod>2024-01-17T11:23:27+01:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/diversity/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/folktales/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
     <loc>https://www.karsdorp.io/tags/incidence/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/posts/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/</loc>
     <lastmod>2024-01-17T11:23:27+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/</loc>
