@@ -36,6 +36,8 @@
     "2022:kestemont_forgotten"
     "2022:wevers_karsdorp"
     "2022:karsdorp_functional_diversity"
-    "2023:kandler"))
+    "2023:kandler"
+    "2024:kestemont"
+    "2024:nielbo"))
  '(or :bibtex :latex))
 

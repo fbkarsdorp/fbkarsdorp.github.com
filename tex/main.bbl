@@ -19,6 +19,109 @@
 
 \refsection{0}
   \datalist[entry]{ydnt/global//global/global}
+    \entry{2024:kestemont}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Letterwerk}%
+      }
+      \strng{namehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{fullhash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{bibnamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authorbibnamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authornamehash}{84239ee2bfebfe973e54e970678d4d33}
+      \strng{authorfullhash}{84239ee2bfebfe973e54e970678d4d33}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-94-6459-835-3}
+      \field{title}{Het mysterie van de verdwenen ridderromans}
+      \field{year}{2024}
+      \true{nocite}
+      \verb{doi}
+      \verb 10.5281/zenodo.10807547
+      \endverb
+    \endentry
+    \entry{2024:nielbo}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=121a88fbe95cea4cd02fef5bd0dc2311}{%
+           family={Nielbo},
+           familyi={N\bibinitperiod},
+           given={Kristoffer},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6f68e1a26b24a7ebfe52209d83699780}{%
+           family={Karsdorp},
+           familyi={K\bibinitperiod},
+           given={Folgert},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=749b35d9e08f2ccc2a8916e3d43559ca}{%
+           family={Wevers},
+           familyi={W\bibinitperiod},
+           given={Melvin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d108a50b0ff1168172b171ec47724cdf}{%
+           family={Lassche},
+           familyi={L\bibinitperiod},
+           given={Alie},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2b3a112ae04c1549c95d306ee41d8cd5}{%
+           family={Baglini},
+           familyi={B\bibinitperiod},
+           given={Rebekah},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9d1ab665c2ba43842d5c50753eec480c}{%
+           family={Kestemont},
+           familyi={K\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c641ab6a820b93fb39a36048e3f5303}{%
+           family={Tahmasebi},
+           familyi={T\bibinitperiod},
+           given={Nina},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fc9dd9b8a72f25609306b6d31fb59f09}
+      \strng{fullhash}{e72bc7036d6ad32b20ba4d487c2bd848}
+      \strng{bibnamehash}{e72bc7036d6ad32b20ba4d487c2bd848}
+      \strng{authorbibnamehash}{e72bc7036d6ad32b20ba4d487c2bd848}
+      \strng{authornamehash}{fc9dd9b8a72f25609306b6d31fb59f09}
+      \strng{authorfullhash}{e72bc7036d6ad32b20ba4d487c2bd848}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Reviews Methods Primers}
+      \field{title}{Quantitative text analysis}
+      \field{year}{2024}
+      \true{nocite}
+    \endentry
     \entry{2023:kandler}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=0726b8f2d348ec3015fa849b9fc6a132}{%
@@ -440,7 +543,7 @@
       \strng{authorbibnamehash}{84239ee2bfebfe973e54e970678d4d33}
       \strng{authornamehash}{84239ee2bfebfe973e54e970678d4d33}
       \strng{authorfullhash}{84239ee2bfebfe973e54e970678d4d33}
-      \field{extraname}{1}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
@@ -810,7 +913,7 @@
       \strng{authorbibnamehash}{84239ee2bfebfe973e54e970678d4d33}
       \strng{authornamehash}{84239ee2bfebfe973e54e970678d4d33}
       \strng{authorfullhash}{84239ee2bfebfe973e54e970678d4d33}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{extradatescope}{labelyear}
