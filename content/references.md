@@ -3,13 +3,13 @@ title = "List of publications"
 author = ["Folgert Karsdorp"]
 date = 2022-11-20T00:00:00+01:00
 layout = "pubs"
-lastmod = 2024-03-12T09:53:58+01:00
+lastmod = 2024-04-11T14:44:24+02:00
 draft = false
 +++
 
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Kestemont, Mike, and Folgert Karsdorp. 2024. <i>Het Mysterie van de Verdwenen Ridderromans</i>. Letterwerk. <a href="https://doi.org/10.5281/zenodo.10807547">https://doi.org/10.5281/zenodo.10807547</a>.</div>
-  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Nielbo, Kristoffer, Folgert Karsdorp, Melvin Wevers, Alie Lassche, Rebekah Baglini, Mike Kestemont, and Nina Tahmasebi. 2024. “Quantitative Text Analysis.” <i>Nature Reviews Methods Primers</i>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Nielbo, Kristoffer, Folgert Karsdorp, Melvin Wevers, Alie Lassche, Rebekah Baglini, Mike Kestemont, and Nina Tahmasebi. 2024. “Quantitative Text Analysis.” <i>Nature Reviews Methods Primers</i>, no. 4, 25. <a href="https://doi.org/10.1038/s43586-024-00302-w">https://doi.org/10.1038/s43586-024-00302-w</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Kandler, Anne, Laurel Fogarty, and Folgert Karsdorp. 2023. “The Interplay between Age Structure and Cultural Transmission.” <i>Plos Computational Biology</i>, no. 19, 7: e1011297. <a href="https://doi.org/https://doi.org/10.1371/journal.pcbi.1011297">https://doi.org/https://doi.org/10.1371/journal.pcbi.1011297</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Karsdorp, Folgert, Lauren Fonteyn, and Enrique Manjavacas. 2022. “Introducing Functional Diversity: A Novel Approach to Lexical Diversity in (Historical) Corpora.” In <i>Proceedings of the Computational Humanities Research Conference, 2022</i>, 114–26. Antwerp, Belgium. <a href="https://ceur-ws.org/Vol-3290/short_paper2780.pdf">https://ceur-ws.org/Vol-3290/short_paper2780.pdf</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Karsdorp, Folgert, Melvin Wevers, and Jelle van Lottum. 2022. “What Shall We Do with the Unseen Sailor? Estimating the Size of the Dutch East India Company Using an Unseen Species Model.” In <i>Proceedings of the Computational Humanities Research Conference, 2022</i>, 189–97. Antwerp, Belgium. <a href="https://ceur-ws.org/Vol-3290/short_paper1793.pdf">https://ceur-ws.org/Vol-3290/short_paper1793.pdf</a>.</div>
