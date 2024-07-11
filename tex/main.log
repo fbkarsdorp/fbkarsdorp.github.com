@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.30)  11 APR 2024 10:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.30)  10 JUL 2024 14:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -923,7 +923,7 @@ LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/it' will be
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
 LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on i
-nput line 173.
+nput line 175.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/ebgaramond/TS1EBGaramond-OsF.fd
 File: TS1EBGaramond-OsF.fd 2019/10/22 (autoinst) Font definitions for TS1/EBGar
@@ -932,9 +932,9 @@ amond-OsF.
 LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/m/n' in size <12> not availa
 ble
 (Font)              Font shape `TS1/EBGaramond-OsF/regular/n' tried instead on 
-input line 173.
+input line 175.
 LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 12.0pt on input line 173.
+(Font)              scaled to size 12.0pt on input line 175.
 Package microtype Info: Character `textthreeoldstyle ' is missing
 (microtype)             in font `TS1/EBGaramond-OsF/regular/n/12'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -962,11 +962,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22887 strings out of 478268
- 421777 string characters out of 5846347
- 1283773 words of memory out of 5000000
- 40559 multiletter control sequences out of 15000+600000
- 533200 words of font info for 147 fonts, out of 8000000 for 9000
+ 22925 strings out of 478268
+ 422360 string characters out of 5846347
+ 1282773 words of memory out of 5000000
+ 40571 multiletter control sequences out of 15000+600000
+ 541951 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,5n,118p,2326b,5305s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_ld6df2.en
@@ -978,10 +978,10 @@ local/texlive/2022/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.p
 fb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond
 -Regular.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8
 a.pfb>
-Output written on main.pdf (9 pages, 343858 bytes).
+Output written on main.pdf (9 pages, 346298 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
+ 165 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  47 named destinations out of 1000 (max. 500000)
- 36353 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 46593 words of extra memory for PDF output out of 51595 (max. 10000000)
 
