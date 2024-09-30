@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (TeX-add-style-hook
  "references"
  (lambda ()
@@ -38,6 +40,8 @@
     "2022:karsdorp_functional_diversity"
     "2023:kandler"
     "2024:kestemont"
-    "2024:nielbo"))
+    "2024:nielbo"
+    "2024:VDalfsen"
+    "2024:Karsdorp"))
  '(or :bibtex :latex))
 
