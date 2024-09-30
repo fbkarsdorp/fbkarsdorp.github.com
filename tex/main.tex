@@ -88,7 +88,27 @@
 
 \usepackage[backend=biber, style=apa, maxcitenames=2, maxbibnames=99, sorting=ydnt,
             uniquelist=false, mincitenames=1, citestyle=authoryear]{biblatex}
-\addbibresource{../static/references.bib}
+            \addbibresource{../static/references.bib}
+
+%% Highlight entries
+\usepackage[svgnames]{xcolor}
+\DeclareBibliographyCategory{important}
+% the colour definition
+\colorlet{impentry}{Navy}% let 'impentry' = Maroon
+
+% Inform biblatex that all books in the 'important' category deserve
+% special treatment, while all others do not
+\AtEveryBibitem{%
+  \ifcategory{important}%
+    {\color{impentry}}%
+    {}%
+  }
+
+% Add books to 'important' category in preamble
+\addtocategory{important}{%
+ 2023:kandler, 2024:kestemont, 2022:kestemont_forgotten,
+ 2020a:karsdorp, 2021a:karsdorp_book, 2019d:karsdorp_cultural_entrenchment,
+}       
 
 \usepackage{authblk}
 
@@ -159,11 +179,16 @@ Machine Learning, Cultural Evolution, and Ecology. At the Meertens Institute,
 Karsdorp applies innovative techniques to explore the nuances of cultural
 evolution. His interdisciplinary approach bridges traditional humanities with
 new computational methods, leading to publications in prestigious journals
-including \emph{Science}. Beyond his research, Karsdorp is passionate about
-education, particularly in teaching computer programming for Humanities
-applications. He co-authored \emph{Humanities Data Analysis: Case Studies with
-  Python} (Princeton University Press), a comprehensive guide to utilizing
-Python for data analysis in Humanities research.
+including \emph{Science} and \emph{PLOS Computational Biology}. Karsdorp is the
+founder of the largest international conference on Computational Humanities
+Research. In 2024, he launched an accompanying gold open access journal,
+\emph{\href{https://www.cambridge.org/core/journals/computational-humanities-research}{Computational
+    Humanities Research}}, published with Cambridge University Press. Beyond his
+research, Karsdorp is passionate about education, particularly in teaching
+computer programming for Humanities applications. He co-authored
+\emph{Humanities Data Analysis: Case Studies with Python} (Princeton University
+Press, 2021), a comprehensive guide to utilizing Python for data analysis in
+Humanities research.
 
 \nocite{*}
 \printbibliography[title=Publications, heading=subbibliography]
@@ -372,7 +397,12 @@ Institute.\\\vspace{0,5cm}
     Maarten van Gompel. April 2013, Radboud University.
   \end{tablist}
 
-  \section*{Thesis Supervision}
+  \section*{Supervision}
+  \subsection*{Postdoctoral Supervision}
+  \begin{tablist}
+    \item[2024-27] \tab{}Supervision of Postdoc Luiza Teixeira-Costa in the
+      project ``Botanical Records Through a Social Lens''.
+    \end{tablist}
   \subsection*{PhD thesis Supervision}
 \begin{tablist}
   \item[2024-] \tab{}Supervision PhD thesis by Sebastiaan van Daalen, University
@@ -399,9 +429,9 @@ Institute.\\\vspace{0,5cm}
 \begin{tablist}
 \item[2024--] \tab{}Commissioning Editor of the journal \emph{Computatational
     Humanities Research} published by Cambridge University Press.
-\item[2020--24] \tab{}Founder and Programme Chair of the \textit{Computational
+\item[2020--] \tab{}Founder and Programme Chair of the \textit{Computational
     Humanities Research} conference
-\item[2017--24] \tab{}Steering and Programme Committee member of the DH Benelux
+\item[2017--] \tab{}Steering and Programme Committee member of the DH Benelux
   conference
 \item[2021] \tab{}Guest editor of the \textit{Journal of Open Humanities Data}
 \item[2021] \tab{}Programme Chair of the SciPy 2021 Symposium on Computational
