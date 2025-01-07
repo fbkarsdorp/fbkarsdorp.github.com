@@ -30,24 +30,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Zelterman&#39;s Estimator of Population Size" />
-<meta property="og:description" content="Zelterman&rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/" /><meta property="article:section" content="posts" />
+  <meta property="og:url" content="https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/">
+  <meta property="og:site_name" content="Folgert Karsdorp">
+  <meta property="og:title" content="Zelterman&#39;s Estimator of Population Size">
+  <meta property="og:description" content="Zelterman’s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model. As such, it would be interesting to study how well the estimator performs when applied to cultural data. In what follows, I base my descriptions on the original paper by Zelterman (1988) as well as the more recent application of the method by Böhning and van der Heijden (2009).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-04-01T12:43:51+02:00">
+    <meta property="article:modified_time" content="2022-04-01T12:43:51+02:00">
+    <meta property="article:tag" content="Unseen-Species">
+    <meta property="article:tag" content="Diversity">
+    <meta property="article:tag" content="Homogeneity">
+    <meta property="article:tag" content="Richness">
+    <meta property="article:tag" content="Zelterman">
+    <meta property="article:tag" content="Chao1">
 
-<meta property="article:modified_time" content="2022-04-01T12:43:51+02:00" />
-
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Zelterman&#39;s Estimator of Population Size"/>
-<meta name="twitter:description" content="Zelterman&rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model."/>
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Zelterman&#39;s Estimator of Population Size">
+  <meta name="twitter:description" content="Zelterman’s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model. As such, it would be interesting to study how well the estimator performs when applied to cultural data. In what follows, I base my descriptions on the original paper by Zelterman (1988) as well as the more recent application of the method by Böhning and van der Heijden (2009).">
 
   
   
     
   
   
-  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.1fa8e0b6f18490f8b0e7c800616f300d52832a2e3dce286d9b4a0fcc54ff23804b6c73e6bf55a5c3b41c99cf892682e366258387a908967c53ae50100bf56140.css" integrity="sha512-H6jgtvGEkPiw58gAYW8wDVKDKi49zihtm0oPzFT/I4BLbHPmv1Wlw7Qcmc&#43;JJoLjZiWDh6kIlnxTrlAQC/VhQA=="> 
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
 
   
   
@@ -61,7 +70,6 @@
   
 <link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
 
-  
   
   
   
@@ -164,7 +172,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=Zelterman%26rsquo%3bs%20Estimator%20In%20Demystifying%20Chao1%20with%20Good-Turing%2c%20I%20introduced%20and%20explained%20the%20Chao1%20estimator%20as%20an%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%20notebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%20Zelterman%20%281988%29%2c%20which%20has%20been%20popular%20in%20applications%20such%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%20robust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=%3ch2%20id%3d%22zelterman-s-estimator%22%3eZelterman%26rsquo%3bs%20Estimator%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20introduced%20and%20explained%20the%20%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20as%0aan%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%0anotebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%2c%20which%20has%20been%20popular%20in%20applications%0asuch%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%0arobust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model.%20As%20such%2c%20it%20would%20be%0ainteresting%20to%20study%20how%20well%20the%20estimator%20performs%20when%20applied%20to%20cultural%20data.%20In%0awhat%20follows%2c%20I%20base%20my%20descriptions%20on%20the%20original%20paper%20by%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%20as%20well%20as%20the%20more%20recent%20application%20of%0athe%20method%20by%20B%c3%b6hning%20and%20van%20der%20Heijden%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3e2009%3c%2fa%3e%29.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -314,7 +322,7 @@ Poisson distribution:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>ax <span style="color:#666">=</span> pd<span style="color:#666">.</span>Series(pop[<span style="color:#4070a0">&#34;counts&#34;</span>])<span style="color:#666">.</span>value_counts()<span style="color:#666">.</span>sort_index()<span style="color:#666">.</span>plot(kind<span style="color:#666">=</span><span style="color:#4070a0">&#34;bar&#34;</span>)
 </span></span><span style="display:flex;"><span>ax<span style="color:#666">.</span>set(xlabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;$r$&#34;</span>, ylabel<span style="color:#666">=</span><span style="color:#4070a0">&#34;$f_r$&#34;</span>);
-</span></span></code></pre></div><figure><img src="/ox-hugo/d0a65d8ac157f513a9fb8026088c30885bd9cb45.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/d0a65d8ac157f513a9fb8026088c30885bd9cb45.png">
 </figure>
 
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Total number of observed items n = 89
@@ -341,50 +349,50 @@ estimator is easy to implement, as demonstrated by the following lines of code:<
 \(V\) and \(N\):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>estimate_population_size(pop[<span style="color:#4070a0">&#34;counts&#34;</span>])
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>N</td>
-<td>:</td>
-<td>151.82741330117702</td>
-<td>V</td>
-<td>:</td>
-<td>93.8259295681431</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>N</td>
+          <td>:</td>
+          <td>151.82741330117702</td>
+          <td>V</td>
+          <td>:</td>
+          <td>93.8259295681431</td>
+      </tr>
+  </tbody>
 </table>
 <p>Note that these estimates are very similar to the ones obtained by applying the <a href="">Chao1
 estimator</a>:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>N</td>
-<td>:</td>
-<td>127.1003745318352</td>
-<td>V</td>
-<td>:</td>
-<td>93.1003745318352</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>N</td>
+          <td>:</td>
+          <td>127.1003745318352</td>
+          <td>V</td>
+          <td>:</td>
+          <td>93.1003745318352</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="how-many-words-did-shakespeare-know">How many words did Shakespeare know?</h2>
 <p>In the 1970s. pioneers Efron and Thisted applied <a href="">Unseen Species Model</a>s to cultural data.
@@ -399,22 +407,22 @@ Shakespeare must have known at least approximately 35,000 additional words on to
 Shakespeare&rsquo;s vocabulary. For this purpose, I will use the word counts as mentioned in
 Efron and Thisted (<a href="#citeproc_bib_item_2">1976</a>):</p>
 <table>
-<thead>
-<tr>
-<th>\(f_1\)</th>
-<th>\(f_2\)</th>
-<th>\(V\)</th>
-<th>\(N\)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>14,376</td>
-<td>4,343</td>
-<td>31,534</td>
-<td>884,647</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>\(f_1\)</th>
+          <th>\(f_2\)</th>
+          <th>\(V\)</th>
+          <th>\(N\)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>14,376</td>
+          <td>4,343</td>
+          <td>31,534</td>
+          <td>884,647</td>
+      </tr>
+  </tbody>
 </table>
 <p>Based on these counts, we can easily plug the numbers into the Zelterman formula. We first
 calculate \(\lambda_{r = 1}\) with \(\lambda_{r=1} = (2 \times 4343) / 14376 = 0.6042\).
@@ -514,7 +522,7 @@ in the same ballpark as the one by Efron and Thisted (<a href="#citeproc_bib_ite
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=Zelterman%26rsquo%3bs%20Estimator%20In%20Demystifying%20Chao1%20with%20Good-Turing%2c%20I%20introduced%20and%20explained%20the%20Chao1%20estimator%20as%20an%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%20notebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%20Zelterman%20%281988%29%2c%20which%20has%20been%20popular%20in%20applications%20such%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%20robust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=%3ch2%20id%3d%22zelterman-s-estimator%22%3eZelterman%26rsquo%3bs%20Estimator%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20introduced%20and%20explained%20the%20%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20as%0aan%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%0anotebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%2c%20which%20has%20been%20popular%20in%20applications%0asuch%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%0arobust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model.%20As%20such%2c%20it%20would%20be%0ainteresting%20to%20study%20how%20well%20the%20estimator%20performs%20when%20applied%20to%20cultural%20data.%20In%0awhat%20follows%2c%20I%20base%20my%20descriptions%20on%20the%20original%20paper%20by%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%20as%20well%20as%20the%20more%20recent%20application%20of%0athe%20method%20by%20B%c3%b6hning%20and%20van%20der%20Heijden%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3e2009%3c%2fa%3e%29.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -547,7 +555,7 @@ in the same ballpark as the one by Efron and Thisted (<a href="#citeproc_bib_ite
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Folgert Karsdorp; made with Hugo and Org-mode 
+    Copyright  &copy; 2025  Folgert Karsdorp; made with Hugo 
   </div>
   <div class="footer-right">
     

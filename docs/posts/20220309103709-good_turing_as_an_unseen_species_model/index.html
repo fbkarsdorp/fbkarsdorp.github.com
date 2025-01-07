@@ -30,24 +30,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Demystifying Chao1 with Good-Turing" />
-<meta property="og:description" content="To estimate the &ldquo;biodiversity&rdquo; in a particular area &ndash; or, in other words, the number of unique species living in a given environment &ndash; ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting &ldquo;bias&rdquo; between the number of species that was observerd and the true number of unique species in an area." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-03-15T00:00:00+01:00" />
-<meta property="article:modified_time" content="2022-12-15T18:09:05+01:00" />
+  <meta property="og:url" content="https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/">
+  <meta property="og:site_name" content="Folgert Karsdorp">
+  <meta property="og:title" content="Demystifying Chao1 with Good-Turing">
+  <meta property="og:description" content="To estimate the “biodiversity” in a particular area – or, in other words, the number of unique species living in a given environment – ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting “bias” between the number of species that was observerd and the true number of unique species in an area.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-03-15T00:00:00+01:00">
+    <meta property="article:modified_time" content="2022-12-15T18:09:05+01:00">
+    <meta property="article:tag" content="Chao1">
+    <meta property="article:tag" content="Turing">
+    <meta property="article:tag" content="Richness">
+    <meta property="article:tag" content="Loss">
+    <meta property="article:tag" content="Diversity">
 
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Demystifying Chao1 with Good-Turing"/>
-<meta name="twitter:description" content="To estimate the &ldquo;biodiversity&rdquo; in a particular area &ndash; or, in other words, the number of unique species living in a given environment &ndash; ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting &ldquo;bias&rdquo; between the number of species that was observerd and the true number of unique species in an area."/>
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Demystifying Chao1 with Good-Turing">
+  <meta name="twitter:description" content="To estimate the “biodiversity” in a particular area – or, in other words, the number of unique species living in a given environment – ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting “bias” between the number of species that was observerd and the true number of unique species in an area.">
 
   
   
     
   
   
-  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.1fa8e0b6f18490f8b0e7c800616f300d52832a2e3dce286d9b4a0fcc54ff23804b6c73e6bf55a5c3b41c99cf892682e366258387a908967c53ae50100bf56140.css" integrity="sha512-H6jgtvGEkPiw58gAYW8wDVKDKi49zihtm0oPzFT/I4BLbHPmv1Wlw7Qcmc&#43;JJoLjZiWDh6kIlnxTrlAQC/VhQA=="> 
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
 
   
   
@@ -61,7 +69,6 @@
   
 <link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
 
-  
   
   
   
@@ -158,7 +165,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&name=Demystifying%20Chao1%20with%20Good-Turing&description=To%20estimate%20the%20%26ldquo%3bbiodiversity%26rdquo%3b%20in%20a%20particular%20area%20%26ndash%3b%20or%2c%20in%20other%20words%2c%20the%20number%20of%20unique%20species%20living%20in%20a%20given%20environment%20%26ndash%3b%20ecologists%20usually%20have%20no%20other%20option%20than%20to%20rely%20on%20incomplete%20samples.%20For%20all%20sorts%20of%20practical%20reasons%2c%20it%20is%20virtually%20impossible%20to%20spot%20all%20species%20that%20are%20actually%20present%20in%20an%20area%2c%20and%20hence%20certain%20species%20will%20be%20missing%20in%20the%20counts.%20Consequently%2c%20an%20important%20research%20question%20in%20ecology%20is%20how%20to%20reliably%20estimate%20the%20resulting%20%26ldquo%3bbias%26rdquo%3b%20between%20the%20number%20of%20species%20that%20was%20observerd%20and%20the%20true%20number%20of%20unique%20species%20in%20an%20area." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&name=Demystifying%20Chao1%20with%20Good-Turing&description=%3cp%3eTo%20estimate%20the%20%26ldquo%3b%3ca%20href%3d%22%22%3ebiodiversity%3c%2fa%3e%26rdquo%3b%20in%20a%20particular%20area%20%26ndash%3b%20or%2c%20in%20other%20words%2c%20the%20number%20of%0aunique%20species%20living%20in%20a%20given%20environment%20%26ndash%3b%20ecologists%20usually%20have%20no%20other%20option%0athan%20to%20rely%20on%20incomplete%20samples.%20For%20all%20sorts%20of%20practical%20reasons%2c%20it%20is%20virtually%0aimpossible%20to%20spot%20all%20species%20that%20are%20actually%20present%20in%20an%20area%2c%20and%20hence%20certain%0aspecies%20will%20be%20missing%20in%20the%20counts.%20Consequently%2c%20an%20important%20research%20question%20in%0aecology%20is%20how%20to%20reliably%20estimate%20the%20resulting%20%26ldquo%3bbias%26rdquo%3b%20between%20the%20number%20of%20species%0athat%20was%20observerd%20and%20the%20true%20number%20of%20unique%20species%20in%20an%20area.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -277,38 +284,38 @@ values.</p>
 <p>Imagine that we discovered a snippet from an unknown book. The snippet has a total of 18
 words on it, consisting of 6 unique words with the following frequencies:</p>
 <table>
-<thead>
-<tr>
-<th>word</th>
-<th>frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>the</td>
-<td>10</td>
-</tr>
-<tr>
-<td>for</td>
-<td>3</td>
-</tr>
-<tr>
-<td>woman</td>
-<td>2</td>
-</tr>
-<tr>
-<td>park</td>
-<td>1</td>
-</tr>
-<tr>
-<td>snake</td>
-<td>1</td>
-</tr>
-<tr>
-<td>book</td>
-<td>1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>word</th>
+          <th>frequency</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>the</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>for</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>woman</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>park</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>snake</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>book</td>
+          <td>1</td>
+      </tr>
+  </tbody>
 </table>
 <p>The total number of words as well as the number of unique words in this scenario are of
 importance. Based on this snippet, where the total frequency \(n\) is 18, we would like to
@@ -499,7 +506,7 @@ have not been seen.</p>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&name=Demystifying%20Chao1%20with%20Good-Turing&description=To%20estimate%20the%20%26ldquo%3bbiodiversity%26rdquo%3b%20in%20a%20particular%20area%20%26ndash%3b%20or%2c%20in%20other%20words%2c%20the%20number%20of%20unique%20species%20living%20in%20a%20given%20environment%20%26ndash%3b%20ecologists%20usually%20have%20no%20other%20option%20than%20to%20rely%20on%20incomplete%20samples.%20For%20all%20sorts%20of%20practical%20reasons%2c%20it%20is%20virtually%20impossible%20to%20spot%20all%20species%20that%20are%20actually%20present%20in%20an%20area%2c%20and%20hence%20certain%20species%20will%20be%20missing%20in%20the%20counts.%20Consequently%2c%20an%20important%20research%20question%20in%20ecology%20is%20how%20to%20reliably%20estimate%20the%20resulting%20%26ldquo%3bbias%26rdquo%3b%20between%20the%20number%20of%20species%20that%20was%20observerd%20and%20the%20true%20number%20of%20unique%20species%20in%20an%20area." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f&name=Demystifying%20Chao1%20with%20Good-Turing&description=%3cp%3eTo%20estimate%20the%20%26ldquo%3b%3ca%20href%3d%22%22%3ebiodiversity%3c%2fa%3e%26rdquo%3b%20in%20a%20particular%20area%20%26ndash%3b%20or%2c%20in%20other%20words%2c%20the%20number%20of%0aunique%20species%20living%20in%20a%20given%20environment%20%26ndash%3b%20ecologists%20usually%20have%20no%20other%20option%0athan%20to%20rely%20on%20incomplete%20samples.%20For%20all%20sorts%20of%20practical%20reasons%2c%20it%20is%20virtually%0aimpossible%20to%20spot%20all%20species%20that%20are%20actually%20present%20in%20an%20area%2c%20and%20hence%20certain%0aspecies%20will%20be%20missing%20in%20the%20counts.%20Consequently%2c%20an%20important%20research%20question%20in%0aecology%20is%20how%20to%20reliably%20estimate%20the%20resulting%20%26ldquo%3bbias%26rdquo%3b%20between%20the%20number%20of%20species%0athat%20was%20observerd%20and%20the%20true%20number%20of%20unique%20species%20in%20an%20area.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -532,7 +539,7 @@ have not been seen.</p>
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Folgert Karsdorp; made with Hugo and Org-mode 
+    Copyright  &copy; 2025  Folgert Karsdorp; made with Hugo 
   </div>
   <div class="footer-right">
     

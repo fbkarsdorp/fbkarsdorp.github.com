@@ -30,24 +30,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Estimating Unseen Shared Cultural Diversity" />
-<meta property="og:description" content="Shared Species Estimation In Demystifying Chao1 with Good-Turing, I tried to explain the intuition behind the Chao1 estimator (Chao 1984) for unseen species using the Good-Turing estimator as described in Chao et al. (2017). The latter article discusses another set of diversity measures within that same framework of Turing. The number of unique species or the number of unique cultural artifacts in a given environment is only one diversity measure, but we can also study the shared diversity between two cultural collections, for example." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/" /><meta property="article:section" content="posts" />
+  <meta property="og:url" content="https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/">
+  <meta property="og:site_name" content="Folgert Karsdorp">
+  <meta property="og:title" content="Estimating Unseen Shared Cultural Diversity">
+  <meta property="og:description" content="Shared Species Estimation In Demystifying Chao1 with Good-Turing, I tried to explain the intuition behind the Chao1 estimator (Chao 1984) for unseen species using the Good-Turing estimator as described in Chao et al. (2017). The latter article discusses another set of diversity measures within that same framework of Turing. The number of unique species or the number of unique cultural artifacts in a given environment is only one diversity measure, but we can also study the shared diversity between two cultural collections, for example. In addition to the number of unique species, this definition of diversity thus also involves the specific composition of an assemblage or collection. As with estimating the number of unique species, it is quite conceivable that our samples do not give a complete picture of which species or cultural artifacts are shared between two assemblages or collections. Fortunately, with only a few small adjustments, we can modify the Good-Turing framework to compute a lower-bound on the number of unseen items shared between two collections.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-05-14T09:03:02+02:00">
+    <meta property="article:modified_time" content="2022-05-14T09:03:02+02:00">
+    <meta property="article:tag" content="Shared-Richness">
+    <meta property="article:tag" content="Chao1">
+    <meta property="article:tag" content="Richness">
+    <meta property="article:tag" content="Unseen-Species">
+    <meta property="article:tag" content="Folktales">
 
-<meta property="article:modified_time" content="2022-05-14T09:03:02+02:00" />
-
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Estimating Unseen Shared Cultural Diversity"/>
-<meta name="twitter:description" content="Shared Species Estimation In Demystifying Chao1 with Good-Turing, I tried to explain the intuition behind the Chao1 estimator (Chao 1984) for unseen species using the Good-Turing estimator as described in Chao et al. (2017). The latter article discusses another set of diversity measures within that same framework of Turing. The number of unique species or the number of unique cultural artifacts in a given environment is only one diversity measure, but we can also study the shared diversity between two cultural collections, for example."/>
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Estimating Unseen Shared Cultural Diversity">
+  <meta name="twitter:description" content="Shared Species Estimation In Demystifying Chao1 with Good-Turing, I tried to explain the intuition behind the Chao1 estimator (Chao 1984) for unseen species using the Good-Turing estimator as described in Chao et al. (2017). The latter article discusses another set of diversity measures within that same framework of Turing. The number of unique species or the number of unique cultural artifacts in a given environment is only one diversity measure, but we can also study the shared diversity between two cultural collections, for example. In addition to the number of unique species, this definition of diversity thus also involves the specific composition of an assemblage or collection. As with estimating the number of unique species, it is quite conceivable that our samples do not give a complete picture of which species or cultural artifacts are shared between two assemblages or collections. Fortunately, with only a few small adjustments, we can modify the Good-Turing framework to compute a lower-bound on the number of unseen items shared between two collections.">
 
   
   
     
   
   
-  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.1fa8e0b6f18490f8b0e7c800616f300d52832a2e3dce286d9b4a0fcc54ff23804b6c73e6bf55a5c3b41c99cf892682e366258387a908967c53ae50100bf56140.css" integrity="sha512-H6jgtvGEkPiw58gAYW8wDVKDKi49zihtm0oPzFT/I4BLbHPmv1Wlw7Qcmc&#43;JJoLjZiWDh6kIlnxTrlAQC/VhQA=="> 
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
 
   
   
@@ -61,7 +69,6 @@
   
 <link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
 
-  
   
   
   
@@ -164,7 +171,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220316142536-two_assemblage_good_turing_estimation%2f&name=Estimating%20Unseen%20Shared%20Cultural%20Diversity&description=Shared%20Species%20Estimation%20In%20Demystifying%20Chao1%20with%20Good-Turing%2c%20I%20tried%20to%20explain%20the%20intuition%20behind%20the%20Chao1%20estimator%20%28Chao%201984%29%20for%20unseen%20species%20using%20the%20Good-Turing%20estimator%20as%20described%20in%20Chao%20et%20al.%20%282017%29.%20The%20latter%20article%20discusses%20another%20set%20of%20diversity%20measures%20within%20that%20same%20framework%20of%20Turing.%20The%20number%20of%20unique%20species%20or%20the%20number%20of%20unique%20cultural%20artifacts%20in%20a%20given%20environment%20is%20only%20one%20diversity%20measure%2c%20but%20we%20can%20also%20study%20the%20shared%20diversity%20between%20two%20cultural%20collections%2c%20for%20example." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220316142536-two_assemblage_good_turing_estimation%2f&name=Estimating%20Unseen%20Shared%20Cultural%20Diversity&description=%3ch2%20id%3d%22shared-species-estimation%22%3eShared%20Species%20Estimation%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20tried%20to%20explain%20the%20intuition%20behind%20the%20Chao1%0aestimator%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3eChao%201984%3c%2fa%3e%29%20for%20unseen%20species%20using%20the%0aGood-Turing%20estimator%20as%20described%20in%20Chao%20et%20al.%20%28%3ca%20href%3d%22%23citeproc_bib_item_2%22%3e2017%3c%2fa%3e%29.%20The%0alatter%20article%20discusses%20another%20set%20of%20diversity%20measures%20within%20that%20same%20framework%20of%0aTuring.%20The%20number%20of%20unique%20species%20or%20the%20number%20of%20unique%20cultural%20artifacts%20in%20a%20given%0aenvironment%20is%20only%20one%20diversity%20measure%2c%20but%20we%20can%20also%20study%20the%20shared%20diversity%0abetween%20two%20cultural%20collections%2c%20for%20example.%20In%20addition%20to%20the%20number%20of%20unique%0aspecies%2c%20this%20definition%20of%20diversity%20thus%20also%20involves%20the%20specific%20composition%20of%20an%0aassemblage%20or%20collection.%20As%20with%20estimating%20the%20number%20of%20unique%20species%2c%20it%20is%20quite%0aconceivable%20that%20our%20samples%20do%20not%20give%20a%20complete%20picture%20of%20which%20species%20or%20cultural%0aartifacts%20are%20shared%20between%20two%20assemblages%20or%20collections.%20Fortunately%2c%20with%20only%20a%20few%0asmall%20adjustments%2c%20we%20can%20modify%20the%20Good-Turing%20framework%20to%20compute%20a%20lower-bound%20on%20the%0anumber%20of%20unseen%20items%20%3cem%3eshared%3c%2fem%3e%20between%20two%20collections.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -263,88 +270,88 @@ same folk tale classification systems. The two imaginary collections consists of
 following folk tale types, that were observed with the frequencies listed in the table
 below:</p>
 <table>
-<thead>
-<tr>
-<th>Story ID</th>
-<th>Description</th>
-<th>\(c_1\)</th>
-<th>\(c_2\)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SINSAG 0487</td>
-<td>Precedence of other events</td>
-<td>10</td>
-<td>8</td>
-</tr>
-<tr>
-<td>TM 2801</td>
-<td>Strong man/woman</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<td>SINSAG 0486</td>
-<td>Other signs of death</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr>
-<td>SINSAG 0481</td>
-<td>Funeral procession seen</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td>SINSAG 0478</td>
-<td>Indescribable hauntings</td>
-<td>1</td>
-<td>3</td>
-</tr>
-<tr>
-<td>SINSAG 0489</td>
-<td>The second face</td>
-<td>1</td>
-<td>2</td>
-</tr>
-<tr>
-<td>TM 3101</td>
-<td>Witch makes child (human, animal) sick</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>SINSAG 1226</td>
-<td>&ldquo;That&rsquo;s where he lives and this is where he is.&rdquo;</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>TM 3104</td>
-<td>Devil&rsquo;s Breath as a Defense</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>SINSAG 0917</td>
-<td>Devil scares sinners (cursers, wood thieves, Sunday violators or scoffers).</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>total</td>
-<td></td>
-<td>23</td>
-<td>21</td>
-</tr>
-<tr>
-<td>^</td>
-<td></td>
-<td>x</td>
-<td>y</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Story ID</th>
+          <th>Description</th>
+          <th>\(c_1\)</th>
+          <th>\(c_2\)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SINSAG 0487</td>
+          <td>Precedence of other events</td>
+          <td>10</td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td>TM 2801</td>
+          <td>Strong man/woman</td>
+          <td>3</td>
+          <td>4</td>
+      </tr>
+      <tr>
+          <td>SINSAG 0486</td>
+          <td>Other signs of death</td>
+          <td>2</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>SINSAG 0481</td>
+          <td>Funeral procession seen</td>
+          <td>2</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>SINSAG 0478</td>
+          <td>Indescribable hauntings</td>
+          <td>1</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>SINSAG 0489</td>
+          <td>The second face</td>
+          <td>1</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>TM 3101</td>
+          <td>Witch makes child (human, animal) sick</td>
+          <td>1</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>SINSAG 1226</td>
+          <td>&ldquo;That&rsquo;s where he lives and this is where he is.&rdquo;</td>
+          <td>1</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>TM 3104</td>
+          <td>Devil&rsquo;s Breath as a Defense</td>
+          <td>1</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>SINSAG 0917</td>
+          <td>Devil scares sinners (cursers, wood thieves, Sunday violators or scoffers).</td>
+          <td>1</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>total</td>
+          <td></td>
+          <td>23</td>
+          <td>21</td>
+      </tr>
+      <tr>
+          <td>^</td>
+          <td></td>
+          <td>x</td>
+          <td>y</td>
+      </tr>
+  </tbody>
 </table>
 <p>The first collection reports a total of \(n_1 = 23\) stories, broken down into 10 unique
 story types. The second collection consists of 7 story types represented by a total of
@@ -451,40 +458,40 @@ unique story type, and the number of attestations of each type in both places:</
 </span></span><span style="display:flex;"><span>df <span style="color:#666">=</span> pd<span style="color:#666">.</span>read_csv(<span style="color:#4070a0">&#34;data/dfd-jaarsma.csv&#34;</span>)
 </span></span><span style="display:flex;"><span>df<span style="color:#666">.</span>head()
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th></th>
-<th>drachten</th>
-<th>harkema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>65</td>
-<td>123</td>
-</tr>
-<tr>
-<td>1</td>
-<td>56</td>
-<td>84</td>
-</tr>
-<tr>
-<td>2</td>
-<td>42</td>
-<td>39</td>
-</tr>
-<tr>
-<td>3</td>
-<td>38</td>
-<td>56</td>
-</tr>
-<tr>
-<td>4</td>
-<td>33</td>
-<td>45</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th></th>
+          <th>drachten</th>
+          <th>harkema</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>65</td>
+          <td>123</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>56</td>
+          <td>84</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>42</td>
+          <td>39</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>38</td>
+          <td>56</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>33</td>
+          <td>45</td>
+      </tr>
+  </tbody>
 </table>
 <p>Using vectorized operations, it is relatively straightforward to implement the Shared
 Richness Estimator. The function definition <code>estimate_shared_richness</code> below takes two
@@ -523,11 +530,11 @@ other statistics supporting this number:</p>
 story types between Drachten and Harkema:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>est <span style="color:#666">=</span> estimate_shared_richness(df[<span style="color:#4070a0">&#34;harkema&#34;</span>], df[<span style="color:#4070a0">&#34;drachten&#34;</span>])
 </span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(
-</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Observed nunber of shared story types: </span><span style="color:#70a0d0;font-style:italic">{</span>est[<span style="color:#4070a0">&#39;observed shared&#39;</span>]<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # shared story types: </span><span style="color:#70a0d0;font-style:italic">{</span>est[<span style="color:#4070a0">&#39;S&#39;</span>]<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # stories present but unseen in Harkema and present in Drachten: </span><span style="color:#70a0d0;font-style:italic">{</span>est[<span style="color:#4070a0">&#39;f0+&#39;</span>]<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # stories present in Harkema but unseen yet present in Drachten: </span><span style="color:#70a0d0;font-style:italic">{</span>est[<span style="color:#4070a0">&#39;f+0&#39;</span>]<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # stories unseen yet present in both Harkema and Drachten: </span><span style="color:#70a0d0;font-style:italic">{</span>est[<span style="color:#4070a0">&#39;f00&#39;</span>]<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Observed nunber of shared story types: </span><span style="color:#70a0d0">{</span>est[<span style="color:#4070a0">&#39;observed shared&#39;</span>]<span style="color:#70a0d0">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # shared story types: </span><span style="color:#70a0d0">{</span>est[<span style="color:#4070a0">&#39;S&#39;</span>]<span style="color:#70a0d0">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # stories present but unseen in Harkema and present in Drachten: </span><span style="color:#70a0d0">{</span>est[<span style="color:#4070a0">&#39;f0+&#39;</span>]<span style="color:#70a0d0">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # stories present in Harkema but unseen yet present in Drachten: </span><span style="color:#70a0d0">{</span>est[<span style="color:#4070a0">&#39;f+0&#39;</span>]<span style="color:#70a0d0">}</span><span style="color:#4070a0;font-weight:bold">\n</span><span style="color:#4070a0">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;Estimated # stories unseen yet present in both Harkema and Drachten: </span><span style="color:#70a0d0">{</span>est[<span style="color:#4070a0">&#39;f00&#39;</span>]<span style="color:#70a0d0">}</span><span style="color:#4070a0">&#34;</span>)
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Observed nunber of shared story types: 136
 </span></span><span style="display:flex;"><span>Estimated # shared story types: 244
 </span></span><span style="display:flex;"><span>Estimated # stories present but unseen in Harkema and present in Drachten: 48
@@ -640,7 +647,7 @@ and present.</p>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220316142536-two_assemblage_good_turing_estimation%2f&name=Estimating%20Unseen%20Shared%20Cultural%20Diversity&description=Shared%20Species%20Estimation%20In%20Demystifying%20Chao1%20with%20Good-Turing%2c%20I%20tried%20to%20explain%20the%20intuition%20behind%20the%20Chao1%20estimator%20%28Chao%201984%29%20for%20unseen%20species%20using%20the%20Good-Turing%20estimator%20as%20described%20in%20Chao%20et%20al.%20%282017%29.%20The%20latter%20article%20discusses%20another%20set%20of%20diversity%20measures%20within%20that%20same%20framework%20of%20Turing.%20The%20number%20of%20unique%20species%20or%20the%20number%20of%20unique%20cultural%20artifacts%20in%20a%20given%20environment%20is%20only%20one%20diversity%20measure%2c%20but%20we%20can%20also%20study%20the%20shared%20diversity%20between%20two%20cultural%20collections%2c%20for%20example." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220316142536-two_assemblage_good_turing_estimation%2f&name=Estimating%20Unseen%20Shared%20Cultural%20Diversity&description=%3ch2%20id%3d%22shared-species-estimation%22%3eShared%20Species%20Estimation%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20tried%20to%20explain%20the%20intuition%20behind%20the%20Chao1%0aestimator%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3eChao%201984%3c%2fa%3e%29%20for%20unseen%20species%20using%20the%0aGood-Turing%20estimator%20as%20described%20in%20Chao%20et%20al.%20%28%3ca%20href%3d%22%23citeproc_bib_item_2%22%3e2017%3c%2fa%3e%29.%20The%0alatter%20article%20discusses%20another%20set%20of%20diversity%20measures%20within%20that%20same%20framework%20of%0aTuring.%20The%20number%20of%20unique%20species%20or%20the%20number%20of%20unique%20cultural%20artifacts%20in%20a%20given%0aenvironment%20is%20only%20one%20diversity%20measure%2c%20but%20we%20can%20also%20study%20the%20shared%20diversity%0abetween%20two%20cultural%20collections%2c%20for%20example.%20In%20addition%20to%20the%20number%20of%20unique%0aspecies%2c%20this%20definition%20of%20diversity%20thus%20also%20involves%20the%20specific%20composition%20of%20an%0aassemblage%20or%20collection.%20As%20with%20estimating%20the%20number%20of%20unique%20species%2c%20it%20is%20quite%0aconceivable%20that%20our%20samples%20do%20not%20give%20a%20complete%20picture%20of%20which%20species%20or%20cultural%0aartifacts%20are%20shared%20between%20two%20assemblages%20or%20collections.%20Fortunately%2c%20with%20only%20a%20few%0asmall%20adjustments%2c%20we%20can%20modify%20the%20Good-Turing%20framework%20to%20compute%20a%20lower-bound%20on%20the%0anumber%20of%20unseen%20items%20%3cem%3eshared%3c%2fem%3e%20between%20two%20collections.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -673,7 +680,7 @@ and present.</p>
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Folgert Karsdorp; made with Hugo and Org-mode 
+    Copyright  &copy; 2025  Folgert Karsdorp; made with Hugo 
   </div>
   <div class="footer-right">
     

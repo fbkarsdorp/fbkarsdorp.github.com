@@ -30,24 +30,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:title" content="Unseen Crime Simulation" />
-<meta property="og:description" content="Motivation In a recent set of experiments, we aim to use Unseen Species Models such as the Chao1 estimator (see Demystifying Chao1 with Good-Turing) to correct for biases in historical criminology data. Specifically, we aim to estimate the true number of criminals active during a particular year in 19th century Brussels and Antwerp. For these experiments, we rely on police reports, which list the apprensions of individuals at different moments in time." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/" /><meta property="article:section" content="posts" />
+  <meta property="og:url" content="https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/">
+  <meta property="og:site_name" content="Folgert Karsdorp">
+  <meta property="og:title" content="Unseen Crime Simulation">
+  <meta property="og:description" content="Motivation In a recent set of experiments, we aim to use Unseen Species Models such as the Chao1 estimator (see Demystifying Chao1 with Good-Turing) to correct for biases in historical criminology data. Specifically, we aim to estimate the true number of criminals active during a particular year in 19th century Brussels and Antwerp. For these experiments, we rely on police reports, which list the apprensions of individuals at different moments in time. Since the way these data are constructed is in many ways different from registration campaigns done by ecologists, we want to obtain a more mechanistic understanding of how such data could be generated and how this generation process affects the accuracy of Unseen Species Models.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-25T15:59:36+02:00">
+    <meta property="article:modified_time" content="2023-04-25T15:59:36+02:00">
 
-<meta property="article:modified_time" content="2023-04-25T15:59:36+02:00" />
-
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Unseen Crime Simulation"/>
-<meta name="twitter:description" content="Motivation In a recent set of experiments, we aim to use Unseen Species Models such as the Chao1 estimator (see Demystifying Chao1 with Good-Turing) to correct for biases in historical criminology data. Specifically, we aim to estimate the true number of criminals active during a particular year in 19th century Brussels and Antwerp. For these experiments, we rely on police reports, which list the apprensions of individuals at different moments in time."/>
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Unseen Crime Simulation">
+  <meta name="twitter:description" content="Motivation In a recent set of experiments, we aim to use Unseen Species Models such as the Chao1 estimator (see Demystifying Chao1 with Good-Turing) to correct for biases in historical criminology data. Specifically, we aim to estimate the true number of criminals active during a particular year in 19th century Brussels and Antwerp. For these experiments, we rely on police reports, which list the apprensions of individuals at different moments in time. Since the way these data are constructed is in many ways different from registration campaigns done by ecologists, we want to obtain a more mechanistic understanding of how such data could be generated and how this generation process affects the accuracy of Unseen Species Models.">
 
   
   
     
   
   
-  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.1fa8e0b6f18490f8b0e7c800616f300d52832a2e3dce286d9b4a0fcc54ff23804b6c73e6bf55a5c3b41c99cf892682e366258387a908967c53ae50100bf56140.css" integrity="sha512-H6jgtvGEkPiw58gAYW8wDVKDKi49zihtm0oPzFT/I4BLbHPmv1Wlw7Qcmc&#43;JJoLjZiWDh6kIlnxTrlAQC/VhQA=="> 
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
 
   
   
@@ -61,7 +64,6 @@
   
 <link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
 
-  
   
   
   
@@ -164,7 +166,7 @@
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&name=Unseen%20Crime%20Simulation&description=Motivation%20In%20a%20recent%20set%20of%20experiments%2c%20we%20aim%20to%20use%20Unseen%20Species%20Models%20such%20as%20the%20Chao1%20estimator%20%28see%20Demystifying%20Chao1%20with%20Good-Turing%29%20to%20correct%20for%20biases%20in%20historical%20criminology%20data.%20Specifically%2c%20we%20aim%20to%20estimate%20the%20true%20number%20of%20criminals%20active%20during%20a%20particular%20year%20in%2019th%20century%20Brussels%20and%20Antwerp.%20For%20these%20experiments%2c%20we%20rely%20on%20police%20reports%2c%20which%20list%20the%20apprensions%20of%20individuals%20at%20different%20moments%20in%20time." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&name=Unseen%20Crime%20Simulation&description=%3ch2%20id%3d%22motivation%22%3eMotivation%3c%2fh2%3e%0a%3cp%3eIn%20a%20recent%20set%20of%20experiments%2c%20we%20aim%20to%20use%20Unseen%20Species%20Models%20such%20as%20the%0a%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20%28see%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%29%20to%20correct%20for%20biases%0ain%20historical%20criminology%20data.%20Specifically%2c%20we%20aim%20to%20estimate%20the%20true%20number%0aof%20criminals%20active%20during%20a%20particular%20year%20in%2019th%20century%20Brussels%20and%0aAntwerp.%20For%20these%20experiments%2c%20we%20rely%20on%20police%20reports%2c%20which%20list%20the%0aapprensions%20of%20individuals%20at%20different%20moments%20in%20time.%20Since%20the%20way%20these%0adata%20are%20constructed%20is%20in%20many%20ways%20different%20from%20registration%20campaigns%20done%0aby%20ecologists%2c%20we%20want%20to%20obtain%20a%20more%20mechanistic%20understanding%20of%20how%20such%0adata%20could%20be%20generated%20and%20how%20this%20generation%20process%20affects%20the%20accuracy%20of%0a%3ca%20href%3d%22%22%3eUnseen%20Species%20Models%3c%2fa%3e.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -264,7 +266,7 @@ at all:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">matplotlib.pyplot</span> <span style="color:#007020;font-weight:bold">as</span> <span style="color:#0e84b5;font-weight:bold">plt</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>plt<span style="color:#666">.</span>bar(<span style="color:#007020">list</span>(<span style="color:#007020">range</span>(arrests<span style="color:#666">.</span>max() <span style="color:#666">+</span> <span style="color:#40a070">1</span>)), np<span style="color:#666">.</span>bincount(arrests));
-</span></span></code></pre></div><figure><img src="/ox-hugo/8b0178fc26be0a6b20bdee3d8b4044e2560a5be7.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/8b0178fc26be0a6b20bdee3d8b4044e2560a5be7.png">
 </figure>
 
 <p>The goal then is to estimate the size of this missing fraction. For this, we use
@@ -289,8 +291,8 @@ once apprehended. The following figure illustrates some settings:</p>
 </span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> i, l <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>((<span style="color:#40a070">1</span>, <span style="color:#40a070">2</span>, <span style="color:#40a070">5</span>, <span style="color:#40a070">10</span>)):
 </span></span><span style="display:flex;"><span>    dist <span style="color:#666">=</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>poisson(l, size<span style="color:#666">=</span><span style="color:#40a070">1000</span>)
 </span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>hist(dist, bins<span style="color:#666">=</span><span style="color:#4070a0">&#34;fd&#34;</span>)
-</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0;font-style:italic">{</span>l<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">$&#34;</span>)
-</span></span></code></pre></div><figure><img src="/ox-hugo/35c62f83307eda3b77f257f941c7ab3181c1e9d7.png"/>
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0">{</span>l<span style="color:#70a0d0">}</span><span style="color:#4070a0">$&#34;</span>)
+</span></span></code></pre></div><figure><img src="/ox-hugo/35c62f83307eda3b77f257f941c7ab3181c1e9d7.png">
 </figure>
 
 <p>With \(\lambda=1\), jail time is mostly limited to 1 or even 0 timesteps. By
@@ -325,13 +327,13 @@ population size for populations generated with \(\lambda \in \{ 0, 1, 2, 5, 8, 1
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
 </span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;timesteps&#34;</span>, ax<span style="color:#666">=</span>axes[i])
-</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0;font-style:italic">{</span>rate<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">$&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0">{</span>rate<span style="color:#70a0d0">}</span><span style="color:#4070a0">$&#34;</span>)
 </span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>axhline(N_criminals, ls<span style="color:#666">=</span><span style="color:#4070a0">&#34;--&#34;</span>, color<span style="color:#666">=</span><span style="color:#4070a0">&#34;C1&#34;</span>)
 </span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_yscale(<span style="color:#4070a0">&#34;log&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;# registration moments (e.g. days)&#34;</span>)
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Estimated population size&#34;</span>);
-</span></span></code></pre></div><figure><img src="/ox-hugo/9a8218fdb1fb4ecea9255ddd7d1c6d35cf171ffa.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/9a8218fdb1fb4ecea9255ddd7d1c6d35cf171ffa.png">
 </figure>
 
 <p>With only a single registration moment &ndash; which would be the equivalent of a
@@ -354,11 +356,11 @@ makes that more clear:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
 </span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;timesteps&#34;</span>, ax<span style="color:#666">=</span>axes[i])
-</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0;font-style:italic">{</span>rate<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">$&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">fr</span><span style="color:#4070a0">&#34;$\lambda_</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">\mathrm</span><span style="color:#4070a0;font-weight:bold">{{</span><span style="color:#4070a0">jail</span><span style="color:#4070a0;font-weight:bold">}}}}</span><span style="color:#4070a0"> = </span><span style="color:#70a0d0">{</span>rate<span style="color:#70a0d0">}</span><span style="color:#4070a0">$&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;# registration moments (e.g. days)&#34;</span>)
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Fraction observed population&#34;</span>);
-</span></span></code></pre></div><figure><img src="/ox-hugo/11309ca0818af425df10ca3ecaab6fd0056fcd47.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/11309ca0818af425df10ca3ecaab6fd0056fcd47.png">
 </figure>
 
 <p>The probability of observation thus interacts with the number of registration
@@ -383,13 +385,13 @@ number of registrations:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
 </span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;p_detect&#34;</span>, ax<span style="color:#666">=</span>axes[i])
-</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;# registrations = </span><span style="color:#70a0d0;font-style:italic">{</span>timesteps<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;# registrations = </span><span style="color:#70a0d0">{</span>timesteps<span style="color:#70a0d0">}</span><span style="color:#4070a0">&#34;</span>)
 </span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>axhline(N_criminals, ls<span style="color:#666">=</span><span style="color:#4070a0">&#34;--&#34;</span>, color<span style="color:#666">=</span><span style="color:#4070a0">&#34;C1&#34;</span>)
 </span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_yscale(<span style="color:#4070a0">&#34;log&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;probability of apprehension&#34;</span>)
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Estimated population size&#34;</span>);
-</span></span></code></pre></div><figure><img src="/ox-hugo/0dc187bba0d09f3ca78ae0bf5c478ae279efd5d1.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/0dc187bba0d09f3ca78ae0bf5c478ae279efd5d1.png">
 </figure>
 
 <p>Finaly, the relationship between detection probability and registration moments in terms
@@ -407,11 +409,11 @@ of poulation coverage becomes more clear from the following plot:</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(results)
 </span></span><span style="display:flex;"><span>    df<span style="color:#666">.</span>plot<span style="color:#666">.</span>box(by<span style="color:#666">=</span><span style="color:#4070a0">&#34;p_detect&#34;</span>, ax<span style="color:#666">=</span>axes[i])
-</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;# registrations = </span><span style="color:#70a0d0;font-style:italic">{</span>timesteps<span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>)
+</span></span><span style="display:flex;"><span>    axes[i]<span style="color:#666">.</span>set_title(<span style="color:#4070a0">f</span><span style="color:#4070a0">&#34;# registrations = </span><span style="color:#70a0d0">{</span>timesteps<span style="color:#70a0d0">}</span><span style="color:#4070a0">&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supxlabel(<span style="color:#4070a0">&#34;Probability of apprehension&#34;</span>)
 </span></span><span style="display:flex;"><span>fig<span style="color:#666">.</span>supylabel(<span style="color:#4070a0">&#34;Estimated population size&#34;</span>);
-</span></span></code></pre></div><figure><img src="/ox-hugo/7b6aed402f16263be510b64992098c6a26d5942a.png"/>
+</span></span></code></pre></div><figure><img src="/ox-hugo/7b6aed402f16263be510b64992098c6a26d5942a.png">
 </figure>
 
 <h2 id="references">References</h2>
@@ -502,7 +504,7 @@ of poulation coverage becomes more clear from the following plot:</p>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&name=Unseen%20Crime%20Simulation&description=Motivation%20In%20a%20recent%20set%20of%20experiments%2c%20we%20aim%20to%20use%20Unseen%20Species%20Models%20such%20as%20the%20Chao1%20estimator%20%28see%20Demystifying%20Chao1%20with%20Good-Turing%29%20to%20correct%20for%20biases%20in%20historical%20criminology%20data.%20Specifically%2c%20we%20aim%20to%20estimate%20the%20true%20number%20of%20criminals%20active%20during%20a%20particular%20year%20in%2019th%20century%20Brussels%20and%20Antwerp.%20For%20these%20experiments%2c%20we%20rely%20on%20police%20reports%2c%20which%20list%20the%20apprensions%20of%20individuals%20at%20different%20moments%20in%20time." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20230425123401-unseen_crime_simulation%2f&name=Unseen%20Crime%20Simulation&description=%3ch2%20id%3d%22motivation%22%3eMotivation%3c%2fh2%3e%0a%3cp%3eIn%20a%20recent%20set%20of%20experiments%2c%20we%20aim%20to%20use%20Unseen%20Species%20Models%20such%20as%20the%0a%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20%28see%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%29%20to%20correct%20for%20biases%0ain%20historical%20criminology%20data.%20Specifically%2c%20we%20aim%20to%20estimate%20the%20true%20number%0aof%20criminals%20active%20during%20a%20particular%20year%20in%2019th%20century%20Brussels%20and%0aAntwerp.%20For%20these%20experiments%2c%20we%20rely%20on%20police%20reports%2c%20which%20list%20the%0aapprensions%20of%20individuals%20at%20different%20moments%20in%20time.%20Since%20the%20way%20these%0adata%20are%20constructed%20is%20in%20many%20ways%20different%20from%20registration%20campaigns%20done%0aby%20ecologists%2c%20we%20want%20to%20obtain%20a%20more%20mechanistic%20understanding%20of%20how%20such%0adata%20could%20be%20generated%20and%20how%20this%20generation%20process%20affects%20the%20accuracy%20of%0a%3ca%20href%3d%22%22%3eUnseen%20Species%20Models%3c%2fa%3e.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
@@ -535,7 +537,7 @@ of poulation coverage becomes more clear from the following plot:</p>
 
   <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; 2024  Folgert Karsdorp; made with Hugo and Org-mode 
+    Copyright  &copy; 2025  Folgert Karsdorp; made with Hugo 
   </div>
   <div class="footer-right">
     

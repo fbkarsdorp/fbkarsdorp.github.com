@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>semantics on Folgert Karsdorp</title>
+    <title>Semantics on Folgert Karsdorp</title>
     <link>https://www.karsdorp.io/tags/semantics/</link>
-    <description>Recent content in semantics on Folgert Karsdorp</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Semantics on Folgert Karsdorp</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Thu, 15 Dec 2022 16:58:56 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/semantics/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Folgert Karsdorp; made with Hugo</copyright>
+    <lastBuildDate>Thu, 15 Dec 2022 16:58:56 +0100</lastBuildDate>
+    <atom:link href="https://www.karsdorp.io/tags/semantics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Functional Diversity as a Generalization of Lexical Diversity</title>
       <link>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</link>
       <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</guid>
-      <description>This is a transcript of a talk given at the CHR2022 conference. For the corresponding paper, see https://ceur-ws.org/Vol-3290/short_paper2780.pdf.
- Lexical diversity One of the simplest and most basic corpus statistics is the number of unique words in a text. This number gives us a quick and straightforward picture of the lexical diversity of a text. Lexical diversity is typically implemented by measuring the number of unique letter combinations. This is of course very easy to do, but it doesn’t necessarily describe the lexical richness of a text adequately.</description>
+      <description>&lt;p&gt;This is a transcript of a &lt;a href=&#34;https://youtu.be/z8OCu9tB-jY&#34;&gt;talk&lt;/a&gt; given at the &lt;a href=&#34;https://2022.computational-humanities-research.org&#34;&gt;CHR2022&lt;/a&gt; conference. For the corresponding&#xA;paper, see &lt;a href=&#34;https://ceur-ws.org/Vol-3290/short_paper2780.pdf&#34;&gt;https://ceur-ws.org/Vol-3290/short_paper2780.pdf&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/z8OCu9tB-jY&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;&#xA;&lt;h2 id=&#34;lexical-diversity&#34;&gt;Lexical diversity&lt;/h2&gt;&#xA;&lt;p&gt;One of the simplest and most basic corpus statistics is the number of unique words in a&#xA;text. This number gives us a quick and straightforward picture of the lexical diversity of&#xA;a text. Lexical diversity is typically implemented by measuring the number of unique&#xA;letter combinations. This is of course very easy to do, but it doesn’t necessarily&#xA;describe the lexical richness of a text adequately. This becomes clear when we compare the&#xA;following few sets of words:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

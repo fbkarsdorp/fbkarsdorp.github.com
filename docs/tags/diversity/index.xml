@@ -1,87 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>diversity on Folgert Karsdorp</title>
+    <title>Diversity on Folgert Karsdorp</title>
     <link>https://www.karsdorp.io/tags/diversity/</link>
-    <description>Recent content in diversity on Folgert Karsdorp</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Diversity on Folgert Karsdorp</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Thu, 25 Jan 2024 00:00:00 +0100</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/diversity/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Folgert Karsdorp; made with Hugo</copyright>
+    <lastBuildDate>Mon, 29 Jan 2024 20:51:29 +0100</lastBuildDate>
+    <atom:link href="https://www.karsdorp.io/tags/diversity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Explorers and Exploiters: Deviations from Rarefaction Curves</title>
       <link>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</guid>
-      <description>This notebook is the second in a series of notebooks based on a talk I gave at the CUDAN 2023 conference in Tallinn, Estonia (https://cudan.tlu.ee/conference/) together with Melvin Wevers and Mike Kestemont, titled Steady Formulas, Shifting Spells: Estimating Folktale Diversity.
-Collector&amp;rsquo;s curves In a previous discussion, I delved into how we can use ecological concepts to understand cultural diversity, focusing on what we call &amp;lsquo;cultural richness.&amp;rsquo; This term refers to the variety of unique items found in different collections.</description>
+      <description>&lt;p&gt;This notebook is the second in a series of notebooks based on a talk I gave&#xA;at the CUDAN 2023 conference in Tallinn, Estonia&#xA;(&lt;a href=&#34;https://cudan.tlu.ee/conference/&#34;&gt;https://cudan.tlu.ee/conference/&lt;/a&gt;) together with &lt;a href=&#34;https://www.melvinwevers.nl&#34;&gt;Melvin Wevers&lt;/a&gt; and &lt;a href=&#34;http://mikekestemont.github.io/&#34;&gt;Mike&#xA;Kestemont&lt;/a&gt;, titled &lt;em&gt;Steady Formulas, Shifting Spells: Estimating Folktale&#xA;Diversity&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;collector-s-curves&#34;&gt;Collector&amp;rsquo;s curves&lt;/h2&gt;&#xA;&lt;p&gt;In a &lt;a href=&#34;https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/&#34;&gt;previous discussion&lt;/a&gt;, I delved into how we can use ecological concepts to&#xA;understand &lt;a href=&#34;&#34;&gt;cultural diversity&lt;/a&gt;, focusing on what we call &amp;lsquo;&lt;a href=&#34;&#34;&gt;cultural richness&lt;/a&gt;.&amp;rsquo;&#xA;This term refers to the variety of unique items found in different collections.&#xA;I illustrated the use of a method developed by&#xA;Chao and Jost (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;2012&lt;/a&gt;) to compare this richness across&#xA;collections in a way that doesn’t depend on how much effort the collectors put&#xA;into gathering their items. This method is based on estimates of the &amp;ldquo;coverage&amp;rdquo;&#xA;of a collection (&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;Good 1953&lt;/a&gt;).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Coverage-based Comparisons of Cultural Diversity</title>
       <link>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>
       <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</guid>
-      <description>This notebook is the first of a series of notebooks based on a talk I gave at the CUDAN 2023 conference in Tallinn, Estonia (https://cudan.tlu.ee/conference/) together with Melvin Wevers and Mike Kestemont, titled Steady Formulas, Shifting Spells: Estimating Folktale Diversity.
-Comparing Cultural Diversity Estimates Quantifying the diversity of cultural collections presents many unique challenges. In earlier posts (e.g., Demystifying Chao1 with Good-Turing and Population Size Estimation as a Regression Problem), I&amp;rsquo;ve discussed the issue of undersampling in cultural collections, largely as a consequence of cultural loss.</description>
+      <description>&lt;p&gt;This notebook is the first of a series of notebooks based on a talk I gave at&#xA;the CUDAN 2023 conference in Tallinn, Estonia (&lt;a href=&#34;https://cudan.tlu.ee/conference/&#34;&gt;https://cudan.tlu.ee/conference/&lt;/a&gt;)&#xA;together with &lt;a href=&#34;https://www.melvinwevers.nl&#34;&gt;Melvin Wevers&lt;/a&gt; and &lt;a href=&#34;http://mikekestemont.github.io/&#34;&gt;Mike Kestemont&lt;/a&gt;, titled &lt;em&gt;Steady Formulas,&#xA;Shifting Spells: Estimating Folktale Diversity&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;comparing-cultural-diversity-estimates&#34;&gt;Comparing Cultural Diversity Estimates&lt;/h2&gt;&#xA;&lt;p&gt;Quantifying the diversity of cultural collections presents many unique&#xA;challenges. In earlier posts (e.g., &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt; and&#xA;&lt;a href=&#34;https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/&#34;&gt;Population Size Estimation as a Regression Problem&lt;/a&gt;), I&amp;rsquo;ve discussed the issue of&#xA;undersampling in cultural collections, largely as a consequence of cultural&#xA;loss. In this post, I discuss some problems when &lt;em&gt;comparing&lt;/em&gt; diversity&#xA;measurements: When and how can we assert that one collection is more diverse&#xA;than another?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>What Shall We Do with the Unseen Sailor?</title>
       <link>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</guid>
-      <description>Bias in historical records At the Computational Humanities Research conference 2022 held in Antwerp from December 12 to 14, I co-presented a new paper with Melvin Wevers on missing data in historical archives. The paper was pubslished with CEUR-WS and can be found here: https://ceur-ws.org/Vol-3290/short_paper1793.pdf. Missing data is rather the norm than the exception in historical archives. There are virtually endless reasons why records did not survive the test of time: they might have been lost due to natural causes, such as fires, decisions on the level of archival policy making, but also due to content production biases.</description>
+      <description>&lt;h2 id=&#34;bias-in-historical-records&#34;&gt;Bias in historical records&lt;/h2&gt;&#xA;&lt;p&gt;At the &lt;a href=&#34;https://2022.computational-humanities-research.org&#34;&gt;Computational Humanities Research conference 2022&lt;/a&gt; held in Antwerp from December 12&#xA;to 14, I co-presented a new paper with &lt;a href=&#34;http://www.melvinwevers.nl/&#34;&gt;Melvin Wevers&lt;/a&gt; on missing data in historical&#xA;archives. The paper was pubslished with CEUR-WS and can be found here:&#xA;&lt;a href=&#34;https://ceur-ws.org/Vol-3290/short_paper1793.pdf&#34;&gt;https://ceur-ws.org/Vol-3290/short_paper1793.pdf&lt;/a&gt;. Missing data is rather the norm than the&#xA;exception in historical archives. There are virtually endless reasons why records did not&#xA;survive the test of time: they might have been lost due to natural causes, such as fires,&#xA;decisions on the level of archival policy making, but also due to content production&#xA;biases. When working with incomplete data archives, we run into all kinds of risk, such as&#xA;overestimating the impact of specific historical events, misrepresenting class, and&#xA;underestimating casualties. For this reason, we need to critically evaluate whether the&#xA;data we are left with is representative of the archival collection or historical period&#xA;from which its stems.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Functional Diversity as a Generalization of Lexical Diversity</title>
       <link>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</link>
       <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</guid>
-      <description>This is a transcript of a talk given at the CHR2022 conference. For the corresponding paper, see https://ceur-ws.org/Vol-3290/short_paper2780.pdf.
- Lexical diversity One of the simplest and most basic corpus statistics is the number of unique words in a text. This number gives us a quick and straightforward picture of the lexical diversity of a text. Lexical diversity is typically implemented by measuring the number of unique letter combinations. This is of course very easy to do, but it doesn’t necessarily describe the lexical richness of a text adequately.</description>
+      <description>&lt;p&gt;This is a transcript of a &lt;a href=&#34;https://youtu.be/z8OCu9tB-jY&#34;&gt;talk&lt;/a&gt; given at the &lt;a href=&#34;https://2022.computational-humanities-research.org&#34;&gt;CHR2022&lt;/a&gt; conference. For the corresponding&#xA;paper, see &lt;a href=&#34;https://ceur-ws.org/Vol-3290/short_paper2780.pdf&#34;&gt;https://ceur-ws.org/Vol-3290/short_paper2780.pdf&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/z8OCu9tB-jY&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;&#xA;&lt;h2 id=&#34;lexical-diversity&#34;&gt;Lexical diversity&lt;/h2&gt;&#xA;&lt;p&gt;One of the simplest and most basic corpus statistics is the number of unique words in a&#xA;text. This number gives us a quick and straightforward picture of the lexical diversity of&#xA;a text. Lexical diversity is typically implemented by measuring the number of unique&#xA;letter combinations. This is of course very easy to do, but it doesn’t necessarily&#xA;describe the lexical richness of a text adequately. This becomes clear when we compare the&#xA;following few sets of words:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Undetected Functional Attribute Diversity</title>
       <link>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</link>
       <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</guid>
-      <description>Functional Diversity In some previous notebooks (see, for example, here, here, and here), I have discussed the concept of cultural diversity and how methods from ecology can be used to estimate the lower bound of unseen cultural diversity. In these notebooks, diversity was understood simply as the number of unique items in a collection (e.g., species, narratives, pictures, melodies, etc.), with all elements being considered as equidistant, or, in other words, categorically different.</description>
+      <description>&lt;h2 id=&#34;functional-diversity&#34;&gt;Functional Diversity&lt;/h2&gt;&#xA;&lt;p&gt;In some previous notebooks (see, for example, &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/&#34;&gt;here&lt;/a&gt;, and &lt;a href=&#34;https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/&#34;&gt;here&lt;/a&gt;), I have discussed the&#xA;concept of cultural diversity and how methods from ecology can be used to estimate the&#xA;lower bound of unseen cultural diversity. In these notebooks, diversity was understood&#xA;simply as the number of unique items in a collection (e.g., species, narratives, pictures,&#xA;melodies, etc.), with all elements being considered as equidistant, or, in other words,&#xA;categorically different. Of course, it only rarely, if ever, happens that all items are&#xA;exactly equally different from each other. It is much more likely that some species are&#xA;more similar than others. And the same is true of cultural artefacts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Population Size Estimation as a Regression Problem</title>
       <link>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</link>
       <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</guid>
-      <description>Unseen heterogeneity Unseen Species Models such as Chao1 provide accurate point-estimates of the population size when the rare species in studied sample are homogeneous. That is, in the case of animal species, for example, all species are equally likely to be observed. Of course, this is a simplifying assumption. Some species are simply more difficult to spot than others, and so most samples contain unseen heterogeneity. When such heterogeneity is present in a sample, the Chao1 estimate reduces to a lower bound of the actual population size.</description>
+      <description>&lt;h2 id=&#34;unseen-heterogeneity&#34;&gt;Unseen heterogeneity&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;&#34;&gt;Unseen Species Model&lt;/a&gt;s such as &lt;a href=&#34;&#34;&gt;Chao1&lt;/a&gt; provide accurate point-estimates of the population&#xA;size when the rare species in studied sample are homogeneous. That is, in the case of&#xA;animal species, for example, all species are equally likely to be observed. Of course,&#xA;this is a simplifying assumption. Some species are simply more difficult to spot than&#xA;others, and so most samples contain unseen heterogeneity. When such heterogeneity is&#xA;present in a sample, the Chao1 estimate reduces to a lower bound of the actual population&#xA;size. What happens when we do have knowledge about (some parts of) the the origin of the&#xA;heterogeneity? Is there a way to use that information to correct for some of the bias of&#xA;Chao&amp;rsquo;s estimator?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Zelterman&#39;s Estimator of Population Size</title>
       <link>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</link>
       <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</guid>
-      <description>Zelterman&amp;rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model.</description>
+      <description>&lt;h2 id=&#34;zelterman-s-estimator&#34;&gt;Zelterman&amp;rsquo;s Estimator&lt;/h2&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt;, I introduced and explained the &lt;a href=&#34;&#34;&gt;Chao1 estimator&lt;/a&gt; as&#xA;an example of a well-known model for estimating the number of unseen species. In this&#xA;notebook, I study some aspects of another, alternative estimator developed in&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;), which has been popular in applications&#xA;such as drug user studies. This estimator has particular properties that make it more&#xA;robust or less sensitive to violations of the underlying model. As such, it would be&#xA;interesting to study how well the estimator performs when applied to cultural data. In&#xA;what follows, I base my descriptions on the original paper by&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;) as well as the more recent application of&#xA;the method by Böhning and van der Heijden (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;2009&lt;/a&gt;).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Demystifying Chao1 with Good-Turing</title>
       <link>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</guid>
-      <description>To estimate the &amp;ldquo;biodiversity&amp;rdquo; in a particular area &amp;ndash; or, in other words, the number of unique species living in a given environment &amp;ndash; ecologists usually have no other option than to rely on incomplete samples. For all sorts of practical reasons, it is virtually impossible to spot all species that are actually present in an area, and hence certain species will be missing in the counts. Consequently, an important research question in ecology is how to reliably estimate the resulting &amp;ldquo;bias&amp;rdquo; between the number of species that was observerd and the true number of unique species in an area.</description>
+      <description>&lt;p&gt;To estimate the &amp;ldquo;&lt;a href=&#34;&#34;&gt;biodiversity&lt;/a&gt;&amp;rdquo; in a particular area &amp;ndash; or, in other words, the number of&#xA;unique species living in a given environment &amp;ndash; ecologists usually have no other option&#xA;than to rely on incomplete samples. For all sorts of practical reasons, it is virtually&#xA;impossible to spot all species that are actually present in an area, and hence certain&#xA;species will be missing in the counts. Consequently, an important research question in&#xA;ecology is how to reliably estimate the resulting &amp;ldquo;bias&amp;rdquo; between the number of species&#xA;that was observerd and the true number of unique species in an area.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

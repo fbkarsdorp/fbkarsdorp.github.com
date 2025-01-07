@@ -2,7 +2,7 @@ baseURL = 'https://www.karsdorp.io'
 languageCode = 'en-us'
 title = 'Folgert Karsdorp'
 theme = "cactus"
-copyright = "Folgert Karsdorp; made with Hugo and Org-mode"
+copyright = "Folgert Karsdorp; made with Hugo"
 refLinksErrorLevel = "WARNING"
 publishDir = "docs"
 

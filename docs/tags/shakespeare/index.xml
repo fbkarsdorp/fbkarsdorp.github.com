@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>shakespeare on Folgert Karsdorp</title>
+    <title>Shakespeare on Folgert Karsdorp</title>
     <link>https://www.karsdorp.io/tags/shakespeare/</link>
-    <description>Recent content in shakespeare on Folgert Karsdorp</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Shakespeare on Folgert Karsdorp</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <copyright>Folgert Karsdorp; made with Hugo and Org-mode</copyright>
-    <lastBuildDate>Fri, 01 Apr 2022 12:43:51 +0200</lastBuildDate><atom:link href="https://www.karsdorp.io/tags/shakespeare/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Folgert Karsdorp; made with Hugo</copyright>
+    <lastBuildDate>Fri, 01 Apr 2022 12:43:51 +0200</lastBuildDate>
+    <atom:link href="https://www.karsdorp.io/tags/shakespeare/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Zelterman&#39;s Estimator of Population Size</title>
       <link>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</link>
       <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
-      
       <guid>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</guid>
-      <description>Zelterman&amp;rsquo;s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model.</description>
+      <description>&lt;h2 id=&#34;zelterman-s-estimator&#34;&gt;Zelterman&amp;rsquo;s Estimator&lt;/h2&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt;, I introduced and explained the &lt;a href=&#34;&#34;&gt;Chao1 estimator&lt;/a&gt; as&#xA;an example of a well-known model for estimating the number of unseen species. In this&#xA;notebook, I study some aspects of another, alternative estimator developed in&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;), which has been popular in applications&#xA;such as drug user studies. This estimator has particular properties that make it more&#xA;robust or less sensitive to violations of the underlying model. As such, it would be&#xA;interesting to study how well the estimator performs when applied to cultural data. In&#xA;what follows, I base my descriptions on the original paper by&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;) as well as the more recent application of&#xA;the method by Böhning and van der Heijden (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;2009&lt;/a&gt;).&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
