@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=60738&amp;path=livereload" data-no-instant defer></script>
+<head>
   
   
   
@@ -11,7 +11,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Population Size Estimation as a Regression Problem | Folgert Karsdorp</title>
-  <link rel = 'canonical' href = 'http://localhost:60738/posts/20220405110456-population_size_regression_estimators/'>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/'>
   <meta name="description" content="I&#39;m a researcher in Computational Humanities and Cultural
   Evolution at Amsterdam&#39;s [Meertens
   Institute](https://meertens.knaw.nl/index.php/en/), affiliated with the Royal
@@ -30,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:url" content="http://localhost:60738/posts/20220405110456-population_size_regression_estimators/">
+  <meta property="og:url" content="https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/">
   <meta property="og:site_name" content="Folgert Karsdorp">
   <meta property="og:title" content="Population Size Estimation as a Regression Problem">
   <meta property="og:description" content="Unseen heterogeneity Unseen Species Models such as Chao1 provide accurate point-estimates of the population size when the rare species in studied sample are homogeneous. That is, in the case of animal species, for example, all species are equally likely to be observed. Of course, this is a simplifying assumption. Some species are simply more difficult to spot than others, and so most samples contain unseen heterogeneity. When such heterogeneity is present in a sample, the Chao1 estimate reduces to a lower bound of the actual population size. What happens when we do have knowledge about (some parts of) the the origin of the heterogeneity? Is there a way to use that information to correct for some of the bias of Chao’s estimator?">
@@ -56,7 +56,7 @@
     
   
   
-  <link rel="stylesheet" href="http://localhost:60738/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
 
   
   
@@ -68,7 +68,7 @@
   
 
   
-<link rel="icon" type="image/png" href="http://localhost:60738/images/favicon.ico" />
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
 
   
   
@@ -99,14 +99,14 @@
       <ul>
         
         <li>
-          <a class="icon" href=" http://localhost:60738/posts/20220405102342-zelterman_estimator/" aria-label="Previous">
+          <a class="icon" href=" https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="http://localhost:60738/posts/20220316142536-two_assemblage_good_turing_estimation/" aria-label="Next">
+          <a class="icon" href="https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -137,47 +137,47 @@
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&text=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&text=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&is_video=false&description=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&is_video=false&description=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&body=Check out this article: http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&name=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&description=%3ch2%20id%3d%22unseen-heterogeneity%22%3eUnseen%20heterogeneity%3c%2fh2%3e%0a%3cp%3e%3ca%20href%3d%22%22%3eUnseen%20Species%20Model%3c%2fa%3es%20such%20as%20%3ca%20href%3d%22%22%3eChao1%3c%2fa%3e%20provide%20accurate%20point-estimates%20of%20the%20population%0asize%20when%20the%20rare%20species%20in%20studied%20sample%20are%20homogeneous.%20That%20is%2c%20in%20the%20case%20of%0aanimal%20species%2c%20for%20example%2c%20all%20species%20are%20equally%20likely%20to%20be%20observed.%20Of%20course%2c%0athis%20is%20a%20simplifying%20assumption.%20Some%20species%20are%20simply%20more%20difficult%20to%20spot%20than%0aothers%2c%20and%20so%20most%20samples%20contain%20unseen%20heterogeneity.%20When%20such%20heterogeneity%20is%0apresent%20in%20a%20sample%2c%20the%20Chao1%20estimate%20reduces%20to%20a%20lower%20bound%20of%20the%20actual%20population%0asize.%20What%20happens%20when%20we%20do%20have%20knowledge%20about%20%28some%20parts%20of%29%20the%20the%20origin%20of%20the%0aheterogeneity%3f%20Is%20there%20a%20way%20to%20use%20that%20information%20to%20correct%20for%20some%20of%20the%20bias%20of%0aChao%26rsquo%3bs%20estimator%3f%3c%2fp%3e" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&name=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&description=%3ch2%20id%3d%22unseen-heterogeneity%22%3eUnseen%20heterogeneity%3c%2fh2%3e%0a%3cp%3e%3ca%20href%3d%22%22%3eUnseen%20Species%20Model%3c%2fa%3es%20such%20as%20%3ca%20href%3d%22%22%3eChao1%3c%2fa%3e%20provide%20accurate%20point-estimates%20of%20the%20population%0asize%20when%20the%20rare%20species%20in%20studied%20sample%20are%20homogeneous.%20That%20is%2c%20in%20the%20case%20of%0aanimal%20species%2c%20for%20example%2c%20all%20species%20are%20equally%20likely%20to%20be%20observed.%20Of%20course%2c%0athis%20is%20a%20simplifying%20assumption.%20Some%20species%20are%20simply%20more%20difficult%20to%20spot%20than%0aothers%2c%20and%20so%20most%20samples%20contain%20unseen%20heterogeneity.%20When%20such%20heterogeneity%20is%0apresent%20in%20a%20sample%2c%20the%20Chao1%20estimate%20reduces%20to%20a%20lower%20bound%20of%20the%20actual%20population%0asize.%20What%20happens%20when%20we%20do%20have%20knowledge%20about%20%28some%20parts%20of%29%20the%20the%20origin%20of%20the%0aheterogeneity%3f%20Is%20there%20a%20way%20to%20use%20that%20information%20to%20correct%20for%20some%20of%20the%20bias%20of%0aChao%26rsquo%3bs%20estimator%3f%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&t=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&t=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -781,47 +781,47 @@ that&rsquo;s reassuring if we want to apply the method to real-world case.</p>
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&text=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&text=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&is_video=false&description=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&is_video=false&description=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&body=Check out this article: http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&title=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&name=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&description=%3ch2%20id%3d%22unseen-heterogeneity%22%3eUnseen%20heterogeneity%3c%2fh2%3e%0a%3cp%3e%3ca%20href%3d%22%22%3eUnseen%20Species%20Model%3c%2fa%3es%20such%20as%20%3ca%20href%3d%22%22%3eChao1%3c%2fa%3e%20provide%20accurate%20point-estimates%20of%20the%20population%0asize%20when%20the%20rare%20species%20in%20studied%20sample%20are%20homogeneous.%20That%20is%2c%20in%20the%20case%20of%0aanimal%20species%2c%20for%20example%2c%20all%20species%20are%20equally%20likely%20to%20be%20observed.%20Of%20course%2c%0athis%20is%20a%20simplifying%20assumption.%20Some%20species%20are%20simply%20more%20difficult%20to%20spot%20than%0aothers%2c%20and%20so%20most%20samples%20contain%20unseen%20heterogeneity.%20When%20such%20heterogeneity%20is%0apresent%20in%20a%20sample%2c%20the%20Chao1%20estimate%20reduces%20to%20a%20lower%20bound%20of%20the%20actual%20population%0asize.%20What%20happens%20when%20we%20do%20have%20knowledge%20about%20%28some%20parts%20of%29%20the%20the%20origin%20of%20the%0aheterogeneity%3f%20Is%20there%20a%20way%20to%20use%20that%20information%20to%20correct%20for%20some%20of%20the%20bias%20of%0aChao%26rsquo%3bs%20estimator%3f%3c%2fp%3e" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&name=Population%20Size%20Estimation%20as%20a%20Regression%20Problem&description=%3ch2%20id%3d%22unseen-heterogeneity%22%3eUnseen%20heterogeneity%3c%2fh2%3e%0a%3cp%3e%3ca%20href%3d%22%22%3eUnseen%20Species%20Model%3c%2fa%3es%20such%20as%20%3ca%20href%3d%22%22%3eChao1%3c%2fa%3e%20provide%20accurate%20point-estimates%20of%20the%20population%0asize%20when%20the%20rare%20species%20in%20studied%20sample%20are%20homogeneous.%20That%20is%2c%20in%20the%20case%20of%0aanimal%20species%2c%20for%20example%2c%20all%20species%20are%20equally%20likely%20to%20be%20observed.%20Of%20course%2c%0athis%20is%20a%20simplifying%20assumption.%20Some%20species%20are%20simply%20more%20difficult%20to%20spot%20than%0aothers%2c%20and%20so%20most%20samples%20contain%20unseen%20heterogeneity.%20When%20such%20heterogeneity%20is%0apresent%20in%20a%20sample%2c%20the%20Chao1%20estimate%20reduces%20to%20a%20lower%20bound%20of%20the%20actual%20population%0asize.%20What%20happens%20when%20we%20do%20have%20knowledge%20about%20%28some%20parts%20of%29%20the%20the%20origin%20of%20the%0aheterogeneity%3f%20Is%20there%20a%20way%20to%20use%20that%20information%20to%20correct%20for%20some%20of%20the%20bias%20of%0aChao%26rsquo%3bs%20estimator%3f%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405110456-population_size_regression_estimators%2f&t=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405110456-population_size_regression_estimators%2f&t=Population%20Size%20Estimation%20as%20a%20Regression%20Problem" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>

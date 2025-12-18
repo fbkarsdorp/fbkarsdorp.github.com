@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Turing on Folgert Karsdorp</title>
-    <link>http://localhost:60738/tags/turing/</link>
+    <link>https://www.karsdorp.io/tags/turing/</link>
     <description>Recent content in Turing on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Thu, 15 Dec 2022 18:09:05 +0100</lastBuildDate>
-    <atom:link href="http://localhost:60738/tags/turing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.karsdorp.io/tags/turing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Demystifying Chao1 with Good-Turing</title>
-      <link>http://localhost:60738/posts/20220309103709-good_turing_as_an_unseen_species_model/</link>
+      <link>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>
-      <guid>http://localhost:60738/posts/20220309103709-good_turing_as_an_unseen_species_model/</guid>
+      <guid>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</guid>
       <description>&lt;p&gt;To estimate the &amp;ldquo;&lt;a href=&#34;&#34;&gt;biodiversity&lt;/a&gt;&amp;rdquo; in a particular area &amp;ndash; or, in other words, the number of&#xA;unique species living in a given environment &amp;ndash; ecologists usually have no other option&#xA;than to rely on incomplete samples. For all sorts of practical reasons, it is virtually&#xA;impossible to spot all species that are actually present in an area, and hence certain&#xA;species will be missing in the counts. Consequently, an important research question in&#xA;ecology is how to reliably estimate the resulting &amp;ldquo;bias&amp;rdquo; between the number of species&#xA;that was observerd and the true number of unique species in an area.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=60738&amp;path=livereload" data-no-instant defer></script>
+<head>
   
   
   
@@ -11,7 +11,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title> Zelterman&#39;s Estimator of Population Size | Folgert Karsdorp</title>
-  <link rel = 'canonical' href = 'http://localhost:60738/posts/20220405102342-zelterman_estimator/'>
+  <link rel = 'canonical' href = 'https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/'>
   <meta name="description" content="I&#39;m a researcher in Computational Humanities and Cultural
   Evolution at Amsterdam&#39;s [Meertens
   Institute](https://meertens.knaw.nl/index.php/en/), affiliated with the Royal
@@ -30,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:url" content="http://localhost:60738/posts/20220405102342-zelterman_estimator/">
+  <meta property="og:url" content="https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/">
   <meta property="og:site_name" content="Folgert Karsdorp">
   <meta property="og:title" content="Zelterman&#39;s Estimator of Population Size">
   <meta property="og:description" content="Zelterman’s Estimator In Demystifying Chao1 with Good-Turing, I introduced and explained the Chao1 estimator as an example of a well-known model for estimating the number of unseen species. In this notebook, I study some aspects of another, alternative estimator developed in Zelterman (1988), which has been popular in applications such as drug user studies. This estimator has particular properties that make it more robust or less sensitive to violations of the underlying model. As such, it would be interesting to study how well the estimator performs when applied to cultural data. In what follows, I base my descriptions on the original paper by Zelterman (1988) as well as the more recent application of the method by Böhning and van der Heijden (2009).">
@@ -56,7 +56,7 @@
     
   
   
-  <link rel="stylesheet" href="http://localhost:60738/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
+  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
 
   
   
@@ -68,7 +68,7 @@
   
 
   
-<link rel="icon" type="image/png" href="http://localhost:60738/images/favicon.ico" />
+<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
 
   
   
@@ -99,14 +99,14 @@
       <ul>
         
         <li>
-          <a class="icon" href=" http://localhost:60738/posts/20220323122150-estimating_richness_under_sampling_without_replacement/" aria-label="Previous">
+          <a class="icon" href=" https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
         
         <li>
-          <a class="icon" href="http://localhost:60738/posts/20220405110456-population_size_regression_estimators/" aria-label="Next">
+          <a class="icon" href="https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -137,47 +137,47 @@
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Facebook">
       <i class="fab fa-facebook " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&text=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&text=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Twitter">
       <i class="fab fa-twitter " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Linkedin">
       <i class="fab fa-linkedin " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&is_video=false&description=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&is_video=false&description=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pinterest">
       <i class="fab fa-pinterest " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Zelterman%27s%20Estimator%20of%20Population%20Size&body=Check out this article: http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Zelterman%27s%20Estimator%20of%20Population%20Size&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Email">
       <i class="fas fa-envelope " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pocket">
       <i class="fab fa-get-pocket " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="reddit">
       <i class="fab fa-reddit " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=%3ch2%20id%3d%22zelterman-s-estimator%22%3eZelterman%26rsquo%3bs%20Estimator%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20introduced%20and%20explained%20the%20%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20as%0aan%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%0anotebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%2c%20which%20has%20been%20popular%20in%20applications%0asuch%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%0arobust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model.%20As%20such%2c%20it%20would%20be%0ainteresting%20to%20study%20how%20well%20the%20estimator%20performs%20when%20applied%20to%20cultural%20data.%20In%0awhat%20follows%2c%20I%20base%20my%20descriptions%20on%20the%20original%20paper%20by%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%20as%20well%20as%20the%20more%20recent%20application%20of%0athe%20method%20by%20B%c3%b6hning%20and%20van%20der%20Heijden%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3e2009%3c%2fa%3e%29.%3c%2fp%3e" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=%3ch2%20id%3d%22zelterman-s-estimator%22%3eZelterman%26rsquo%3bs%20Estimator%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20introduced%20and%20explained%20the%20%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20as%0aan%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%0anotebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%2c%20which%20has%20been%20popular%20in%20applications%0asuch%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%0arobust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model.%20As%20such%2c%20it%20would%20be%0ainteresting%20to%20study%20how%20well%20the%20estimator%20performs%20when%20applied%20to%20cultural%20data.%20In%0awhat%20follows%2c%20I%20base%20my%20descriptions%20on%20the%20original%20paper%20by%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%20as%20well%20as%20the%20more%20recent%20application%20of%0athe%20method%20by%20B%c3%b6hning%20and%20van%20der%20Heijden%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3e2009%3c%2fa%3e%29.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&t=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&t=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Hacker News">
       <i class="fab fa-hacker-news " aria-hidden="true"></i>
     </a>
   </li>
@@ -487,47 +487,47 @@ in the same ballpark as the one by Efron and Thisted (<a href="#citeproc_bib_ite
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&text=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&text=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&is_video=false&description=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&is_video=false&description=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=Zelterman%27s%20Estimator%20of%20Population%20Size&body=Check out this article: http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Zelterman%27s%20Estimator%20of%20Population%20Size&body=Check out this article: https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&title=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=%3ch2%20id%3d%22zelterman-s-estimator%22%3eZelterman%26rsquo%3bs%20Estimator%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20introduced%20and%20explained%20the%20%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20as%0aan%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%0anotebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%2c%20which%20has%20been%20popular%20in%20applications%0asuch%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%0arobust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model.%20As%20such%2c%20it%20would%20be%0ainteresting%20to%20study%20how%20well%20the%20estimator%20performs%20when%20applied%20to%20cultural%20data.%20In%0awhat%20follows%2c%20I%20base%20my%20descriptions%20on%20the%20original%20paper%20by%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%20as%20well%20as%20the%20more%20recent%20application%20of%0athe%20method%20by%20B%c3%b6hning%20and%20van%20der%20Heijden%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3e2009%3c%2fa%3e%29.%3c%2fp%3e" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&name=Zelterman%27s%20Estimator%20of%20Population%20Size&description=%3ch2%20id%3d%22zelterman-s-estimator%22%3eZelterman%26rsquo%3bs%20Estimator%3c%2fh2%3e%0a%3cp%3eIn%20%3ca%20href%3d%22%2fposts%2f20220309103709-good_turing_as_an_unseen_species_model%2f%22%3eDemystifying%20Chao1%20with%20Good-Turing%3c%2fa%3e%2c%20I%20introduced%20and%20explained%20the%20%3ca%20href%3d%22%22%3eChao1%20estimator%3c%2fa%3e%20as%0aan%20example%20of%20a%20well-known%20model%20for%20estimating%20the%20number%20of%20unseen%20species.%20In%20this%0anotebook%2c%20I%20study%20some%20aspects%20of%20another%2c%20alternative%20estimator%20developed%20in%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%2c%20which%20has%20been%20popular%20in%20applications%0asuch%20as%20drug%20user%20studies.%20This%20estimator%20has%20particular%20properties%20that%20make%20it%20more%0arobust%20or%20less%20sensitive%20to%20violations%20of%20the%20underlying%20model.%20As%20such%2c%20it%20would%20be%0ainteresting%20to%20study%20how%20well%20the%20estimator%20performs%20when%20applied%20to%20cultural%20data.%20In%0awhat%20follows%2c%20I%20base%20my%20descriptions%20on%20the%20original%20paper%20by%0aZelterman%20%28%3ca%20href%3d%22%23citeproc_bib_item_5%22%3e1988%3c%2fa%3e%29%20as%20well%20as%20the%20more%20recent%20application%20of%0athe%20method%20by%20B%c3%b6hning%20and%20van%20der%20Heijden%20%28%3ca%20href%3d%22%23citeproc_bib_item_1%22%3e2009%3c%2fa%3e%29.%3c%2fp%3e" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a60738%2fposts%2f20220405102342-zelterman_estimator%2f&t=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.karsdorp.io%2fposts%2f20220405102342-zelterman_estimator%2f&t=Zelterman%27s%20Estimator%20of%20Population%20Size" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>
