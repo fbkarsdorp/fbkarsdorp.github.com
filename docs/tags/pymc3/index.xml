@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pymc3 on Folgert Karsdorp</title>
-    <link>https://www.karsdorp.io/tags/pymc3/</link>
+    <link>http://localhost:60738/tags/pymc3/</link>
     <description>Recent content in Pymc3 on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Sat, 23 Apr 2022 09:37:34 +0200</lastBuildDate>
-    <atom:link href="https://www.karsdorp.io/tags/pymc3/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:60738/tags/pymc3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Population Size Estimation as a Regression Problem</title>
-      <link>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</link>
+      <link>http://localhost:60738/posts/20220405110456-population_size_regression_estimators/</link>
       <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</guid>
+      <guid>http://localhost:60738/posts/20220405110456-population_size_regression_estimators/</guid>
       <description>&lt;h2 id=&#34;unseen-heterogeneity&#34;&gt;Unseen heterogeneity&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;&#34;&gt;Unseen Species Model&lt;/a&gt;s such as &lt;a href=&#34;&#34;&gt;Chao1&lt;/a&gt; provide accurate point-estimates of the population&#xA;size when the rare species in studied sample are homogeneous. That is, in the case of&#xA;animal species, for example, all species are equally likely to be observed. Of course,&#xA;this is a simplifying assumption. Some species are simply more difficult to spot than&#xA;others, and so most samples contain unseen heterogeneity. When such heterogeneity is&#xA;present in a sample, the Chao1 estimate reduces to a lower bound of the actual population&#xA;size. What happens when we do have knowledge about (some parts of) the the origin of the&#xA;heterogeneity? Is there a way to use that information to correct for some of the bias of&#xA;Chao&amp;rsquo;s estimator?&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Richness on Folgert Karsdorp</title>
-    <link>https://www.karsdorp.io/tags/richness/</link>
+    <link>http://localhost:60738/tags/richness/</link>
     <description>Recent content in Richness on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Thu, 15 Dec 2022 18:09:05 +0100</lastBuildDate>
-    <atom:link href="https://www.karsdorp.io/tags/richness/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:60738/tags/richness/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Functional Diversity as a Generalization of Lexical Diversity</title>
-      <link>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</link>
+      <link>http://localhost:60738/posts/20220926232754-lexical_diversity/</link>
       <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</guid>
+      <guid>http://localhost:60738/posts/20220926232754-lexical_diversity/</guid>
       <description>&lt;p&gt;This is a transcript of a &lt;a href=&#34;https://youtu.be/z8OCu9tB-jY&#34;&gt;talk&lt;/a&gt; given at the &lt;a href=&#34;https://2022.computational-humanities-research.org&#34;&gt;CHR2022&lt;/a&gt; conference. For the corresponding&#xA;paper, see &lt;a href=&#34;https://ceur-ws.org/Vol-3290/short_paper2780.pdf&#34;&gt;https://ceur-ws.org/Vol-3290/short_paper2780.pdf&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/z8OCu9tB-jY&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen&gt;&lt;/iframe&gt;&#xA;&lt;h2 id=&#34;lexical-diversity&#34;&gt;Lexical diversity&lt;/h2&gt;&#xA;&lt;p&gt;One of the simplest and most basic corpus statistics is the number of unique words in a&#xA;text. This number gives us a quick and straightforward picture of the lexical diversity of&#xA;a text. Lexical diversity is typically implemented by measuring the number of unique&#xA;letter combinations. This is of course very easy to do, but it doesn’t necessarily&#xA;describe the lexical richness of a text adequately. This becomes clear when we compare the&#xA;following few sets of words:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Estimating Unseen Shared Cultural Diversity</title>
-      <link>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</link>
+      <link>http://localhost:60738/posts/20220316142536-two_assemblage_good_turing_estimation/</link>
       <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</guid>
-      <description>&lt;h2 id=&#34;shared-species-estimation&#34;&gt;Shared Species Estimation&lt;/h2&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt;, I tried to explain the intuition behind the Chao1&#xA;estimator (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;Chao 1984&lt;/a&gt;) for unseen species using the&#xA;Good-Turing estimator as described in Chao et al. (&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;2017&lt;/a&gt;). The&#xA;latter article discusses another set of diversity measures within that same framework of&#xA;Turing. The number of unique species or the number of unique cultural artifacts in a given&#xA;environment is only one diversity measure, but we can also study the shared diversity&#xA;between two cultural collections, for example. In addition to the number of unique&#xA;species, this definition of diversity thus also involves the specific composition of an&#xA;assemblage or collection. As with estimating the number of unique species, it is quite&#xA;conceivable that our samples do not give a complete picture of which species or cultural&#xA;artifacts are shared between two assemblages or collections. Fortunately, with only a few&#xA;small adjustments, we can modify the Good-Turing framework to compute a lower-bound on the&#xA;number of unseen items &lt;em&gt;shared&lt;/em&gt; between two collections.&lt;/p&gt;</description>
+      <guid>http://localhost:60738/posts/20220316142536-two_assemblage_good_turing_estimation/</guid>
+      <description>&lt;h2 id=&#34;shared-species-estimation&#34;&gt;Shared Species Estimation&lt;/h2&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;http://localhost:60738/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt;, I tried to explain the intuition behind the Chao1&#xA;estimator (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;Chao 1984&lt;/a&gt;) for unseen species using the&#xA;Good-Turing estimator as described in Chao et al. (&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;2017&lt;/a&gt;). The&#xA;latter article discusses another set of diversity measures within that same framework of&#xA;Turing. The number of unique species or the number of unique cultural artifacts in a given&#xA;environment is only one diversity measure, but we can also study the shared diversity&#xA;between two cultural collections, for example. In addition to the number of unique&#xA;species, this definition of diversity thus also involves the specific composition of an&#xA;assemblage or collection. As with estimating the number of unique species, it is quite&#xA;conceivable that our samples do not give a complete picture of which species or cultural&#xA;artifacts are shared between two assemblages or collections. Fortunately, with only a few&#xA;small adjustments, we can modify the Good-Turing framework to compute a lower-bound on the&#xA;number of unseen items &lt;em&gt;shared&lt;/em&gt; between two collections.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Population Size Estimation as a Regression Problem</title>
-      <link>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</link>
+      <link>http://localhost:60738/posts/20220405110456-population_size_regression_estimators/</link>
       <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/</guid>
+      <guid>http://localhost:60738/posts/20220405110456-population_size_regression_estimators/</guid>
       <description>&lt;h2 id=&#34;unseen-heterogeneity&#34;&gt;Unseen heterogeneity&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;&#34;&gt;Unseen Species Model&lt;/a&gt;s such as &lt;a href=&#34;&#34;&gt;Chao1&lt;/a&gt; provide accurate point-estimates of the population&#xA;size when the rare species in studied sample are homogeneous. That is, in the case of&#xA;animal species, for example, all species are equally likely to be observed. Of course,&#xA;this is a simplifying assumption. Some species are simply more difficult to spot than&#xA;others, and so most samples contain unseen heterogeneity. When such heterogeneity is&#xA;present in a sample, the Chao1 estimate reduces to a lower bound of the actual population&#xA;size. What happens when we do have knowledge about (some parts of) the the origin of the&#xA;heterogeneity? Is there a way to use that information to correct for some of the bias of&#xA;Chao&amp;rsquo;s estimator?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Zelterman&#39;s Estimator of Population Size</title>
-      <link>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</link>
+      <link>http://localhost:60738/posts/20220405102342-zelterman_estimator/</link>
       <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</guid>
-      <description>&lt;h2 id=&#34;zelterman-s-estimator&#34;&gt;Zelterman&amp;rsquo;s Estimator&lt;/h2&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt;, I introduced and explained the &lt;a href=&#34;&#34;&gt;Chao1 estimator&lt;/a&gt; as&#xA;an example of a well-known model for estimating the number of unseen species. In this&#xA;notebook, I study some aspects of another, alternative estimator developed in&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;), which has been popular in applications&#xA;such as drug user studies. This estimator has particular properties that make it more&#xA;robust or less sensitive to violations of the underlying model. As such, it would be&#xA;interesting to study how well the estimator performs when applied to cultural data. In&#xA;what follows, I base my descriptions on the original paper by&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;) as well as the more recent application of&#xA;the method by Böhning and van der Heijden (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;2009&lt;/a&gt;).&lt;/p&gt;</description>
+      <guid>http://localhost:60738/posts/20220405102342-zelterman_estimator/</guid>
+      <description>&lt;h2 id=&#34;zelterman-s-estimator&#34;&gt;Zelterman&amp;rsquo;s Estimator&lt;/h2&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;http://localhost:60738/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt;, I introduced and explained the &lt;a href=&#34;&#34;&gt;Chao1 estimator&lt;/a&gt; as&#xA;an example of a well-known model for estimating the number of unseen species. In this&#xA;notebook, I study some aspects of another, alternative estimator developed in&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;), which has been popular in applications&#xA;such as drug user studies. This estimator has particular properties that make it more&#xA;robust or less sensitive to violations of the underlying model. As such, it would be&#xA;interesting to study how well the estimator performs when applied to cultural data. In&#xA;what follows, I base my descriptions on the original paper by&#xA;Zelterman (&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;1988&lt;/a&gt;) as well as the more recent application of&#xA;the method by Böhning and van der Heijden (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;2009&lt;/a&gt;).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Estimating Richness under Sampling without Replacement</title>
-      <link>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</link>
+      <link>http://localhost:60738/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</link>
       <pubDate>Thu, 31 Mar 2022 12:35:33 +0200</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</guid>
+      <guid>http://localhost:60738/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;&#34;&gt;Unseen Species Models&lt;/a&gt; such as &lt;a href=&#34;&#34;&gt;Chao1&lt;/a&gt; assume that the sample being studied was created with&#xA;replacement. This means that calculations are based on the assumption that certain&#xA;individuals can or have been repeatedly observed. It also implies that the observation of&#xA;one individual does not influence the observation of the next individual. That is to say:&#xA;observations are independent. Take, for example, an ecologist who wants to use Chao1 to&#xA;estimate the number of unique animal species that live in a given environment. Assuming&#xA;for the moment that the presence of the researcher in that environment does not introduce&#xA;any observation biases, we can think of the observation process as a sample with&#xA;replacement: upon registration, animals are &lt;em&gt;re-placed&lt;/em&gt; into the environment, and thus&#xA;there is chance that ecologist is observing the same animal twice.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Demystifying Chao1 with Good-Turing</title>
-      <link>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</link>
+      <link>http://localhost:60738/posts/20220309103709-good_turing_as_an_unseen_species_model/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/</guid>
+      <guid>http://localhost:60738/posts/20220309103709-good_turing_as_an_unseen_species_model/</guid>
       <description>&lt;p&gt;To estimate the &amp;ldquo;&lt;a href=&#34;&#34;&gt;biodiversity&lt;/a&gt;&amp;rdquo; in a particular area &amp;ndash; or, in other words, the number of&#xA;unique species living in a given environment &amp;ndash; ecologists usually have no other option&#xA;than to rely on incomplete samples. For all sorts of practical reasons, it is virtually&#xA;impossible to spot all species that are actually present in an area, and hence certain&#xA;species will be missing in the counts. Consequently, an important research question in&#xA;ecology is how to reliably estimate the resulting &amp;ldquo;bias&amp;rdquo; between the number of species&#xA;that was observerd and the true number of unique species in an area.&lt;/p&gt;</description>
     </item>
   </channel>
