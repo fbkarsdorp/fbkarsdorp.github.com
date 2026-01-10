@@ -3,7 +3,7 @@ title = "List of publications"
 author = ["Folgert Karsdorp"]
 date = 2022-11-20T00:00:00+01:00
 layout = "pubs"
-lastmod = 2025-12-18T09:40:04+01:00
+lastmod = 2026-01-10T17:35:30+01:00
 draft = false
 +++
 
@@ -23,6 +23,12 @@ University Press. <a href="https://press.princeton.edu/books/hardcover/978069117
 
 <h2>Journal Articles</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-texeira-costa:2026" class="csl-entry" role="listitem">
+Teixeira-Costa, Luiza, Esther van Gelder, Laurens Sparrius, and Folgert
+Karsdorp. 2026. <span>“Flora Batava (1800-1934): From Historical Citizen
+Science to Plant Humanities Dataset.”</span> <em>Journal of Open
+Humanities Data</em> 12: 1–6. <a href="https://doi.org/10.5334/johd.497">https://doi.org/10.5334/johd.497</a>.
+</div>
 <div id="ref-2024:nielbo" class="csl-entry" role="listitem">
 Nielbo, Kristoffer, Folgert Karsdorp, Melvin Wevers, Alie Lassche,
 Rebekah Baglini, Mike Kestemont, and Nina Tahmasebi. 2024.
