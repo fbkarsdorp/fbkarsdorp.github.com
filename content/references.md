@@ -3,7 +3,7 @@ title = "List of publications"
 author = ["Folgert Karsdorp"]
 date = 2022-11-20T00:00:00+01:00
 layout = "pubs"
-lastmod = 2026-01-10T17:35:30+01:00
+lastmod = 2026-01-10T17:38:57+01:00
 draft = false
 +++
 

@@ -91,11 +91,8 @@ weight=10
     name = "github"
     link = "https://github.com/fbkarsdorp"
   [[params.social]]
-    name = "twitter"
-    link = "https://www.twitter.com/FolgertK"
-  [[params.social]]
-    name = "mastodon"
-    link = "https://akademienl.social/@folgertk"    
+    name = "bluesky"
+    link = "https://bsky.app/profile/folgertk.bsky.social"
   [[params.social]]
     name = "email"
     link = "folgert.karsdorp@meertens.knaw.nl"  # no need for "mailto:" in the head
