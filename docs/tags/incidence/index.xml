@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Incidence on Folgert Karsdorp</title>
-    <link>http://localhost:1313/tags/incidence/</link>
+    <link>https://www.karsdorp.io/tags/incidence/</link>
     <description>Recent content in Incidence on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Wed, 17 Jan 2024 11:23:27 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/incidence/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.karsdorp.io/tags/incidence/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coverage-based Comparisons of Cultural Diversity</title>
-      <link>http://localhost:1313/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>
+      <link>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>
       <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
-      <guid>http://localhost:1313/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</guid>
-      <description>&lt;p&gt;This notebook is the first of a series of notebooks based on a talk I gave at&#xA;the CUDAN 2023 conference in Tallinn, Estonia (&lt;a href=&#34;https://cudan.tlu.ee/conference/&#34;&gt;https://cudan.tlu.ee/conference/&lt;/a&gt;)&#xA;together with &lt;a href=&#34;https://www.melvinwevers.nl&#34;&gt;Melvin Wevers&lt;/a&gt; and &lt;a href=&#34;http://mikekestemont.github.io/&#34;&gt;Mike Kestemont&lt;/a&gt;, titled &lt;em&gt;Steady Formulas,&#xA;Shifting Spells: Estimating Folktale Diversity&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;comparing-cultural-diversity-estimates&#34;&gt;Comparing Cultural Diversity Estimates&lt;/h2&gt;&#xA;&lt;p&gt;Quantifying the diversity of cultural collections presents many unique&#xA;challenges. In earlier posts (e.g., &lt;a href=&#34;http://localhost:1313/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt; and&#xA;&lt;a href=&#34;http://localhost:1313/posts/20220405110456-population_size_regression_estimators/&#34;&gt;Population Size Estimation as a Regression Problem&lt;/a&gt;), I&amp;rsquo;ve discussed the issue of&#xA;undersampling in cultural collections, largely as a consequence of cultural&#xA;loss. In this post, I discuss some problems when &lt;em&gt;comparing&lt;/em&gt; diversity&#xA;measurements: When and how can we assert that one collection is more diverse&#xA;than another?&lt;/p&gt;</description>
+      <guid>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</guid>
+      <description>&lt;p&gt;This notebook is the first of a series of notebooks based on a talk I gave at&#xA;the CUDAN 2023 conference in Tallinn, Estonia (&lt;a href=&#34;https://cudan.tlu.ee/conference/&#34;&gt;https://cudan.tlu.ee/conference/&lt;/a&gt;)&#xA;together with &lt;a href=&#34;https://www.melvinwevers.nl&#34;&gt;Melvin Wevers&lt;/a&gt; and &lt;a href=&#34;http://mikekestemont.github.io/&#34;&gt;Mike Kestemont&lt;/a&gt;, titled &lt;em&gt;Steady Formulas,&#xA;Shifting Spells: Estimating Folktale Diversity&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;comparing-cultural-diversity-estimates&#34;&gt;Comparing Cultural Diversity Estimates&lt;/h2&gt;&#xA;&lt;p&gt;Quantifying the diversity of cultural collections presents many unique&#xA;challenges. In earlier posts (e.g., &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;Demystifying Chao1 with Good-Turing&lt;/a&gt; and&#xA;&lt;a href=&#34;https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/&#34;&gt;Population Size Estimation as a Regression Problem&lt;/a&gt;), I&amp;rsquo;ve discussed the issue of&#xA;undersampling in cultural collections, largely as a consequence of cultural&#xA;loss. In this post, I discuss some problems when &lt;em&gt;comparing&lt;/em&gt; diversity&#xA;measurements: When and how can we assert that one collection is more diverse&#xA;than another?&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

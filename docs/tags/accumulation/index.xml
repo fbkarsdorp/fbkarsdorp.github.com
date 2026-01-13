@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Accumulation on Folgert Karsdorp</title>
-    <link>http://localhost:1313/tags/accumulation/</link>
+    <link>https://www.karsdorp.io/tags/accumulation/</link>
     <description>Recent content in Accumulation on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Mon, 29 Jan 2024 20:51:29 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/accumulation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.karsdorp.io/tags/accumulation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Explorers and Exploiters: Deviations from Rarefaction Curves</title>
-      <link>http://localhost:1313/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>
+      <link>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</guid>
-      <description>&lt;p&gt;This notebook is the second in a series of notebooks based on a talk I gave&#xA;at the CUDAN 2023 conference in Tallinn, Estonia&#xA;(&lt;a href=&#34;https://cudan.tlu.ee/conference/&#34;&gt;https://cudan.tlu.ee/conference/&lt;/a&gt;) together with &lt;a href=&#34;https://www.melvinwevers.nl&#34;&gt;Melvin Wevers&lt;/a&gt; and &lt;a href=&#34;http://mikekestemont.github.io/&#34;&gt;Mike&#xA;Kestemont&lt;/a&gt;, titled &lt;em&gt;Steady Formulas, Shifting Spells: Estimating Folktale&#xA;Diversity&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;collector-s-curves&#34;&gt;Collector&amp;rsquo;s curves&lt;/h2&gt;&#xA;&lt;p&gt;In a &lt;a href=&#34;http://localhost:1313/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/&#34;&gt;previous discussion&lt;/a&gt;, I delved into how we can use ecological concepts to&#xA;understand &lt;a href=&#34;&#34;&gt;cultural diversity&lt;/a&gt;, focusing on what we call &amp;lsquo;&lt;a href=&#34;&#34;&gt;cultural richness&lt;/a&gt;.&amp;rsquo;&#xA;This term refers to the variety of unique items found in different collections.&#xA;I illustrated the use of a method developed by&#xA;Chao and Jost (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;2012&lt;/a&gt;) to compare this richness across&#xA;collections in a way that doesn’t depend on how much effort the collectors put&#xA;into gathering their items. This method is based on estimates of the &amp;ldquo;coverage&amp;rdquo;&#xA;of a collection (&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;Good 1953&lt;/a&gt;).&lt;/p&gt;</description>
+      <guid>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</guid>
+      <description>&lt;p&gt;This notebook is the second in a series of notebooks based on a talk I gave&#xA;at the CUDAN 2023 conference in Tallinn, Estonia&#xA;(&lt;a href=&#34;https://cudan.tlu.ee/conference/&#34;&gt;https://cudan.tlu.ee/conference/&lt;/a&gt;) together with &lt;a href=&#34;https://www.melvinwevers.nl&#34;&gt;Melvin Wevers&lt;/a&gt; and &lt;a href=&#34;http://mikekestemont.github.io/&#34;&gt;Mike&#xA;Kestemont&lt;/a&gt;, titled &lt;em&gt;Steady Formulas, Shifting Spells: Estimating Folktale&#xA;Diversity&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;collector-s-curves&#34;&gt;Collector&amp;rsquo;s curves&lt;/h2&gt;&#xA;&lt;p&gt;In a &lt;a href=&#34;https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/&#34;&gt;previous discussion&lt;/a&gt;, I delved into how we can use ecological concepts to&#xA;understand &lt;a href=&#34;&#34;&gt;cultural diversity&lt;/a&gt;, focusing on what we call &amp;lsquo;&lt;a href=&#34;&#34;&gt;cultural richness&lt;/a&gt;.&amp;rsquo;&#xA;This term refers to the variety of unique items found in different collections.&#xA;I illustrated the use of a method developed by&#xA;Chao and Jost (&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;2012&lt;/a&gt;) to compare this richness across&#xA;collections in a way that doesn’t depend on how much effort the collectors put&#xA;into gathering their items. This method is based on estimates of the &amp;ldquo;coverage&amp;rdquo;&#xA;of a collection (&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;Good 1953&lt;/a&gt;).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
