@@ -2,249 +2,249 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Folgert Karsdorp</title>
-    <link>https://www.karsdorp.io/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Mon, 29 Jan 2024 20:51:29 +0100</lastBuildDate>
-    <atom:link href="https://www.karsdorp.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Accumulation</title>
-      <link>https://www.karsdorp.io/tags/accumulation/</link>
+      <link>http://localhost:1313/tags/accumulation/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/accumulation/</guid>
+      <guid>http://localhost:1313/tags/accumulation/</guid>
       <description></description>
     </item>
     <item>
       <title>Bias</title>
-      <link>https://www.karsdorp.io/tags/bias/</link>
+      <link>http://localhost:1313/tags/bias/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/bias/</guid>
+      <guid>http://localhost:1313/tags/bias/</guid>
       <description></description>
     </item>
     <item>
       <title>Collection</title>
-      <link>https://www.karsdorp.io/tags/collection/</link>
+      <link>http://localhost:1313/tags/collection/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/collection/</guid>
+      <guid>http://localhost:1313/tags/collection/</guid>
       <description></description>
     </item>
     <item>
       <title>Diversity</title>
-      <link>https://www.karsdorp.io/tags/diversity/</link>
+      <link>http://localhost:1313/tags/diversity/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/diversity/</guid>
+      <guid>http://localhost:1313/tags/diversity/</guid>
       <description></description>
     </item>
     <item>
       <title>Folktales</title>
-      <link>https://www.karsdorp.io/tags/folktales/</link>
+      <link>http://localhost:1313/tags/folktales/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/folktales/</guid>
+      <guid>http://localhost:1313/tags/folktales/</guid>
       <description></description>
     </item>
     <item>
       <title>Rarefaction</title>
-      <link>https://www.karsdorp.io/tags/rarefaction/</link>
+      <link>http://localhost:1313/tags/rarefaction/</link>
       <pubDate>Thu, 25 Jan 2024 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/rarefaction/</guid>
+      <guid>http://localhost:1313/tags/rarefaction/</guid>
       <description></description>
     </item>
     <item>
       <title>Chao2</title>
-      <link>https://www.karsdorp.io/tags/chao2/</link>
+      <link>http://localhost:1313/tags/chao2/</link>
       <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/chao2/</guid>
+      <guid>http://localhost:1313/tags/chao2/</guid>
       <description></description>
     </item>
     <item>
       <title>Incidence</title>
-      <link>https://www.karsdorp.io/tags/incidence/</link>
+      <link>http://localhost:1313/tags/incidence/</link>
       <pubDate>Wed, 17 Jan 2024 11:23:27 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/incidence/</guid>
+      <guid>http://localhost:1313/tags/incidence/</guid>
       <description></description>
     </item>
     <item>
       <title>Emacs</title>
-      <link>https://www.karsdorp.io/tags/emacs/</link>
+      <link>http://localhost:1313/tags/emacs/</link>
       <pubDate>Sat, 24 Dec 2022 17:08:32 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/emacs/</guid>
+      <guid>http://localhost:1313/tags/emacs/</guid>
       <description></description>
     </item>
     <item>
       <title>Gtd</title>
-      <link>https://www.karsdorp.io/tags/gtd/</link>
+      <link>http://localhost:1313/tags/gtd/</link>
       <pubDate>Sat, 24 Dec 2022 17:08:32 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/gtd/</guid>
+      <guid>http://localhost:1313/tags/gtd/</guid>
       <description></description>
     </item>
     <item>
       <title>Jupyter</title>
-      <link>https://www.karsdorp.io/tags/jupyter/</link>
+      <link>http://localhost:1313/tags/jupyter/</link>
       <pubDate>Sat, 24 Dec 2022 17:08:32 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/jupyter/</guid>
+      <guid>http://localhost:1313/tags/jupyter/</guid>
       <description></description>
     </item>
     <item>
       <title>Org-Mode</title>
-      <link>https://www.karsdorp.io/tags/org-mode/</link>
+      <link>http://localhost:1313/tags/org-mode/</link>
       <pubDate>Sat, 24 Dec 2022 17:08:32 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/org-mode/</guid>
+      <guid>http://localhost:1313/tags/org-mode/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://www.karsdorp.io/tags/python/</link>
+      <link>http://localhost:1313/tags/python/</link>
       <pubDate>Sat, 24 Dec 2022 17:08:32 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/python/</guid>
+      <guid>http://localhost:1313/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Chao1</title>
-      <link>https://www.karsdorp.io/tags/chao1/</link>
+      <link>http://localhost:1313/tags/chao1/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/chao1/</guid>
+      <guid>http://localhost:1313/tags/chao1/</guid>
       <description></description>
     </item>
     <item>
       <title>History</title>
-      <link>https://www.karsdorp.io/tags/history/</link>
+      <link>http://localhost:1313/tags/history/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/history/</guid>
+      <guid>http://localhost:1313/tags/history/</guid>
       <description></description>
     </item>
     <item>
       <title>Loss</title>
-      <link>https://www.karsdorp.io/tags/loss/</link>
+      <link>http://localhost:1313/tags/loss/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/loss/</guid>
+      <guid>http://localhost:1313/tags/loss/</guid>
       <description></description>
     </item>
     <item>
       <title>Replacement</title>
-      <link>https://www.karsdorp.io/tags/replacement/</link>
+      <link>http://localhost:1313/tags/replacement/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/replacement/</guid>
+      <guid>http://localhost:1313/tags/replacement/</guid>
       <description></description>
     </item>
     <item>
       <title>Sampling</title>
-      <link>https://www.karsdorp.io/tags/sampling/</link>
+      <link>http://localhost:1313/tags/sampling/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/sampling/</guid>
+      <guid>http://localhost:1313/tags/sampling/</guid>
       <description></description>
     </item>
     <item>
       <title>Voc</title>
-      <link>https://www.karsdorp.io/tags/voc/</link>
+      <link>http://localhost:1313/tags/voc/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/voc/</guid>
+      <guid>http://localhost:1313/tags/voc/</guid>
       <description></description>
     </item>
     <item>
       <title>Hill-Numbers</title>
-      <link>https://www.karsdorp.io/tags/hill-numbers/</link>
+      <link>http://localhost:1313/tags/hill-numbers/</link>
       <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/hill-numbers/</guid>
+      <guid>http://localhost:1313/tags/hill-numbers/</guid>
       <description></description>
     </item>
     <item>
       <title>Richness</title>
-      <link>https://www.karsdorp.io/tags/richness/</link>
+      <link>http://localhost:1313/tags/richness/</link>
       <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/richness/</guid>
+      <guid>http://localhost:1313/tags/richness/</guid>
       <description></description>
     </item>
     <item>
       <title>Semantics</title>
-      <link>https://www.karsdorp.io/tags/semantics/</link>
+      <link>http://localhost:1313/tags/semantics/</link>
       <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/semantics/</guid>
+      <guid>http://localhost:1313/tags/semantics/</guid>
       <description></description>
     </item>
     <item>
       <title>Similarity</title>
-      <link>https://www.karsdorp.io/tags/similarity/</link>
+      <link>http://localhost:1313/tags/similarity/</link>
       <pubDate>Thu, 15 Dec 2022 16:58:56 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/similarity/</guid>
+      <guid>http://localhost:1313/tags/similarity/</guid>
       <description></description>
     </item>
     <item>
       <title>FAD</title>
-      <link>https://www.karsdorp.io/tags/fad/</link>
+      <link>http://localhost:1313/tags/fad/</link>
       <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/fad/</guid>
+      <guid>http://localhost:1313/tags/fad/</guid>
       <description></description>
     </item>
     <item>
       <title>Functional</title>
-      <link>https://www.karsdorp.io/tags/functional/</link>
+      <link>http://localhost:1313/tags/functional/</link>
       <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/functional/</guid>
+      <guid>http://localhost:1313/tags/functional/</guid>
       <description></description>
     </item>
     <item>
       <title>Shared-Richness</title>
-      <link>https://www.karsdorp.io/tags/shared-richness/</link>
+      <link>http://localhost:1313/tags/shared-richness/</link>
       <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/shared-richness/</guid>
+      <guid>http://localhost:1313/tags/shared-richness/</guid>
       <description></description>
     </item>
     <item>
       <title>Unseen-Species</title>
-      <link>https://www.karsdorp.io/tags/unseen-species/</link>
+      <link>http://localhost:1313/tags/unseen-species/</link>
       <pubDate>Sat, 14 May 2022 09:03:02 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/unseen-species/</guid>
+      <guid>http://localhost:1313/tags/unseen-species/</guid>
       <description></description>
     </item>
     <item>
       <title>Heterogeneity</title>
-      <link>https://www.karsdorp.io/tags/heterogeneity/</link>
+      <link>http://localhost:1313/tags/heterogeneity/</link>
       <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/heterogeneity/</guid>
+      <guid>http://localhost:1313/tags/heterogeneity/</guid>
       <description></description>
     </item>
     <item>
       <title>Pymc3</title>
-      <link>https://www.karsdorp.io/tags/pymc3/</link>
+      <link>http://localhost:1313/tags/pymc3/</link>
       <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/pymc3/</guid>
+      <guid>http://localhost:1313/tags/pymc3/</guid>
       <description></description>
     </item>
     <item>
       <title>Regression</title>
-      <link>https://www.karsdorp.io/tags/regression/</link>
+      <link>http://localhost:1313/tags/regression/</link>
       <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/regression/</guid>
+      <guid>http://localhost:1313/tags/regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Zelterman</title>
-      <link>https://www.karsdorp.io/tags/zelterman/</link>
+      <link>http://localhost:1313/tags/zelterman/</link>
       <pubDate>Sat, 23 Apr 2022 09:37:34 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/zelterman/</guid>
+      <guid>http://localhost:1313/tags/zelterman/</guid>
       <description></description>
     </item>
     <item>
       <title>Homogeneity</title>
-      <link>https://www.karsdorp.io/tags/homogeneity/</link>
+      <link>http://localhost:1313/tags/homogeneity/</link>
       <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/homogeneity/</guid>
+      <guid>http://localhost:1313/tags/homogeneity/</guid>
       <description></description>
     </item>
     <item>
       <title>Shakespeare</title>
-      <link>https://www.karsdorp.io/tags/shakespeare/</link>
+      <link>http://localhost:1313/tags/shakespeare/</link>
       <pubDate>Fri, 01 Apr 2022 12:43:51 +0200</pubDate>
-      <guid>https://www.karsdorp.io/tags/shakespeare/</guid>
+      <guid>http://localhost:1313/tags/shakespeare/</guid>
       <description></description>
     </item>
     <item>
       <title>Turing</title>
-      <link>https://www.karsdorp.io/tags/turing/</link>
+      <link>http://localhost:1313/tags/turing/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0100</pubDate>
-      <guid>https://www.karsdorp.io/tags/turing/</guid>
+      <guid>http://localhost:1313/tags/turing/</guid>
       <description></description>
     </item>
   </channel>

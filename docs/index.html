@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta name="generator" content="Hugo 0.140.2">
+	<meta name="generator" content="Hugo 0.140.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
   
   
@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Folgert Karsdorp</title>
-  <link rel = 'canonical' href = 'https://www.karsdorp.io/'>
+  <link rel = 'canonical' href = 'http://localhost:1313/'>
   <meta name="description" content="I&#39;m a researcher in Computational Humanities and Cultural
   Evolution at Amsterdam&#39;s [Meertens
   Institute](https://meertens.knaw.nl/index.php/en/), affiliated with the Royal
@@ -31,7 +31,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta property="og:url" content="https://www.karsdorp.io/">
+  <meta property="og:url" content="http://localhost:1313/">
   <meta property="og:site_name" content="Folgert Karsdorp">
   <meta property="og:title" content="Folgert Karsdorp">
   <meta property="og:description" content="I&#39;m a researcher in Computational Humanities and Cultural
@@ -76,7 +76,7 @@
     
   
   
-  <link rel="stylesheet" href="https://www.karsdorp.io/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.85c9c1b51f49ece16d975cab5c5d147bd405ddcb530f6c5b09894f9235e49896bd73f702fcade7d1589e033209b682040f18a8d4eaf12d917c835b2b48833905.css" integrity="sha512-hcnBtR9J7OFtl1yrXF0Ue9QF3ctTD2xbCYlPkjXkmJa9c/cC/K3n0VieAzIJtoIEDxio1OrxLZF8g1srSIM5BQ=="> 
 
   
   
@@ -88,11 +88,11 @@
   
 
   
-<link rel="icon" type="image/png" href="https://www.karsdorp.io/images/favicon.ico" />
+<link rel="icon" type="image/png" href="http://localhost:1313/images/favicon.ico" />
 
   
   
-    <link href="https://www.karsdorp.io/index.xml" rel="alternate" type="application/rss+xml" title="Folgert Karsdorp" />
+    <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="Folgert Karsdorp" />
   
   
 </head>
@@ -101,9 +101,9 @@
   <div class="content index py4">
 
     <header id="header">
-  <a href="https://www.karsdorp.io/">
+  <a href="http://localhost:1313/">
   
-    <div id="logo" style="background-image: url(https://www.karsdorp.io/images/logo.png)"></div>
+    <div id="logo" style="background-image: url(http://localhost:1313/images/logo.png)"></div>
   
   <div id="title">
     <h1>Folgert Karsdorp</h1>
@@ -193,85 +193,166 @@ Python for analyzing Humanities data. Check out the open access edition
   <section id="books-list">
     <span id="books-title" class="h1"><a href=""></a></span>
     <div class="article-gallery" id="books-view">
-      <img src="/ox-hugo/hetmysterie_01.jpg"/>
-      <img src="/ox-hugo/hda.jpg"/>
+      <img src="/ox-hugo/hetmysterie_01.jpg" class="book-thumbnail" onclick="openLightbox(this)" style="cursor: pointer;" alt="Het Mysterie van de Boeken"/>
+      <img src="/ox-hugo/hda.jpg" class="book-thumbnail" onclick="openLightbox(this)" style="cursor: pointer;" alt="Humanities Data Analysis"/>
     </div>
   </section>
 
+  
+  <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+
+  <style>
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      animation: zoom 0.3s;
+    }
+
+    @keyframes zoom {
+      from {transform: scale(0.5)}
+      to {transform: scale(1)}
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:focus {
+      color: #bbb;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .lightbox-content {
+        max-width: 100%;
+      }
+    }
+  </style>
+
+  <script>
+    function openLightbox(img) {
+      var modal = document.getElementById("lightbox-modal");
+      var modalImg = document.getElementById("lightbox-img");
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      var modal = document.getElementById("lightbox-modal");
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
+
   <section id="writing">
-    <span id="notebooks" class="h1"><a href="https://www.karsdorp.io/posts">Notebooks</a></span>
+    <span id="notebooks" class="h1"><a href="http://localhost:1313/posts">Notebooks</a></span>
     
     
     <span class="widget tagcloud">
       
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/accumulation/">Accumulation</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/accumulation/">Accumulation</a>
       
-      <a style="font-size: 1.2692307692307692rem;" href="https://www.karsdorp.io/tags/bias/">Bias</a>
+      <a style="font-size: 1.2692307692307692rem;" href="http://localhost:1313/tags/bias/">Bias</a>
       
-      <a style="font-size: 1.4230769230769231rem;" href="https://www.karsdorp.io/tags/chao1/">Chao1</a>
+      <a style="font-size: 1.4230769230769231rem;" href="http://localhost:1313/tags/chao1/">Chao1</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/chao2/">Chao2</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/chao2/">Chao2</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/collection/">Collection</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/collection/">Collection</a>
       
-      <a style="font-size: 1.7307692307692308rem;" href="https://www.karsdorp.io/tags/diversity/">Diversity</a>
+      <a style="font-size: 1.7307692307692308rem;" href="http://localhost:1313/tags/diversity/">Diversity</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/emacs/">Emacs</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/emacs/">Emacs</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/fad/">FAD</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/fad/">FAD</a>
       
-      <a style="font-size: 0.9615384615384616rem;" href="https://www.karsdorp.io/tags/folktales/">Folktales</a>
+      <a style="font-size: 0.9615384615384616rem;" href="http://localhost:1313/tags/folktales/">Folktales</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/functional/">Functional</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/functional/">Functional</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/gtd/">Gtd</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/gtd/">Gtd</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/heterogeneity/">Heterogeneity</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/heterogeneity/">Heterogeneity</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/hill-numbers/">Hill-Numbers</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/hill-numbers/">Hill-Numbers</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/history/">History</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/history/">History</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/homogeneity/">Homogeneity</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/homogeneity/">Homogeneity</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/incidence/">Incidence</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/incidence/">Incidence</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/jupyter/">Jupyter</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/jupyter/">Jupyter</a>
       
-      <a style="font-size: 0.8076923076923077rem;" href="https://www.karsdorp.io/tags/loss/">Loss</a>
+      <a style="font-size: 0.8076923076923077rem;" href="http://localhost:1313/tags/loss/">Loss</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/org-mode/">Org-Mode</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/org-mode/">Org-Mode</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/pymc3/">Pymc3</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/pymc3/">Pymc3</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/python/">Python</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/python/">Python</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/rarefaction/">Rarefaction</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/rarefaction/">Rarefaction</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/regression/">Regression</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/regression/">Regression</a>
       
-      <a style="font-size: 0.8076923076923077rem;" href="https://www.karsdorp.io/tags/replacement/">Replacement</a>
+      <a style="font-size: 0.8076923076923077rem;" href="http://localhost:1313/tags/replacement/">Replacement</a>
       
-      <a style="font-size: 1.4230769230769231rem;" href="https://www.karsdorp.io/tags/richness/">Richness</a>
+      <a style="font-size: 1.4230769230769231rem;" href="http://localhost:1313/tags/richness/">Richness</a>
       
-      <a style="font-size: 0.9615384615384616rem;" href="https://www.karsdorp.io/tags/sampling/">Sampling</a>
+      <a style="font-size: 0.9615384615384616rem;" href="http://localhost:1313/tags/sampling/">Sampling</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/semantics/">Semantics</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/semantics/">Semantics</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/shakespeare/">Shakespeare</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/shakespeare/">Shakespeare</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/shared-richness/">Shared-Richness</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/shared-richness/">Shared-Richness</a>
       
-      <a style="font-size: 0.8076923076923077rem;" href="https://www.karsdorp.io/tags/similarity/">Similarity</a>
+      <a style="font-size: 0.8076923076923077rem;" href="http://localhost:1313/tags/similarity/">Similarity</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/turing/">Turing</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/turing/">Turing</a>
       
-      <a style="font-size: 0.8076923076923077rem;" href="https://www.karsdorp.io/tags/unseen-species/">Unseen-Species</a>
+      <a style="font-size: 0.8076923076923077rem;" href="http://localhost:1313/tags/unseen-species/">Unseen-Species</a>
       
-      <a style="font-size: 0.6538461538461539rem;" href="https://www.karsdorp.io/tags/voc/">Voc</a>
+      <a style="font-size: 0.6538461538461539rem;" href="http://localhost:1313/tags/voc/">Voc</a>
       
-      <a style="font-size: 0.8076923076923077rem;" href="https://www.karsdorp.io/tags/zelterman/">Zelterman</a>
+      <a style="font-size: 0.8076923076923077rem;" href="http://localhost:1313/tags/zelterman/">Zelterman</a>
       
     </span>
     <span class="h2"></span>
@@ -290,62 +371,62 @@ Python for analyzing Humanities data. Check out the open access edition
       
         <li class="post-item">
           <div class="meta"><time datetime="2024-01-25 00:00:00 &#43;0100 CET" itemprop="datePublished">2024-01-25</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/">Explorers and Exploiters: Deviations from Rarefaction Curves</a></span>
+          <span><a href="http://localhost:1313/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/">Explorers and Exploiters: Deviations from Rarefaction Curves</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2024-01-17 11:23:27 &#43;0100 CET" itemprop="datePublished">2024-01-17</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/">Coverage-based Comparisons of Cultural Diversity</a></span>
+          <span><a href="http://localhost:1313/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/">Coverage-based Comparisons of Cultural Diversity</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2023-04-25 15:59:36 &#43;0200 CEST" itemprop="datePublished">2023-04-25</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/">Unseen Crime Simulation</a></span>
+          <span><a href="http://localhost:1313/posts/20230425123401-unseen_crime_simulation/">Unseen Crime Simulation</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-12-24 17:08:32 &#43;0100 CET" itemprop="datePublished">2022-12-24</time></div>
-          <span><a href="https://www.karsdorp.io/posts/dotemacs/">My Literate Emacs Configuration</a></span>
+          <span><a href="http://localhost:1313/posts/dotemacs/">My Literate Emacs Configuration</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-12-16 19:59:23 &#43;0100 CET" itemprop="datePublished">2022-12-16</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/">What Shall We Do with the Unseen Sailor?</a></span>
+          <span><a href="http://localhost:1313/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/">What Shall We Do with the Unseen Sailor?</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-12-15 16:58:56 &#43;0100 CET" itemprop="datePublished">2022-12-15</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20220926232754-lexical_diversity/">Functional Diversity as a Generalization of Lexical Diversity</a></span>
+          <span><a href="http://localhost:1313/posts/20220926232754-lexical_diversity/">Functional Diversity as a Generalization of Lexical Diversity</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-06-23 12:31:36 &#43;0200 CEST" itemprop="datePublished">2022-06-23</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/">Undetected Functional Attribute Diversity</a></span>
+          <span><a href="http://localhost:1313/posts/20220610145347-undetected_functional_diversity/">Undetected Functional Attribute Diversity</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-05-14 09:03:02 &#43;0200 CEST" itemprop="datePublished">2022-05-14</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/">Estimating Unseen Shared Cultural Diversity</a></span>
+          <span><a href="http://localhost:1313/posts/20220316142536-two_assemblage_good_turing_estimation/">Estimating Unseen Shared Cultural Diversity</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-04-23 09:37:34 &#43;0200 CEST" itemprop="datePublished">2022-04-23</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20220405110456-population_size_regression_estimators/">Population Size Estimation as a Regression Problem</a></span>
+          <span><a href="http://localhost:1313/posts/20220405110456-population_size_regression_estimators/">Population Size Estimation as a Regression Problem</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-04-01 12:43:51 &#43;0200 CEST" itemprop="datePublished">2022-04-01</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/">Zelterman&#39;s Estimator of Population Size</a></span>
+          <span><a href="http://localhost:1313/posts/20220405102342-zelterman_estimator/">Zelterman&#39;s Estimator of Population Size</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-03-31 12:35:33 &#43;0200 CEST" itemprop="datePublished">2022-03-31</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">Estimating Richness under Sampling without Replacement</a></span>
+          <span><a href="http://localhost:1313/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">Estimating Richness under Sampling without Replacement</a></span>
         </li>
       
         <li class="post-item">
           <div class="meta"><time datetime="2022-03-15 00:00:00 &#43;0100 CET" itemprop="datePublished">2022-03-15</time></div>
-          <span><a href="https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a></span>
+          <span><a href="http://localhost:1313/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a></span>
         </li>
       
     </ul>

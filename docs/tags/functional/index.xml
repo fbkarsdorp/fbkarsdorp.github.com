@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Functional on Folgert Karsdorp</title>
-    <link>https://www.karsdorp.io/tags/functional/</link>
+    <link>http://localhost:1313/tags/functional/</link>
     <description>Recent content in Functional on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Thu, 23 Jun 2022 12:31:36 +0200</lastBuildDate>
-    <atom:link href="https://www.karsdorp.io/tags/functional/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/functional/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Undetected Functional Attribute Diversity</title>
-      <link>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</link>
+      <link>http://localhost:1313/posts/20220610145347-undetected_functional_diversity/</link>
       <pubDate>Thu, 23 Jun 2022 12:31:36 +0200</pubDate>
-      <guid>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</guid>
-      <description>&lt;h2 id=&#34;functional-diversity&#34;&gt;Functional Diversity&lt;/h2&gt;&#xA;&lt;p&gt;In some previous notebooks (see, for example, &lt;a href=&#34;https://www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/&#34;&gt;here&lt;/a&gt;, and &lt;a href=&#34;https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/&#34;&gt;here&lt;/a&gt;), I have discussed the&#xA;concept of cultural diversity and how methods from ecology can be used to estimate the&#xA;lower bound of unseen cultural diversity. In these notebooks, diversity was understood&#xA;simply as the number of unique items in a collection (e.g., species, narratives, pictures,&#xA;melodies, etc.), with all elements being considered as equidistant, or, in other words,&#xA;categorically different. Of course, it only rarely, if ever, happens that all items are&#xA;exactly equally different from each other. It is much more likely that some species are&#xA;more similar than others. And the same is true of cultural artefacts.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/20220610145347-undetected_functional_diversity/</guid>
+      <description>&lt;h2 id=&#34;functional-diversity&#34;&gt;Functional Diversity&lt;/h2&gt;&#xA;&lt;p&gt;In some previous notebooks (see, for example, &lt;a href=&#34;http://localhost:1313/posts/20220309103709-good_turing_as_an_unseen_species_model/&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;http://localhost:1313/posts/20220323122150-estimating_richness_under_sampling_without_replacement/&#34;&gt;here&lt;/a&gt;, and &lt;a href=&#34;http://localhost:1313/posts/20220316142536-two_assemblage_good_turing_estimation/&#34;&gt;here&lt;/a&gt;), I have discussed the&#xA;concept of cultural diversity and how methods from ecology can be used to estimate the&#xA;lower bound of unseen cultural diversity. In these notebooks, diversity was understood&#xA;simply as the number of unique items in a collection (e.g., species, narratives, pictures,&#xA;melodies, etc.), with all elements being considered as equidistant, or, in other words,&#xA;categorically different. Of course, it only rarely, if ever, happens that all items are&#xA;exactly equally different from each other. It is much more likely that some species are&#xA;more similar than others. And the same is true of cultural artefacts.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

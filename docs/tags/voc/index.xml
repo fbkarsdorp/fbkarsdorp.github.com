@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Voc on Folgert Karsdorp</title>
-    <link>https://www.karsdorp.io/tags/voc/</link>
+    <link>http://localhost:1313/tags/voc/</link>
     <description>Recent content in Voc on Folgert Karsdorp</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Folgert Karsdorp; made with Hugo</copyright>
     <lastBuildDate>Fri, 16 Dec 2022 19:59:23 +0100</lastBuildDate>
-    <atom:link href="https://www.karsdorp.io/tags/voc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/voc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What Shall We Do with the Unseen Sailor?</title>
-      <link>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</link>
+      <link>http://localhost:1313/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</link>
       <pubDate>Fri, 16 Dec 2022 19:59:23 +0100</pubDate>
-      <guid>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</guid>
+      <guid>http://localhost:1313/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</guid>
       <description>&lt;h2 id=&#34;bias-in-historical-records&#34;&gt;Bias in historical records&lt;/h2&gt;&#xA;&lt;p&gt;At the &lt;a href=&#34;https://2022.computational-humanities-research.org&#34;&gt;Computational Humanities Research conference 2022&lt;/a&gt; held in Antwerp from December 12&#xA;to 14, I co-presented a new paper with &lt;a href=&#34;http://www.melvinwevers.nl/&#34;&gt;Melvin Wevers&lt;/a&gt; on missing data in historical&#xA;archives. The paper was pubslished with CEUR-WS and can be found here:&#xA;&lt;a href=&#34;https://ceur-ws.org/Vol-3290/short_paper1793.pdf&#34;&gt;https://ceur-ws.org/Vol-3290/short_paper1793.pdf&lt;/a&gt;. Missing data is rather the norm than the&#xA;exception in historical archives. There are virtually endless reasons why records did not&#xA;survive the test of time: they might have been lost due to natural causes, such as fires,&#xA;decisions on the level of archival policy making, but also due to content production&#xA;biases. When working with incomplete data archives, we run into all kinds of risk, such as&#xA;overestimating the impact of specific historical events, misrepresenting class, and&#xA;underestimating casualties. For this reason, we need to critically evaluate whether the&#xA;data we are left with is representative of the archival collection or historical period&#xA;from which its stems.&lt;/p&gt;</description>
     </item>
   </channel>
