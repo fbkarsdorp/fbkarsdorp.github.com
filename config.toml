@@ -20,7 +20,7 @@ publishDir = "docs"
 [params]
   google_analytics_id = ""
   twitter_handle = "@zerostaticio"
-  showAuthorOnHomepage = true
+  showAuthorOnHomepage = false
   showAuthorOnPosts = false
   showIntroContentOnHomepage = true
   showPostsOnHomepage = false
