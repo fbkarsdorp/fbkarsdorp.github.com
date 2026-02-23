@@ -19,6 +19,24 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(0, 150, 138, 0.3); }
 ::-webkit-scrollbar-thumb:hover { background: #00968A; }
 
+/* Nav: logo layout */
+.header-logo {
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.header-logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
+  border-radius: 0;
+  border: none;
+  margin-right: 10px;
+}
+
 /* Blinking cursor after site name */
 .header-logo::after {
   content: '_';
@@ -30,23 +48,6 @@ body {
 @keyframes cursor-blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
-}
-
-/* Nav: logo layout */
-.header-logo {
-  letter-spacing: 0.04em;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.header-logo-img {
-  height: 30px;
-  width: auto;
-  display: block;
-  border-radius: 0;
-  border: none;
 }
 
 /* Active nav item and hover */
