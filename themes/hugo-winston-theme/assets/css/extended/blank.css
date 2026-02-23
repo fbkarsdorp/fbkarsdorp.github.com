@@ -1,3 +1,90 @@
-.custom {
-    background: red;
+/* ─── The Research Lab (light) ─── */
+
+/* Subtle dot-grid texture */
+body {
+  background-image: radial-gradient(circle, rgba(0, 150, 138, 0.1) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-attachment: fixed;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(0, 150, 138, 0.18);
+  color: #0F1117;
+}
+
+/* Thin teal scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #F5F7FA; }
+::-webkit-scrollbar-thumb { background: rgba(0, 150, 138, 0.3); }
+::-webkit-scrollbar-thumb:hover { background: #00968A; }
+
+/* Blinking cursor after site name */
+.header-logo::after {
+  content: '_';
+  color: #00968A;
+  animation: cursor-blink 1.1s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Nav: tighten the logo */
+.header-logo {
+  letter-spacing: 0.04em;
+  font-size: 14px;
+}
+
+/* Active nav item and hover */
+.menu-main ul li.active a span,
+.menu-main ul li a:hover span {
+  color: #00968A;
+  text-decoration: none;
+}
+.menu-main ul li a:hover {
+  text-decoration: none;
+}
+
+/* Inline code */
+code {
+  background: #EBF0F5;
+  color: #007E74;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 0.875em;
+  border: 1px solid rgba(0, 150, 138, 0.15);
+}
+
+/* Code block container */
+.highlight pre {
+  background: #F0F4F8 !important;
+  border: 1px solid rgba(0, 150, 138, 0.15);
+  border-radius: 2px;
+}
+
+/* Blockquote */
+.content blockquote {
+  border-left: 3px solid #00968A;
+  background: rgba(0, 150, 138, 0.05);
+  color: #3D4451;
+}
+
+/* Summary card dividers */
+.summary {
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  padding-top: 20px;
+}
+
+/* Intro heading: tighter tracking on monospace display */
+.intro h1 {
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(0, 150, 138, 0.2);
 }

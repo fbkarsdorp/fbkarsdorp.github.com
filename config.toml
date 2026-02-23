@@ -29,17 +29,17 @@ publishDir = "docs"
   sortPostsByDateOldestFirst = false
   addDot = true
   addFrame = true
-  highlightColor = '#2E5D8A'
-  baseColor = "#ffffff"
-  baseOffsetColor = "#eaeaea"
-  headingColor = "#1c1b1d"
-  textColor = "#4e5157"
-  dotColor = "#2E5D8A"
-  enableGoogleFonts = true 
-  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-  fontFamilyHeading = "Atkinson Hyperlegible"
-  fontFamilyParagraph = "Atkinson Hyperlegible"
-  fontFamilyMonospace = "monospace"
+  highlightColor = '#00968A'
+  baseColor = "#F5F7FA"
+  baseOffsetColor = "#E8EBF0"
+  headingColor = "#0F1117"
+  textColor = "#3D4451"
+  dotColor = "#00968A"
+  enableGoogleFonts = true
+  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap"
+  fontFamilyHeading = "'Space Mono', monospace"
+  fontFamilyParagraph = "'IBM Plex Sans', sans-serif"
+  fontFamilyMonospace = "'IBM Plex Mono', monospace"
 
 # markdown config settings https://gohugo.io/getting-started/configuration-markup/#goldmark
 [markup]
