@@ -32,10 +32,21 @@ body {
   50%       { opacity: 0; }
 }
 
-/* Nav: tighten the logo */
+/* Nav: logo layout */
 .header-logo {
   letter-spacing: 0.04em;
   font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
+  border-radius: 0;
+  border: none;
 }
 
 /* Active nav item and hover */
