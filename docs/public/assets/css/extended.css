@@ -1,0 +1,12 @@
+.author img {
+  border-radius: 0;
+  border: none;
+  height: auto;
+}
+
+.author-large img {
+  height: auto;
+}
+.custom {
+    background: red;
+}

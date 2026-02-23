@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54162&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Demystifying Chao1 with Good-Turing - Folgert Karsdorp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="//localhost:54162/favicon.png">
+  <link rel="canonical" href="//localhost:54162/posts/20220309103709-good_turing_as_an_unseen_species_model/" />
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/assets/css/extended.css">
+
+  
+    
+    <meta property="og:title" content="Demystifying Chao1 with Good-Turing"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="//localhost:54162/posts/20220309103709-good_turing_as_an_unseen_species_model/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@zerostaticio"/>
+    <meta name="twitter:creator" content="@zerostaticio"/>
+  
+
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson&#43;Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+  
+
+  
+<link rel="icon" href="/favicon.ico">
+
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="menu-main-mobile" class="menu-main-mobile">
+    <ul class="menu">
+        
+        
+            
+                <li class="menu-item-home">
+                    <a href="//localhost:54162/">Home</a>
+                </li>
+            
+        
+            
+                <li class="menu-item-notebooks">
+                    <a href="//localhost:54162/posts/">Notebooks</a>
+                </li>
+            
+        
+            
+                <li class="menu-item-publications">
+                    <a href="//localhost:54162/references">Publications</a>
+                </li>
+            
+        
+    </ul>
+</div>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="/">Folgert Karsdorp</a>
+  <div class="menu-main">
+    <ul>
+      
+      
+      
+      
+      <li class="menu-item-home ">
+        <a href="/">
+          
+          <span>Home</span>
+        </a>
+      </li>
+      
+      
+      
+      <li class="menu-item-notebooks ">
+        <a href="/posts/">
+          
+          <span>Notebooks</span>
+        </a>
+      </li>
+      
+      
+      
+      <li class="menu-item-publications ">
+        <a href="/references">
+          
+          <span>Publications</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+  <div id="toggle-menu-main-mobile" class="hamburger-trigger">
+    <button class="hamburger">Menu</button>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>Demystifying Chao1 with Good-Turing<span class="dot">.</span></h1>
+      
+    </div>
+    <div class="content">
+      <p>To estimate the &ldquo;<a href="">biodiversity</a>&rdquo; in a particular area &ndash; or, in other words, the number of
+unique species living in a given environment &ndash; ecologists usually have no other option
+than to rely on incomplete samples. For all sorts of practical reasons, it is virtually
+impossible to spot all species that are actually present in an area, and hence certain
+species will be missing in the counts. Consequently, an important research question in
+ecology is how to reliably estimate the resulting &ldquo;bias&rdquo; between the number of species
+that was observerd and the true number of unique species in an area.</p>
+<p>Of course, scientists are not only confronted with the possibility of &lsquo;unseen entities&rsquo;
+when counting animal species. In astronomy, too, for example, researchers are interested
+in counting the number of unseen stars. In linguistics, researchers have also attempted to
+estimate the total size of a language&rsquo;s vocabulary using only samples of that language.
+And in computer science, researchers have tried to estimate the number of undetected
+&ldquo;bugs&rdquo; in software code. In all these applications, the same problem arises: there are
+more unique stars, words, or bugs than we observe in our samples, and therefore we cannot
+base our judgement about the diversity of the phenomenon we are investigating directly on
+our observed counts. That would give a biased &ndash; or worse, an i≈mpoverished &ndash; picture of
+the true state of affairs. Hence, the statistical methods that have been developed in
+ecology to combat such biases are very useful in a wide variety of domains.</p>
+<p>In the cultural domain, too, there have been attempts to correct biases in our
+observations with statistical methods. A good example is our study into the loss of
+European medieval literature Kestemont et al. (<a href="#citeproc_bib_item_4">2022</a>), which was
+recently published in the journal <em>Science</em>. In that study, we apply a specific &ldquo;<a href="">Unseen
+Species</a>&rdquo; model to medieval stories. Medieval stories (such as the legends about &ldquo;King
+Arthur&rdquo; or the stories surrounding the emperor Charlemagne) were often recorded several
+times in manuscripts. But not all of these copies or manuscripts have been preserved &ndash;
+and, therefore it is possible that the stories they contained have not been preserved
+either. Our aim, then, was to use an &ldquo;Unseen Species&rdquo; model to estimate how many
+&ldquo;documents&rdquo; (the manuscripts) and how many &ldquo;works&rdquo; (the stories) and been lost. The model
+we used is called the &ldquo;<a href="">Chao1 estimator</a>&rdquo;, named after its discoverer, Anne Chao, co-author
+of our study.</p>
+<p>We are often asked how Chao1 can make these estimates of unseen things. But that question
+is not so easy to answer, because the exact motivation and derivation of Chao1 is not
+particularly intuitive (neither for ecologists, nor for cultural scholars). But
+fortunately, as Chao et al. (<a href="#citeproc_bib_item_2">2017</a>) have shown, Chao1 can also
+be derived in a slightly different and much more intuitive way. This derivation is based
+on the groundbreaking work of the famous computer scientist Alan Turing, which he did at
+Bletchley Park during World War II. Below, guided by
+Chao et al. (<a href="#citeproc_bib_item_2">2017</a>), I will try to demystify Chao1 in terms of
+Turing&rsquo;s work. I hope that this will help people unfamiliar with the method to understand
+exactly how it works, and, perhaps more importantly, how (not) to interpret the calculated
+values.</p>
+<p>Imagine that we discovered a snippet from an unknown book. The snippet has a total of 18
+words on it, consisting of 6 unique words with the following frequencies:</p>
+<table>
+  <thead>
+      <tr>
+          <th>word</th>
+          <th>frequency</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>the</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>for</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>woman</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>park</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>snake</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>book</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<p>The total number of words as well as the number of unique words in this scenario are of
+importance. Based on this snippet, where the total frequency \(n\) is 18, we would like to
+estimate how many unique words there were in the original, unaffected book. The snippet
+thus provides us with a &ldquo;sample&rdquo; or a subset of the vocabulary in the original work. The
+complete vocabulary can be indicated by the symbol \(V\), and the observed vocabulary in the
+snippet is then called \(V_{\textrm{obs}}\). The aim of unseen species models, such as
+Chao1, is then to estimate the true number of unique words \(V\) on the basis of the
+observed unique vocabulary items (\(V_{\textrm{obs}}\)) and their frequencies. To this end,
+we need to know about how many words have a frequency of 0 in our snippet &ndash; or, in other
+words, how many unique words are missing from our sample. (Note that we assume that the
+snippet was generated under a sampling process with replacement. This is an assumption of
+Chao1, which not always holds for cultural data, and is completely unrealistic when
+working with snippets of text. See <a href="/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">Estimating Richness under Sampling without Replacement</a>
+for a more elaborate discussion of sampling strategies in relation to Chao1.) If we refer
+to that number as \(f_0\), we can calculate the total number of words \(V\) by adding \(f_0\) to
+the number of unique observed words \(V_{\textrm{obs}}\):</p>
+<p>\begin{equation}
+V = f_0 + V_{\textrm{obs}} = f_0 + 6
+\end{equation}</p>
+<p>The key question is, of course, how to calculate \(f_0\). If we assume that our snippet
+represents the complete work, it is easy to calculate the probability of a word such as
+<em>book</em>. Let&rsquo;s illustrate that with the word <em>book</em>: if the snippet represents the whole
+work, we can simply divide the frequecy of <em>book</em> by the total number of words:
+\(\frac{1}{18} = 0.056\). Similarly, we can calculate the probability that a word has a
+frequency \(r\), for example \(r = 1\) (words that occur only once, i.e. singletons). There
+are 3 words in total with a frequency of \(r = 1\), which we write down as \(f_1 = 3\). The
+probability that a word has a frequency of 1 is then equal to \(f_1\) divided by the total
+number of words in a book: \(\frac{f_1}{n} = \frac{3}{18} = 0.167\). And the average
+relative frequency of words with \(r = 1\) is then equal to: \(\alpha_1 = \frac{1}{18} f_1 /
+f_1 = \frac{1}{18}\). But of course the 18-word snippet is just a snippet, and not a whole
+work. Because the snippet is not complete, there is a considerable chance that we have not
+yet seen certain words from the original, complete book. Therefore, in our probability
+calculations, we must take into account the possibility that we will come across a range
+of unseen words. But how?</p>
+<p>Well, let&rsquo;s suppose that we find another snippet of the same manuscript containing one new
+word. What is then the probability that this new word is another instance of the already
+observed <em>book</em>? Note that if this new word is indeed the word <em>book</em>, then <em>book</em> no
+longer occurs once but twice. In other words, <em>book</em> then no longer has the frequency \(r =
+1\) but \(r = 1 + 1\). To account for such situations, Turing and his student Good proposed
+not to estimate the probability of a word occurring \(r\) times with \(\frac{r}{n}\) but with
+an adjusted count \(\frac{r^*}{n}\) (note the asterisk). This modified count states that the
+probability that we have seen a new words \(r + 1\) times is equal to the probability of the
+words we have already seen \(r + 1\) times. This can be formulated as: \(r^*= (r + 1) f_{r +
+1} / f_r\). The average relative frequency of words that occur \(r\) times can then be
+computed with:</p>
+<p>\begin{equation}
+\alpha_r = \frac{r^*}{n} = \frac{(r + 1)}{n} \frac{f_{r + 1}}{f_r}.
+\end{equation}</p>
+<p>To illustrate: the word <em>book</em> occurs once in the snippet and there are two other words
+that occur once. This, as stated before, gives \(f_1 = 3\). There is one word with a
+frequency of 2, so \(f_2 = 1\). If we plug these number into the formula above, we can
+calculate the probability that the new word is the word <em>book</em>: \(\frac{(1 + 1)}{18}
+\frac{1}{3} = 0.037\). It is important to note that this new probability is smaller than
+the relative frequency of <em>book</em> in the snippet that we caculated earlier (\(1 / 18 =
+0.056\)). This is because the Good-Turing counts act as a kind of frequency correction,
+ensuring that we leave some probability space for any unseen words &ndash; and hence the
+corrected probability is smaller.</p>
+<p>Before we continue with showing how to use this all for computing \(f_0\), it is important
+to make a small modification to the original Good-Turing formula. In a follow-up study,
+Chiu et al. (<a href="#citeproc_bib_item_3">2014</a>) show that the Good-Turing estimate can be
+made even more precise with:</p>
+<p>\begin{equation}
+\alpha_r = \frac{(r + 1) f_{r + 1}}{(n - r) f_r}.
+\end{equation}</p>
+<p>For unseen words, we cannot calculate the average relative frequency \(\alpha_0\), because
+we have no knowledge of \(f_0\): \(\frac{f_1}{n f_0=?}\). What we <em>are</em> able to calculate,
+however, is the estimated proportion of the total number of words that are unseen. That
+proportion is equal to the product of the average relative frequency of unseen words
+\(\alpha_0\) and the number of unseen words \(f_0\): \(\alpha_0 f_0\). This product can be
+approximated by dividing the number of words that occur once by the total number of words:
+\(\frac{f_1}{n}\). Essentialy, we strip \(f_0\) from the formula.</p>
+<p>We are now almost in the position to grasp how to estimate \(f_0\). As I mentioned, we can
+estimate the product \(\alpha_0 f_0\) with \(\frac{f_1}{n}\). A simple way to compute \(f_0\)
+would be to divide this product by \(\alpha_0\). But unfortunately, we do not know the
+average relative frequency of unseen words. We therefore have to work with what we do
+know, for example that the average relative frequency of unseen words is probably lower
+that that of words occuring once. That is to say: \(\alpha_0 \leq \alpha_1\). It then
+follows that \(\frac{\alpha_0 f_0}{\alpha_0}\) must be <em>at least</em> equal to or greater than
+\(\frac{\alpha_0 f_0}{\alpha_1}\):</p>
+<p>\begin{equation}
+f_0 = \frac{\alpha_0 f_0}{\alpha_0} \geq \frac{\alpha_0 f_0}{\alpha_1}.
+\end{equation}</p>
+<p>We can rewrite that last formula (\(\frac{\alpha_0 f_0}{\alpha_1}\)) to the calculable
+\(\frac{f1}{n} / \frac{2f_2}{(n - 1)f_1}\). If we apply this formula to our snippet, the
+estimate is that we have not yet seen at least \(\frac{3}{18} / \frac{2 * 1}{(18 - 1) * 3}
+\approx 4\) words yet. It is important to emphasize again that \(\frac{\alpha_0
+f_0}{\alpha_0}\) is <em>at least</em> equal to or greater than \(\frac{\alpha_0 f_0}{\alpha_1}\),
+and that our estimate of \(f_0\) is thus a <em>lower bound</em> on the true number of unique words.
+This estimate, based on Good-Turing counts, gives the same lower bound for \(f_0\) that Anne
+Chao has proven extensively (<a href="#citeproc_bib_item_1">Chao 1984</a>), and can be
+calculated with her well-known unseen species model, Chao1, which can be formulated as:
+\(\frac{(n - 1)}{n} \frac{f_1^2}{2 f_2}\).</p>
+<p>The Chao1 model thus provides a lower bound of the ecological, or cultural, richness in a
+given area. Using the Good-Turing perspective, we can now also clarify when the lower
+bound is in fact an accurate estimate of the true richness. The reasoning is as follows:
+if the average frequency of unseen words (\(\alpha_0\)) is approximately equal to that of
+words that occur once (\(\alpha_1\)), then there is no longer any difference between
+\(\frac{\alpha_0 f_0}{\alpha_0}\) and \(\frac{\alpha_0 f_0}{\alpha_1}\), and thus the method
+can provide an unbiased estimate of the number of unique species, or say, cultural
+artefacts, such as medieval stories that exist in a given area &ndash; including the ones that
+have not been seen.</p>
+<h2 id="references">References</h2>
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Chao, Anne. 1984. “Nonparametric Estimation of the Number of Classes in a Population.” <i>Scandinavian Journal of Statistics</i> 11 (4): 265–70.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Chao, Anne, Chiu Chun‐Huo, Robert K. Colwell, Luiz Fernando S. Magnago, Robin L. Chazdon, and Nicholas J. Gotelli. 2017. “Deciphering the Enigma of Undetected Species, Phylogenetic, and Functional Diversity Based on Good‐Turing Theory.” <i>Ecology</i> 98 (11): 2914–29. <a href="https://doi.org/10.1002/ecy.2000">https://doi.org/10.1002/ecy.2000</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Chiu, Chun-Huo, Yi-Ting Wang, Bruno A. Walther, and Anne Chao. 2014. “An Improved Nonparametric Lower Bound of Species Richness via a Modified Good-Turing Frequency Formula: An Improved Nonparametric Lower Bound of Species Richness.” <i>Biometrics</i> 70 (3): 671–82. <a href="https://doi.org/10.1111/biom.12200">https://doi.org/10.1111/biom.12200</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Kestemont, Mike, Folgert Karsdorp, Elisabeth de Bruijn, Matthew Driscoll, Katarzyna A. Kapitan, Pádraig Ó Macháin, Daniel Sawyer, Remco Sleiderink, and Anne Chao. 2022. “Forgotten Books: The Application of Unseen Species Models to the Survival of Culture.” <i>Science</i> 375 (6582): 765–69. <a href="https://doi.org/10.1126/science.abl7655">https://doi.org/10.1126/science.abl7655</a>.</div>
+</div>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+      <span class="social-icon social-icon-bluesky">
+        <a href="https://bsky.app/profile/folgertk.bsky.social" title="bluesky" target="_blank" rel="noopener">
+          <img src="/images/social/bluesky.svg" width="24" height="24" alt="bluesky"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-github">
+        <a href="https://github.com/fbkarsdorp" title="github" target="_blank" rel="noopener">
+          <img src="/images/social/github.svg" width="24" height="24" alt="github"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-linkedin">
+        <a href="https://nl.linkedin.com/in/folgert-karsdorp-2ab362323" title="linkedin" target="_blank" rel="noopener">
+          <img src="/images/social/linkedin.svg" width="24" height="24" alt="linkedin"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-cv">
+        <a href="https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf" title="CV" target="_blank" rel="noopener">
+          <img src="/images/social/cv.svg" width="24" height="24" alt="CV"/>
+        </a>
+      </span>
+    
+  </div>
+  
+</div>
+  </div>
+
+  
+
+  
+    <script type="text/javascript" src="/js/bundle.js"></script>
+  
+
+  
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

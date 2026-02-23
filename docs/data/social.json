@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "name": "bluesky",
+      "url": "https://bsky.app/profile/folgertk.bsky.social",
+      "image": "images/social/bluesky.svg"
+    },
+    {
+      "name": "github",
+      "url": "https://github.com/fbkarsdorp",
+      "image": "images/social/github.svg"
+    },
+    {
+      "name": "linkedin",
+      "url": "https://nl.linkedin.com/in/folgert-karsdorp-2ab362323",
+      "image": "images/social/linkedin.svg"
+    },
+    {
+      "name": "CV",
+      "url": "https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf",
+      "image": "images/social/cv.svg"
+    }
+  ]
+}

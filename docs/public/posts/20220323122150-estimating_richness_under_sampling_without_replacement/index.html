@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54162&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Estimating Richness under Sampling without Replacement - Folgert Karsdorp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="//localhost:54162/favicon.png">
+  <link rel="canonical" href="//localhost:54162/posts/20220323122150-estimating_richness_under_sampling_without_replacement/" />
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/assets/css/extended.css">
+
+  
+    
+    <meta property="og:title" content="Estimating Richness under Sampling without Replacement"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="//localhost:54162/posts/20220323122150-estimating_richness_under_sampling_without_replacement/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@zerostaticio"/>
+    <meta name="twitter:creator" content="@zerostaticio"/>
+  
+
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson&#43;Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+  
+
+  
+<link rel="icon" href="/favicon.ico">
+
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="menu-main-mobile" class="menu-main-mobile">
+    <ul class="menu">
+        
+        
+            
+                <li class="menu-item-home">
+                    <a href="//localhost:54162/">Home</a>
+                </li>
+            
+        
+            
+                <li class="menu-item-notebooks">
+                    <a href="//localhost:54162/posts/">Notebooks</a>
+                </li>
+            
+        
+            
+                <li class="menu-item-publications">
+                    <a href="//localhost:54162/references">Publications</a>
+                </li>
+            
+        
+    </ul>
+</div>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="/">Folgert Karsdorp</a>
+  <div class="menu-main">
+    <ul>
+      
+      
+      
+      
+      <li class="menu-item-home ">
+        <a href="/">
+          
+          <span>Home</span>
+        </a>
+      </li>
+      
+      
+      
+      <li class="menu-item-notebooks ">
+        <a href="/posts/">
+          
+          <span>Notebooks</span>
+        </a>
+      </li>
+      
+      
+      
+      <li class="menu-item-publications ">
+        <a href="/references">
+          
+          <span>Publications</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+  <div id="toggle-menu-main-mobile" class="hamburger-trigger">
+    <button class="hamburger">Menu</button>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>Estimating Richness under Sampling without Replacement<span class="dot">.</span></h1>
+      
+    </div>
+    <div class="content">
+      <p><a href="">Unseen Species Models</a> such as <a href="">Chao1</a> assume that the sample being studied was created with
+replacement. This means that calculations are based on the assumption that certain
+individuals can or have been repeatedly observed. It also implies that the observation of
+one individual does not influence the observation of the next individual. That is to say:
+observations are independent. Take, for example, an ecologist who wants to use Chao1 to
+estimate the number of unique animal species that live in a given environment. Assuming
+for the moment that the presence of the researcher in that environment does not introduce
+any observation biases, we can think of the observation process as a sample with
+replacement: upon registration, animals are <em>re-placed</em> into the environment, and thus
+there is chance that ecologist is observing the same animal twice.</p>
+<p>However, it also happens that animals, in particular insects, are killed upon capture. In
+that case, the assumption of <strong>sampling with replacement</strong> no longer holds. Individuals are
+no longer independently sampled, meaning that the capture of one invidividual (positively
+or negatively) impacts the capture probability of another individual. When applied to the
+cultural domain, and especially when working with cultural collections, one could argue
+that the assumption of sampling with replacement is often quite problematic. Cultural
+collections are, by definition, finite samples created <em>without</em> replacement. The same
+applies to the example of estimating the vocabulary size of a text based on a snippet of
+text, as I explained in an earlier post (see <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>). Here,
+too the assumption of replacement is clearly violated.</p>
+<p>This isssue of recognizing which sampling strategy underlies our data potentially has
+major implications for the quality of the estimates made by unseen species models. In
+Kestemont et al. (<a href="#citeproc_bib_item_3">2022</a>), for example, we assume that the samples
+we have of medieval narratives are the result of a sampling process <em>with</em> replacement.
+Clearly, this is not realistic. The question, then, is to what extent this assumption
+impacts the estimates. In this notebook, I try to get a better idea of the impact of
+sampling strategies on the quality and bias of estimates computed with Chao1. I will show
+that when samples are created <em>without</em> replacement and the sample fraction is relatively
+large, Chao1 no longer forms a lower-bound and thus greatly overestimates the true
+richness. However, when the sampling fraction is small, Chao1 remains a lower-bound and
+the difference between samples with and without replacement is negligible. To compensate
+for estimation biases introduced by sampling without replacement, I investigate the Unseen
+Species Model proposed by Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>), which was
+specifically desgined to work with samples created <em>without</em> replacement.</p>
+<h2 id="chao-and-lin--2012">Chao &amp; Lin (2012)</h2>
+<p>Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) describe an <a href="">Unseen Species Model</a> based on
+<a href="">Chao1</a> with which we can compute a lower-bound estimate of the number of unseen items
+(e.g., species, cultural artifacts) in samples created <em>without</em> replacement. The formula
+is closely related to the original Chao1 estimator (see <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with
+Good-Turing</a> for further details):</p>
+<p>\begin{equation}
+\hat{V} = V_{\textrm{obs}} + \frac{f^2_1}{\frac{n}{n - 1} 2f_2 + \frac{q}{1 - q} f_1}
+\end{equation}</p>
+<p>Here, \(V_{\textrm{obs}}\) represents the observed number of unique items. \(f_1\) is the number of items
+that occurs exactly once in the sample, and \(f_2\) is the number of items that occurs twice
+in the sample. The size of the sample is denoted with \(n\), and \(q\) represents the sample
+fraction. Thus, \(q\) assumes we have knowledge about the true population size \(N\). We can
+easily implement the model in Python:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">chao_wor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># sample size</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># number of unique items</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># number of singletons</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># number of doubletons</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">f1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">n</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span><span class="o">*</span><span class="n">f2</span> <span class="o">+</span> <span class="p">(</span><span class="n">q</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">))</span> <span class="o">*</span> <span class="n">f1</span><span class="p">)</span>
+</span></span></code></pre></div><p>For reference, Chao1 can be implemented using similar lines of code (see the Python
+package <a href="https://copia.readthedocs.io">copia</a> or the R package <a href="https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html">iNEXT</a> for more robust implementations as well as other
+estimators):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">chao1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">f2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">f1</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">f2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> <span class="o">*</span> <span class="n">f1</span><span class="o">*</span><span class="p">(</span><span class="n">f1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">f2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="testing-the-replacement-assumption">Testing the replacement assumption</h2>
+<p>In what follows, I will use these two models to test the impact of the assumptions
+underlying the sampling process on the quality of the estimations. Thus, what happens if
+we apply Chao1 to data that was generated <em>without</em> replacement, while Chao1 asssumes it
+to be generated <em>with</em> replacement. Although Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) also
+discuss <a href="">incidence data</a> as well as <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">shared richness estimation</a>, I will primarily focus on
+the case of <a href="">abundance data</a> (i.e., counts of (species) types).</p>
+<p>By means of illustration, I will apply the models to a case of textual data. Here the goal
+is the estimate the vocabulary size of some text based on a snippet of that text. Such a
+snippet can be seen a a contiguous sample created without replacement. This is an
+interesting application as it allows us to work with real-world data, without having to
+compromise on having knowledge about the true population and vocabulary size. The text we
+will be working with is Shakespeare&rsquo;s <em>Hamlet</em>, which can be downloaded from the Folger
+Digital Text collection with the following lines of Python code (for more information
+about parsing this corpus with Python, please see <a href="#citeproc_bib_item_2">Karsdorp, Kestemont, and Riddell 2021</a>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lxml.etree</span> <span class="k">as</span> <span class="nn">etree</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">collections</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">root</span> <span class="o">=</span> <span class="s2">&#34;https://shakespeare.folger.edu/downloads/teisimple/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">hamlet</span> <span class="o">=</span> <span class="s2">&#34;hamlet_TEIsimple_FolgerShakespeare.xml&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">root</span> <span class="o">+</span> <span class="n">hamlet</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">hamlet</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">NSMAP</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tei&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.tei-c.org/ns/1.0&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">hamlet</span><span class="o">.</span><span class="n">iterfind</span><span class="p">(</span><span class="s2">&#34;.//tei:w&#34;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">NSMAP</span><span class="p">)</span> <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">text</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+</span></span></code></pre></div><p>We transform the text, represented as a list of words, into a NumPy array, and
+subsequently calculate the length of the text \(N\) as well as the number of unique words
+\(V\):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl"><span class="n">N</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;The text consists of N=</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> words and V=</span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> unique words.&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">The text consists of N=31928 words and V=5288 unique words.
+</span></span></code></pre></div><h3 id="chao1-and-the-replacement-assumption">Chao1 and the replacement assumption</h3>
+<p>To set a baseline, I will first illustrate how Chao1 performs when estimating the
+vocabulary size \(V\) for samples of the text generated <em>with</em> replacement. Here we create
+samples with \(q\) in the range [0.001 0.999], and plot the estimates for different values of
+\(q\):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ci_plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">percentile_min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">percentile_max</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">perc1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">percentile_min</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">perc2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">percentile_max</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">perc1</span><span class="p">,</span> <span class="n">perc2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ax</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_experiments</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="n">fractions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">est_wr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_experiments</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fractions</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_experiments</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">,</span> <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">q</span> <span class="o">*</span> <span class="n">N</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="n">counts</span><span class="o">/</span><span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">est_wr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">chao1</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ci_plot</span><span class="p">(</span><span class="n">fractions</span><span class="p">,</span> <span class="n">est_wr</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;C0&#34;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&#34;$\hat</span><span class="si">{V}</span><span class="s2">$&#34;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&#34;$q$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;grey&#34;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&#34;--&#34;</span><span class="p">);</span>
+</span></span></code></pre></div><figure><img src="/ox-hugo/3b875fea389c7c3134c96bb3eddcda94f6d3123b.png">
+</figure>
+
+<p>The plot here cleary shows that the Chao1 estimator converges to the true vocabulary size
+\(V\) as the sample fraction \(q\) increases. Also note that the estimator consistently
+produces a lower-bound estimate, and that the extent of the negative bias is non-linear.
+All in all, the estimator seems to perform as solid a lower-bound estimate of the
+vocabulary size.</p>
+<p>When working with texts, however, it is more common to deal with samples created <em>without</em>
+replacement. Suppose we find a snippet of a text. Such a snippet represents a contiguous
+sample of the original text, one that was created without replacing words. Let&rsquo;s
+investigate what happens if we create a sample without replacement, and use Chao1 to
+estimate the true value \(V\) based on such a sample:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">est_wor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_experiments</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">flat_pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">V</span><span class="p">),</span> <span class="n">counts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fractions</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_experiments</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">,</span> <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flat_pop</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">q</span> <span class="o">*</span> <span class="n">N</span><span class="p">)),</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">est_wor</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">chao1</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ci_plot</span><span class="p">(</span><span class="n">fractions</span><span class="p">,</span> <span class="n">est_wor</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;C0&#34;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&#34;$\hat</span><span class="si">{V}</span><span class="s2">$&#34;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&#34;$q$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fractions</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">est_wor</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">V</span><span class="p">)[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;grey&#34;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&#34;--&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;grey&#34;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&#34;--&#34;</span><span class="p">);</span>
+</span></span></code></pre></div><figure><img src="/ox-hugo/3303546e0f941f41d43dcd9dddab55478692c698.png">
+</figure>
+
+<p>When samples are generated without replacement, Chao1 clearly no longer provides a
+lower-bound estimate of the vocabulary size for sample fractions \(q \gtrapprox 0.2\). In
+fact, as the plot illustrates, this positive bias can be quite dramatic for larger
+fraction sizes. It is important to note, however, that Chao1 still provides a lower-bound
+of the richness for small sample sizes, and that for these sizes estimates based on
+sampling with and sampling without replacement do not diverge too much
+(Kestemont et al. (<a href="#citeproc_bib_item_3">2022</a>), for example, computed their estimations
+based on a sample fraction of \(q \approx 0.09\). While their sample may not be created with
+replacement, this fraction is small enough to employ the Chao1 estimator.):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">labels</span> <span class="o">=</span> <span class="s2">&#34;with replacement&#34;</span><span class="p">,</span> <span class="s2">&#34;without replacement&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">estimations</span> <span class="o">=</span> <span class="n">est_wr</span><span class="p">,</span> <span class="n">est_wor</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">est</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">estimations</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ci_plot</span><span class="p">(</span><span class="n">fractions</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">est</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">6</span><span class="p">],</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;C</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&#34;$\hat</span><span class="si">{V}</span><span class="s2">$&#34;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&#34;$q$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">by_label</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">handles</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">by_label</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">by_label</span><span class="o">.</span><span class="n">keys</span><span class="p">());</span>
+</span></span></code></pre></div><figure><img src="/ox-hugo/aa43398f75ddb5bfd7ef446fd5075360ef1a2edc.png">
+</figure>
+
+<h3 id="chao-without-the-replacement-assumption">Chao without the replacement assumption</h3>
+<p>For larger sample fractions, however, Chao1 can greatly overestimate the true diversity in
+a sample. Precisely to overcome this problem, Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>)
+developed their lower-bound estimator for samples without replacement. Below, I will
+demonstrate how this estimator can be used to deal with samples for which we cannot and
+<em>should not</em> assume that they were created <em>with</em> replacement. Recall that the estimator of
+Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) assumes that \(N\) is known (or that \(q\) is known,
+depending on the perspective). If we apply this estimator to our samples created without
+replacement, we obtain the following graph:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fractions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">estimations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_experiments</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">flat_pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">V</span><span class="p">),</span> <span class="n">counts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fractions</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_experiments</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_</span><span class="p">,</span> <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">flat_pop</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">q</span> <span class="o">*</span> <span class="n">N</span><span class="p">)),</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">estimations</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">chao_wor</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ci_plot</span><span class="p">(</span><span class="n">fractions</span><span class="p">,</span> <span class="n">estimations</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;C0&#34;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&#34;$\hat</span><span class="si">{V}</span><span class="s2">$&#34;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&#34;$q$&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&#34;grey&#34;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&#34;--&#34;</span><span class="p">);</span>
+</span></span></code></pre></div><figure><img src="/ox-hugo/498e94fac18d6d159c0894105ffafed1b7a6f947.png">
+</figure>
+
+<p>As clearly shown by the graph, <em>if</em> we know \(q\), the modified estimator behaves like Chao1
+for samples <em>with</em> replacement and acts as a proper lower-bound of the vocabulary size.
+But of course, we only rarely know about \(q\) or \(N\). More often, we have no knowledge
+whatsoever about the true population size. When such information is absent,
+Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) suggest to estimate the vocabulary size using
+different hypothetical values of \(q\). Below, we generate samples with different values of
+\(q\), and for each of those, we estimate the vocabulary size using several hypothetical \(q\)
+values, \(\hat{q}\):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_experiments</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="n">fractions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">q_hypotheses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">estimations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_steps</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">flat_pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">V</span><span class="p">),</span> <span class="n">counts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">q_hypotheses</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fractions</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_ests</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_experiments</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_</span><span class="p">,</span> <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">flat_pop</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">q</span> <span class="o">*</span> <span class="n">N</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_ests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chao_wor</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">estimations</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">_ests</span><span class="p">)</span>
+</span></span></code></pre></div><p>We plot the results as a contour plot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">fractions</span><span class="p">,</span> <span class="n">q_hypotheses</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Z</span> <span class="o">=</span> <span class="n">V</span> <span class="o">-</span> <span class="n">estimations</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&#34;w&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&#34;true fraction&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&#34;hypothetical fraction&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">title</span><span class="o">=</span><span class="s2">&#34;Estimation error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</span></span></code></pre></div><figure><img src="/ox-hugo/a5629fc76c50bfcdade6799ceadd79a34ccae035.png">
+</figure>
+
+<p>The graph provides important information about the conditions under which the estimator is
+still a lower-bound. First, we see that if the true fraction \(q\) is small and the
+hypothetical fraction \(\hat{q}\) is large, the estimates have a (relatively strong)
+negative bias. Conversely, when the hypothetical fraction is small but the true fraction
+is larger, the estimator often greatly overestimates the true vocabulary size. Note that
+positive bias was to be expected with \(\hat{q}\) approaching 0, because then, the estimator
+approaches the Chao1 estimator, and, Chao1 displays the same positive bias when the sample
+was generated <em>without</em> replacement. More generally, the plot seems to suggest that if
+\(\hat{q} \lt q\), the estimator overestimates the true richness, and thus the estimates can
+no longer be considered lower-bound estimates.</p>
+<h2 id="references">References</h2>
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Chao, Anne, and Chih-Wei Lin. 2012. “Nonparametric Lower Bounds for Species Richness and Shared Species Richness under Sampling without Replacement.” <i>Biometrics</i> 68 (3): 912–21. <a href="https://doi.org/10.1111/j.1541-0420.2011.01739.x">https://doi.org/10.1111/j.1541-0420.2011.01739.x</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Karsdorp, Folgert, Mike Kestemont, and Allen Riddell. 2021. <i>Humanities Data Analysis. Case Studies with Python</i>. Computer Science &#38; Electrical Engineering. Princeton University Press.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Kestemont, Mike, Folgert Karsdorp, Elisabeth de Bruijn, Matthew Driscoll, Katarzyna A. Kapitan, Pádraig Ó Macháin, Daniel Sawyer, Remco Sleiderink, and Anne Chao. 2022. “Forgotten Books: The Application of Unseen Species Models to the Survival of Culture.” <i>Science</i> 375 (6582): 765–69. <a href="https://doi.org/10.1126/science.abl7655">https://doi.org/10.1126/science.abl7655</a>.</div>
+</div>
+
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+      <span class="social-icon social-icon-bluesky">
+        <a href="https://bsky.app/profile/folgertk.bsky.social" title="bluesky" target="_blank" rel="noopener">
+          <img src="/images/social/bluesky.svg" width="24" height="24" alt="bluesky"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-github">
+        <a href="https://github.com/fbkarsdorp" title="github" target="_blank" rel="noopener">
+          <img src="/images/social/github.svg" width="24" height="24" alt="github"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-linkedin">
+        <a href="https://nl.linkedin.com/in/folgert-karsdorp-2ab362323" title="linkedin" target="_blank" rel="noopener">
+          <img src="/images/social/linkedin.svg" width="24" height="24" alt="linkedin"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-cv">
+        <a href="https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf" title="CV" target="_blank" rel="noopener">
+          <img src="/images/social/cv.svg" width="24" height="24" alt="CV"/>
+        </a>
+      </span>
+    
+  </div>
+  
+</div>
+  </div>
+
+  
+
+  
+    <script type="text/javascript" src="/js/bundle.js"></script>
+  
+
+  
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

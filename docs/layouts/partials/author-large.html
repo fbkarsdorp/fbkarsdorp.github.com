@@ -1,0 +1,10 @@
+<div class="author author-large">
+  {{ $logo := resources.Get "logo.png" }}
+  {{ if $logo }}
+  <img width="50" class="author-image" src="{{ $logo.RelPermalink }}" alt="{{ .Site.Data.author.name }}" />
+  {{ else }}
+  <img width="50" class="author-image" src="{{ .Site.Data.author.image | relURL }}" alt="{{ .Site.Data.author.name }}" />
+  {{ end }}
+  <span class="author-name">{{ .Site.Data.author.name }}</span>
+  <span class="author-title">{{ .Site.Data.author.title }}</span>
+</div>

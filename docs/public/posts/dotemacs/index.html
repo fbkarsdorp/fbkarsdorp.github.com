@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54162&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>My Literate Emacs Configuration - Folgert Karsdorp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="//localhost:54162/favicon.png">
+  <link rel="canonical" href="//localhost:54162/posts/dotemacs/" />
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/assets/css/extended.css">
+
+  
+    
+    <meta property="og:title" content="My Literate Emacs Configuration"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="//localhost:54162/posts/dotemacs/"/>
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@zerostaticio"/>
+    <meta name="twitter:creator" content="@zerostaticio"/>
+  
+
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson&#43;Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+  
+
+  
+<link rel="icon" href="/favicon.ico">
+
+</head>
+
+
+
+
+<body class='page frame page-blog-single'>
+  <div id="menu-main-mobile" class="menu-main-mobile">
+    <ul class="menu">
+        
+        
+            
+                <li class="menu-item-home">
+                    <a href="//localhost:54162/">Home</a>
+                </li>
+            
+        
+            
+                <li class="menu-item-notebooks">
+                    <a href="//localhost:54162/posts/">Notebooks</a>
+                </li>
+            
+        
+            
+                <li class="menu-item-publications">
+                    <a href="//localhost:54162/references">Publications</a>
+                </li>
+            
+        
+    </ul>
+</div>
+  <div id="wrapper" class="wrapper">
+    <div class='header'>
+  <a class="header-logo" href="/">Folgert Karsdorp</a>
+  <div class="menu-main">
+    <ul>
+      
+      
+      
+      
+      <li class="menu-item-home ">
+        <a href="/">
+          
+          <span>Home</span>
+        </a>
+      </li>
+      
+      
+      
+      <li class="menu-item-notebooks ">
+        <a href="/posts/">
+          
+          <span>Notebooks</span>
+        </a>
+      </li>
+      
+      
+      
+      <li class="menu-item-publications ">
+        <a href="/references">
+          
+          <span>Publications</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+  <div id="toggle-menu-main-mobile" class="hamburger-trigger">
+    <button class="hamburger">Menu</button>
+  </div>
+</div>
+    
+  <div class="blog">
+    
+    <div class="intro">
+      <h1>My Literate Emacs Configuration<span class="dot">.</span></h1>
+      
+    </div>
+    <div class="content">
+      <h2 id="what-s-this">What&rsquo;s this?</h2>
+<p>This document is a literate version of my GNU Emacs configuration written in Org mode. Org
+mode is a kind of markdown with super powers, which allows you to write code side by side
+with the corresponding documentation. My Emacs configuration is the result of certainly
+years and years of tinkering and refinement, and there is always something that could be
+just a little bit better or different so that it fits my workflow better. Here&rsquo;s a
+screenshot of my current setup:</p>
+<figure><img src="/ox-hugo/2022-12-21_16-30-53_Screenshot%202022-12-21%20at%2016.30.30.png">
+</figure>
+
+<p>This document is also on GitHub. See <a href="https://github.com/fbkarsdorp/.emacs.d">https://github.com/fbkarsdorp/.emacs.d</a></p>
+<h2 id="startup">Startup</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="c1">;;; -*- lexical-binding: t -*-</span>
+</span></span><span class="line"><span class="cl"><span class="c1">;;; init.el --- This is where all emacs start.</span>
+</span></span></code></pre></div><p>Set garbage collection memory threshold to some large number to improve the speed of
+loading the configuration. Not sure it really makes that much of a difference, but most
+people seem to do this.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">gc-cons-threshold</span> <span class="mi">100000000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;after-init-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">gc-cons-threshold</span> <span class="p">(</span><span class="nf">*</span> <span class="mi">10</span> <span class="mi">1024</span> <span class="mi">1024</span><span class="p">))))</span>
+</span></span></code></pre></div><p>Don&rsquo;t show the startup message</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">inhibit-startup-message</span> <span class="no">t</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="encoding">Encoding</h3>
+<p>Set the encoding to UTF8:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">prefer-coding-system</span> <span class="ss">&#39;utf-8</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="path">Path</h3>
+<p>Ensure defined paths in the terminal are also visible to Emacs. Aparently, this is a macOS
+thing:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">memq</span> <span class="nf">window-system</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">mac</span> <span class="nv">ns</span> <span class="nv">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">exec-path-from-shell-arguments</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">exec-path-from-shell-initialize</span><span class="p">))</span>
+</span></span></code></pre></div><h2 id="package-management">Package management</h2>
+<p>For installing Emacs packages, I use MELPA, the Milkypostman’s Emacs Lisp Package Archive.
+In the future, I might switch over to straight, which clones packages directly from git,
+for for the moment (and the past 15 years or so), MELPA has been working just fine.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">load-prefer-newer</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">package-initialize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">package-archives</span> <span class="p">(</span><span class="nf">append</span>
+</span></span><span class="line"><span class="cl">                        <span class="nv">package-archives</span>
+</span></span><span class="line"><span class="cl">                        <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;melpa&#34;</span> <span class="o">.</span> <span class="s">&#34;https://melpa.org/packages/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">(</span><span class="s">&#34;elpa&#34;</span> <span class="o">.</span> <span class="s">&#34;https://elpa.nongnu.org/nongnu/&#34;</span><span class="p">))))</span>
+</span></span></code></pre></div><p>The <code>use-package</code> macro by John Wiegley greatly improves the readability, configurability,
+uniformity, and maintainability of third-party packages. Additionaly, I use
+<code>quelpa-use-package</code>, which allows you to install packages from some git host using
+use-package.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">eval-when-compile</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;use-package</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;quelpa-use-package</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">use-package-always-ensure</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;bind-key</span><span class="p">)</span>
+</span></span></code></pre></div><p>The <code>async</code> package lets you install packages asynchronously. Quite useful to speed up
+installation of packages.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">async</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">async-bytecomp-package-mode</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><h2 id="aesthetics">Aesthetics</h2>
+<h3 id="interface-components">Interface components</h3>
+<p>Frames should have transparent title bars and must have dimensions 58x291.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">default-frame-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">ns-transparent-titlebar</span> <span class="o">.</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">(</span><span class="nv">height</span> <span class="o">.</span> <span class="mi">48</span><span class="p">)</span> <span class="p">(</span><span class="nv">width</span> <span class="o">.</span> <span class="mi">159</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Emacs&rsquo; GUI has a number of modes enabled, such as toolbar mode, which I never use. Like
+most Emacs users, I always turn it off:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">tool-bar-mode</span> <span class="mi">-1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">scroll-bar-mode</span> <span class="mi">-1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">tooltip-mode</span> <span class="mi">-1</span><span class="p">)</span>
+</span></span></code></pre></div><p>I also set the fringe a little wider to ensure the text isn&rsquo;t too close to the window
+border:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">fringe-mode</span> <span class="mi">16</span><span class="p">)</span>
+</span></span></code></pre></div><p>Use a non-blinking horizontal line as cursor. I like the minimal look:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">blink-cursor-mode</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq-default</span> <span class="nv">cursor-type</span> <span class="ss">&#39;hbar</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">fset</span> <span class="ss">&#39;yes-or-no-p</span> <span class="ss">&#39;y-or-n-p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">ring-bell-function</span> <span class="ss">&#39;ignore</span><span class="p">)</span>
+</span></span></code></pre></div><p>The modeline in Emacs displays all information about your files, buffers, and active
+modes. The <code>moody</code> and <code>minions</code> packages simplify the modeline a bit.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">moody</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">x-underline-at-descent-line</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">moody-replace-mode-line-buffer-identification</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">moody-replace-vc-mode</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">minions</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nv">minions-mode</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><p>The package diminish helps to de-clutter the modeline.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">diminish</span><span class="p">)</span>
+</span></span></code></pre></div><p>Emacs&rsquo;s tab-bar-mode is great to keep you buffers organized. It&rsquo;s a bit different from
+tabs in Firefox or other popular text editors, as it provides tabs for collections
+windows, rather than a single window.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">tab-bar-mode</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">tab-bar-show</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">frame-title-format</span> <span class="o">&#39;</span><span class="p">((</span><span class="nb">:eval</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;%s&#34;</span> <span class="p">(</span><span class="nf">cdr</span> <span class="p">(</span><span class="nf">assoc</span> <span class="ss">&#39;name</span> <span class="p">(</span><span class="nv">tab-bar--current-tab</span><span class="p">)))))))</span>
+</span></span></code></pre></div><h3 id="theming">Theming</h3>
+<p>Endless fiddling with different themes is not the most productive activity. And yet, the
+visual appeal of your working environment should not be underestimated either. I find that
+it helps to maintain my appreciation for Emacs if I occasionally give the editor a visual
+update. Emacs comes with many built-in color themes. Whenever switching between them, it&rsquo;s
+important to make sure all settings are cleared instead of layering them. The following
+advice function takes care of that automatically when loading another theme:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">load-theme</span> <span class="p">(</span><span class="nv">before</span> <span class="nv">clear-previous-themes</span> <span class="nv">activate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Clear existing theme settings instead of layering them&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">mapc</span> <span class="nf">#&#39;</span><span class="nv">disable-theme</span> <span class="nv">custom-enabled-themes</span><span class="p">))</span>
+</span></span></code></pre></div><p>The color themes of Protesilaos Stavrou are unmatched. I usually use his
+modus-themes (prefering modus operandi during the day) but have recently become a fan of
+the ef-themes as well. Modus-themes let you customize almost every aspect of the theme, so
+please check out the documentation. Here&rsquo;s my config:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">modus-themes</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">modus-themes-bold-constructs</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-completions</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">matches</span> <span class="o">.</span> <span class="p">(</span><span class="nv">extrabold</span> <span class="nv">intense</span> <span class="nv">background</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                   <span class="p">(</span><span class="nv">selection</span> <span class="o">.</span> <span class="p">(</span><span class="nv">semibold</span> <span class="nv">accented</span> <span class="nv">intense</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                   <span class="p">(</span><span class="nv">popup</span> <span class="o">.</span> <span class="p">(</span><span class="nv">accented</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-diffs</span> <span class="ss">&#39;desaturated</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-headings</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="p">(</span><span class="mf">1.2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="p">(</span><span class="nv">rainbow</span> <span class="mf">1.1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="no">t</span> <span class="o">.</span> <span class="p">(</span><span class="nv">monochrome</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-hl-line</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-links</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-mixed-fonts</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-mode-line</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">moody</span> <span class="nv">borderless</span> <span class="nv">accented</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-tabs-accented</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-prompts</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">background</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-region</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">accented</span> <span class="nv">bg-only</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-syntax</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">faint</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">modus-themes-tabs-accented</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">modus-themes-org-agenda</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&#39;</span><span class="p">((</span><span class="nv">header-date</span> <span class="o">.</span> <span class="p">(</span><span class="nv">grayscale</span> <span class="nv">workaholic</span> <span class="nv">bold-today</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">header-block</span> <span class="o">.</span> <span class="p">(</span><span class="mf">1.5</span> <span class="nv">semibold</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">scheduled</span> <span class="o">.</span> <span class="nv">uniform</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">event</span> <span class="o">.</span> <span class="p">(</span><span class="nv">italic</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">habit</span> <span class="o">.</span> <span class="nv">traffic-light</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">modus-themes-load-themes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">modus-themes-load-operandi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">(</span><span class="s">&#34;&lt;f5&gt;&#34;</span> <span class="o">.</span> <span class="nv">modus-themes-toggle</span><span class="p">))</span>
+</span></span></code></pre></div><h3 id="typography">Typography</h3>
+<p>We first set the default font.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">set-face-attribute</span> <span class="ss">&#39;default</span> <span class="no">nil</span> <span class="nb">:family</span> <span class="s">&#34;Input Mono Compressed&#34;</span> <span class="nb">:height</span> <span class="mi">120</span><span class="p">)</span>
+</span></span></code></pre></div><p>Then, set the fill column to a maximum of 90 characters (10 more than the default).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq-default</span> <span class="nv">fill-column</span> <span class="mi">90</span><span class="p">)</span>
+</span></span></code></pre></div><p>A number of packages rely on icons for presentation purposes. We load the <code>fontawesome</code>
+and <code>all-the-icons</code> packages, which provide a large number of icons.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">fontawesome</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">all-the-icons</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="completion">Completion</h2>
+<p>Emacs has endless functions. To quickly and efficiently find the functionality you&rsquo;re
+looking for, several completion frameworks have been developed. I have long been using
+<a href="https://github.com/abo-abo/swiper">Ivy</a>, a generic completion system for Emacs. Together with its companion Counsel (&ldquo;a
+collection of Ivy-enhanced versions of common Emacs commands&rdquo;) and Swiper (&ldquo;an
+Ivy-enhanced alternative to Isearch.&rdquo;), Ivy provides an environment with which you can
+quickly navigate, select and filter commands. The configuration of Ivy is nothing special.
+I bind search to <code>C-s</code> and adjust the regex building function for ivy-bibtex.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ivy</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span> <span class="p">(</span><span class="nv">ivy-mode</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">ivy-use-virtual-buffers</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">enable-recursive-minibuffers</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">ivy-display-style</span> <span class="ss">&#39;fancy</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">ivy-re-builders-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">ivy-bibtex</span> <span class="o">.</span> <span class="nv">ivy--regex-ignore-order</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                <span class="p">(</span><span class="no">t</span> <span class="o">.</span> <span class="nv">ivy--regex-plus</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;C-s&#34;</span> <span class="o">.</span> <span class="ss">&#39;swiper-isearch</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-r&#34;</span> <span class="o">.</span> <span class="ss">&#39;swiper-backward</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Ivy ensures that all commands that use the completion-read function go past Ivy. Counsel
+goes a step further and modifies several well-known functions of Emacs, such as the
+well-known <code>M-x</code> menu. I am far from using all the Counsel functions. The most important
+ones for me are specified in the configuration below. Furthermore, I have changed the
+ripgrep settings slightly to give a little more context in the results.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">counsel</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span> <span class="p">(</span><span class="nv">counsel-mode</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;C-x C-r&#34;</span> <span class="o">.</span> <span class="ss">&#39;counsel-recentf</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c i&#34;</span> <span class="o">.</span> <span class="ss">&#39;counsel-imenu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c c&#34;</span> <span class="o">.</span> <span class="ss">&#39;counsel-org-capture</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-x b&#34;</span> <span class="o">.</span> <span class="ss">&#39;ivy-switch-buffer</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">counsel-grep-base-command</span> <span class="s">&#34;grep -niE %s %s&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">counsel-grep-base-command</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">;; &#34;ag --nocolor --nogroup %s %s&#34;)</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;rg -S -M 120 --no-heading --line-number --color never %s %s&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">counsel-find-file-occur-cmd</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;gls -a | grep -i -E &#39;%s&#39; | gxargs -d &#39;\\n&#39; gls -d --group-directories-first&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">counsel-locate-cmd</span> <span class="ss">&#39;counsel-locate-cmd-mdfind</span><span class="p">))</span>
+</span></span></code></pre></div><p>Ivy presents lists. The package <code>prescient</code> takes these lists, then sorts and filters
+them. It works nicely with Counsel too.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">prescient</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">prescient-persist-mode</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ivy-prescient</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nv">ivy-prescient-mode</span><span class="p">))</span>
+</span></span></code></pre></div><p>Hydra&rsquo;s are great to create key binding menu&rsquo;s that stick around. Before, I had more
+defined. Now only a few.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ivy-hydra</span><span class="p">)</span>
+</span></span></code></pre></div><p>The <code>which-key</code> package is great for discoverability and memorability of functionalities.
+The package gives completions for keybindings. For example, type <code>C-c</code> and which-key
+returns all key bindings that follow that combination. Really useful, since there are just
+too many key bindings&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">which-key</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:diminish</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">which-key-idle-delay</span> <span class="mf">1.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">which-key-mode</span><span class="p">)))</span>
+</span></span></code></pre></div><h2 id="editing">Editing</h2>
+<p>They call it a text editor for a reason. I first make some customizations to various
+editing functions and settings, starting with tabs, which we all hate, so let&rsquo;s turn them
+off:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq-default</span> <span class="nv">indent-tabs-mode</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">              <span class="nv">tab-always-indent</span> <span class="ss">&#39;complete</span>
+</span></span><span class="line"><span class="cl">              <span class="nv">tab-width</span> <span class="mi">4</span><span class="p">)</span>
+</span></span></code></pre></div><p>The default mode in Emacs is Emacs lisp. For my work, it&rsquo;s better to set this to text:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq-default</span> <span class="nv">initial-major-mode</span> <span class="ss">&#39;text-mode</span>
+</span></span><span class="line"><span class="cl">              <span class="nv">default-major-mode</span> <span class="ss">&#39;text-mode</span><span class="p">)</span>
+</span></span></code></pre></div><p>The option to add a double space following a period is so old, it&rsquo;s hard to find exactly
+when it was introduced. The documentation says &ldquo;at or before Emacs version 19.24&rdquo;. We&rsquo;re
+now at emacs 29, and I&rsquo;m still turing it off:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">sentence-end-double-space</span> <span class="no">nil</span><span class="p">)</span>
+</span></span></code></pre></div><p>Highlighting matching parentheses helps catching syntax errors early on:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">show-paren-mode</span> <span class="no">t</span><span class="p">)</span>
+</span></span></code></pre></div><p>Emacs &gt;=29 has support for pixel scrolling. This greatly improves editing files with
+images:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">pixel-scroll-precision-mode</span><span class="p">)</span>
+</span></span></code></pre></div><p>When working on text, I prefer auto-filll which breaks lines after a set number of
+characters. Hard breakes help with putting text files under git control. To auto-fill all
+text related modes, we add the mode to the text mode hook:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;text-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">auto-fill-mode</span><span class="p">)</span>
+</span></span></code></pre></div><p>When files change on disk, update the buffer automatically:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-auto-revert-mode</span> <span class="no">t</span><span class="p">)</span>
+</span></span></code></pre></div><p>Emacs is quick to warn about large files. With the new large file support this is
+certainly no longer necessary. I raise the threshold a bit:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">large-file-warning-threshold</span> <span class="mi">100000000</span><span class="p">)</span>
+</span></span></code></pre></div><p>Next are some packages to make editing even easier with Emacs. First two packages for
+easier navigation. <code>avy</code> offers a great way to navigate your document without touching the
+mouse. It allows you to jump to text in a decision tree like strategy. There are many
+different search options, but I tend to use only two of them. The first,
+<code>avy-goto-char-timer</code> allows you to type in part of a word within a certain time limit
+before avy presents the selection keys. The second one shows selection keys for each line
+in all visible buffers.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">avy</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;M-j&#34;</span> <span class="o">.</span> <span class="ss">&#39;avy-goto-char-timer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;M-\\&#34;</span> <span class="o">.</span> <span class="ss">&#39;avy-goto-line</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Ace-window is another package by the same author, Oleh Krehel, which allows you to quickly
+switch and manipulate windows in Emacs. I bind it to <code>M-o</code>, as I use it quite often and
+that&rsquo;s an easy binding.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ace-window</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">set-face-attribute</span>
+</span></span><span class="line"><span class="cl">   <span class="ss">&#39;aw-leading-char-face</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">:weight</span> <span class="ss">&#39;bold</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">:height</span> <span class="mf">2.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">aw-keys</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">?a</span> <span class="sc">?s</span> <span class="sc">?d</span> <span class="sc">?f</span> <span class="sc">?g</span> <span class="sc">?h</span> <span class="sc">?j</span> <span class="sc">?k</span> <span class="sc">?l</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;M-o&#34;</span> <span class="o">.</span> <span class="ss">&#39;ace-window</span><span class="p">)))</span>
+</span></span></code></pre></div><p>I think Sublime text was the first text editor to offer simultaneous editing with multiple
+cursors &ndash; a feature so powerful that nowadays practically all editors (even Jupyter
+notebooks!) implement the feature. For Emacs we rely on the package <code>multiple-cursors</code>,
+which is a stable package that offers a similar experience.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">multiple-cursors</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;C-S-c C-S-c&#34;</span> <span class="o">.</span> <span class="nv">mc/edit-lines</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-&gt;&#34;</span>         <span class="o">.</span> <span class="nv">mc/mark-next-like-this</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-&lt;&#34;</span>         <span class="o">.</span> <span class="nv">mc/mark-previous-like-this</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c C-&lt;&#34;</span>     <span class="o">.</span> <span class="nv">mc/mark-all-like-this</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;M-&lt;down-mouse-1&gt;&#34;</span> <span class="o">.</span> <span class="nv">mc/add-cursor-on-click</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c m&#34;</span> <span class="o">.</span> <span class="nv">vr/mc-mark</span><span class="p">)))</span>
+</span></span></code></pre></div><p>The package <code>expand-region</code> provides a nifty way to select parts of text of code. By
+repeating the keybinding, the selected region will be expanded semantically. For example,
+when inside a list comprehension that&rsquo;s part of a function in Python, expand region would
+first select everything inside the list comprehension, and then its immediate semantic
+parent, i.e. the function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">expand-region</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">(</span><span class="s">&#34;C-=&#34;</span> <span class="o">.</span> <span class="nv">er/expand-region</span><span class="p">))</span>
+</span></span></code></pre></div><p>The <code>electric</code> package, part of Emacs, enable automatic paren and quote pairing. It&rsquo;s
+simple but effective.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">electric</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:ensure</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nv">electric-pair-mode</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></code></pre></div><p>The package <code>move-text</code> provides a little utility function to easily move the current line
+or region up and down. It&rsquo;s bound to Cmd+arrow up or arrow down.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">move-text</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nv">move-text-default-bindings</span><span class="p">))</span>
+</span></span></code></pre></div><p>Highlighting the current line gives some visual support when editing files. I turn it on
+globally:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">hl-line</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:ensure</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:custom-face</span> <span class="p">(</span><span class="nv">hl-line</span> <span class="p">((</span><span class="no">t</span> <span class="p">(</span><span class="nb">:extend</span> <span class="no">t</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span> <span class="p">(</span><span class="nv">after-init</span> <span class="o">.</span> <span class="nv">global-hl-line-mode</span><span class="p">))</span>
+</span></span></code></pre></div><p>Sometimes having too many buffers around is distracting. The Olivetti mode helps focussing
+on writing by centering your document and increasing the margins. I set the style to
+&ldquo;fancy&rdquo;, which sets both margins and fringe:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">olivetti</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">olivetti-style</span> <span class="ss">&#39;fancy</span><span class="p">))</span>
+</span></span></code></pre></div><p>For editing csv files, I rely on <code>csv-mode</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">csv-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span><span class="p">)</span>
+</span></span></code></pre></div><p>Likewise, YAML files are edited with the <code>yaml-mode</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">yaml-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:mode</span> <span class="p">((</span><span class="s">&#34;\\.yml\\&#39;&#34;</span> <span class="o">.</span> <span class="nv">yaml-mode</span><span class="p">)))</span>
+</span></span></code></pre></div><h2 id="system-management">System management</h2>
+<h3 id="dired">Dired</h3>
+<p>Dired is the main mode for doing all kinds of file management. Below are some
+customizations to let it play nicely with macOS. To use these, make sure gls is install
+through brew.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">string=</span> <span class="nv">system-type</span> <span class="s">&#34;darwin&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">dired-use-ls-dired</span> <span class="no">nil</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">insert-directory-program</span> <span class="s">&#34;gls&#34;</span> <span class="nv">dired-use-ls-dired</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">dired-recursive-deletes</span> <span class="ss">&#39;always</span><span class="p">)</span>
+</span></span></code></pre></div><p>While already really good, the package <code>dirvish</code> an improved version of dired. It offers a
+much more appealing interface, which is easily customizable. Most importantly, dirvish
+helps discovering all kinds of nifty tricks inside dired that I didn&rsquo;t know about.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">dirvish</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">dirvish-override-dired-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:custom</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">dirvish-quick-access-entries</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;h&#34;</span> <span class="s">&#34;~/&#34;</span>                          <span class="s">&#34;Home&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;d&#34;</span> <span class="s">&#34;~/.emacs.d/&#34;</span>                 <span class="s">&#34;Emacs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;p&#34;</span> <span class="s">&#34;~/projects&#34;</span>                  <span class="s">&#34;Projects&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="s">&#34;t&#34;</span> <span class="s">&#34;~/.local/share/Trash/files/&#34;</span> <span class="s">&#34;TrashCan&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">dirvish-mode-line-format</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&#39;</span><span class="p">(</span><span class="nb">:left</span> <span class="p">(</span><span class="nf">sort</span> <span class="nv">file-time</span> <span class="s">&#34; &#34;</span> <span class="nv">file-size</span> <span class="nv">symlink</span><span class="p">)</span> <span class="nb">:right</span> <span class="p">(</span><span class="nv">omit</span> <span class="nv">yank</span> <span class="nv">index</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; Don&#39;t worry, Dirvish is still performant even you enable all these attributes</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">dirvish-attributes</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">all-the-icons</span> <span class="nv">collapse</span> <span class="nv">subtree-state</span> <span class="nv">vc-state</span> <span class="nv">git-msg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">dired-dwim-target</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">delete-by-moving-to-trash</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; Enable mouse drag-and-drop files to other applications</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">dired-mouse-drag-files</span> <span class="no">t</span><span class="p">)</span>                   <span class="c1">; added in Emacs 29</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">mouse-drag-and-drop-region-cross-program</span> <span class="no">t</span><span class="p">)</span> <span class="c1">; added in Emacs 29</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">dired-listing-switches</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;-l --almost-all --human-readable --time-style=long-iso --group-directories-first --no-group&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; Bind `dirvish|dirvish-side|dirvish-dwim&#39; as you see fit</span>
+</span></span><span class="line"><span class="cl">  <span class="p">((</span><span class="s">&#34;C-c f&#34;</span> <span class="o">.</span> <span class="nv">dirvish-fd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">;; Dirvish has all the keybindings in `dired-mode-map&#39; already</span>
+</span></span><span class="line"><span class="cl">   <span class="nb">:map</span> <span class="nv">dirvish-mode-map</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;a&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-quick-access</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;f&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-file-info-menu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;y&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-yank-menu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;N&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-narrow</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;^&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-history-last</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;h&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-history-jump</span><span class="p">)</span> <span class="c1">; remapped `describe-mode&#39;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;s&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-quicksort</span><span class="p">)</span>    <span class="c1">; remapped `dired-sort-toggle-or-edit&#39;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;v&#34;</span>   <span class="o">.</span> <span class="nv">dirvish-vc-menu</span><span class="p">)</span>      <span class="c1">; remapped `dired-view-file&#39;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;TAB&#34;</span> <span class="o">.</span> <span class="nv">dirvish-subtree-toggle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-f&#34;</span> <span class="o">.</span> <span class="nv">dirvish-history-go-forward</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-b&#34;</span> <span class="o">.</span> <span class="nv">dirvish-history-go-backward</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-l&#34;</span> <span class="o">.</span> <span class="nv">dirvish-ls-switches-menu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-m&#34;</span> <span class="o">.</span> <span class="nv">dirvish-mark-menu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-t&#34;</span> <span class="o">.</span> <span class="nv">dirvish-layout-toggle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-s&#34;</span> <span class="o">.</span> <span class="nv">dirvish-setup-menu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-e&#34;</span> <span class="o">.</span> <span class="nv">dirvish-emerge-menu</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;M-j&#34;</span> <span class="o">.</span> <span class="nv">dirvish-fd-jump</span><span class="p">)))</span>
+</span></span></code></pre></div><h3 id="backups-recovery-recent-files">Backups / Recovery / Recent files</h3>
+<p>Most of my projects are under git control, but still we need a way to ensure local backups
+in case something goes wrong locally before pushing changes to the remote. By default,
+Emacs makes backups in the working directory, but that creates some serious clutter. So, I
+prefer to store then in one place.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">backup-by-copying</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">backup-directory-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;.&#34;</span> <span class="o">.</span> <span class="s">&#34;~/.emacs.d/backups&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">delete-old-versions</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">version-control</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">create-lockfiles</span> <span class="no">nil</span><span class="p">)</span>
+</span></span></code></pre></div><p><code>recentf</code> is a minor mode in Emacs that creates a list of recently visited files.
+Completion frontend such as Ivy can then use this list to present to the user. I exclude
+some files I certainly never want to revisit, and also set the maximum number of saved
+items to 500.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">recentf</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">recentf-exclude</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;COMMIT_MSG&#34;</span> <span class="s">&#34;COMMIT_EDITMSG&#34;</span> <span class="s">&#34;github.*txt$&#34;</span>
+</span></span><span class="line"><span class="cl">                          <span class="s">&#34;[0-9a-f]\\{32\\}-[0-9a-f]\\{32\\}\\.org&#34;</span>
+</span></span><span class="line"><span class="cl">                          <span class="s">&#34;.*png$&#34;</span> <span class="s">&#34;.*cache$&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">recentf-max-saved-items</span> <span class="mi">500</span><span class="p">))</span>
+</span></span></code></pre></div><p>Finally, we use the minor save-place-mode to save place in each file, which is rather
+handy upon revisiting files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">save-place-mode</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="tramp">Tramp</h3>
+<p>Tramp is great for working on remote files. The config is simple:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">tramp</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:ensure</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">tramp-default-user</span> <span class="s">&#34;folgertk&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">tramp-default-method</span> <span class="s">&#34;ssh&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">use-package</span> <span class="nv">counsel-tramp</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">:bind</span> <span class="p">(</span><span class="s">&#34;C-c t&#34;</span> <span class="o">.</span> <span class="nv">counsel-tramp</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">put</span> <span class="ss">&#39;temporary-file-directory</span> <span class="ss">&#39;standard-value</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;/tmp&#34;</span><span class="p">)))</span>
+</span></span></code></pre></div><h2 id="project-management">Project Management</h2>
+<p>For project management, I use Projectile. This project interaction library provides all
+kinds of nice features that operate on the project level.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">projectile</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:diminish</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">projectile-completion-system</span> <span class="ss">&#39;ivy</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">projectile-switch-project-action</span> <span class="nf">#&#39;</span><span class="nv">projectile-dired</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">(</span><span class="nb">:map</span> <span class="nv">projectile-mode-map</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="s">&#34;C-c p&#34;</span> <span class="o">.</span> <span class="nv">projectile-command-map</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span> <span class="p">(</span><span class="nv">projectile-mode</span> <span class="mi">+1</span><span class="p">))</span>
+</span></span></code></pre></div><p>Projectile is integrated with counsel through <code>counsel-projectile</code>. All projects are
+opened in dedicated tabs.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">projectile-name-tab-by-project-name-or-default</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">project-name</span> <span class="p">(</span><span class="nv">projectile-project-name</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">string=</span> <span class="s">&#34;-&#34;</span> <span class="nv">project-name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-tab-name-current</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">project-name</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">tab-bar-tab-name-function</span> <span class="nf">#&#39;</span><span class="nv">projectile-name-tab-by-project-name-or-default</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">counsel-projectile-switch-project-action-dired-new-tab</span> <span class="p">(</span><span class="nv">project</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">project-name</span> <span class="p">(</span><span class="nf">file-name-nondirectory</span> <span class="p">(</span><span class="nf">directory-file-name</span> <span class="nv">project</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">tab-bar-index</span> <span class="p">(</span><span class="nv">tab-bar--tab-index-by-name</span> <span class="nv">project-name</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="nv">tab-bar-index</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-select-tab</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">tab-bar-index</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-new-tab</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">projectile-switch-project-action</span> <span class="ss">&#39;projectile-dired</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">counsel-projectile-switch-project-by-name</span> <span class="nv">project</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">dirvish-side</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">projectile-kill-buffers-and-enclosing-tab</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">project-name</span> <span class="p">(</span><span class="nv">projectile-project-name</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">tab-bar-index</span> <span class="p">(</span><span class="nv">tab-bar--tab-index-by-name</span> <span class="nv">project-name</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">when</span> <span class="nv">tab-bar-index</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">projectile-kill-buffers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">tab-bar-switch-to-recent-tab</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">tab-bar-close-tab</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">tab-bar-index</span> <span class="mi">1</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">counsel-projectile</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">projectile</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span> <span class="p">(</span><span class="nv">counsel-projectile-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; I want projectile to open dired upon selecting a project.</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">counsel-projectile-modify-action</span>
+</span></span><span class="line"><span class="cl">   <span class="ss">&#39;counsel-projectile-switch-project-action</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&#39;</span><span class="p">((</span><span class="nv">add</span> <span class="p">(</span><span class="s">&#34;T&#34;</span> <span class="nv">counsel-projectile-switch-project-action-dired-new-tab</span> <span class="s">&#34;open in new tab&#34;</span><span class="p">)</span> <span class="mi">1</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">(</span><span class="nb">:map</span> <span class="nv">projectile-mode-map</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="s">&#34;C-c p k&#34;</span> <span class="o">.</span> <span class="nv">projectile-kill-buffers-and-enclosing-tab</span><span class="p">)))</span>
+</span></span></code></pre></div><h2 id="git">Git</h2>
+<p>Magit &ndash; A Git Porcelain inside Emacs is <em>the</em> git interface for Emacs. There&rsquo;s simply no
+way to describe just how good this is. It&rsquo;s one of a kind and of those packages that makes
+me want to stick with Emacs. Customization isn&rsquo;t really necessary, except perhaps for some
+keybindings:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">magit</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">magit-git-executable</span> <span class="s">&#34;/usr/bin/git&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;C-x g&#34;</span> <span class="o">.</span> <span class="nv">magit-status</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c M-g&#34;</span> <span class="o">.</span> <span class="nv">magit-file-popup</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Keep you git repositories clean! The package <code>gitignore-templates</code> is a great help to do that.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">gitignore-templates</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="writing">Writing</h2>
+<h3 id="org-mode">Org mode</h3>
+<p>Org mode is one of the main reasons I use Emacs. Org is a mode in which I take notes of
+articles and meetings, write blogs, keep bookmarks, organize all my appointments in it,
+develop a backlog and project schedule and all sorts of other things. For a scientific
+researcher, org-mode is the best piece of software available because you can configure
+everything, but really everything, to fit your workflow exactly. Some people think that is
+also a risk of org-mode and Emacs in general. But I think adaptability and flexibility are
+crucial since your workflow always changes a little bit. Emacs and Org-mode make it
+possible to customize my academic toolbox exactly to my needs. My configuration for
+Org-mode is quite extensive. I will first discuss a set of general settings. Then I&rsquo;ll
+cover my calendar setup and my org-roam settings.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org</span> <span class="nb">:ensure</span> <span class="nv">org-contrib</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="agenda">Agenda</h4>
+<p>My org agenda consists of entries spread across five documents. In <code>inbox.org</code> I keep all
+my unctegorized to-do&rsquo;s, notes and thoughts. By temporarily storing all new entries in an
+inbox, I limit the time I&rsquo;m distracted. In <code>agenda.org</code> I keep all the appointments,
+meetings, zoom-calls, lectures and so on. I usually do not put todo&rsquo;s here, just entries
+that are scheduled for a particular day or time. In <code>projects.org</code> I keep a backlog of all
+the projects I am working on. In <code>habits.org</code> I keep a number of habits, such as going to
+exercise, watering the plants, and whether I need a haircut again 🙃. Finally, in
+<code>readlist.org</code> I keep a list of links to articles in Zotero that I still want to read.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defvar</span> <span class="nv">my-agenda-files</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;inbox.org&#34;</span> <span class="s">&#34;projects.org&#34;</span> <span class="s">&#34;habits.org&#34;</span> <span class="s">&#34;agenda.org&#34;</span> <span class="s">&#34;leeslijst.org&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-directory</span> <span class="s">&#34;~/org&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-files</span> <span class="p">(</span><span class="nf">mapcar</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">f</span><span class="p">)</span> <span class="p">(</span><span class="nf">concat</span> <span class="p">(</span><span class="nf">file-name-as-directory</span> <span class="nv">org-directory</span><span class="p">)</span> <span class="nv">f</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="nv">my-agenda-files</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-default-notes-file</span> <span class="p">(</span><span class="nf">concat</span> <span class="p">(</span><span class="nf">file-name-as-directory</span> <span class="nv">org-directory</span><span class="p">)</span> <span class="s">&#34;notes.org&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><p>Crucial to my workflow is org-mode&rsquo;s &ldquo;refiling&rdquo; functionality. Refiling means moving
+entries or nodes to specific locations in other files. This is quite handy when moving all
+entries collected in my inbox to the appropriate locations. I usually refile entries to
+one of the projects in <code>projects.org</code>. Each project therein has two main sections, &ldquo;notes&rdquo;
+and &ldquo;tasks.&rdquo; To quickly move entries to these two sections, I modify the variable
+<code>org-refile-targets</code> below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">mapc</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">setf</span> <span class="p">(</span><span class="nv">alist-get</span> <span class="nv">item</span> <span class="nv">ivy-initial-inputs-alist</span><span class="p">)</span> <span class="s">&#34;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&#39;</span><span class="p">(</span><span class="nv">org-refile</span> <span class="nv">org-agenda-refile</span> <span class="nv">org-capture-refile</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-refile-use-outline-path</span> <span class="ss">&#39;file</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-outline-path-complete-in-steps</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-refile-allow-creating-parent-nodes</span> <span class="ss">&#39;confirm</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-refile-targets</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">org-agenda-files</span> <span class="nb">:maxlevel</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-refile-targets</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;projects.org&#34;</span> <span class="nb">:regexp</span> <span class="o">.</span> <span class="s">&#34;\\(?:\\(?:Note\\|Task\\)s\\)&#34;</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Todo&rsquo;s can be in two stages: done or not. When not, they are given the keyword &ldquo;TODO.&rdquo; If
+I am waiting for input from someone else or for some other reason can&rsquo;t continue working
+on a todo, then I set the entry to &ldquo;WAITING&rdquo;. When todo&rsquo;s are done I set them to &ldquo;DONE&rdquo;,
+and if I don&rsquo;t continue working on them for some reason, I set the keyword to &ldquo;CANCELLED&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-todo-keywords</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">sequence</span> <span class="s">&#34;TODO&#34;</span> <span class="s">&#34;WAITING&#34;</span> <span class="s">&#34;|&#34;</span> <span class="s">&#34;DONE&#34;</span> <span class="s">&#34;CANCELLED&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-enforce-todo-dependencies</span> <span class="no">t</span><span class="p">)</span>
+</span></span></code></pre></div><p>For making reports, I like to log when I completed a todo. I store that information in
+org-mode drawers.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-log-done</span> <span class="ss">&#39;time</span>  <span class="c1">; when marking a todo as done, at the time</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-log-into-drawer</span> <span class="no">t</span><span class="p">)</span>  <span class="c1">; log into drawers right underneath the heading</span>
+</span></span></code></pre></div><p>Like &ldquo;refiling,&rdquo; Org-mode&rsquo;s &ldquo;capture&rdquo; functionality allows me to quickly save notes and
+thoughts without being distracted for too long. Org capture works with templates that
+allow different types of capture items to be quickly park. Below I define four of them.
+The first is for new todo items, which automatically land in my inbox. The second is for
+appointments. Captured appointments are automatically placed in the calendar under &ldquo;future
+appointments.&rdquo; Then there is a template for adding items to my reading list, and finally a
+template for notes that also end up in my inbox.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-capture-templates</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;t&#34;</span> <span class="s">&#34;Todo&#34;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nv">file+headline</span> <span class="s">&#34;~/org/inbox.org&#34;</span> <span class="s">&#34;Tasks&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="s">&#34;* TODO %^{Todo} %^G \n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%?&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">:empty-lines</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="s">&#34;m&#34;</span> <span class="s">&#34;Meeting&#34;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nv">file+headline</span> <span class="s">&#34;~/org/agenda.org&#34;</span> <span class="s">&#34;Toekomstig&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="s">&#34;* %^{Description} :meeting:\n%^t&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">:empty-lines</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="s">&#34;r&#34;</span> <span class="s">&#34;Read&#34;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nv">file+headline</span> <span class="s">&#34;~/org/leeslijst.org&#34;</span> <span class="s">&#34;Articles&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="s">&#34;* TODO %c \n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%?&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">:empty-lines</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="s">&#34;n&#34;</span> <span class="s">&#34;Note&#34;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nv">file+headline</span> <span class="s">&#34;~/org/inbox.org&#34;</span> <span class="s">&#34;Notes&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="s">&#34;* %^{Title} %^G \n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%?&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">:empty-lines</span> <span class="mi">1</span><span class="p">)))</span>
+</span></span></code></pre></div><p>For replying to email I also made a template. For this but I use the package
+<code>org-mac-link</code>, which provides functionality to link to text in applications outside of
+Emacs, such as the Address Book, Firefox, Safari, Finder, and to Mail. The ability to link
+to Mail is particularly useful. It works as follows. All mails in Mail have a unique
+message ID. That ID remains the same when the mail is moved to another folder. By linking
+to a mail&rsquo;s ID, I can easily record notes or todo&rsquo;s for emails.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="p">(</span><span class="nf">expand-file-name</span> <span class="s">&#34;org-mac-link&#34;</span> <span class="s">&#34;~/.emacs.d/gitrepos&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;org-mac-link</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-mode-hook</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">define-key</span> <span class="nv">org-mode-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-c g&#34;</span><span class="p">)</span> <span class="ss">&#39;org-mac-link-get-link</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">org-add-link-type</span> <span class="s">&#34;message&#34;</span> <span class="ss">&#39;org-mac-message-open</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-mac-message-open</span> <span class="p">(</span><span class="nv">message-id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Visit the message with MESSAGE-ID.
+</span></span></span><span class="line"><span class="cl"><span class="s">   This will use the command </span><span class="ss">`open&#39;</span><span class="s"> with the message URL.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">browse-url</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;message://%3c&#34;</span> <span class="p">(</span><span class="nf">substring</span> <span class="nv">message-id</span> <span class="mi">2</span><span class="p">)</span> <span class="s">&#34;%3e&#34;</span><span class="p">)))</span>
+</span></span></code></pre></div><p>The corresponding capture template is as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-capture-template</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">append</span> <span class="nv">org-capture-templates</span>
+</span></span><span class="line"><span class="cl">              <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;e&#34;</span> <span class="s">&#34;Mail&#34;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nv">file+headline</span> <span class="s">&#34;~/org/inbox.org&#34;</span> <span class="s">&#34;Mail&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="s">&#34;* TODO  %(org-mac-message-get-links \&#34;s\&#34;) %^g \n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%?&#34;</span>
+</span></span><span class="line"><span class="cl">                 <span class="nb">:empty-lines</span> <span class="mi">1</span><span class="p">))))</span>
+</span></span></code></pre></div><p>The final capture template is for storing bookmarks. I keep links to interesting web pages
+in a file called <code>bookmarks.org</code>. I use <code>org-cliplink</code> to copy URLs from the clipboard to
+a file. The nice thing about this packages is that it automatically uses the title of the
+website for displaying the link.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-capture-template</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">append</span> <span class="nv">org-capture-templates</span>
+</span></span><span class="line"><span class="cl">              <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;l&#34;</span> <span class="s">&#34;Link&#34;</span> <span class="nv">entry</span> <span class="p">(</span><span class="nv">file+headline</span> <span class="s">&#34;~/org/bookmarks.org&#34;</span> <span class="s">&#34;Bookmarks&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="s">&#34;* %(org-cliplink-capture) %^g \n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%?&#34;</span>
+</span></span><span class="line"><span class="cl">                 <span class="nb">:empty-lines</span> <span class="mi">1</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-cliplink</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span>
+</span></span></code></pre></div><p>Org&rsquo;s Agenda mode aggregates all TODO&rsquo;s and scheduled items from the different agenda
+files and presents them in a nice overview. To easily customize this overview, I use the
+<code>org-super-agenda</code> package, which allows you to group TODOs on all kinds of criteria.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-super-agenda</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">org</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">use-package</span> <span class="nv">origami</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">:bind</span> <span class="p">(</span><span class="nb">:map</span> <span class="nv">org-super-agenda-header-map</span> <span class="p">(</span><span class="s">&#34;&lt;tab&gt;&#34;</span> <span class="o">.</span> <span class="nv">origami-toggle-node</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">:hook</span> <span class="p">(</span><span class="nv">org-agenda-mode</span> <span class="o">.</span> <span class="nv">origami-mode</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-agenda-mode-hook</span> <span class="ss">&#39;org-super-agenda-mode</span><span class="p">)</span>
+</span></span></code></pre></div><p>Below are some preferences for Org&rsquo;s agenda:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-search-view-always-boolean</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-block-separator</span> <span class="p">(</span><span class="nf">propertize</span>
+</span></span><span class="line"><span class="cl">                                  <span class="p">(</span><span class="nf">make-string</span> <span class="p">(</span><span class="nv">frame-width</span><span class="p">)</span> <span class="sc">?\u</span><span class="mi">2594</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                  <span class="ss">&#39;face</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">:foreground</span> <span class="s">&#34;grey38&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-super-agenda-header-separator</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-habit-show-habits-only-for-today</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-restore-windows-after-quit</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-show-future-repeats</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-deadline-warning-days</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-window-setup</span> <span class="ss">&#39;current</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-span</span> <span class="ss">&#39;day</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-start-on-weekday</span> <span class="mi">1</span> <span class="c1">;; nil</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-skip-deadline-prewarning-if-scheduled</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-skip-scheduled-if-done</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-skip-deadline-if-done</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-format-date</span> <span class="s">&#34;\n%A, %-e %B %Y&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-agenda-dim-blocked-tasks</span> <span class="no">t</span><span class="p">)</span>
+</span></span></code></pre></div><figure><img src="/ox-hugo/2022-12-24_16-59-13_Screenshot%202022-12-24%20at%2016.45.08.png">
+</figure>
+
+<p>My agenda view consist of three windows, which are displayed in a dedicated tab. The first
+presents the agenda of the current day. The second displays my project backlog, including
+TODOs temporarily stored in my Inbox, as well as articles I want to read. These different
+views are stored in the variable <code>org-agenda-custom-commands</code>. First, we add a view for my
+daily tasks:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-custom-commands</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;d&#34;</span> <span class="s">&#34;Dagelijkse Takenlijst&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="p">((</span><span class="nv">agenda</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">((</span><span class="nv">org-agenda-overriding-header</span> <span class="s">&#34; Planner&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="nv">org-agenda-prefix-format</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">agenda</span> <span class="o">.</span> <span class="s">&#34; %?-12t&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="nv">org-agenda-span</span> <span class="ss">&#39;day</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="nv">org-deadline-warning-days</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">(</span><span class="nv">org-super-agenda-groups</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">&#39;</span><span class="p">((</span><span class="nb">:name</span> <span class="s">&#34;&#34;</span> <span class="nb">:time-grid</span> <span class="no">t</span> <span class="nb">:scheduled</span> <span class="no">t</span> <span class="nb">:deadline</span> <span class="no">t</span> <span class="nb">:category</span> <span class="s">&#34;verjaardag&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                      <span class="p">(</span><span class="nb">:discard</span> <span class="p">(</span><span class="nb">:anything</span> <span class="no">t</span><span class="p">))))))))))</span>
+</span></span></code></pre></div><p>Next, we define the project backlog view. The view consist of three sections: one for
+unsorted TODOs in the inbox, one with all project TODOs grouped by category (which
+coincides with the project name in my case), and a final section with articles I plan to
+read.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">org-super-agenda--def-auto-group</span> <span class="nv">category</span> <span class="s">&#34;their org-category property&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:key-form</span> <span class="p">(</span><span class="nv">org-super-agenda--when-with-marker-buffer</span> <span class="p">(</span><span class="nv">org-super-agenda--get-marker</span> <span class="nv">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="p">(</span><span class="nv">org-get-category</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:header-form</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34; &#34;</span> <span class="nv">key</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-custom-commands</span> <span class="p">(</span><span class="nf">append</span> <span class="nv">org-agenda-custom-commands</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;p&#34;</span> <span class="s">&#34;Project backlog&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">((</span><span class="nv">todo</span> <span class="s">&#34;TODO|NEXT|WAITING|HOLD&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">((</span><span class="nv">org-agenda-overriding-header</span> <span class="s">&#34; Inbox\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">org-agenda-prefix-format</span> <span class="s">&#34;  &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">org-agenda-files</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;~/org/inbox.org&#34;</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">todo</span> <span class="s">&#34;TODO|NEXT|WAITING|HOLD&#34;</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">((</span><span class="nv">org-agenda-overriding-header</span> <span class="s">&#34; Project TODOs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">org-agenda-prefix-format</span> <span class="s">&#34;  &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="nv">org-agenda-files</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;~/org/projects.org&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">(</span><span class="nv">org-super-agenda-groups</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">&#39;</span><span class="p">((</span><span class="nb">:discard</span> <span class="p">(</span><span class="nb">:scheduled</span> <span class="no">t</span> <span class="nb">:date</span> <span class="no">t</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nb">:auto-category</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nb">:discard</span> <span class="p">(</span><span class="nb">:anything</span> <span class="no">t</span><span class="p">))))))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">todo</span> <span class="s">&#34;TODO|NEXT&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">((</span><span class="nv">org-agenda-overriding-header</span> <span class="s">&#34; Reading List&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">org-agenda-prefix-format</span> <span class="s">&#34;  &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">org-agenda-files</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;~/org/leeslijst.org&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">org-super-agenda-groups</span>
+</span></span><span class="line"><span class="cl">                  <span class="o">&#39;</span><span class="p">((</span><span class="nb">:discard</span> <span class="p">(</span><span class="nb">:scheduled</span> <span class="no">t</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">(</span><span class="nb">:name</span> <span class="s">&#34; Priority A reading&#34;</span> <span class="nb">:priority</span> <span class="s">&#34;A&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">(</span><span class="nb">:name</span> <span class="s">&#34; Priority B reading&#34;</span> <span class="nb">:priority</span> <span class="s">&#34;B&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">(</span><span class="nb">:name</span> <span class="s">&#34; Priority C reading&#34;</span> <span class="nb">:priority</span> <span class="s">&#34;C&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="p">(</span><span class="nb">:discard</span> <span class="p">(</span><span class="nb">:anything</span> <span class="no">t</span><span class="p">)))))))))))</span>
+</span></span></code></pre></div><p>The final view, then, is used to present a weekly overview of completed tasks.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">format-closed-query</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;+TODO=\&#34;DONE\&#34;+CLOSED&gt;=\&#34;&lt;-%sd&gt;\&#34;&#34;</span> <span class="p">(</span><span class="nf">read-string</span> <span class="s">&#34;Number of days: &#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-custom-commands</span> <span class="p">(</span><span class="nf">append</span> <span class="nv">org-agenda-custom-commands</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;w&#34;</span> <span class="s">&#34;Weekly review&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="p">((</span><span class="nv">tags</span> <span class="p">(</span><span class="nv">format-closed-query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">((</span><span class="nv">org-agenda-overriding-header</span> <span class="s">&#34;Overview of DONE tasks&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">(</span><span class="nv">org-agenda-archives-mode</span> <span class="no">t</span><span class="p">))))))))</span>
+</span></span></code></pre></div><p>The third and final window displays a calendar view. Currently I use calfw and calfw-org
+which displays all my TODOs in a calendar view much like those you find in popular
+calendar apps.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="c1">;; Functions to keep calendar in sight when working on the agenda</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">fk-window-displaying-agenda-p</span> <span class="p">(</span><span class="nv">window</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">equal</span> <span class="p">(</span><span class="nb">with-current-buffer</span> <span class="p">(</span><span class="nf">window-buffer</span> <span class="nv">window</span><span class="p">)</span> <span class="nv">major-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="ss">&#39;org-agenda-mode</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">fk-position-calendar-buffer</span> <span class="p">(</span><span class="nv">buffer</span> <span class="nv">alist</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">agenda-window</span> <span class="p">(</span><span class="nf">car</span> <span class="p">(</span><span class="nv">remove-if-not</span> <span class="nf">#&#39;</span><span class="nv">fk-window-displaying-agenda-p</span> <span class="p">(</span><span class="nf">window-list</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">when</span> <span class="nv">agenda-window</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">not</span> <span class="p">(</span><span class="nf">get-buffer-window</span> <span class="s">&#34;*Calendar*&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">desired-window</span> <span class="p">(</span><span class="nv">split-window</span> <span class="nv">agenda-window</span> <span class="no">nil</span> <span class="ss">&#39;below</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nf">set-window-buffer</span> <span class="nv">desired-window</span> <span class="nv">buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">desired-window</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;display-buffer-alist</span> <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;\\*Calendar\\*&#34;</span> <span class="p">(</span><span class="nf">cons</span> <span class="nf">#&#39;</span><span class="nv">fk-position-calendar-buffer</span> <span class="no">nil</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">calfw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">calfw-org</span><span class="p">)</span>
+</span></span></code></pre></div><p>The following functions create this custom view:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">side-by-side-agenda-view</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">org-agenda</span> <span class="no">nil</span> <span class="s">&#34;a&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">split-window-right</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">org-agenda-redo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">split-window-below</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">other-window</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">cfw:open-org-calendar</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-sticky</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">other-window</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">org-agenda</span> <span class="no">nil</span> <span class="s">&#34;p&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-agenda-sticky</span> <span class="no">nil</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">show-my-agenda</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">tab-bar-index</span> <span class="p">(</span><span class="nv">tab-bar--tab-index-by-name</span> <span class="s">&#34;Agenda&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="nv">tab-bar-index</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-select-tab</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">tab-bar-index</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-new-tab</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-rename-tab</span> <span class="s">&#34;Agenda&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">side-by-side-agenda-view</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Agenda loaded&#34;</span><span class="p">)))))</span>
+</span></span></code></pre></div><h4 id="org-roam">Org Roam</h4>
+<p>I use Org Roam for note keeping. Org Roam is much like Roam research, Obsidian, and other
+tools for so-called `networked thought&rsquo;. Org Roam provides a simple system to connect
+files with links and backlinks, thus forming a graph or network of all your notes. I
+mainly use it for research, and sometimes publish seperate notebooks on my website.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-roam</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-roam-v2-ack</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">after-init</span> <span class="o">.</span> <span class="nv">org-roam-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:custom</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">org-roam-directory</span> <span class="p">(</span><span class="nv">file-truename</span> <span class="s">&#34;~/kaartenbak&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">((</span><span class="s">&#34;C-c o l&#34;</span> <span class="o">.</span> <span class="nv">org-roam-buffer-toggle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c o f&#34;</span> <span class="o">.</span> <span class="nv">org-roam-node-find</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c o g&#34;</span> <span class="o">.</span> <span class="nv">org-roam-graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c o i&#34;</span> <span class="o">.</span> <span class="nv">org-roam-node-insert</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c o c&#34;</span> <span class="o">.</span> <span class="nv">org-roam-capture</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">;; Dailies</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;C-c o j&#34;</span> <span class="o">.</span> <span class="nv">org-roam-dailies-capture-today</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">org-roam-setup</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-roam-db-gc-threshold</span> <span class="p">(</span><span class="nf">*</span> <span class="mi">10</span> <span class="mi">1024</span> <span class="mi">1024</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; If using org-roam-protocol</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;org-roam-protocol</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;org-roam-export</span><span class="p">)</span> <span class="c1">;; check whether this helps exporting</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-roam-dailies-directory</span> <span class="s">&#34;daily/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-roam-dailies-capture-templates</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;d&#34;</span> <span class="s">&#34;default&#34;</span> <span class="nv">entry</span>
+</span></span><span class="line"><span class="cl">         <span class="s">&#34;* %?&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">:if-new</span> <span class="p">(</span><span class="nv">file+head</span> <span class="s">&#34;%&lt;%Y-%m-%d&gt;.org&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="s">&#34;#+title: %&lt;%Y-%m-%d&gt;\n&#34;</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-roam-bibtex</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span> <span class="p">(</span><span class="nv">org-roam-mode</span> <span class="o">.</span> <span class="nv">org-roam-bibtex-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">org-roam</span><span class="p">)</span>
+</span></span></code></pre></div><p>Org Roam already provides good text-based visualizations of the network, but sometimes
+it&rsquo;s nice to actually browse the network in a visual graph. The package org-roam-ui gives
+you a way to browse the network in an interactive graph which is rendered in the browser.
+It&rsquo;s quite useful, and often helps remembering certain relationships between notes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-roam-ui</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">org-roam</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-roam-ui-sync-theme</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">org-roam-ui-follow</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">org-roam-ui-update-on-save</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">org-roam-ui-browser-function</span> <span class="nf">#&#39;</span><span class="nv">browse-url-chromium</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">org-roam-ui-open-on-start</span> <span class="no">nil</span><span class="p">))</span>
+</span></span></code></pre></div><p>Here&rsquo;s a picture of the network:</p>
+<figure><img src="/ox-hugo/2022-12-24_16-40-43_Screenshot%202022-12-24%20at%2016.40.27.png">
+</figure>
+
+<p>The starting point of my org roam is a slipbox (kaartenbak), which I open in a new
+dedicated tab with the following utility function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">open-kaartenbak</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">tab-bar-index</span> <span class="p">(</span><span class="nv">tab-bar--tab-index-by-name</span> <span class="s">&#34;Kaartenbak&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="nv">tab-bar-index</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-switch-to-tab</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">tab-bar-index</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-new-tab</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-rename-tab</span> <span class="s">&#34;Kaartenbak&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">find-file</span> <span class="s">&#34;~/kaartenbak/20210727213932-kaartenbak.org&#34;</span><span class="p">)))))</span>
+</span></span></code></pre></div><h4 id="uncategorized-settings">Uncategorized settings</h4>
+<p>Below are some tweaks to make editing org files a little more enjoyable to make.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">org-use-speed-commands</span> <span class="no">t</span>  <span class="c1">; set to true for navigation with shortcuts</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-image-actual-width</span> <span class="p">(</span><span class="nf">list</span> <span class="mi">550</span><span class="p">)</span> <span class="c1">; resize the width of images</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-format-latex-options</span> <span class="p">(</span><span class="nf">plist-put</span> <span class="nv">org-format-latex-options</span> <span class="nb">:scale</span> <span class="mf">1.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-src-fontify-natively</span> <span class="no">t</span>  <span class="c1">; use auctex for formatting latex in org</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-hide-leading-stars</span> <span class="no">nil</span>  <span class="c1">; Show all stars of headers</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-adapt-indentation</span> <span class="no">nil</span>   <span class="c1">; Don&#39;t indent subsections (helps org-babel code blocks)</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-cite-global-bibliography</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;~/org/bib.bib&#34;</span><span class="p">)</span>  <span class="c1">; for citing references</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-latex-create-formula-image-program</span> <span class="ss">&#39;dvisvgm</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-latex-default-class</span> <span class="s">&#34;tufte-handout&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">org-highlight-latex-and-related</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">native</span><span class="p">))</span>
+</span></span></code></pre></div><p>Org-download is a convenient package for adding images or information from websites to org
+documents.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">org-download</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="blogging">Blogging</h3>
+<p>My <a href="https://www.karsdorp.io">website</a> is built with <a href="https://gohugo.io/">Hugo</a>, a popular static site generator. The package ox-hugo
+provides a convenient bridge between my prefered writing system, org-mode and Hugo. It
+allows me to export notes in roam or basically any note I want to my website.
+Configuration is straightforward:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-hugo</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;oc-csl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-hugo-base-dir</span> <span class="s">&#34;~/local/folgertk/&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-hugo--preprocess-buffer</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-hugo-auto-set-lastmod</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-cite-csl-styles-dir</span> <span class="s">&#34;~/Zotero/styles&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-cite-export-processors</span> <span class="o">&#39;</span><span class="p">((</span><span class="no">t</span> <span class="nv">csl</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">ox</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="latex">LaTeX</h3>
+<p>Auctex is the go-to package for LaTeX editing in Emacs. It&rsquo;s been there for a while. It&rsquo;s
+reliable, flexible, and doesn&rsquo;t get in your way.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">tex</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:ensure</span> <span class="nv">auctex</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">TeX-auto-save</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">TeX-parse-self</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">TeX-PDF-mode</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">;; Don&#39;t insert line-break at inline math</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">LaTeX-fill-break-at-separators</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">TeX-view-program-list</span>
+</span></span><span class="line"><span class="cl">          <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;Preview.app&#34;</span> <span class="s">&#34;open -a Preview.app %o&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="s">&#34;Skim&#34;</span> <span class="s">&#34;open -a Skim.app %o&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="s">&#34;displayline&#34;</span> <span class="s">&#34;displayline -g -b %n %o %b&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="s">&#34;open&#34;</span> <span class="s">&#34;open %o&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="nv">TeX-view-program-selection</span>
+</span></span><span class="line"><span class="cl">          <span class="o">&#39;</span><span class="p">((</span><span class="nv">output-dvi</span> <span class="s">&#34;open&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nv">output-pdf</span> <span class="s">&#34;Skim&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nv">output-html</span> <span class="s">&#34;open&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;TeX-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">turn-on-reftex</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">bind-key</span> <span class="s">&#34;C-c h l&#34;</span> <span class="ss">&#39;hydra-langtool/body</span> <span class="nv">TeX-mode-map</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">company-auctex-init</span><span class="p">))</span>
+</span></span></code></pre></div><p><code>ox-latex</code> is used for exporting org documents to LaTeX. Here I add some customization to
+export with Tufte Handout by default and add the LaTeX <code>minted</code> package for exporting
+blocks of code.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ox-latex</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:ensure</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;org-latex-packages-alist</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;&#34;</span> <span class="s">&#34;minted&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-latex-listings</span> <span class="ss">&#39;minted</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-latex-pdf-process</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="s">&#34;pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="s">&#34;pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;org-latex-classes</span>
+</span></span><span class="line"><span class="cl">             <span class="o">&#39;</span><span class="p">(</span><span class="s">&#34;tufte-handout&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="s">&#34;\\documentclass{tufte-handout}&#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="s">&#34;\\section{%s}&#34;</span> <span class="o">.</span> <span class="s">&#34;\\section*{%s}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="s">&#34;\\subsection{%s}&#34;</span> <span class="o">.</span> <span class="s">&#34;\\subsection*{%s}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="s">&#34;\\subsubsection{%s}&#34;</span> <span class="o">.</span> <span class="s">&#34;\\subsubsection*{%s}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="s">&#34;\\paragraph{%s}&#34;</span> <span class="o">.</span> <span class="s">&#34;\\paragraph*{%s}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">               <span class="p">(</span><span class="s">&#34;\\subparagraph{%s}&#34;</span> <span class="o">.</span> <span class="s">&#34;\\subparagraph*{%s}&#34;</span><span class="p">))))</span>
+</span></span></code></pre></div><h3 id="bibliography-management">Bibliography management</h3>
+<p>BibTeX support comes from the <code>bibtex</code> package. No special customization:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">bibtex</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:mode</span> <span class="p">((</span><span class="s">&#34;\\.bib\\&#39;&#34;</span> <span class="o">.</span> <span class="nv">bibtex-mode</span><span class="p">)))</span>
+</span></span></code></pre></div><figure><img src="/ox-hugo/2022-12-23_09-37-53_Screenshot%202022-12-23%20at%2009.37.23.png">
+</figure>
+
+<p>Ivy-BibTeX is an extension to Ivy that allows you to search a BibTeX bibliography. Since
+it is based on Ivy, it has advanced search capabilities enabling you to find what you are
+looking for very quickly. The package is integrated with the different writing modes of
+Emacs, such as Markdown, LaTeX and Orgmode. It works on the basis of a .bib file. I use
+the bibliography manager Zotero to make one. Zotero&rsquo;s &ldquo;better bibtex&rdquo; plugin monitors
+changes in the bibliographic database and automatically exports a new version of the
+BibTeX file if there are any changes. Here is the complete configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ivy-bibtex</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind*</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;C-c C-r&#34;</span> <span class="o">.</span> <span class="nv">ivy-bibtex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">bibtex-completion-bibliography</span> <span class="s">&#34;~/org/bib.bib&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">bibtex-completion-pdf-field</span> <span class="s">&#34;File&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">bibtex-completion-pdf-open-function</span> <span class="ss">&#39;bibtex-pdf-open-function</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">ivy-bibtex-default-action</span> <span class="nf">#&#39;</span><span class="nv">ivy-bibtex-insert-citation</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">bibtex-completion-display-formats</span> <span class="o">&#39;</span><span class="p">((</span><span class="no">t</span> <span class="o">.</span> <span class="s">&#34;${author:36} ${title:*} ${year:4} ${=type=:7}&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">bibtex-completion-format-citation-functions</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&#39;</span><span class="p">((</span><span class="nv">org-mode</span>      <span class="o">.</span> <span class="nv">bibtex-completion-format-citation-org-cite</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">latex-mode</span>    <span class="o">.</span> <span class="nv">bibtex-completion-format-citation-cite</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">markdown-mode</span> <span class="o">.</span> <span class="nv">bibtex-completion-format-citation-pandoc-citeproc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">default</span>       <span class="o">.</span> <span class="nv">bibtex-completion-format-citation-default</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">ivy-bibtex-ivify-action</span> <span class="nv">add-to-reading-list</span> <span class="nv">ivy-bibtex-add-to-reading-list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">ivy-bibtex-ivify-action</span> <span class="nv">show-pdf-in-finder</span> <span class="nv">ivy-bibtex-show-pdf-in-finder</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">ivy-bibtex-ivify-action</span> <span class="nv">read-on-remarkable</span> <span class="nv">ivy-bibtex-read-on-remarkable</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">ivy-add-actions</span> <span class="ss">&#39;ivy-bibtex</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;R&#34;</span> <span class="nv">ivy-bibtex-add-to-reading-list</span> <span class="s">&#34;add to reading list&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">ivy-add-actions</span> <span class="ss">&#39;ivy-bibtex</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;F&#34;</span> <span class="nv">ivy-bibtex-show-pdf-in-finder</span> <span class="s">&#34;show in finder&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">ivy-add-actions</span> <span class="ss">&#39;ivy-bibtex</span> <span class="o">&#39;</span><span class="p">((</span><span class="s">&#34;M&#34;</span> <span class="nv">ivy-bibtex-read-on-remarkable</span> <span class="s">&#34;read on remarkable&#34;</span><span class="p">))))</span>
+</span></span></code></pre></div><p>I added some &ldquo;actions&rdquo; to those that ivy-bibtex itself provides. The first action, tied to
+the &ldquo;R&rdquo; key, is &ldquo;add to reading list&rdquo;. This action allows you to efficiently add
+bibliographic entries to the reading list in the org agenda by typing &ldquo;R&rdquo; at a selected
+entry. A capture buffer is presented to add some notes. The function that makes this
+possible is the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">add-to-reading-list</span> <span class="p">(</span><span class="nv">keys</span> <span class="kp">&amp;optional</span> <span class="nv">fallback-action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">link</span> <span class="p">(</span><span class="nv">bibtex-completion-format-citation-org-title-link-to-PDF</span> <span class="nv">keys</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">kill-new</span> <span class="nv">link</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">org-capture</span> <span class="no">nil</span> <span class="s">&#34;r&#34;</span><span class="p">)))</span>
+</span></span></code></pre></div><p>To read PDFs, I prefer to use my <a href="https://remarkable.com/">Remarkable tablet</a>. It is just a lot of hassle to select
+an entry from Zotero, find the corresponding PDF, and then put it on my Remarkable tablet.
+The function <code>read-on-remarkable</code> makes all this a lot easier. Find an entry with
+Ivy-bibtex and send the corresponding PDF directly from Emacs to the Remarkable using the
+Remarkable API, rmapi.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">read-on-remarkable</span> <span class="p">(</span><span class="nv">keys</span> <span class="kp">&amp;optional</span> <span class="nv">fallback-action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">fpath</span> <span class="p">(</span><span class="nf">car</span> <span class="p">(</span><span class="nv">bibtex-completion-find-pdf</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">keys</span><span class="p">)))))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">call-process</span> <span class="s">&#34;rmapi&#34;</span> <span class="no">nil</span> <span class="mi">0</span> <span class="no">nil</span> <span class="s">&#34;put&#34;</span> <span class="nv">fpath</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Finally, two more functions to open PDF files either in Finder or in the PDF reader Skim.
+These are two functions specifically for macOS, but I assume they could easily be adapted
+for other systems.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">bibtex-pdf-open-function</span> <span class="p">(</span><span class="nv">fpath</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">call-process</span> <span class="s">&#34;open&#34;</span> <span class="no">nil</span> <span class="mi">0</span> <span class="no">nil</span> <span class="s">&#34;-a&#34;</span> <span class="s">&#34;/Applications/Skim.app&#34;</span> <span class="nv">fpath</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">show-pdf-in-finder</span> <span class="p">(</span><span class="nv">keys</span> <span class="kp">&amp;optional</span> <span class="nv">fallback-action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">dir</span> <span class="p">(</span><span class="nf">file-name-directory</span> <span class="p">(</span><span class="nf">car</span> <span class="p">(</span><span class="nv">bibtex-completion-find-pdf</span> <span class="p">(</span><span class="nf">car</span> <span class="nv">keys</span><span class="p">))))))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">cond</span>
+</span></span><span class="line"><span class="cl">     <span class="p">((</span><span class="nf">&gt;</span> <span class="p">(</span><span class="nf">length</span> <span class="nv">dir</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">shell-command</span> <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;open &#34;</span> <span class="nv">dir</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="no">t</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;No PDF(s) found for this entry: %s&#34;</span> <span class="nv">key</span><span class="p">)))))</span>
+</span></span></code></pre></div><p>In case you want to read PDF files inside Emacs?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">pdf-tools</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">pdf-view-use-scaling</span> <span class="no">t</span><span class="p">))</span>
+</span></span></code></pre></div><h3 id="markdown">Markdown</h3>
+<p>The <code>markdown-mode</code> package provides a major mode for editing Markdown files in Emacs.
+Customization is pretty simple and straightforward.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">markdown-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:commands</span> <span class="p">(</span><span class="nv">markdown-mode</span> <span class="nv">gfm-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:mode</span> <span class="p">((</span><span class="s">&#34;README\\.md\\&#39;&#34;</span> <span class="o">.</span> <span class="nv">gfm-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;\\.md\\&#39;&#34;</span> <span class="o">.</span> <span class="nv">gfm-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="s">&#34;\\.markdown\\&#39;&#34;</span> <span class="o">.</span> <span class="nv">markdown-mode</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span> <span class="p">(</span><span class="nb">setq</span> <span class="nv">markdown-command</span> <span class="s">&#34;pandoc&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">visual-line-column</span> <span class="mi">90</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">markdown-fontify-code-blocks-natively</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">markdown-enable-math</span> <span class="no">t</span><span class="p">))</span>
+</span></span></code></pre></div><p>The <code>pandoc-mode</code> package provides an elegant interface to perform document conversions
+using the pandoc library. It&rsquo;s not strictly markdown specific, but I tend to use it mainly
+when working with Markdown files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">pandoc-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">org</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="programming">Programming</h2>
+<h3 id="general">General</h3>
+<p>The development of the Language Server Protocol has made code completion for virtually all
+text editors easier and more uniform. By decoupling completion from the presentation, much
+like a backend and frontend, it is now possible to get the same high quality completions
+in virtually every programming language. In Emacs, there are two modes that can speak with
+LSP. I once chose <code>lsp-mode</code>, but the other, <code>eglot</code>, is just as good, in my opinion.
+Below is my configuration, which largely consists of turning off all kinds of unnecessary
+functionality (for me).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">lsp-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">lsp-keymap-prefix</span> <span class="s">&#34;C-c l&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span> <span class="p">((</span><span class="nv">python-mode</span> <span class="o">.</span> <span class="nv">lsp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">;; if you want which-key integration</span>
+</span></span><span class="line"><span class="cl">         <span class="p">(</span><span class="nv">lsp-mode</span> <span class="o">.</span> <span class="nv">lsp-enable-which-key-integration</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">lsp-enable-symbol-highlighting</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-lens-enable</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-headerline-breadcrumb-enable</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-modeline-code-actions-enable</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-diagnostics-provider</span> <span class="nb">:none</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-modeline-diagnostics-enable</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-completion-show-detail</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-completion-show-kind</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">lsp-pyright-python-executable-cmd</span> <span class="s">&#34;python3&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:commands</span> <span class="p">(</span><span class="nv">lsp</span> <span class="nv">lsp-deferred</span><span class="p">))</span>
+</span></span></code></pre></div><p>To display completions, then, I use the company framework of Emacs, which stands for
+&ldquo;complete any&rdquo;. It&rsquo;s purpose is to display completion candidates. Company is enabled
+globally, with the exception of text modes and terminal modes. Other customizations are
+failry straightforward.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">company</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;prog-mode-hook</span> <span class="ss">&#39;company-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">company-global-modes</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">not</span> <span class="nv">text-mode</span> <span class="nv">term-mode</span> <span class="nv">markdown-mode</span> <span class="nv">gfm-mode</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">company-selection-wrap-around</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">company-show-numbers</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">company-tooltip-align-annotations</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">company-idle-delay</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">company-require-match</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">company-minimum-prefix-length</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; Bind next and previous selection to more intuitive keys</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">define-key</span> <span class="nv">company-active-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-n&#34;</span><span class="p">)</span> <span class="ss">&#39;company-select-next</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">define-key</span> <span class="nv">company-active-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-p&#34;</span><span class="p">)</span> <span class="ss">&#39;company-select-previous</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; (add-to-list &#39;company-frontends &#39;company-tng-frontend)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; :bind ((&#34;TAB&#34; . &#39;company-indent-or-complete-common)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">lsp-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span> <span class="p">(</span><span class="nv">lsp-mode</span> <span class="o">.</span> <span class="nv">company-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind</span> <span class="p">(</span><span class="nb">:map</span> <span class="nv">company-active-map</span> <span class="p">(</span><span class="s">&#34;&lt;tab&gt;&#34;</span> <span class="o">.</span> <span class="nv">company-complete-selection</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">:map</span> <span class="nv">lsp-mode-map</span> <span class="p">(</span><span class="s">&#34;&lt;tab&gt;&#34;</span> <span class="o">.</span> <span class="nv">company-indent-or-complete-common</span><span class="p">)))</span>
+</span></span></code></pre></div><p>The package <code>company-prescient</code> provides a way to sort completion candidates using
+<code>prescient</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">company-prescient</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span> <span class="p">(</span><span class="nv">company-prescient-mode</span><span class="p">))</span>
+</span></span></code></pre></div><h3 id="python">Python</h3>
+<p>I use Pyright as a Static type checker for Python, and connect that with LSP:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">lsp-pyright</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:ensure</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span> <span class="p">(</span><span class="nv">python-mode</span> <span class="o">.</span> <span class="p">(</span><span class="nb">lambda</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;lsp-pyright</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">(</span><span class="nv">lsp</span><span class="p">))))</span>  <span class="c1">; or lsp-deferred</span>
+</span></span></code></pre></div><p><code>pyvenv</code> is a minor mode to work with virtual environments in Python. Nothing fancy, but
+it works:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">pyvenv</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:init</span> <span class="p">(</span><span class="nv">setenv</span> <span class="s">&#34;WORKON_HOME&#34;</span> <span class="s">&#34;~/.virtualenvs/&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><p>The <code>jupyter</code> package offers a REPL and org-mode source block frontend to Jupyter kernels.
+This intergration with org-mode is truly amazing, as it allows you to turn any org
+document into a fully interactive notebook much like Jupyter, without heaving to deal with
+the unpleasantness of typing in a browser. It also gives me all the benefits of working in
+org mode, including the integration with my agenda, making notes in org roam, and my blog.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">jupyter</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">org</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-babel-python-command</span> <span class="s">&#34;python3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-confirm-babel-evaluate</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">org-babel-do-load-languages</span> <span class="ss">&#39;org-babel-load-languages</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">jupyter</span> <span class="o">.</span> <span class="no">t</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;; default args for jupyter-python</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-babel-default-header-args:jupyter-python</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">;; NOTE: for converting Python Dataframes into org tables, I&#39;m using code from</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">;; https://github.com/gregsexton/ob-ipython/blob/7147455230841744fb5b95dcbe03320313a77124/README.org#tips-and-tricks</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">;; which I put in .ipython/profile_default/startup/orgtable.py as a startup file for ipython.</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&#39;</span><span class="p">((</span><span class="nb">:results</span> <span class="o">.</span> <span class="s">&#34;replace&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">:async</span> <span class="o">.</span> <span class="s">&#34;yes&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">:session</span> <span class="o">.</span> <span class="s">&#34;py&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">:kernel</span> <span class="o">.</span> <span class="s">&#34;python3&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">org-babel-default-header-args:jupyter-R</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&#39;</span><span class="p">((</span><span class="nb">:results</span> <span class="o">.</span> <span class="s">&#34;replace&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">:async</span> <span class="o">.</span> <span class="s">&#34;yes&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">:session</span> <span class="o">.</span> <span class="s">&#34;R&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">:kernel</span> <span class="o">.</span> <span class="s">&#34;R&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;org-babel-after-execute-hook</span> <span class="ss">&#39;org-redisplay-inline-images</span><span class="p">))</span>
+</span></span></code></pre></div><h3 id="r">R</h3>
+<p>For working with R, Emacs Speaks Statistics (ESS) provides an unmatched experience. It&rsquo;s
+an interactive environment much like jupyter, which allows you to easily and iteratively
+execute parts of your statistical analyses in R.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">ess</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:defer</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">ess-eval-visibly</span> <span class="ss">&#39;nowait</span><span class="p">))</span>
+</span></span></code></pre></div><h3 id="stan">Stan</h3>
+<p>Libraries for doing Bayesian statistics, both in Python and R, often rely on Stan. There
+is some support in Emacs for writing Stan code, including rudimentary completion and
+documentation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">stan-mode</span> <span class="nb">:defer</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">company-stan</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">stan-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span> <span class="p">(</span><span class="nv">stan-mode</span> <span class="o">.</span> <span class="nv">company-stan-setup</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">eldoc-stan</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:after</span> <span class="nv">stan-mode</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:hook</span> <span class="p">(</span><span class="nv">stan-mode</span> <span class="o">.</span> <span class="nv">eldoc-stan-setup</span><span class="p">))</span>
+</span></span></code></pre></div><h2 id="searching">Searching</h2>
+<p>The packaghe <code>deadgrep</code> offers an intuitive interface on <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a>, which is a fast
+alternative to grep. I add a little utility function to search directly in my folder with
+org files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">deadgrep</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:bind*</span>
+</span></span><span class="line"><span class="cl">  <span class="p">((</span><span class="s">&#34;C-c r&#34;</span> <span class="o">.</span> <span class="nv">deadgrep</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="p">(</span><span class="s">&#34;C-c f&#34;</span> <span class="o">.</span> <span class="nv">grep-org-files</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">defun</span> <span class="nv">grep-org-files</span> <span class="p">(</span><span class="nv">words</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">interactive</span> <span class="s">&#34;sSearch org files: &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">default-directory</span> <span class="nv">org-directory</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">deadgrep--file-type</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">glob</span> <span class="o">.</span> <span class="s">&#34;*.org&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">deadgrep--context</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">deadgrep--search-type</span> <span class="ss">&#39;regexp</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">deadgrep</span> <span class="nv">words</span><span class="p">))))</span>
+</span></span></code></pre></div><h2 id="utility-functions">Utility functions</h2>
+<p>Handy little package and functionality to open a terminal (in my case iterm2) in the same
+folder as where the working document resides.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">terminal-here</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">terminal-here-mac-terminal-command</span> <span class="ss">&#39;iterm2</span><span class="p">))</span>
+</span></span></code></pre></div><p>Simple utility function for (un)commenting lines. Bound to M-/.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">comment-current-line-dwim</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Comment or uncomment the current line.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">save-excursion</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">use-region-p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">comment-or-uncomment-region</span> <span class="p">(</span><span class="nf">region-beginning</span><span class="p">)</span> <span class="p">(</span><span class="nf">region-end</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">push-mark</span> <span class="p">(</span><span class="nf">beginning-of-line</span><span class="p">)</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">end-of-line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">comment-dwim</span> <span class="no">nil</span><span class="p">))))</span>
+</span></span></code></pre></div><p>Simple function to create a scratch pad for random thoughts. Similar to Emacs&rsquo;s <strong>scratch</strong>
+buffer but for org files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">new-scratch-pad</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;Create a new org-mode buffer for random stuff.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">tab-bar-index</span> <span class="p">(</span><span class="nv">tab-bar--tab-index-by-name</span> <span class="s">&#34;Kladblok&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">if</span> <span class="nv">tab-bar-index</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">tab-bar-select-tab</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">tab-bar-index</span> <span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">switch-to-buffer</span> <span class="s">&#34;kladblok&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">olivetti-mode</span> <span class="no">t</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">tab-bar-new-tab</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nv">tab-bar-rename-tab</span> <span class="s">&#34;Kladblok&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">buffer</span> <span class="p">(</span><span class="nv">generate-new-buffer</span> <span class="s">&#34;kladblok&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">switch-to-buffer</span> <span class="nv">buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">setq</span> <span class="nv">buffer-offer-save</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">org-mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">olivetti-mode</span> <span class="no">t</span><span class="p">))))))</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">xah-unfill-paragraph</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">let</span> <span class="p">((</span><span class="nv">fill-column</span> <span class="nv">most-positive-fixnum</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">fill-paragraph</span><span class="p">)))</span>
+</span></span></code></pre></div><p>Hydra to resize windows without touching the mouse.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">defhydra</span> <span class="nv">hydra-windows</span> <span class="p">(</span><span class="nb">:color</span> <span class="nv">red</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;s&#34;</span> <span class="nv">shrink-window-horizontally</span> <span class="s">&#34;shrink horizontally&#34;</span> <span class="nb">:column</span> <span class="s">&#34;Sizing&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;e&#34;</span> <span class="nv">enlarge-window-horizontally</span> <span class="s">&#34;enlarge horizontally&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;b&#34;</span> <span class="nv">balance-windows</span> <span class="s">&#34;balance window height&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;m&#34;</span> <span class="nv">maximize-window</span> <span class="s">&#34;maximize current window&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;M&#34;</span> <span class="nv">minimize-window</span> <span class="s">&#34;minimize current window&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;h&#34;</span> <span class="nv">split-window-below</span> <span class="s">&#34;split horizontally&#34;</span> <span class="nb">:column</span> <span class="s">&#34;Split management&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;v&#34;</span> <span class="nv">split-window-right</span> <span class="s">&#34;split vertically&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;d&#34;</span> <span class="nv">delete-window</span> <span class="s">&#34;delete current window&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;x&#34;</span> <span class="nv">delete-other-windows</span> <span class="s">&#34;delete-other-windows&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="s">&#34;q&#34;</span> <span class="no">nil</span> <span class="s">&#34;quit menu&#34;</span> <span class="nb">:color</span> <span class="nv">blue</span> <span class="nb">:column</span> <span class="no">nil</span><span class="p">))</span>
+</span></span></code></pre></div><h2 id="global-key-bindings">Global key bindings</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">mac-option-key-is-meta</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">mac-command-key-is-meta</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">mac-command-modifier</span> <span class="ss">&#39;meta</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">mac-option-modifier</span> <span class="ss">&#39;none</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-/&#34;</span><span class="p">)</span> <span class="ss">&#39;comment-current-line-dwim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-+&#34;</span><span class="p">)</span>  <span class="ss">&#39;mode-line-other-buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-`&#34;</span><span class="p">)</span> <span class="ss">&#39;other-frame</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-x k&#34;</span><span class="p">)</span> <span class="ss">&#39;kill-this-buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-x K&#34;</span><span class="p">)</span> <span class="ss">&#39;kill-buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-c s&#34;</span><span class="p">)</span> <span class="ss">&#39;new-scratch-pad</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">;; Turn off swiping to switch buffers (defined in mac-win.el)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-unset-key</span> <span class="p">[</span><span class="nv">swipe-left</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-unset-key</span> <span class="p">[</span><span class="nv">swipe-right</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-unset-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-&lt;mouse-4&gt;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-unset-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-&lt;mouse-5&gt;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-unset-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-&lt;wheel-down&gt;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-unset-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-&lt;wheel-up&gt;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-n&#34;</span><span class="p">)</span> <span class="ss">&#39;hydra-windows/body</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">define-key</span> <span class="nv">global-map</span> <span class="s">&#34;\C-ca&#34;</span> <span class="ss">&#39;org-agenda</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">define-key</span> <span class="nv">global-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-c M-a&#34;</span><span class="p">)</span> <span class="ss">&#39;show-my-agenda</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-x C-b&#34;</span><span class="p">)</span> <span class="ss">&#39;tab-bar-select-tab-by-name</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="server">Server</h2>
+<p>Start an Emacs server, which allows you to start up successive clients instantaneously:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">use-package</span> <span class="nv">server</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">:config</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">server-running-p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">server-start</span><span class="p">)))</span>
+</span></span></code></pre></div><h2 id="custom-file">Custom file</h2>
+<p>Config changes made through the customize UI will be stored here</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">custom-file</span> <span class="p">(</span><span class="nf">expand-file-name</span> <span class="s">&#34;custom.el&#34;</span> <span class="s">&#34;~/.emacs.d&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">file-exists-p</span> <span class="nv">custom-file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">load</span> <span class="nv">custom-file</span><span class="p">))</span>
+</span></span></code></pre></div>
+    </div>
+  </div>
+
+    <div class="footer">
+  
+  <div class="footer-social">
+    
+      <span class="social-icon social-icon-bluesky">
+        <a href="https://bsky.app/profile/folgertk.bsky.social" title="bluesky" target="_blank" rel="noopener">
+          <img src="/images/social/bluesky.svg" width="24" height="24" alt="bluesky"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-github">
+        <a href="https://github.com/fbkarsdorp" title="github" target="_blank" rel="noopener">
+          <img src="/images/social/github.svg" width="24" height="24" alt="github"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-linkedin">
+        <a href="https://nl.linkedin.com/in/folgert-karsdorp-2ab362323" title="linkedin" target="_blank" rel="noopener">
+          <img src="/images/social/linkedin.svg" width="24" height="24" alt="linkedin"/>
+        </a>
+      </span>
+    
+      <span class="social-icon social-icon-cv">
+        <a href="https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf" title="CV" target="_blank" rel="noopener">
+          <img src="/images/social/cv.svg" width="24" height="24" alt="CV"/>
+        </a>
+      </span>
+    
+  </div>
+  
+</div>
+  </div>
+
+  
+
+  
+    <script type="text/javascript" src="/js/bundle.js"></script>
+  
+
+  
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
