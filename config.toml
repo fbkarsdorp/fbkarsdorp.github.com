@@ -7,6 +7,7 @@ pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 refLinksErrorLevel = "WARNING"
 pygmentsUseClasses = true
+publishDir = "docs"
 
 [pagination]
   pagerSize = 3
