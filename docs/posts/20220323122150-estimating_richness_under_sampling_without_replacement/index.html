@@ -6,18 +6,18 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Estimating Richness under Sampling without Replacement - Folgert Karsdorp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="www.karsdorp.io/favicon.png">
-  <link rel="canonical" href="www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/" />
+  <link rel="icon" href="https://www.karsdorp.io/favicon.png">
+  <link rel="canonical" href="https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/" />
     
     
-    <link rel="stylesheet" href="www.karsdorp.io/css/style.min.c0ef9c12bb7c6759ea262e23e8195a0ab5d60608c7c9ff3683b8ee114defc969.css">
-    <link rel="stylesheet" href="www.karsdorp.io/assets/css/extended.min.59e1eae4a4013b3b8c1ee4618748c658f68a2dbde2863edfcc8d21b94a2b5aba.css">
+    <link rel="stylesheet" href="/css/style.min.c0ef9c12bb7c6759ea262e23e8195a0ab5d60608c7c9ff3683b8ee114defc969.css">
+    <link rel="stylesheet" href="/assets/css/extended.min.59e1eae4a4013b3b8c1ee4618748c658f68a2dbde2863edfcc8d21b94a2b5aba.css">
 
   
     
     <meta property="og:title" content="Estimating Richness under Sampling without Replacement"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/"/>
+    <meta property="og:url" content="https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/"/>
     
     
     <meta name="twitter:card" content="summary"/>
@@ -31,7 +31,7 @@
   
 
   
-<link rel="icon" href="www.karsdorp.io/favicon.ico">
+<link rel="icon" href="/favicon.ico">
 
 </head>
 
@@ -45,19 +45,19 @@
         
             
                 <li class="menu-item-home">
-                    <a href="www.karsdorp.io/www.karsdorp.io/">Home</a>
+                    <a href="https://www.karsdorp.io/">Home</a>
                 </li>
             
         
             
                 <li class="menu-item-notebooks">
-                    <a href="www.karsdorp.io/www.karsdorp.io/posts/">Notebooks</a>
+                    <a href="https://www.karsdorp.io/posts/">Notebooks</a>
                 </li>
             
         
             
                 <li class="menu-item-publications">
-                    <a href="www.karsdorp.io/www.karsdorp.io/references">Publications</a>
+                    <a href="https://www.karsdorp.io/references">Publications</a>
                 </li>
             
         
@@ -65,7 +65,7 @@
 </div>
   <div id="wrapper" class="wrapper">
     <div class='header'>
-  <a class="header-logo" href="www.karsdorp.io/">Folgert Karsdorp</a>
+  <a class="header-logo" href="/">Folgert Karsdorp</a>
   <div class="menu-main">
     <ul>
       
@@ -73,7 +73,7 @@
       
       
       <li class="menu-item-home ">
-        <a href="www.karsdorp.io/">
+        <a href="/">
           
           <span>Home</span>
         </a>
@@ -82,7 +82,7 @@
       
       
       <li class="menu-item-notebooks ">
-        <a href="www.karsdorp.io/posts/">
+        <a href="/posts/">
           
           <span>Notebooks</span>
         </a>
@@ -91,7 +91,7 @@
       
       
       <li class="menu-item-publications ">
-        <a href="www.karsdorp.io/references">
+        <a href="/references">
           
           <span>Publications</span>
         </a>
@@ -129,7 +129,7 @@ cultural domain, and especially when working with cultural collections, one coul
 that the assumption of sampling with replacement is often quite problematic. Cultural
 collections are, by definition, finite samples created <em>without</em> replacement. The same
 applies to the example of estimating the vocabulary size of a text based on a snippet of
-text, as I explained in an earlier post (see <a href="www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>). Here,
+text, as I explained in an earlier post (see <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with Good-Turing</a>). Here,
 too the assumption of replacement is clearly violated.</p>
 <p>This isssue of recognizing which sampling strategy underlies our data potentially has
 major implications for the quality of the estimates made by unseen species models. In
@@ -149,7 +149,7 @@ specifically desgined to work with samples created <em>without</em> replacement.
 <p>Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) describe an <a href="">Unseen Species Model</a> based on
 <a href="">Chao1</a> with which we can compute a lower-bound estimate of the number of unseen items
 (e.g., species, cultural artifacts) in samples created <em>without</em> replacement. The formula
-is closely related to the original Chao1 estimator (see <a href="www.karsdorp.io/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with
+is closely related to the original Chao1 estimator (see <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">Demystifying Chao1 with
 Good-Turing</a> for further details):</p>
 <p>\begin{equation}
 \hat{V} = V_{\textrm{obs}} + \frac{f^2_1}{\frac{n}{n - 1} 2f_2 + \frac{q}{1 - q} f_1}
@@ -185,7 +185,7 @@ estimators):</p>
 underlying the sampling process on the quality of the estimations. Thus, what happens if
 we apply Chao1 to data that was generated <em>without</em> replacement, while Chao1 asssumes it
 to be generated <em>with</em> replacement. Although Chao and Lin (<a href="#citeproc_bib_item_1">2012</a>) also
-discuss <a href="">incidence data</a> as well as <a href="www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/">shared richness estimation</a>, I will primarily focus on
+discuss <a href="">incidence data</a> as well as <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">shared richness estimation</a>, I will primarily focus on
 the case of <a href="">abundance data</a> (i.e., counts of (species) types).</p>
 <p>By means of illustration, I will apply the models to a case of textual data. Here the goal
 is the estimate the vocabulary size of some text based on a snippet of that text. Such a
@@ -393,25 +393,25 @@ no longer be considered lower-bound estimates.</p>
     
       <span class="social-icon social-icon-bluesky">
         <a href="https://bsky.app/profile/folgertk.bsky.social" title="bluesky" target="_blank" rel="noopener">
-          <img src="/www.karsdorp.io/images/social/bluesky.svg" width="24" height="24" alt="bluesky"/>
+          <img src="/images/social/bluesky.svg" width="24" height="24" alt="bluesky"/>
         </a>
       </span>
     
       <span class="social-icon social-icon-github">
         <a href="https://github.com/fbkarsdorp" title="github" target="_blank" rel="noopener">
-          <img src="/www.karsdorp.io/images/social/github.svg" width="24" height="24" alt="github"/>
+          <img src="/images/social/github.svg" width="24" height="24" alt="github"/>
         </a>
       </span>
     
       <span class="social-icon social-icon-linkedin">
         <a href="https://nl.linkedin.com/in/folgert-karsdorp-2ab362323" title="linkedin" target="_blank" rel="noopener">
-          <img src="/www.karsdorp.io/images/social/linkedin.svg" width="24" height="24" alt="linkedin"/>
+          <img src="/images/social/linkedin.svg" width="24" height="24" alt="linkedin"/>
         </a>
       </span>
     
       <span class="social-icon social-icon-cv">
         <a href="https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf" title="CV" target="_blank" rel="noopener">
-          <img src="/www.karsdorp.io/images/social/cv.svg" width="24" height="24" alt="CV"/>
+          <img src="/images/social/cv.svg" width="24" height="24" alt="CV"/>
         </a>
       </span>
     
@@ -423,7 +423,7 @@ no longer be considered lower-bound estimates.</p>
   
 
   
-    <script type="text/javascript" src="www.karsdorp.io/js/bundle.min.5993fcb11c07dea925a3fbd58c03c7f1857197c35fccce3aa963a12c0b3c9960.js"></script>
+    <script type="text/javascript" src="/js/bundle.min.5993fcb11c07dea925a3fbd58c03c7f1857197c35fccce3aa963a12c0b3c9960.js"></script>
   
 
   

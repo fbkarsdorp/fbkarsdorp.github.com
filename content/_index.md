@@ -1,5 +1,5 @@
 ---
-title: Quantifying culture, one bias at a time
+title: Fragments of Cultural Change
 description: 
 ---
 
