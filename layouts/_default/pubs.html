@@ -1,0 +1,29 @@
+{{ define "body_classes" }}page-default-single{{ end }}
+
+{{ define "main" }}
+<div class="intro">
+  <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
+</div>
+
+<div class="content">
+  {{ .Content }}
+</div>
+{{ end }}
+
+{{ define "footer_js" }}
+<script>
+  document.querySelectorAll('.csl-entry a').forEach(function(a) {
+    var href = a.getAttribute('href') || '';
+    var label;
+    if (href.includes('doi.org')) {
+      label = '[doi]';
+    } else if (href.match(/\.pdf($|\s)/i) || href.includes('/pdf')) {
+      label = '[pdf]';
+    } else {
+      label = '[link]';
+    }
+    a.textContent = label;
+    a.title = href;
+  });
+</script>
+{{ end }}
