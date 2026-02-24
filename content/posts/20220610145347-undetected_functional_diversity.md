@@ -3,6 +3,7 @@ title = "Undetected Functional Attribute Diversity"
 author = ["Folgert Karsdorp"]
 lastmod = 2022-06-23T12:31:36+02:00
 tags = ["functional", "diversity", "FAD", "similarity", "bias", "sampling"]
+description = "Introduces functional attribute diversity — which accounts for similarity between items — and estimates how much goes undetected in incomplete cultural samples."
 draft = false
 +++
 

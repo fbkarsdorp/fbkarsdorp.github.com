@@ -3,6 +3,7 @@ title = "Population Size Estimation as a Regression Problem"
 author = ["Folgert Karsdorp"]
 lastmod = 2022-04-23T09:37:34+02:00
 tags = ["heterogeneity", "chao1", "regression", "pymc3", "richness", "diversity", "zelterman"]
+description = "Reframes population size estimation as a Bayesian regression problem to correct for heterogeneous detection probabilities in cultural samples."
 draft = false
 +++
 

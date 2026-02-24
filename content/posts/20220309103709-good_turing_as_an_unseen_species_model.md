@@ -4,6 +4,7 @@ author = ["Folgert Karsdorp"]
 date = 2022-03-15T00:00:00+01:00
 lastmod = 2022-12-15T18:09:05+01:00
 tags = ["chao1", "turing", "richness", "loss", "diversity"]
+description = "How Good-Turing frequency estimation underpins the Chao1 biodiversity estimator — and what that means for counting unseen cultural artefacts."
 draft = false
 +++
 

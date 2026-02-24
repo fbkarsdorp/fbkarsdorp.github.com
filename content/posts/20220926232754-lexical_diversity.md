@@ -3,6 +3,7 @@ title = "Functional Diversity as a Generalization of Lexical Diversity"
 author = ["Folgert Karsdorp"]
 lastmod = 2022-12-15T16:58:56+01:00
 tags = ["diversity", "richness", "semantics", "hill-numbers", "similarity"]
+description = "Shows how functional diversity measures based on semantic similarity generalise traditional type-token lexical diversity metrics."
 draft = false
 +++
 

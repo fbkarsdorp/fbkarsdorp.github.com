@@ -3,6 +3,7 @@ title = "Estimating Richness under Sampling without Replacement"
 author = ["Folgert Karsdorp"]
 lastmod = 2022-03-31T12:35:33+02:00
 tags = ["richness", "chao1", "replacement", "bias", "sampling"]
+description = "Examines how standard unseen species estimators break down under sampling without replacement, and how to correct for it."
 draft = false
 +++
 

@@ -3,6 +3,7 @@ title = "Estimating Unseen Shared Cultural Diversity"
 author = ["Folgert Karsdorp"]
 lastmod = 2022-05-14T09:03:02+02:00
 tags = ["shared-richness", "chao1", "richness", "unseen-species", "folktales"]
+description = "Extends unseen species models to estimate the shared diversity between two cultural collections — how many artefacts they have in common that neither has observed."
 draft = false
 +++
 

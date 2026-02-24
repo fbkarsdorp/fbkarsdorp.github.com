@@ -3,6 +3,7 @@ title = "What Shall We Do with the Unseen Sailor?"
 author = ["Folgert Karsdorp"]
 lastmod = 2022-12-16T19:59:23+01:00
 tags = ["chao1", "diversity", "loss", "replacement", "voc", "bias", "history", "sampling"]
+description = "Applies unseen species models to VOC historical records to estimate the true number of sailors missing from the archive."
 draft = false
 +++
 
