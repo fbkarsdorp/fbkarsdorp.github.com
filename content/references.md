@@ -8,6 +8,60 @@ draft = false
 +++
 
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style>
+
+<h2>Selected Publications</h2>
+<div class="featured-pubs">
+
+  <div class="featured-pub">
+    <span class="featured-pub-venue">Science &middot; 2022</span>
+    <div class="featured-pub-title">Forgotten Books: The Application of Unseen Species Models to the Survival of Culture</div>
+    <div class="featured-pub-authors">Kestemont, Karsdorp, de Bruijn, Driscoll, Kapitan, Ó Macháin, Sawyer, Sleiderink &amp; Chao</div>
+    <div class="featured-pub-note">Applies ecological estimators to quantify how much medieval literature has been lost to history.</div>
+    <a class="featured-pub-link" href="https://doi.org/10.1126/science.abl7655">[doi]</a>
+  </div>
+
+  <div class="featured-pub">
+    <span class="featured-pub-venue">Princeton University Press &middot; 2021</span>
+    <div class="featured-pub-title">Humanities Data Analysis: Case Studies with Python</div>
+    <div class="featured-pub-authors">Karsdorp, Kestemont &amp; Riddell</div>
+    <div class="featured-pub-note">An open-access textbook introducing quantitative and computational methods for humanities research.</div>
+    <a class="featured-pub-link" href="https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis">[link]</a>
+  </div>
+
+  <div class="featured-pub">
+    <span class="featured-pub-venue">PLOS Computational Biology &middot; 2023</span>
+    <div class="featured-pub-title">The Interplay Between Age Structure and Cultural Transmission</div>
+    <div class="featured-pub-authors">Kandler, Fogarty &amp; Karsdorp</div>
+    <div class="featured-pub-note">Models how demographic age structure shapes the fidelity and reach of cultural transmission across generations.</div>
+    <a class="featured-pub-link" href="https://doi.org/10.1371/journal.pcbi.1011297">[doi]</a>
+  </div>
+
+  <div class="featured-pub">
+    <span class="featured-pub-venue">Letterwerk &middot; 2024</span>
+    <div class="featured-pub-title">Het Mysterie van de Verdwenen Ridderromans</div>
+    <div class="featured-pub-authors">Kestemont &amp; Karsdorp</div>
+    <div class="featured-pub-note">A popular-science account of the statistical hunt for lost medieval romances using unseen species models.</div>
+    <a class="featured-pub-link" href="https://doi.org/10.5281/zenodo.10807547">[doi]</a>
+  </div>
+
+  <div class="featured-pub">
+    <span class="featured-pub-venue">Evolutionary Human Sciences &middot; 2020</span>
+    <div class="featured-pub-title">Classifying Evolutionary Forces in Language Change Using Neural Networks</div>
+    <div class="featured-pub-authors">Karsdorp, Manjavacas, Fonteyn &amp; Kestemont</div>
+    <div class="featured-pub-note">Uses neural networks to distinguish drift from selection as drivers of lexical change in historical corpora.</div>
+    <a class="featured-pub-link" href="https://doi.org/10.1017/ehs.2020.52">[doi]</a>
+  </div>
+
+  <div class="featured-pub">
+    <span class="featured-pub-venue">Palgrave Communications &middot; 2019</span>
+    <div class="featured-pub-title">Cultural Entrenchment of Folktales Is Encoded in Language</div>
+    <div class="featured-pub-authors">Karsdorp &amp; Fonteyn</div>
+    <div class="featured-pub-note">Shows that linguistic markers of register and formulaicity reflect the degree to which a folktale has become culturally entrenched.</div>
+    <a class="featured-pub-link" href="https://doi.org/10.1057/s41599-019-0234-9">[doi]</a>
+  </div>
+
+</div>
+
 <h2>Books</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-2024:kestemont" class="csl-entry" role="listitem">
