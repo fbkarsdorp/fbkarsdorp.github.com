@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coverage standardization — interactive demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  :root {
+    --A: #1f77b4;  --A-soft: #e9f1f8;
+    --B: #ff7f0e;  --B-soft: #fff2e2;
+    --cov: #2ca02c; --cov-soft: #ebf6ea;
+    --rare: #8e44ad; --rare-soft: #f3ecf8;
+    --truth: #6b7682;
+    --ink: #0f1117;              /* theme --heading-color */
+    --muted: #586472;
+    --faint: #8b96a0;
+    --accent: #00968a;          /* theme --highlight-color (teal links/accents) */
+    --line: #e3e7ec;
+    --line-2: #d3dae1;
+    --track: #e3e7ec;
+    --good: #2e9e3f;  --good-soft: #eaf6ec;
+    --warn: #c08214;  --warn-soft: #faf1df;
+    --bad:  #d6453a;  --bad-soft:  #fdecea;
+    --radius: 12px;  --radius-sm: 9px;
+    --shadow: 0 1px 2px rgba(17,24,39,.05);
+    --shadow-sm: none;
+    --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --heading: 'Space Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: var(--sans);
+    color: #3d4451;             /* theme --text-color */
+    background: #f5f7fa;        /* matches the site's --base-color so the embed blends in */
+    line-height: 1.55;
+    font-size: 15px;
+    padding: 18px 14px 26px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  .tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; font-family: var(--mono); }
+  /* embedded in a blog post: the post supplies the title + background, so drop
+     the demo's duplicate H1, fill the post's content width, and remove the
+     outer padding so the demo aligns with the surrounding prose */
+  body.embedded { padding: 2px 0 6px; }
+  body.embedded .wrap { max-width: none; }
+  body.embedded h1 { display: none; }
+
+  /* header */
+  .eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--cov); margin: 0 0 6px; }
+  h1 { font-family: var(--heading); font-size: 1.5rem; line-height: 1.25; letter-spacing: -.01em; margin: 0 0 6px; font-weight: 700; color: var(--ink); }
+  .sub { color: var(--muted); font-size: .92rem; margin: 0 0 16px; max-width: 64ch; }
+  .sub em { font-style: normal; color: var(--ink); font-weight: 600; }
+
+  /* paper reference */
+  .paper { display: block; text-decoration: none; color: inherit; background: #fff;
+    border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius-sm);
+    padding: 11px 15px; margin: 0 0 16px;
+    transition: box-shadow .15s, transform .08s, border-color .15s; }
+  .paper:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+  .paper-label { display: block; font-size: .7rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .paper-label .arr { font-weight: 600; }
+  .paper-cite { font-size: .83rem; color: var(--muted); line-height: 1.45; }
+  .paper-cite .ptitle { color: var(--ink); font-weight: 600; }
+  .paper-cite .pvenue { font-style: italic; }
+
+  /* cards */
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; margin: 0 0 16px; }
+  .card-title { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); margin: 0 0 12px; }
+
+  /* method switch */
+  .methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
+  .methods button {
+    border: 1px solid var(--line); background: #fff; color: var(--ink);
+    padding: 11px 13px; border-radius: var(--radius-sm); font: inherit; cursor: pointer; text-align: left;
+    box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+    transition: border-color .15s, box-shadow .15s, transform .08s, background .15s;
+  }
+  .methods button::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; transition: background .15s; }
+  .methods button:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--line-2); }
+  .methods button .k { font-weight: 650; display: block; font-size: .9rem; margin-bottom: 2px; }
+  .methods button .d { color: var(--muted); font-size: .76rem; line-height: 1.35; display: block; }
+  .methods button[aria-pressed="true"] { background: var(--cov-soft); border-color: color-mix(in srgb, var(--cov) 45%, var(--line)); }
+  .methods button[aria-pressed="true"]::before { background: var(--cov); }
+  .methods button[aria-pressed="true"] .k { color: color-mix(in srgb, var(--cov) 75%, #000); }
+  .methods button[data-m="size"][aria-pressed="true"]        { background: var(--A-soft); border-color: color-mix(in srgb, var(--A) 45%, var(--line)); }
+  .methods button[data-m="size"][aria-pressed="true"]::before { background: var(--A); }
+  .methods button[data-m="size"][aria-pressed="true"] .k     { color: color-mix(in srgb, var(--A) 78%, #000); }
+  .methods button[data-m="rarefaction"][aria-pressed="true"] { background: var(--rare-soft); border-color: color-mix(in srgb, var(--rare) 45%, var(--line)); }
+  .methods button[data-m="rarefaction"][aria-pressed="true"]::before { background: var(--rare); }
+  .methods button[data-m="rarefaction"][aria-pressed="true"] .k { color: color-mix(in srgb, var(--rare) 78%, #000); }
+
+  /* plots */
+  .plots { display: flex; gap: 18px; flex-wrap: wrap; }
+  .plot { flex: 1 1 320px; min-width: 260px; }
+  .plot h2 { font-size: .78rem; font-weight: 600; margin: 0 0 4px 2px; color: var(--muted); }
+  canvas { width: 100%; height: 264px; display: block; }
+  .legend { display: flex; gap: 18px; margin: 14px 2px 0; font-size: .8rem; color: var(--muted); flex-wrap: wrap; align-items: center; border-top: 1px solid var(--line); padding-top: 12px; }
+  .legend span { display: inline-block; }
+  .swatch { width: 16px; height: 3px; border-radius: 2px; display: inline-block; vertical-align: middle; margin-right: 7px; position: relative; top: -1px; }
+  .swatch.dash { background: repeating-linear-gradient(90deg, var(--truth) 0 4px, transparent 4px 7px); height: 2px; }
+
+  /* readout */
+  .result-hero { display: flex; align-items: baseline; gap: 12px 16px; flex-wrap: wrap; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .hero-label { font-size: .82rem; font-weight: 600; color: var(--muted); }
+  .hero-val { font-size: 2rem; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+  .hero-note { font-size: .76rem; color: var(--faint); flex: 1 1 200px; }
+  .mrows { display: flex; flex-direction: column; gap: 4px; }
+  .mrow {
+    display: grid; grid-template-columns: 1.5fr 56px minmax(120px, 2.2fr) 62px; align-items: center; gap: 12px;
+    padding: 9px 10px; border-radius: var(--radius-sm); border: 1px solid transparent;
+    transition: background .15s, border-color .15s;
+  }
+  .mrow:hover { background: #fafbfc; }
+  .mrow.active { background: #fafdfb; border-color: var(--line); box-shadow: inset 3px 0 0 var(--accent, var(--cov)); }
+  .mname { font-weight: 600; font-size: .9rem; display: flex; align-items: center; gap: 8px; }
+  .mname .mdot { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--accent, var(--cov)); }
+  .mname .mctx { display: block; font-weight: 400; font-size: .72rem; color: var(--faint); margin-top: 1px; }
+  .mest { font-size: 1.15rem; font-weight: 660; text-align: right; }
+  .mbar { position: relative; height: 22px; }
+  .mbar-track { position: absolute; inset: 50% 0 auto 0; transform: translateY(-50%); height: 8px; background: #eef1f4; border-radius: 999px; }
+  .mbar-zero { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: var(--line-2); transform: translateX(-50%); border-radius: 2px; }
+  .mbar-fill { position: absolute; top: 0; bottom: 0; border-radius: 999px; opacity: .9; }
+  .mbar-fill.good { background: var(--good); } .mbar-fill.warn { background: var(--warn); } .mbar-fill.bad { background: var(--bad); }
+  .mpct { font-size: .82rem; font-weight: 700; text-align: center; padding: 3px 0; border-radius: 999px; }
+  .mpct.good { color: var(--good); background: var(--good-soft); } .mpct.warn { color: var(--warn); background: var(--warn-soft); } .mpct.bad { color: var(--bad); background: var(--bad-soft); }
+  .bar-key { font-size: .72rem; color: var(--faint); margin: 12px 2px 0; }
+  .interp { margin-top: 12px; font-size: .87rem; color: #2c333a; line-height: 1.55; background: #f7f9fa; border-radius: var(--radius-sm); padding: 11px 13px; }
+  .interp b { font-variant-numeric: tabular-nums; }
+
+  /* controls */
+  .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .controls .full { grid-column: 1 / -1; }
+  .grp { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 14px 16px; }
+  .grp h3 { margin: 0 0 4px; font-size: .9rem; font-weight: 650; display: flex; align-items: center; }
+  .grp h3 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+  .ctrl { margin: 13px 0 0; }
+  .ctrl:first-of-type { margin-top: 10px; }
+  .ctrl label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: .82rem; color: var(--muted); margin-bottom: 7px; }
+  .ctrl label b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 650; }
+  .ends { display: flex; justify-content: space-between; font-size: .67rem; color: var(--faint); margin-top: 4px; }
+  .note { font-size: .76rem; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+
+  /* sliders */
+  input[type=range] { --acc: var(--cov); --pct: 50%; -webkit-appearance: none; appearance: none; width: 100%; height: 18px; background: transparent; cursor: pointer; margin: 0; display: block; }
+  .grp.A input[type=range] { --acc: var(--A); }
+  .grp.B input[type=range] { --acc: var(--B); }
+  input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: linear-gradient(90deg, var(--acc) var(--pct), var(--track) var(--pct)); }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 16px; width: 16px; margin-top: -5px; border-radius: 50%; background: #fff; border: 2px solid var(--acc); box-shadow: 0 1px 3px rgba(17,24,39,.28); transition: transform .12s, box-shadow .12s; }
+  input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.14); }
+  input[type=range]:active::-webkit-slider-thumb { transform: scale(1.2); }
+  input[type=range]::-moz-range-track { height: 6px; border-radius: 999px; background: var(--track); }
+  input[type=range]::-moz-range-progress { height: 6px; border-radius: 999px; background: var(--acc); }
+  input[type=range]::-moz-range-thumb { height: 16px; width: 16px; border: 2px solid var(--acc); border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(17,24,39,.28); }
+  input[type=range]:focus { outline: none; }
+  input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 22%, transparent); }
+  input[type=range]:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 22%, transparent); }
+
+  /* preset scenarios */
+  .presets { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .presets-label { font-size: .82rem; font-weight: 600; color: var(--muted); margin-right: 2px; }
+  .presets button {
+    border: 1px solid var(--line-2); background: #fff; color: var(--ink);
+    padding: 6px 13px; border-radius: 999px; font: inherit; font-size: .8rem; font-weight: 500; cursor: pointer;
+    box-shadow: var(--shadow-sm); transition: border-color .14s, background .14s, color .14s, transform .08s;
+  }
+  .presets button:hover { transform: translateY(-1px); border-color: var(--faint); }
+  .presets button[aria-pressed="true"] { border-color: var(--cov); background: var(--cov); color: #fff; box-shadow: 0 2px 8px color-mix(in srgb, var(--cov) 35%, transparent); }
+
+  @media (max-width: 600px) {
+    .controls { grid-template-columns: 1fr; }
+    .methods { grid-template-columns: 1fr; }
+    .mrow { grid-template-columns: 1fr 52px 56px; }
+    .mbar { display: none; }
+    h1 { font-size: 1.3rem; }
+  }
+
+  .foot { font-size: .76rem; color: var(--faint); margin: 18px 2px 0; line-height: 1.55; }
+  .foot code { background: #eef1f4; padding: 1px 5px; border-radius: 4px; font-size: .9em; font-family: var(--mono); }
+  .foot sub { font-size: .8em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="paper" href="https://doi.org/10.1098/rsif.2026.0163" target="_blank" rel="noopener">
+    <span class="paper-label">Companion to the paper <span class="arr">↗</span></span>
+    <span class="paper-cite">Karsdorp, F., Kandler, A., Kestemont, M., Romanowska, I. &amp; Stapel, R. (2026). <span class="ptitle">Correcting collection bias in comparative studies of diversity.</span> <span class="pvenue">Journal of the Royal Society Interface</span> 23: 20260163. doi:10.1098/rsif.2026.0163</span>
+  </a>
+
+  <h1>Comparing diversity under collection bias</h1>
+  <p class="sub">Two assemblages, A and B, are recorded from synthetic populations under different <em>collection biases</em>. Pick a bias scenario and a standardization strategy, and see which one still recovers the <em>true</em> richness ratio.</p>
+
+  <div class="methods" id="methods">
+    <button data-m="size" aria-pressed="false">
+      <span class="k">Size-based</span>
+      <span class="d">Compare observed richness at each sample's own size (≈ no standardization)</span>
+    </button>
+    <button data-m="rarefaction" aria-pressed="false">
+      <span class="k">Rarefaction-based</span>
+      <span class="d">Rarefy both down to the smaller sample size n<sub>min</sub></span>
+    </button>
+    <button data-m="coverage" aria-pressed="true">
+      <span class="k">Coverage-based</span>
+      <span class="d">Compare both at the maximum shared coverage Ĉ<sub>max</sub></span>
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="plots">
+      <div class="plot">
+        <h2>Sample size → observed richness</h2>
+        <canvas id="cvSize"></canvas>
+      </div>
+      <div class="plot">
+        <h2>Coverage → observed richness</h2>
+        <canvas id="cvCov"></canvas>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i class="swatch" style="background:var(--A)"></i> Assemblage A</span>
+      <span><i class="swatch" style="background:var(--B)"></i> Assemblage B</span>
+      <span><i class="swatch dash"></i> standardization point (Ĉ<sub>max</sub> / n<sub>min</sub>)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="result-hero">
+      <span class="hero-label">True richness ratio&nbsp;&nbsp;A : B</span>
+      <span class="hero-val tnum" id="trueRatio">–</span>
+      <span class="hero-note">set by the populations — independent of how they were sampled</span>
+    </div>
+    <div class="mrows" id="rbody"></div>
+    <div class="bar-key">Bars show each estimate’s deviation from the true ratio · centre line = exact.</div>
+    <div class="interp" id="interp"></div>
+  </div>
+
+  <p class="card-title" style="margin:22px 2px 12px;">Scenario &amp; populations</p>
+  <div class="controls">
+    <div class="full presets" id="presets">
+      <span class="presets-label">Collection-bias scenario:</span>
+      <button data-preset="baseline" aria-pressed="true">Baseline</button>
+      <button data-preset="popsize" aria-pressed="false">Population-size bias</button>
+      <button data-preset="productivity" aria-pressed="false">Productivity paradox</button>
+      <button data-preset="rarity" aria-pressed="false">Rarity bias</button>
+    </div>
+
+    <div class="full grp">
+      <div class="ctrl">
+        <label>Abundance evenness — shared by both populations <b id="evenVal"></b></label>
+        <input type="range" id="even" min="0" max="100" value="50">
+      </div>
+      <div class="ctrl">
+        <label>Collection bias — rarity bias (Stromer’s Riddle), <b id="biasVal"></b></label>
+        <input type="range" id="bias" min="0" max="100" value="0">
+        <div class="ends">
+          <span>unbiased (γ = 0)</span><span>strongly over-records rare variants (γ = 3) →</span>
+        </div>
+      </div>
+      <div class="note">
+        The two populations share one abundance shape, so a difference in diversity is real, not an artefact of structure.
+        <b>Sample sizes</b> capture <b>population-size</b> and <b>productivity (“rich-get-richer”)</b> biases — some assemblages simply attract more records.
+        The <b>rarity-bias</b> slider captures <b>Stromer’s Riddle</b>: records are drawn with weight ∝ count<sup>(1−γ)</sup>, so larger γ over-records rare, novel variants.
+        Coverage-based standardization corrects all three; size- and rarefaction-based comparisons do not.
+      </div>
+    </div>
+
+    <div class="grp A">
+      <h3><span class="dot" style="background:var(--A)"></span>Assemblage A</h3>
+      <div class="ctrl">
+        <label>True richness (number of types) <b id="SAval"></b></label>
+        <input type="range" id="SA" min="20" max="400" value="300">
+      </div>
+      <div class="ctrl">
+        <label>Sample size (individuals collected) <b id="nAval"></b></label>
+        <input type="range" id="nA" min="50" max="2000" step="10" value="520">
+      </div>
+    </div>
+
+    <div class="grp B">
+      <h3><span class="dot" style="background:var(--B)"></span>Assemblage B</h3>
+      <div class="ctrl">
+        <label>True richness (number of types) <b id="SBval"></b></label>
+        <input type="range" id="SB" min="20" max="400" value="100">
+      </div>
+      <div class="ctrl">
+        <label>Sample size (individuals collected) <b id="nBval"></b></label>
+        <input type="range" id="nB" min="50" max="2000" step="10" value="450">
+      </div>
+    </div>
+  </div>
+
+  <p class="foot">
+    Richness accumulation and sample coverage use the Chao&nbsp;/&nbsp;iNEXT estimators — the same
+    <code>estimate_coverage</code> and <code>rarefaction_extrapolation</code> as <code>copia</code> — and the
+    standardization follows the reference code (coverage at Ĉ<sub>max</sub> = the smaller of the two sample
+    coverages; rarefaction at n<sub>min</sub>), averaged over many resamples. For clarity the two populations
+    share one log-normal abundance shape, where the paper’s full study draws populations from a neutral
+    (Wright–Fisher) model. Its accuracy is governed primarily by the effective standardized sample size —
+    the number of records retained at the comparison point — not by the coverage level reached (n ≥ 30 sufficed in the paper’s simulations).
+  </p>
+</div>
+
+<script src="coverage-math.js"></script>
+<script>
+(function () {
+  "use strict";
+  var M = window.CoverageMath;
+  var R = 22;                    // resamples (full integer curve, m = 1..n)
+  var SEED_A = 1001, SEED_B = 2002;
+  var COL = { A: "#1f77b4", B: "#ff7f0e", cov: "#2ca02c", rare: "#8e44ad", truth: "#6b7682",
+              dim: "#c7ccd2", grid: "#eef1f4", axis: "#d4d9df", ink: "#1b1f24", muted: "#5f6b76", faint: "#8b96a0" };
+  function rgba(hex, a) { var n = parseInt(hex.slice(1), 16); return "rgba(" + ((n >> 16) & 255) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")"; }
+  function paintRange(elm) { var mn = +elm.min || 0, mx = +elm.max || 100; elm.style.setProperty("--pct", ((+elm.value - mn) / (mx - mn) * 100) + "%"); }
+
+  var method = "coverage";
+  var cA = null, cB = null, res = null;
+
+  /* ---- embed support: hide duplicate title, report height to the host ---- */
+  var EMBEDDED = window.self !== window.top;
+  if (EMBEDDED) document.body.classList.add("embedded");
+  var lastH = 0;
+  function reportHeight() {
+    if (!EMBEDDED) return;
+    // Use body content height only — document.documentElement.scrollHeight floors
+    // at the iframe's viewport height, which would feed back into an infinite grow.
+    var h = Math.ceil(document.body.scrollHeight);
+    if (Math.abs(h - lastH) > 1) { lastH = h; window.parent.postMessage({ type: "cov-demo-height", height: h }, "*"); }
+  }
+
+  /* ---- evenness slider → sigma (0.30 even … 2.20 skewed) ---------------- */
+  function sigmaFromEven(e) { return 0.30 + (1 - e / 100) * 1.90; }
+
+  /* ---- rarity-bias slider → gamma (Stromer), 0 = unbiased … 3 = strong -- */
+  // Records drawn with weight ∝ count^(1-gamma); gamma=0 unbiased, gamma up to
+  // 3 (the reference's maximum) increasingly over-records rare variants.
+  function gammaFromSlider(g) { return (g / 100) * 3; }
+
+  function readState() {
+    return {
+      sigma: sigmaFromEven(+el("even").value),
+      gamma: gammaFromSlider(+el("bias").value),
+      SA: +el("SA").value, nA: +el("nA").value,
+      SB: +el("SB").value, nB: +el("nB").value
+    };
+  }
+  function el(id) { return document.getElementById(id); }
+
+  /* ---- preset scenarios mapping the paper's bias mechanisms ------------- */
+  // slider values: even, bias (gamma slider 0..100), SA, nA, SB, nB
+  var PRESETS = {
+    baseline:     { even: 50, bias: 0,  SA: 300, nA: 520,  SB: 100, nB: 450 },
+    popsize:      { even: 50, bias: 0,  SA: 300, nA: 1100, SB: 100, nB: 170 },
+    productivity: { even: 50, bias: 0,  SA: 300, nA: 280,  SB: 100, nB: 1300 },
+    rarity:       { even: 50, bias: 67, SA: 300, nA: 500,  SB: 100, nB: 500 }
+  };
+  function applyPreset(name) {
+    var p = PRESETS[name]; if (!p) return;
+    el("even").value = p.even; el("bias").value = p.bias;
+    el("SA").value = p.SA; el("nA").value = p.nA;
+    el("SB").value = p.SB; el("nB").value = p.nB;
+    setActivePreset(name);
+    requestRecompute();
+  }
+  function setActivePreset(name) {
+    el("presets").querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-preset") === name ? "true" : "false");
+    });
+  }
+
+  /* ---- recompute (throttled to animation frames) ------------------------ */
+  var pending = false;
+  function requestRecompute() { if (!pending) { pending = true; requestAnimationFrame(recompute); } }
+  function recompute() {
+    pending = false;
+    var s = readState();
+    el("evenVal").textContent = s.sigma <= 0.7 ? "very even" : s.sigma >= 1.7 ? "very skewed" : "moderate";
+    el("biasVal").textContent = s.gamma < 0.25 ? "γ = 0 (unbiased)"
+      : "γ = " + s.gamma.toFixed(1) + " (over-records rare variants)";
+    el("SAval").textContent = s.SA; el("nAval").textContent = s.nA;
+    el("SBval").textContent = s.SB; el("nBval").textContent = s.nB;
+    ["even", "bias", "SA", "nA", "SB", "nB"].forEach(function (id) { paintRange(el(id)); });
+    cA = M.meanCurve({ S: s.SA, sigma: s.sigma, n: s.nA, seed: SEED_A, gamma: s.gamma }, R);
+    cB = M.meanCurve({ S: s.SB, sigma: s.sigma, n: s.nB, seed: SEED_B, gamma: s.gamma }, R);
+    res = M.analyze(cA, cB);
+    draw();
+    updateReadout();
+  }
+
+  /* ---- canvas helpers --------------------------------------------------- */
+  function setup(cv) {
+    var dpr = window.devicePixelRatio || 1;
+    var w = cv.clientWidth, h = cv.clientHeight;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    var ctx = cv.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    return { ctx: ctx, w: w, h: h };
+  }
+  function niceMax(v) {
+    if (v <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(v)));
+    var f = v / p;
+    var nf = f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10;
+    return nf * p;
+  }
+  var FONT = "'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif";
+  function axes(ctx, w, h, m, xmax, ymax, xlab, ylab, xfmt) {
+    var i, nx = 4, ny = 4, x0 = m.l, x1 = w - m.r, y0 = h - m.b, y1 = m.t;
+    ctx.font = "11px " + FONT;
+    // gridlines
+    ctx.strokeStyle = COL.grid; ctx.lineWidth = 1;
+    for (i = 0; i <= nx; i++) { var px = x0 + (x1 - x0) * (i / nx); ctx.beginPath(); ctx.moveTo(px, y1); ctx.lineTo(px, y0); ctx.stroke(); }
+    for (i = 1; i <= ny; i++) { var py = y0 - (y0 - y1) * (i / ny); ctx.beginPath(); ctx.moveTo(x0, py); ctx.lineTo(x1, py); ctx.stroke(); }
+    // axis baseline (left + bottom)
+    ctx.strokeStyle = COL.axis; ctx.lineWidth = 1.25;
+    ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+    // tick labels
+    ctx.fillStyle = COL.faint;
+    ctx.textAlign = "center"; ctx.textBaseline = "top";
+    for (i = 0; i <= nx; i++) { var xv = xmax * i / nx; ctx.fillText(xfmt ? xfmt(xv) : Math.round(xv), x0 + (x1 - x0) * (i / nx), y0 + 6); }
+    ctx.textAlign = "right"; ctx.textBaseline = "middle";
+    for (i = 0; i <= ny; i++) { var yv = ymax * i / ny; ctx.fillText(Math.round(yv), x0 - 8, y0 - (y0 - y1) * (i / ny)); }
+    // axis titles
+    ctx.fillStyle = COL.muted; ctx.font = "600 11px " + FONT;
+    ctx.textAlign = "center"; ctx.textBaseline = "bottom"; ctx.fillText(xlab, x0 + (x1 - x0) / 2, h - 1);
+    ctx.save(); ctx.translate(8, y1 + (y0 - y1) / 2); ctx.rotate(-Math.PI / 2);
+    ctx.textBaseline = "top"; ctx.fillText(ylab, 0, 0); ctx.restore();
+  }
+  function mkScale(m, w, h, xmax, ymax) {
+    return {
+      x: function (v) { return m.l + (w - m.l - m.r) * (v / xmax); },
+      y: function (v) { return (h - m.b) - (h - m.b - m.t) * (v / ymax); }
+    };
+  }
+  function area(ctx, sc, m, h, xs, ys, color, alpha, upto) {
+    var base = h - m.b, g = ctx.createLinearGradient(0, m.t, 0, base);
+    g.addColorStop(0, rgba(color, alpha)); g.addColorStop(1, rgba(color, 0));
+    ctx.fillStyle = g; ctx.beginPath();
+    var started = false, lastx = 0;
+    for (var i = 0; i < xs.length; i++) {
+      if (upto !== undefined && xs[i] > upto) break;
+      var px = sc.x(xs[i]), py = sc.y(ys[i]);
+      if (!started) { ctx.moveTo(px, base); ctx.lineTo(px, py); started = true; } else ctx.lineTo(px, py);
+      lastx = px;
+    }
+    if (started) { ctx.lineTo(lastx, base); ctx.closePath(); ctx.fill(); }
+  }
+  function curveLine(ctx, sc, xs, ys, color, alpha, upto) {
+    ctx.globalAlpha = alpha; ctx.strokeStyle = color; ctx.lineWidth = 2.6;
+    ctx.lineJoin = "round"; ctx.lineCap = "round"; ctx.beginPath();
+    var started = false;
+    for (var i = 0; i < xs.length; i++) {
+      if (upto !== undefined && xs[i] > upto) break;
+      var px = sc.x(xs[i]), py = sc.y(ys[i]);
+      if (!started) { ctx.moveTo(px, py); started = true; } else ctx.lineTo(px, py);
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+  }
+  // Draw a label with a true subscript (e.g. base "Ĉ", sub "max"), halo'd and
+  // clamped within the plot area.
+  function subLabel(ctx, base, sub, cx, top, color, w, m) {
+    var fs = 10.5, fsub = 8;
+    ctx.font = "700 " + fs + "px " + FONT; var wBase = ctx.measureText(base).width;
+    ctx.font = "700 " + fsub + "px " + FONT; var wSub = sub ? ctx.measureText(sub).width : 0;
+    var total = wBase + wSub + 0.5, startX = cx - total / 2;
+    var left = m.l + 2, right = w - m.r - 2;
+    if (startX < left) startX = left;
+    if (startX + total > right) startX = right - total;
+    ctx.textAlign = "left"; ctx.textBaseline = "top"; ctx.lineJoin = "round";
+    ctx.font = "700 " + fs + "px " + FONT;
+    ctx.lineWidth = 3; ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.strokeText(base, startX, top);
+    ctx.fillStyle = color; ctx.fillText(base, startX, top);
+    if (sub) {
+      ctx.font = "700 " + fsub + "px " + FONT;
+      var sx = startX + wBase + 0.5, sy = top + (fs - fsub) + 1.5;
+      ctx.lineWidth = 3; ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.strokeText(sub, sx, sy);
+      ctx.fillStyle = color; ctx.fillText(sub, sx, sy);
+    }
+  }
+  function vguide(ctx, sc, x, ytop, ybot, color, base, sub, w, m) {
+    ctx.save();
+    ctx.strokeStyle = color; ctx.globalAlpha = 0.55; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(sc.x(x), ytop); ctx.lineTo(sc.x(x), ybot); ctx.stroke();
+    ctx.restore();
+    if (base) subLabel(ctx, base, sub, sc.x(x), ytop + 1, color, w, m);
+  }
+  function dot(ctx, px, py, color, label, w, m) {
+    ctx.save();
+    ctx.shadowColor = "rgba(17,24,39,.28)"; ctx.shadowBlur = 4; ctx.shadowOffsetY = 1;
+    ctx.beginPath(); ctx.arc(px, py, 5.5, 0, 2 * Math.PI); ctx.fillStyle = "#fff"; ctx.fill();
+    ctx.restore();
+    ctx.beginPath(); ctx.arc(px, py, 5.5, 0, 2 * Math.PI); ctx.lineWidth = 2.6; ctx.strokeStyle = color; ctx.stroke();
+    if (label != null) {
+      var right = w && px > (m.l + (w - m.l - m.r) * 0.82);
+      ctx.font = "700 11.5px " + FONT; ctx.textBaseline = "middle"; ctx.textAlign = right ? "right" : "left";
+      var lx = right ? px - 9 : px + 9;
+      ctx.lineWidth = 3.5; ctx.strokeStyle = "rgba(255,255,255,.92)"; ctx.lineJoin = "round"; ctx.strokeText(label, lx, py);
+      ctx.fillStyle = color; ctx.fillText(label, lx, py);
+    }
+  }
+
+  /* ---- draw both panels ------------------------------------------------- */
+  function draw() { drawSize(); drawCov(); }
+  function drawSize() {
+    var s = setup(el("cvSize")), ctx = s.ctx, w = s.w, h = s.h;
+    var m = { l: 50, r: 18, t: 14, b: 30 };
+    var xmax = niceMax(Math.max(cA.n, cB.n) * 1.02);
+    var ymax = niceMax(Math.max(cA.Sobs, cB.Sobs) * 1.12);
+    axes(ctx, w, h, m, xmax, ymax, "sample size  n", "richness  S");
+    var sc = mkScale(m, w, h, xmax, ymax);
+    var active = (method === "size" || method === "rarefaction");
+    var fade = active ? 1 : 0.34;
+    area(ctx, sc, m, h, cB.m, cB.S, COL.B, 0.13 * fade, cB.n);
+    area(ctx, sc, m, h, cA.m, cA.S, COL.A, 0.13 * fade, cA.n);
+    curveLine(ctx, sc, cB.m, cB.S, COL.B, fade, cB.n);
+    curveLine(ctx, sc, cA.m, cA.S, COL.A, fade, cA.n);
+
+    if (method === "size") {
+      vguide(ctx, sc, cA.n, sc.y(res.size.ptA.y), h - m.b, COL.A);
+      vguide(ctx, sc, cB.n, sc.y(res.size.ptB.y), h - m.b, COL.B);
+      dot(ctx, sc.x(res.size.ptB.x), sc.y(res.size.ptB.y), COL.B, Math.round(res.size.ptB.y), w, m);
+      dot(ctx, sc.x(res.size.ptA.x), sc.y(res.size.ptA.y), COL.A, Math.round(res.size.ptA.y), w, m);
+    } else if (method === "rarefaction") {
+      vguide(ctx, sc, res.rarefaction.nmin, m.t, h - m.b, COL.truth, "n", "min", w, m);
+      dot(ctx, sc.x(res.rarefaction.ptB.x), sc.y(res.rarefaction.ptB.y), COL.B, Math.round(res.rarefaction.ptB.y), w, m);
+      dot(ctx, sc.x(res.rarefaction.ptA.x), sc.y(res.rarefaction.ptA.y), COL.A, Math.round(res.rarefaction.ptA.y), w, m);
+    } else {
+      dot(ctx, sc.x(cB.n), sc.y(cB.Sobs), COL.dim, null);
+      dot(ctx, sc.x(cA.n), sc.y(cA.Sobs), COL.dim, null);
+    }
+  }
+  function drawCov() {
+    var s = setup(el("cvCov")), ctx = s.ctx, w = s.w, h = s.h;
+    var m = { l: 50, r: 18, t: 14, b: 30 };
+    var xmax = Math.min(1, Math.max(cA.Cfull, cB.Cfull) + 0.05);
+    var ymax = niceMax(Math.max(cA.Sobs, cB.Sobs) * 1.12);
+    axes(ctx, w, h, m, xmax, ymax, "coverage  Ĉ", "richness  S", function (v) { return v.toFixed(2); });
+    var sc = mkScale(m, w, h, xmax, ymax);
+    var active = (method === "coverage");
+    var fade = active ? 1 : 0.34;
+    area(ctx, sc, m, h, cB.C, cB.S, COL.B, 0.13 * fade);
+    area(ctx, sc, m, h, cA.C, cA.S, COL.A, 0.13 * fade);
+    curveLine(ctx, sc, cB.C, cB.S, COL.B, fade);
+    curveLine(ctx, sc, cA.C, cA.S, COL.A, fade);
+
+    if (method === "coverage") {
+      var cm = res.coverage.Cmax;
+      vguide(ctx, sc, cm, m.t, h - m.b, COL.cov, "Ĉ", "max", w, m);
+      dot(ctx, sc.x(cm), sc.y(res.coverage.ptB.y), COL.B, Math.round(res.coverage.ptB.y), w, m);
+      dot(ctx, sc.x(cm), sc.y(res.coverage.ptA.y), COL.A, Math.round(res.coverage.ptA.y), w, m);
+    } else {
+      dot(ctx, sc.x(cB.Cfull), sc.y(cB.Sobs), COL.dim, null);
+      dot(ctx, sc.x(cA.Cfull), sc.y(cA.Sobs), COL.dim, null);
+    }
+  }
+
+  /* ---- readout ---------------------------------------------------------- */
+  function errClass(rel) { var a = Math.abs(rel); return a < 0.08 ? "good" : a < 0.25 ? "warn" : "bad"; }
+  function pct(rel) { return (rel >= 0 ? "+" : "−") + Math.round(Math.abs(rel) * 100) + "%"; }
+
+  var ACC = { size: "var(--A)", rarefaction: "var(--rare)", coverage: "var(--cov)" };
+  function updateReadout() {
+    var tr = res.trueRatio;
+    el("trueRatio").textContent = tr.toFixed(2);
+    var rows = [
+      { m: "size", name: "Size-based", ratio: res.size.ratio, ctx: "at n = " + cA.n + " vs " + cB.n },
+      { m: "rarefaction", name: "Rarefaction-based", ratio: res.rarefaction.ratio, ctx: "at n<sub>min</sub> = " + Math.round(res.rarefaction.nmin) },
+      { m: "coverage", name: "Coverage-based", ratio: res.coverage.ratio, ctx: "at Ĉ<sub>max</sub> = " + res.coverage.Cmax.toFixed(3) }
+    ];
+    var html = "";
+    rows.forEach(function (r) {
+      var rel = r.ratio / tr - 1, cls = errClass(rel);
+      var mag = Math.min(Math.abs(rel), 0.6) / 0.6, half = mag * 50;
+      var left = rel < 0 ? (50 - half) : 50;
+      html += '<div class="mrow' + (r.m === method ? ' active' : '') + '" data-m="' + r.m + '" style="--accent:' + ACC[r.m] + '">' +
+        '<div class="mname"><span class="mdot"></span><span>' + r.name + '<span class="mctx">' + r.ctx + '</span></span></div>' +
+        '<div class="mest tnum">' + r.ratio.toFixed(2) + '</div>' +
+        '<div class="mbar"><div class="mbar-track"><div class="mbar-zero"></div>' +
+          '<div class="mbar-fill ' + cls + '" style="left:' + left + '%;width:' + half + '%"></div></div></div>' +
+        '<div class="mpct ' + cls + ' tnum">' + pct(rel) + '</div></div>';
+    });
+    el("rbody").innerHTML = html;
+    el("interp").innerHTML = interpret();
+    reportHeight();
+  }
+
+  function interpret() {
+    var tr = res.trueRatio;
+    if (method === "size") {
+      var rel = res.size.ratio / tr - 1;
+      return "Comparing the raw counts at <b>n=" + cA.n + "</b> and <b>n=" + cB.n + "</b> gives a ratio of <b>" +
+        res.size.ratio.toFixed(2) + "</b>. This is really <em>no</em> standardization: the answer tracks sampling effort, not diversity — slide the sample sizes and watch it swing (true ratio stays " + tr.toFixed(2) + ").";
+    }
+    if (method === "rarefaction") {
+      return "Rarefying both assemblages down to <b>n<sub>min</sub>=" + Math.round(res.rarefaction.nmin) +
+        "</b> yields <b>" + res.rarefaction.ratio.toFixed(2) + "</b>. Because the richer assemblage needs more samples to reveal its rare types, cutting both to the same size <em>compresses</em> the comparison toward 1, hiding genuine differences in richness.";
+    }
+    var cm = res.coverage.Cmax;
+    var rel2 = res.coverage.ratio / tr - 1;
+    var gamma = gammaFromSlider(+el("bias").value);
+    var biasNote = gamma > 0.3 ? " — and it holds even though collection over-records rare variants here (γ=" + gamma.toFixed(1) + ")" : "";
+    var quality = Math.abs(rel2) < 0.08
+      ? "closely matches the true ratio of <b>" + tr.toFixed(2) + "</b>" + biasNote + "."
+      : "still falls short of the true ratio (<b>" + tr.toFixed(2) + "</b>): the smaller sample leaves too few records at the standardized point, so the estimate is noisy. What matters is the standardized sample size, not the coverage reached — raise the smaller sample size and watch it converge.";
+    return "Comparing both assemblages at the same completeness, <b>Ĉ<sub>max</sub>=" + cm.toFixed(3) +
+      "</b>, gives <b>" + res.coverage.ratio.toFixed(2) + "</b>, which " + quality;
+  }
+
+  /* ---- wiring ----------------------------------------------------------- */
+  var btns = el("methods").querySelectorAll("button");
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      method = b.getAttribute("data-m");
+      btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      draw(); updateReadout();
+    });
+  });
+  el("presets").querySelectorAll("button").forEach(function (b) {
+    b.addEventListener("click", function () { applyPreset(b.getAttribute("data-preset")); });
+  });
+  ["even", "bias", "SA", "nA", "SB", "nB"].forEach(function (id) {
+    el(id).addEventListener("input", function () { setActivePreset(null); requestRecompute(); });
+  });
+  window.addEventListener("resize", function () { if (cA) draw(); reportHeight(); });
+
+  recompute();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { draw(); reportHeight(); });
+  if (EMBEDDED) { requestAnimationFrame(reportHeight); window.addEventListener("load", reportHeight); }
+})();
+</script>
+</body>
+</html>
