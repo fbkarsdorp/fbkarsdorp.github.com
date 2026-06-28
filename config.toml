@@ -56,7 +56,7 @@ publishDir = "docs"
     url = '/'
     weight = 1
   [[menu.main]]
-    name = "Notebooks"
+    name = "Fragments"
     identifier = "notebooks"
     weight = 2
     url = "/posts/"

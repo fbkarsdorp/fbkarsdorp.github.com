@@ -3,7 +3,7 @@ title = "List of publications"
 author = ["Folgert Karsdorp"]
 date = 2022-11-20T00:00:00+01:00
 layout = "pubs"
-lastmod = 2026-02-26T16:51:58+01:00
+lastmod = 2026-06-03T13:43:26+01:00
 draft = false
 +++
 
@@ -23,6 +23,12 @@ University Press. <a href="https://press.princeton.edu/books/hardcover/978069117
 
 <h2>Journal Articles</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-karsdorp2026" class="csl-entry" role="listitem">
+Karsdorp, Folgert, Anne Kandler, Mike Kestemont, Iza Romanowska, and
+Rombert Stapel. 2026. <span>“Correcting Collection Bias in Comparative
+Studies of Diversity.”</span> <em>Journal of the Royal Society
+Interface</em>.
+</div>
 <div id="ref-kestemont:2026" class="csl-entry" role="listitem">
 Kestemont, Mike, Folgert Karsdorp, Jean-Baptiste Camps, Remco
 Sleiderink, and Anne Chao. 2026. <span>“Saved in Translation? Estimating

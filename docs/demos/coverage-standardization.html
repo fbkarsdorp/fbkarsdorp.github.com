@@ -54,7 +54,7 @@
   /* header */
   .eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--cov); margin: 0 0 6px; }
   h1 { font-family: var(--heading); font-size: 1.5rem; line-height: 1.25; letter-spacing: -.01em; margin: 0 0 6px; font-weight: 700; color: var(--ink); }
-  .sub { color: var(--muted); font-size: .92rem; margin: 0 0 16px; max-width: 64ch; }
+  .sub { color: var(--muted); font-size: .92rem; margin: 0 0 16px; }
   .sub em { font-style: normal; color: var(--ink); font-weight: 600; }
 
   /* paper reference */
@@ -146,6 +146,14 @@
   .ends { display: flex; justify-content: space-between; font-size: .67rem; color: var(--faint); margin-top: 4px; }
   .note { font-size: .76rem; color: var(--muted); margin-top: 12px; line-height: 1.5; }
 
+  /* cockpit — sliders sit beside the live ratio so a drag's effect is in view */
+  .cockpit-presets { margin: 0 0 14px; }
+  .cockpit { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 16px; align-items: start; margin: 0 0 16px; }
+  .cockpit-controls { display: flex; flex-direction: column; gap: 12px; }
+  .cockpit-controls .grp { margin: 0; }
+  .cockpit .card { margin: 0; }
+  @media (max-width: 760px) { .cockpit { grid-template-columns: 1fr; } }
+
   /* sliders */
   input[type=range] { --acc: var(--cov); --pct: 50%; -webkit-appearance: none; appearance: none; width: 100%; height: 18px; background: transparent; cursor: pointer; margin: 0; display: block; }
   .grp.A input[type=range] { --acc: var(--A); }
@@ -210,6 +218,7 @@
     </button>
   </div>
 
+  <!-- standardization curves -->
   <div class="card">
     <div class="plots">
       <div class="plot">
@@ -228,71 +237,76 @@
     </div>
   </div>
 
-  <div class="card">
-    <div class="result-hero">
-      <span class="hero-label">True richness ratio&nbsp;&nbsp;A : B</span>
-      <span class="hero-val tnum" id="trueRatio">–</span>
-      <span class="hero-note">set by the populations — independent of how they were sampled</span>
-    </div>
-    <div class="mrows" id="rbody"></div>
-    <div class="bar-key">Bars show each estimate’s deviation from the true ratio · centre line = exact.</div>
-    <div class="interp" id="interp"></div>
+  <!-- scenario presets -->
+  <div class="presets cockpit-presets" id="presets">
+    <span class="presets-label">Collection-bias scenario:</span>
+    <button data-preset="baseline" aria-pressed="true">Baseline</button>
+    <button data-preset="popsize" aria-pressed="false">Population-size bias</button>
+    <button data-preset="productivity" aria-pressed="false">Productivity paradox</button>
+    <button data-preset="rarity" aria-pressed="false">Rarity bias</button>
   </div>
 
-  <p class="card-title" style="margin:22px 2px 12px;">Scenario &amp; populations</p>
-  <div class="controls">
-    <div class="full presets" id="presets">
-      <span class="presets-label">Collection-bias scenario:</span>
-      <button data-preset="baseline" aria-pressed="true">Baseline</button>
-      <button data-preset="popsize" aria-pressed="false">Population-size bias</button>
-      <button data-preset="productivity" aria-pressed="false">Productivity paradox</button>
-      <button data-preset="rarity" aria-pressed="false">Rarity bias</button>
-    </div>
-
-    <div class="full grp">
-      <div class="ctrl">
-        <label>Abundance evenness — shared by both populations <b id="evenVal"></b></label>
-        <input type="range" id="even" min="0" max="100" value="50">
-      </div>
-      <div class="ctrl">
-        <label>Collection bias — rarity bias (Stromer’s Riddle), <b id="biasVal"></b></label>
-        <input type="range" id="bias" min="0" max="100" value="0">
-        <div class="ends">
-          <span>unbiased (γ = 0)</span><span>strongly over-records rare variants (γ = 3) →</span>
+  <!-- cockpit: drag a slider on the left, watch the ratio respond on the right -->
+  <div class="cockpit">
+    <div class="cockpit-controls">
+      <div class="grp A">
+        <h3><span class="dot" style="background:var(--A)"></span>Assemblage A</h3>
+        <div class="ctrl">
+          <label>True richness (number of types) <b id="SAval"></b></label>
+          <input type="range" id="SA" min="20" max="400" value="300">
+        </div>
+        <div class="ctrl">
+          <label>Sample size (individuals collected) <b id="nAval"></b></label>
+          <input type="range" id="nA" min="50" max="2000" step="10" value="520">
         </div>
       </div>
-      <div class="note">
-        The two populations share one abundance shape, so a difference in diversity is real, not an artefact of structure.
-        <b>Sample sizes</b> capture <b>population-size</b> and <b>productivity (“rich-get-richer”)</b> biases — some assemblages simply attract more records.
-        The <b>rarity-bias</b> slider captures <b>Stromer’s Riddle</b>: records are drawn with weight ∝ count<sup>(1−γ)</sup>, so larger γ over-records rare, novel variants.
-        Coverage-based standardization corrects all three; size- and rarefaction-based comparisons do not.
+
+      <div class="grp B">
+        <h3><span class="dot" style="background:var(--B)"></span>Assemblage B</h3>
+        <div class="ctrl">
+          <label>True richness (number of types) <b id="SBval"></b></label>
+          <input type="range" id="SB" min="20" max="400" value="100">
+        </div>
+        <div class="ctrl">
+          <label>Sample size (individuals collected) <b id="nBval"></b></label>
+          <input type="range" id="nB" min="50" max="2000" step="10" value="450">
+        </div>
+      </div>
+
+      <div class="grp">
+        <h3>Shared populations</h3>
+        <div class="ctrl">
+          <label>Abundance evenness — shared by both <b id="evenVal"></b></label>
+          <input type="range" id="even" min="0" max="100" value="50">
+        </div>
+        <div class="ctrl">
+          <label>Collection bias — rarity bias (Stromer’s Riddle), <b id="biasVal"></b></label>
+          <input type="range" id="bias" min="0" max="100" value="0">
+          <div class="ends">
+            <span>unbiased (γ = 0)</span><span>over-records rare (γ = 3) →</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="grp A">
-      <h3><span class="dot" style="background:var(--A)"></span>Assemblage A</h3>
-      <div class="ctrl">
-        <label>True richness (number of types) <b id="SAval"></b></label>
-        <input type="range" id="SA" min="20" max="400" value="300">
+    <div class="card readout-card">
+      <div class="result-hero">
+        <span class="hero-label">True richness ratio&nbsp;&nbsp;A : B</span>
+        <span class="hero-val tnum" id="trueRatio">–</span>
+        <span class="hero-note">set by the populations — independent of how they were sampled</span>
       </div>
-      <div class="ctrl">
-        <label>Sample size (individuals collected) <b id="nAval"></b></label>
-        <input type="range" id="nA" min="50" max="2000" step="10" value="520">
-      </div>
-    </div>
-
-    <div class="grp B">
-      <h3><span class="dot" style="background:var(--B)"></span>Assemblage B</h3>
-      <div class="ctrl">
-        <label>True richness (number of types) <b id="SBval"></b></label>
-        <input type="range" id="SB" min="20" max="400" value="100">
-      </div>
-      <div class="ctrl">
-        <label>Sample size (individuals collected) <b id="nBval"></b></label>
-        <input type="range" id="nB" min="50" max="2000" step="10" value="450">
-      </div>
+      <div class="mrows" id="rbody"></div>
+      <div class="bar-key">Bars show each estimate’s deviation from the true ratio · centre line = exact.</div>
+      <div class="interp" id="interp"></div>
     </div>
   </div>
+
+  <p class="note" style="margin-top:0;">
+    The two populations share one abundance shape, so a difference in diversity is real, not an artefact of structure.
+    <b>Sample sizes</b> capture <b>population-size</b> and <b>productivity (“rich-get-richer”)</b> biases — some assemblages simply attract more records.
+    The <b>rarity-bias</b> slider captures <b>Stromer’s Riddle</b>: records are drawn with weight ∝ count<sup>(1−γ)</sup>, so larger γ over-records rare, novel variants.
+    Coverage-based standardization corrects all three; size- and rarefaction-based comparisons do not.
+  </p>
 
   <p class="foot">
     Richness accumulation and sample coverage use the Chao&nbsp;/&nbsp;iNEXT estimators — the same
@@ -319,6 +333,7 @@
 
   var method = "coverage";
   var cA = null, cB = null, res = null;
+  var interacted = false;   // flips on the first user action; gates the host's floating chip
 
   /* ---- embed support: hide duplicate title, report height to the host ---- */
   var EMBEDDED = window.self !== window.top;
@@ -330,6 +345,26 @@
     // at the iframe's viewport height, which would feed back into an infinite grow.
     var h = Math.ceil(document.body.scrollHeight);
     if (Math.abs(h - lastH) > 1) { lastH = h; window.parent.postMessage({ type: "cov-demo-height", height: h }, "*"); }
+    // Report where the readout card sits inside the frame so the host can show
+    // the floating chip only while the real readout is scrolled out of view.
+    var rc = document.querySelector(".readout-card");
+    if (rc) {
+      var r = rc.getBoundingClientRect();
+      window.parent.postMessage({ type: "cov-demo-readout", top: Math.round(r.top + (window.scrollY || 0)), height: Math.round(r.height) }, "*");
+    }
+  }
+  // Push the currently-selected method's ratio up to the host page so it can
+  // show a floating, always-visible readout (the iframe itself can't pin one).
+  function reportActiveRatio(tr, rows) {
+    if (!EMBEDDED) return;
+    var act = null;
+    for (var i = 0; i < rows.length; i++) if (rows[i].m === method) act = rows[i];
+    if (!act) return;
+    var rel = act.ratio / tr - 1;
+    window.parent.postMessage({
+      type: "cov-demo-ratio", trueRatio: tr, method: act.name,
+      est: act.ratio, pct: pct(rel), cls: errClass(rel), interacted: interacted
+    }, "*");
   }
 
   /* ---- evenness slider → sigma (0.30 even … 2.20 skewed) ---------------- */
@@ -586,6 +621,7 @@
     });
     el("rbody").innerHTML = html;
     el("interp").innerHTML = interpret();
+    reportActiveRatio(tr, rows);
     reportHeight();
   }
 
@@ -615,16 +651,17 @@
   var btns = el("methods").querySelectorAll("button");
   btns.forEach(function (b) {
     b.addEventListener("click", function () {
+      interacted = true;
       method = b.getAttribute("data-m");
       btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
       draw(); updateReadout();
     });
   });
   el("presets").querySelectorAll("button").forEach(function (b) {
-    b.addEventListener("click", function () { applyPreset(b.getAttribute("data-preset")); });
+    b.addEventListener("click", function () { interacted = true; applyPreset(b.getAttribute("data-preset")); });
   });
   ["even", "bias", "SA", "nA", "SB", "nB"].forEach(function (id) {
-    el(id).addEventListener("input", function () { setActivePreset(null); requestRecompute(); });
+    el(id).addEventListener("input", function () { interacted = true; setActivePreset(null); requestRecompute(); });
   });
   window.addEventListener("resize", function () { if (cA) draw(); reportHeight(); });
 

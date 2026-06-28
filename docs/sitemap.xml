@@ -2,62 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.karsdorp.io/tags/accumulation/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
-  </url><url>
     <loc>https://www.karsdorp.io/tags/bias/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/collection/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/posts/20260627174328-comparing_diversity_under_collection_bias/</loc>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/coverage/</loc>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/diversity/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/posts/20231219152440-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/folktales/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/</loc>
-    <lastmod>2026-02-26T16:51:58+01:00</lastmod>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/tags/rarefaction/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
+    <loc>https://www.karsdorp.io/tags/interactive/</loc>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/</loc>
-    <lastmod>2024-01-29T20:51:29+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/chao2/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/posts/20231218135129-explorers_and_exploiters_mapping_search_strategies_of_folktale_collectors/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/incidence/</loc>
-    <lastmod>2024-01-17T11:23:27+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/posts/20230425123401-unseen_crime_simulation/</loc>
-    <lastmod>2023-04-25T15:59:36+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/emacs/</loc>
-    <lastmod>2022-12-24T17:08:32+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/gtd/</loc>
-    <lastmod>2022-12-24T17:08:32+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/jupyter/</loc>
-    <lastmod>2022-12-24T17:08:32+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/posts/dotemacs/</loc>
-    <lastmod>2022-12-24T17:08:32+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/org-mode/</loc>
-    <lastmod>2022-12-24T17:08:32+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/python/</loc>
-    <lastmod>2022-12-24T17:08:32+01:00</lastmod>
+    <lastmod>2026-06-27T17:43:28+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/chao1/</loc>
     <lastmod>2022-12-16T19:59:23+01:00</lastmod>
@@ -80,35 +47,17 @@
     <loc>https://www.karsdorp.io/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/</loc>
     <lastmod>2022-12-16T19:59:23+01:00</lastmod>
   </url><url>
-    <loc>https://www.karsdorp.io/posts/20220926232754-lexical_diversity/</loc>
-    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/hill-numbers/</loc>
-    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/richness/</loc>
-    <lastmod>2022-12-15T18:09:05+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/semantics/</loc>
-    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/similarity/</loc>
-    <lastmod>2022-12-15T16:58:56+01:00</lastmod>
-  </url><url>
     <loc>https://www.karsdorp.io/references/</loc>
-    <lastmod>2026-02-26T16:51:58+01:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/fad/</loc>
-    <lastmod>2022-06-23T12:31:36+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/functional/</loc>
-    <lastmod>2022-06-23T12:31:36+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/posts/20220610145347-undetected_functional_diversity/</loc>
-    <lastmod>2022-06-23T12:31:36+02:00</lastmod>
+    <lastmod>2026-06-03T13:43:26+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/20220316142536-two_assemblage_good_turing_estimation/</loc>
     <lastmod>2022-05-14T09:03:02+02:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/folktales/</loc>
+    <lastmod>2022-05-14T09:03:02+02:00</lastmod>
+  </url><url>
+    <loc>https://www.karsdorp.io/tags/richness/</loc>
+    <lastmod>2022-12-15T18:09:05+01:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/tags/shared-richness/</loc>
     <lastmod>2022-05-14T09:03:02+02:00</lastmod>
@@ -130,15 +79,6 @@
   </url><url>
     <loc>https://www.karsdorp.io/tags/zelterman/</loc>
     <lastmod>2022-04-23T09:37:34+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/homogeneity/</loc>
-    <lastmod>2022-04-01T12:43:51+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/tags/shakespeare/</loc>
-    <lastmod>2022-04-01T12:43:51+02:00</lastmod>
-  </url><url>
-    <loc>https://www.karsdorp.io/posts/20220405102342-zelterman_estimator/</loc>
-    <lastmod>2022-04-01T12:43:51+02:00</lastmod>
   </url><url>
     <loc>https://www.karsdorp.io/posts/20220323122150-estimating_richness_under_sampling_without_replacement/</loc>
     <lastmod>2022-03-31T12:35:33+02:00</lastmod>

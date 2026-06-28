@@ -4,7 +4,7 @@ author = ["Folgert Karsdorp"]
 lastmod = 2022-12-24T17:08:32+01:00
 tags = ["emacs", "org-mode", "python", "jupyter", "gtd"]
 description = "A literate Org-mode document of the author's GNU Emacs configuration, covering Python, Jupyter notebooks, and a GTD-based workflow."
-draft = false
+draft = true
 +++
 
 ## What's this? {#what-s-this}

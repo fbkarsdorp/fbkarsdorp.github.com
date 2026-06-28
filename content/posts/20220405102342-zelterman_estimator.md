@@ -4,7 +4,7 @@ author = ["Folgert Karsdorp"]
 lastmod = 2022-04-01T12:43:51+02:00
 tags = ["unseen-species", "diversity", "homogeneity", "richness", "zelterman", "chao1", "shakespeare"]
 description = "Explores Zelterman's robust alternative to Chao1 — an estimator less sensitive to heterogeneity violations, tested on cultural and literary data."
-draft = false
+draft = true
 +++
 
 ## Zelterman's Estimator {#zelterman-s-estimator}

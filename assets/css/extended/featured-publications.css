@@ -1,0 +1,48 @@
+/* Homepage "Selected publications" — a plain, flush-left list (no boxes)
+   beneath the bio. Markup is in layouts/index.html, data in data/featured.json. */
+
+.featured-publications {
+  margin-top: 56px;
+}
+
+.featured-publications h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.featured-pub {
+  margin-bottom: 20px;
+  max-width: 90%;
+}
+
+.featured-pub-title {
+  font-family: var(--font-family-paragraph);
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--heading-color);
+  text-decoration: none;
+}
+
+a.featured-pub-title:hover {
+  color: var(--highlight-color);
+}
+
+.featured-pub-meta {
+  margin-top: 2px;
+  font-family: var(--font-family-monospace);
+  font-size: 14px;
+  color: color-mix(in srgb, var(--text-color) 55%, white);
+}
+
+.featured-pub-link {
+  margin-left: 6px;
+  font-weight: bold;
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
+.featured-publications .view-more {
+  display: inline-block;
+  margin-top: 8px;
+}

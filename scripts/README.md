@@ -23,6 +23,7 @@ Generates the publications page from the BibTeX bibliography.
 - Generates HTML bibliography with proper Hugo front matter and section headings
 - Outputs to `content/references.md`
 - Updates the `lastmod` timestamp automatically
+- Also writes `data/featured.json` — the "Selected publications" fragment shown on the homepage. Mark an entry with `featured = {true}` in `references.bib` to feature it, and `featured_order = {N}` (ascending) to control its position.
 
 **Requirements:**
 - Python 3

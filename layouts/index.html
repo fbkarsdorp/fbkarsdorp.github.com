@@ -13,6 +13,30 @@
     {{ end }}
   </div>
 
+  {{/* Selected publications — generated into data/featured.json by
+       scripts/generate-references.py from `featured` entries in references.bib.
+       Rendered as a compact, flush-left list beneath the bio. */}}
+  {{ with .Site.Data.featured }}
+    {{ if gt (.count | default 0) 0 }}
+      <section class="featured-publications">
+        <h2>Selected publications<span class="dot">.</span></h2>
+        {{ range .entries }}
+          <div class="featured-pub">
+            {{ if .url }}
+              <a class="featured-pub-title" href="{{ .url }}">{{ .title }}</a>
+            {{ else }}
+              <span class="featured-pub-title">{{ .title }}</span>
+            {{ end }}
+            <div class="featured-pub-meta">
+              {{ with .venue }}{{ . }}{{ end }}{{ if and .venue .year }} · {{ end }}{{ .year }}{{ if .label }} <a class="featured-pub-link" href="{{ .url }}">{{ .label }}</a>{{ end }}
+            </div>
+          </div>
+        {{ end }}
+        <a class="view-more" href="/references">All publications</a>
+      </section>
+    {{ end }}
+  {{ end }}
+
   {{ if .Site.Params.showPostsOnHomepage }}
 
     {{ $pages := where .Site.RegularPages "Type" "posts" }}
