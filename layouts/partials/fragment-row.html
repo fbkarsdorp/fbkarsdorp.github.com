@@ -1,0 +1,10 @@
+<li class="fragment-row">
+  <a href="{{ .RelPermalink }}">
+    <time class="fr-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2006" }}</time>
+    <span class="fr-main">
+      <span class="fr-title">{{ partial "display-title.html" .Title }}</span>
+      {{ with .Params.description }}<span class="fr-desc">{{ . }}</span>{{ end }}
+    </span>
+    <span class="fr-meta">{{ if in .Params.tags "interactive" }}Interactive{{ else }}{{ .ReadingTime }} min read{{ end }}</span>
+  </a>
+</li>

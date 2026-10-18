@@ -1,0 +1,21 @@
+{{ define "body_classes" }}page-list{{ end }}
+
+{{ define "main" }}
+<header class="page-head band">
+  <p class="eyebrow"><a href="{{ "posts/" | relURL }}">Fragments</a>{{ if eq .Kind "term" }} <span aria-hidden="true">·</span> tagged{{ end }}</p>
+  <h1>{{ if eq .Kind "term" }}{{ partial "display-title.html" .Data.Term }}{{ else }}{{ .Title }}{{ end }}<span class="dot">.</span></h1>
+</header>
+<section class="band">
+  {{ if eq .Kind "taxonomy" }}
+    <ul class="tag-cloud">
+      {{ range .Data.Terms.ByCount }}
+        <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> <span>{{ .Count }}</span></li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <ol class="fragment-index fragment-index--full">
+      {{ range .Pages.ByDate.Reverse }}{{ partial "fragment-row.html" . }}{{ end }}
+    </ol>
+  {{ end }}
+</section>
+{{ end }}

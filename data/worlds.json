@@ -1,0 +1,36 @@
+{
+  "heading": "Worlds to walk through",
+  "intro": "Interactive reconstructions built from the collections I work with: you can walk through a corpus, a century or a statistical argument.",
+  "entries": [
+    {
+      "title": "Roodkapje",
+      "subtitle": "The Forest of Tellings",
+      "blurb": "Walk the forest as Little Red Riding Hood. Every fork in the path is a variant attested in 427 Dutch tellings, from 1781 to 2015, and the real words of those books keep you company along the way.",
+      "meta": "Game · 427 tellings · 1781–2015",
+      "action": "Begin the tale",
+      "url": "https://www.karsdorp.io/rrh-rpg/",
+      "image": "images/worlds/roodkapje.jpg",
+      "alt": "Little Red Riding Hood, her grandmother and the rest of the cast in a forest clearing at dusk, among drifting golden motes."
+    },
+    {
+      "title": "Op ’t Water",
+      "subtitle": "Amsterdam’s song-book trade, 1600–1700",
+      "blurb": "Every song book in the Dutch Song Database that names an Amsterdam printer, placed at the address in its imprint on Gerrit de Broen’s engraved map. Then step down onto the quay where the trade was busiest.",
+      "meta": "Map & street · Dutch Song Database",
+      "action": "Open the map",
+      "url": "https://www.karsdorp.io/amsterdam-song-map/",
+      "image": "images/worlds/op-t-water.jpg",
+      "alt": "Gerrit de Broen’s engraved map of Amsterdam, with red and blue song books stacked on the printers’ shops."
+    },
+    {
+      "title": "Diversity under collection bias",
+      "subtitle": "A companion to the Royal Society Interface paper",
+      "blurb": "Set up two assemblages, bias how their records were collected, and see which standardization strategy still recovers the true diversity ratio.",
+      "meta": "Simulation · coverage standardization",
+      "action": "Try the demo",
+      "url": "/posts/20260627174328-comparing_diversity_under_collection_bias/",
+      "image": "images/worlds/collection-bias.jpg",
+      "alt": "Richness curves for two assemblages by sample size and by coverage, from the interactive demo."
+    }
+  ]
+}

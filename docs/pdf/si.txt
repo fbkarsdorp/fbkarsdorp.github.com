@@ -1,0 +1,1002 @@
+SI: Correcting collection bias in comparative studies of diversity
+Folgert Karsdorpa,b , Anne Kandlerc , Mike Kestemontd , Iza Romanowskae , and Rombert
+Stapelf
+a
+
+Royal Netherlands Academy of Arts and Sciences, Meertens Institute, 1012 DK
+Amsterdam, the Netherlands
+b
+Utrecht University, 3584 CS Utrecht, the Netherlands
+c
+Max Planck Institute for Evolutionary Anthropology, 04103 Leipzig, Germany
+d
+University of Antwerp, 2000 Antwerpen, Belgium
+e
+Aarhus University, 8000 Aarhus, Denmark
+f
+Royal Netherlands Academy or Arts and Sciences, Institute for International Social
+History, 1019 AT Amsterdam, the Netherlands
+
+1
+
+Rarefaction-based diversity
+
+Rarefaction-based standardization equalizes sampling effort by reducing all collections to the size of the
+smallest. While widely used, this approach introduces systematic distortions when collection intensity
+varies across populations. As Figure 1 shows, rarefaction systematically compresses relative richness
+ratios, particularly among larger populations, especially when sample sizes are small. Crucially, in
+all conditions rarefaction-based standardization performs worse than taking the uncorrected diversity
+estimates based on the observed sample sizes.
+
+2
+
+Neutral expectations
+
+To understand basic properties of coverage-based standardization, we use the Wright-Fisher model. In
+this model, a population of fixed size N evolves in discrete, non-overlapping generations: each new
+generation is formed by sampling N cultural variants with replacement from the previous generation,
+so variant counts follow a multinomial distribution. With a small probability µ each sampling event
+introduces a novel variant not previously seen in the population.
+Under the assumption of an infinite allele Wright-Fisher model, the average number of variant types
+contained in a sample of size n is given by
+E{k} =
+
+n−1
+X
+
+θ
+,
+θ+j
+j=0
+
+(1)
+
+n
+θ+n
+
+(2)
+
+and the average coverage of this sample by
+E{Cn } =
+
+with θ = 2N µ.
+Fig. 2 shows the relationship between sample size n and coverage Cn , as given by (2), for population
+size N = 104 and innovation rates µ = s∗10−3 , s = 1, . . . , 4. As expected, coverage level is monotonically
+increasing with sample size: the larger the sample size, the larger the coverage. Naturally, the higher the
+innovation rate µi , i.e., the more variant types are expected in the sample (cf. (1)), the higher the samples
+size needed to achieve the same coverage. The shaded areas describe the variation of the coverage levels
+that can be achieved with a given sample size n. For that we simulated 100 Wright-Fisher populations for
+each considered (N, µ)-combination and calculated their variant-frequency spectrum, i.e., we determined
+1
+
+Relative richness
+
+b = 1.0
+
+1.00 n=500
+0.75
+
+b = 0.5
+
+b = 0.0
+
+Rarefaction-based diversity
+b = 0.5
+
+n=1000
+
+b = 1.0
+
+n=5000
+
+0.50
+0.25
+0.00
+104
+
+103
+
+105 103
+104
+105 103
+Population size (log)
+
+104
+
+105
+
+(a) Population-size bias (b from −1 to 1).
+
+Relative richness
+
+Rarefaction-based diversity
+
+=0
+
+1.00 n=500
+0.75
+
+n=1000
+
+= 0.5
+
+=1
+
+n=5000
+
+0.50
+0.25
+0.00
+104
+
+103
+
+105 103
+104
+105 103
+Population size (log)
+
+104
+
+105
+
+(b) Productivity bias (ρ ∈ {0, 0.5, 1}).
+
+Relative richness
+
+Rarefaction-based diversity
+=0
+
+1.00 n=500
+0.75
+
+n=1000
+
+=1
+
+=3
+
+n=5000
+
+0.50
+0.25
+0.00
+103
+
+104
+
+105 103
+104
+105 103
+Population size (log)
+
+104
+
+105
+
+(c) Stromer’s riddle bias (γ ∈ {0, 1, 3}).
+
+Figure 1: Rarefaction-based diversity estimates shown as relative richness across population sizes (1,000–
+128,000 individuals). Each panel applies a different collection bias: (a) population-size bias parameter
+b; (b) productivity bias with parameter ρ; and (c) Stromer’s riddle bias with parameter γ. In all cases,
+the dashed gray line shows the true underlying richness.
+the frequency of every variant type in the population. We then take samples of size n in the range form
+10 to 200 and calculate their true sample coverage, Ctrue , by summing the population-level frequencies
+of all variant types observed in the sample. For low innovation rates, e.g. µ = 10−3 , the variation is
+large for small sample sizes but decreases quickly with increasing n whereas for high innovation rates,
+e.g. µ = 4 ∗ 10−3 , the variation stays similar across the sample sizes considered.
+
+2.1
+
+Accuracy of the Coverage Estimator
+
+In the next step, we analyse the accuracy of the coverage estimator
+
+
+f1
+(n − 1)f1
+Ĉn = 1 −
+n (n − 1)f1 + 2f2
+
+(3)
+
+by calculating Ĉn for the set of samples described above and comparing it to the corresponding Ctrue value. Fig. 3 shows the resulting mean-square error (MSE). Consistent with [1], the MSE is O(1/n).
+Here 1/n is a conservative upper bound and the observed MSE decays faster.
+To examine the behavior especially for small sample sizes more closely, Fig. 4 shows the distributions
+of the Ĉn - and Ctrue -values for different innovation rates and sample sizes. For sample size n = 10
+we observe, especially for high innovation rates, a large proportion of Ĉn = 0, i.e., f1 = n. However,
+2
+
+= 1 × 10 3
+
+= 2 × 10 3
+
+= 3 × 10 3
+
+= 4 × 10 3
+
+0.8
+0.6
+0.4
+
+Coverage
+
+0.2
+
+{Cn}
+Ctrue
+
+0.8
+0.6
+0.4
+0.2
+50
+
+100
+
+150
+
+200
+
+50
+
+100
+
+150
+
+200
+
+Sample size n
+
+Figure 2: True sample coverage Ctrue as a function of sample size n for Wright–Fisher populations of
+size N = 104 under four innovation rates µ = s × 10−3 , s = 1, . . . , 4. Solid lines show mean coverage
+across 100 simulated populations; shaded bands denote the 50%, 90%, and full ranges of observed values.
+Dashed curves indicate the theoretical expectation E{Cn } given by (2). Higher innovation rates lead to
+lower coverage for a given n and greater variability across replicates.
+Ctrue cannot be 0 when n > 0. So for a good fraction of the simulations the estimator (3) provides
+an implausible value. Naturally, the higher the sample size the less pronounced is this effect; more
+heterogeneous populations require a larger sample size to eliminate the risk of obtaining a Ĉn = 0
+estimate. As a conservative rule, we recommend that the sample size should be so large that the risk
+of obtaining an Ĉn = 0 estimates is small — for the populations considered here, we would suggest
+n ≥ 30. Of course, this risk is very hard to quantify a priori in empirical case studies but theoretical
+studies can provide a rough guideline based on how much heterogeneity researchers expect in their study
+population. For sample sizes where the fraction of Ĉn = 0 estimates is small we see that both Ctrue and
+Ĉ distributions become tightly concentrated around E[Cn ] for all innovation rates, indicating that the
+estimator is stable and unbiased for sample sizes typically encountered in empirical data.
+
+2.2
+
+Accuracy of diversity ratio estimation under coverage-based standardization
+
+The idea of coverage-based standardization is that samples with similar coverage should yield a richness
+ratio which should approximate the true ratio of the underlying populations. More precisely, when
+comparing two samples coverage-based standardization proceeds by determining their shared coverage
+level Ĉmax = min{Ĉ1 , Ĉ2 }, where Ĉi is the coverage estimate (3) for sample i and calculating the ratio
+of the corresponding richness values S1 (Ĉmax ) and S2 (Ĉmax ).
+In the last section we showed that for small sample sizes the realized coverage level can vary substantially around its mean. We now examine how that variability propagates to the shared coverage
+level Ĉmax between two sample and how variability in Ĉmax translates into uncertainty in the richness
+ratio estimate S1 (Ĉmax ) and S2 (Ĉmax ). We aim to provide a rough guideline on sample sizes required
+for coverage-based standardization to be reliable.
+To do so we simulate, as above, Wright-Fisher populations with population size N and innovation
+rates µ = s ∗ 10−3 , s = 1, . . . , 4, determine their population-level richness and draw samples whose
+expected coverage (see (2)) matched a grid of target values Ctarget ∈ [0.1, 0.8]. On average, both samples
+should have a very similar coverage level, variations are induced by the sampling procedure. We then
+
+3
+
+10 1
+
+1 /n r
+
+Mean Squared Error
+
+10 2
+
+efere
+nce
+
+= 1 * 10 3
+= 2 * 10 3
+= 3 * 10 3
+= 4 * 10 3
+
+10 3
+
+10 4
+
+101
+
+102
+Sample size n
+
+103
+
+Figure 3: Accuracy of the coverage estimator, Ĉ, across innovation rates and sample sizes. Mean
+squared error (MSE) of Ĉ is below and declines approximately in proportion to 1/n, consistent with
+theoretical expectations [1]. Each line represents the results for Wright-Fisher models with N = 104 and
+different innovation rate µ. Overall, innovation rate µ, and consequently the observed heterogeneity in
+the population, and sample size n jointly shape the estimator’s performance.
+quantify the estimation error by comparing S1 (Ĉmax)/SB (Ĉmax ) and S1pop /S2pop where Sipop defines the
+richness of the underlying populations i.
+Fig. 5 illustrates the accuracy of the diversity estimator S1 (Ĉmax)/S2 (Ĉmax ). To relate the results to sample size — the only parameter researchers may be able to control — we calculate nmax =
+min(nmax
+, nmax
+), where nmax
+represents the sample size that results in the shared coverage level Ĉmax
+1
+2
+i
+for sample i.
+We binned comparisons by sample size nmax . Within each bin we computed the mean absolute
+relative error. The analysis reveals consistent behavior across innovation rate contrasts. When nmax is
+small, (≲ 20 observations), standardized richness ratios are highly unstable and errors are frequently
+large. Beyond this regime, error declines sharply: once nmax ≳ 30 errors become much smaller and
+estimates substantially more stable.
+As a rule of thumb, coverage-based standardization may be unreliable when the smallest observed
+(or adjusted during standardization) sample size is less than 30.
+
+4
+
+= 4 × 10 3
+{Cn}
+
+= 3 × 10 3
+{Cn}
+
+= 2 × 10 3
+{Cn}
+
+= 1 × 10 3
+{Cn}
+
+0.6
+
+n = 10
+
+0.4
+
+{Cn}
+
+{Cn}
+
+{Cn}
+
+{Cn}
+
+0.0
+0.6
+0.4
+
+n = 20
+
+Proportion
+
+0.2
+
+n = 30
+
+0.4
+
+{Cn}
+
+{Cn}
+
+{Cn}
+
+0.0
+0.6
+
+{Cn}
+
+0.2
+
+Ctrue
+C
+
+0.2
+
+0.0
+0.0 0.2 0.4 0.6 0.8 1.0 0.0 0.2 0.4 0.6 0.8 1.0 0.0 0.2 0.4 0.6 0.8 1.0 0.0 0.2 0.4 0.6 0.8 1.0
+
+Coverage
+Figure 4: Distribution of true Ctrue and estimated coverages Ĉ across populations differing in innovation
+rate µ and sample size n. True coverage Ctrue represents the summed population-level frequencies of all
+variant types observed in the sample. The theoretical coverage E{Cn } (vertical grey dashed line) gives
+the expected value according to (2) with θ = 2N µ.
+
+Error distribution across sample-size bins
+2/ 1=2
+2/ 1=3
+2/ 1=4
+
+0.8
+
+Mean error
+
+0.7
+0.6
+0.5
+0.4
+0.3
+0.2
+
+10
+
+20
+30
+40
+50
+60
+70
+Shared standardized sample size nmax (binned)
+
+Figure 5: Mean absolute relative error as a function of the achieved standardized sample size nmax ,
+grouped into sample-size bins. Despite differences in innovation rate ratios (µ2 /µ1 ∈ {2, 3, 4}), all curves
+show the same pattern: errors fall sharply once (nmax ) exceeds around 20-30 observations. Relatively
+modest shared coverage levels (Ĉmax ≈ 0.3) correspond to small standardized sample sizes (nmax ≈
+20 − 30).
+
+5
+
+Figure 6: Effect of reinforcement strength (ρ) on the concentration of sampling effort among populations.
+Each panel shows the effective number of populations (Hill number of order 2) after repeated sampling for
+three total sample sizes (n = 500, 1000, 5000). Although mean diversity estimates in the main text appear
+similar across ρ values, higher reinforcement (larger ρ) leads to a stronger concentration of sampling in
+a few populations, as reflected by lower effective numbers. Boxes show variation across independent
+simulation runs.
+
+6
+
+3
+
+Population-size-bias
+
+For β = 0, population i is chosen proportional to its size, i.e., with probability 2i−1 /
+
+7
+P
+
+(2j ). The
+
+j=0
+
+average number of times population i is chosen in n draws, i.e. the sample size of population i, is
+7
+P
+ni (n) = n2i−1 /
+(2j ). Consequently, the average number of variants contained in a sample of size ni
+j=0
+
+is given by (1).
+Table 1 shows those expected samples sizes for all eight populations under varying sampling efforts
+n and the corresponding average number of variants contained in those samples according to (1) and
+table 2 the average values obtained from the simulation framework.
+Table 1: Expected samples sizes ni for all eight populations of sizes Ni = 1000 ∗ si−1 under varying
+sampling efforts n and the corresponding average number of variants contained in those samples.
+
+n = 500
+n = 1000
+n = 5000
+n = 500
+n = 1000
+n = 5000
+
+n1
+1.96
+3.92
+19.60
+k(n1 )
+1.5
+2.08
+3.59
+
+n2
+3.92
+7.84
+39.21
+k(n2 )
+2.56
+3.65
+6.55
+
+n3
+7.84
+15.68
+78.43
+k(n3 )
+4.74
+6.85
+12.57
+
+n4
+15.68
+31.37
+156.86
+k(n4 )
+9.13
+13.08
+24.69
+
+n5
+31.37
+62.74
+313.72
+k(n5 )
+17.57
+25.95
+48.90
+
+n6
+62.74
+125.49
+627.45
+k(n6 )
+35.15
+51.29
+97.27
+
+n7
+125.49
+250.98
+1254.90
+k(n7 )
+69.63
+102.39
+194.12
+
+n8
+250.98
+501.96
+2509.80
+k(n8 )
+139.27
+204.39
+387.77
+
+Table 2: Average samples sizes ni for all eight populations of sizes Ni = 1000∗si−1 under varying sampling
+efforts n and the corresponding average number of variants contained in those samples generated by the
+simulation framework.
+
+n = 500
+n = 1000
+n = 5000
+n = 500
+n = 1000
+n = 5000
+
+n1
+1.95
+3.9
+19.57
+k(n1 )
+1.3
+1.94
+3.53
+
+n2
+3.93
+7.85
+39.09
+k(n2 )
+2.39
+3.54
+6.6
+
+n3
+7.85
+15.63
+78.51
+k(n3 )
+4.58
+6.79
+12.7
+
+n4
+15.62
+31.45
+156.89
+k(n4 )
+9.15
+13.45
+25.38
+
+7
+
+n5
+31.41
+62.59
+313.86
+k(n5 )
+17.46
+25.49
+48.51
+
+n6
+62.88
+125.4
+628.04
+k(n6 )
+35.29
+51.86
+98.67
+
+n7
+125.47
+250.85
+1254.22
+k(n7 )
+69.9
+102.66
+194.33
+
+n8
+250.88
+502.33
+2509.83
+k(n8 )
+138.97
+204.28
+388.76
+
+4
+
+Worked example of coverage-based standardization
+
+We illustrate the standardization procedure using two cities from Table 3 below: Leiden and Bruges
+(Brugge).
+Step 1: Compute coverage. For each city, we apply Equation 2 from the main text using the total
+number of song occurrences n, the number of singletons f1 , and the number of doubletons f2 . For Leiden
+(n = 662, f1 = 231, f2 = 69):
+
+
+661 × 231
+231
+= 1 − 0.349 × 0.999 ≈ 0.65
+Ĉn = 1 −
+662 661 × 231 + 2 × 69
+For Bruges (n = 201, f1 = 96, f2 = 18):
+
+
+96
+200 × 96
+Ĉn = 1 −
+= 1 − 0.478 × 0.998 ≈ 0.52
+201 200 × 96 + 2 × 18
+Leiden’s sample captures roughly 65% of the underlying melodic repertoire, while Bruges’ captures only
+about 52%.
+Step 2: Determine Ĉmax . To compare the two cities at equal sampling completeness, we set Ĉmax
+to the smaller of the two coverage values: Ĉmax = 0.52 (Bruges’ coverage).
+Step 3: Subsample to Ĉmax . Bruges’ sample already has coverage 0.52, so it remains unchanged,
+with SBruges (Ĉmax ) = 129 melodies. Leiden’s sample must be rarefied: we draw progressively smaller
+random subsamples from Leiden’s 662 song occurrences, computing Ĉn at each subsample size, until
+we find the subsample size n∗ at which Ĉn∗ ≈ 0.52. This yields a coverage-standardized richness of
+SLeiden (Ĉmax ) = 256 melodies.
+When comparing more than two assemblages (as in Figure 6 of the main text), the same procedure
+applies. We compute Ĉn for each city and set Ĉmax to the minimum coverage across all assemblages. In
+the cross-sectional analysis, Ĉmax = 0.52, determined by Bruges (Table 3). Every other city’s sample is
+then rarefied to this common coverage level, and the resulting richness values are those plotted on the
+y-axis of the right panel of Figure 6.
+
+8
+
+5
+
+Summary tables
+
+Table 3: Documentation intensity and population metrics across Dutch cities in the 17th century. For
+each city, we report the number of sources consulted, unique melodies identified, total song occurrences,
+and estimated coverage of the repertoire. Population size represents historical estimates with associated
+error margins. Only cities for which 20 or more sources were consulted are included in the dataset. In
+the cross-sectional analysis, Ĉmax = 0.52, determined by Bruges (Brugge). σN represents a proportional
+error margin. The absolute uncertainty used in the regression model is N × σN .
+location
+Amsterdam
+Antwerpen
+Haarlem
+Leiden
+Hoorn
+Rotterdam
+Utrecht
+Den Haag
+Dordrecht
+Brussel
+Enkhuizen
+Alkmaar
+Brugge
+Delft
+
+# sources
+
+# melodies
+
+# songs
+
+f1
+
+f2
+
+Cn
+
+Cn±
+
+N
+
+σN
+
+809
+180
+92
+65
+55
+51
+42
+40
+35
+30
+30
+28
+28
+26
+
+2,003
+1,459
+614
+371
+472
+188
+426
+222
+129
+275
+314
+237
+129
+191
+
+13,569
+7,053
+2,795
+662
+1,908
+413
+1,163
+490
+340
+877
+836
+1,056
+201
+490
+
+733
+703
+194
+231
+135
+103
+223
+76
+30
+97
+158
+44
+96
+76
+
+366
+222
+125
+69
+123
+38
+81
+94
+66
+56
+57
+79
+18
+57
+
+0.95
+0.90
+0.93
+0.65
+0.93
+0.75
+0.81
+0.85
+0.91
+0.89
+0.81
+0.96
+0.52
+0.85
+
+0.01
+0.01
+0.01
+0.05
+0.02
+0.06
+0.03
+0.06
+0.07
+0.03
+0.04
+0.03
+0.09
+0.05
+
+149,677
+61,982
+39,613
+45,304
+13,906
+21,906
+28,164
+21,064
+18,023
+67,286
+17,233
+12,823
+30,807
+20,347
+
+0.05
+0.08
+0.08
+0.06
+0.09
+0.09
+0.13
+0.09
+0.09
+0.12
+0.09
+0.08
+0.07
+0.09
+
+Table 4: Documentation intensity and population metrics for Amsterdam in the 17th century. For each
+decade, we report the number of sources consulted, unique melodies identified, total song occurrences,
+and estimated coverage of the repertoire. In the diachronic analysis, Ĉmax = 0.67, determined by the
+1660 decade. σN represents a proportional error margin. The absolute uncertainty used in the regression
+model is N × σN .
+decade
+1600
+1610
+1620
+1630
+1640
+1650
+1660
+1670
+1680
+1690
+
+# sources
+
+# melodies
+
+# songs
+
+f1
+
+f2
+
+Cn
+
+Cn±
+
+N
+
+σN
+
+38
+99
+73
+101
+122
+85
+80
+69
+92
+50
+
+329
+291
+348
+321
+572
+581
+378
+420
+692
+409
+
+927
+1002
+1237
+779
+2597
+2229
+725
+1191
+2066
+816
+
+163
+122
+120
+177
+210
+218
+236
+140
+289
+208
+
+58
+66
+85
+65
+124
+154
+79
+136
+168
+100
+
+0.82
+0.88
+0.90
+0.77
+0.92
+0.90
+0.67
+0.88
+0.86
+0.75
+
+0.03
+0.03
+0.03
+0.04
+0.02
+0.02
+0.05
+0.03
+0.02
+0.05
+
+56,752
+78,808
+92,036
+127,555
+142,153
+172,644
+187,175
+190,929
+198,540
+199,624
+
+0.05
+0.04
+0.04
+0.04
+0.05
+0.05
+0.05
+0.05
+0.06
+0.06
+
+References
+[1]
+
+Herbert E. Robbins. “Estimating the total probability of the unobserved outcomes of an experiment”. In: The annals of Mathematical Statistics 39 (1 1968), pp. 256–257.
+
+9
+
+

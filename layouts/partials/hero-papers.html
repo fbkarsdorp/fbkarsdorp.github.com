@@ -1,0 +1,45 @@
+{{/* The archive, papers edition (assets/js/archive-papers.js): every lit
+     page is one entry from data/publications.json (generated from
+     static/references.bib), shelved left to right by year. The card in the
+     copy column catalogues whichever book the lamp is on, and becomes the
+     reading view (abstract, authors, link) when a book is taken from the
+     shelf. Without WebGL or JS this is a plain title block; the card stays hidden. */}}
+{{ $pubs := .Site.Data.publications.entries | default slice }}
+<section id="archive" class="archive archive--papers" aria-labelledby="archive-title">
+  <canvas class="archive-canvas" aria-hidden="true"></canvas>
+  <div class="archive-veil" aria-hidden="true"></div>
+  <svg class="archive-thread" aria-hidden="true"><g class="thread-kin"></g><line class="thread-main" x1="0" y1="0" x2="0" y2="0"></line><circle r="3.5" cx="0" cy="0"></circle></svg>
+  <div class="archive-years" aria-hidden="true"></div>
+
+  <div class="archive-copy">
+    <p class="eyebrow">{{ .Site.Title }} · computational cultural evolution</p>
+    <h1 id="archive-title">{{ .Title }}<span class="dot">.</span></h1>
+    {{ with .Params.tagline }}<p class="archive-tagline">{{ . }}</p>{{ end }}
+
+    <aside class="paper-card" aria-label="Publication under the lamp" hidden>
+      <p class="paper-kind"><span class="swatch" aria-hidden="true"></span><span data-p="kind"></span></p>
+      <a class="paper-title" data-p="title" href="{{ "references/" | relURL }}"></a>
+      <p class="paper-venue" data-p="venue"></p>
+      <p class="paper-authors" data-p="authors"></p>
+      <div class="paper-reading">
+        <p class="paper-allauthors" data-p="allauthors"></p>
+        <p class="paper-abstract" data-p="abstract"></p>
+        <div class="paper-actions">
+          <a class="paper-link" data-p="link" href="{{ "references/" | relURL }}" target="_blank" rel="noopener">Read the paper ↗</a>
+          <button type="button" class="paper-return">Put it back <kbd>Esc</kbd></button>
+        </div>
+      </div>
+      <div class="paper-nav">
+        <button type="button" data-step="-1" aria-label="Previous publication">←</button>
+        <button type="button" data-step="1" aria-label="Next publication">→</button>
+        <button type="button" class="paper-take">Take it out</button>
+        <span class="paper-count" data-p="count"></span>
+      </div>
+    </aside>
+    <p class="archive-hint"><span class="hint-pointer">Each lit page is a publication. Hover to find one, click to take it out.</span><span class="hint-touch">Each lit page is a publication. Tap one to find it.</span></p>
+  </div>
+
+  <script type="application/json" id="archive-papers-data">{{ $pubs | jsonify | safeJS }}</script>
+  <script type="application/json" id="archive-covers-data">{{ .Site.Data.covers | default dict | jsonify | safeJS }}</script>
+  <a class="archive-onward" href="#about">Read on</a>
+</section>

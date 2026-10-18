@@ -22,6 +22,9 @@ OUTPUT = PROJECT_DIR / "content" / "references.md"
 # "Selected publications" section. Mark entries with `featured = {true}` in
 # references.bib; control ordering with `featured_order = {N}` (ascending).
 FEATURED_OUTPUT = PROJECT_DIR / "data" / "featured.json"
+# Every entry as structured fields, for the homepage hero's floating books
+# (assets/js/archive-papers.js, via layouts/index.html).
+PUBLICATIONS_OUTPUT = PROJECT_DIR / "data" / "publications.json"
 
 # Entry type mappings
 BOOKS = {'book'}  # Only standalone books
@@ -203,6 +206,67 @@ def build_featured_entries(featured):
     return entries
 
 
+# Display label per entry type, for the hero's paper cards.
+KIND_LABELS = {
+    'book': ('book', 'Book'),
+    'article': ('article', 'Journal article'),
+    'inproceedings': ('other', 'Conference paper'),
+    'incollection': ('other', 'Book chapter'),
+    'inbook': ('other', 'Book chapter'),
+}
+
+
+def trim_abstract(text, limit=720):
+    """First sentences of an abstract, up to about `limit` characters."""
+    text = clean_value(text)
+    if not text or len(text) <= limit:
+        return text
+    cut = text[:limit]
+    end = max(cut.rfind('. '), cut.rfind('? '), cut.rfind('! '))
+    return (cut[:end + 1] if end > limit // 3 else cut.rsplit(' ', 1)[0]) + ' …'
+
+
+def display_name(name):
+    """'Karsdorp, Folgert' or 'Folgert Karsdorp' -> 'Folgert Karsdorp'."""
+    name = clean_value(name)
+    if ',' in name:
+        last, first = [part.strip() for part in name.split(',', 1)]
+        name = f"{first} {last}"
+    return name
+
+
+def build_publication_entries(bib_content):
+    """Every entry in references.bib as display fields, newest first."""
+    pattern = r'@(\w+)\{([^,]+),\s*\n((?:[^@])*?)\n\}'
+    entries = []
+    for match in re.finditer(pattern, bib_content, re.DOTALL | re.MULTILINE):
+        entry_type, key, body = match.group(1).lower(), match.group(2), match.group(3)
+        url = extract_field(body, 'url')
+        url = url.strip() if url else None
+        if not url:
+            doi = extract_field(body, 'doi')
+            if doi:
+                url = 'https://doi.org/' + doi.strip()
+        venue = clean_value(extract_field(body, VENUE_FIELDS.get(entry_type, 'journal'))) \
+            or clean_value(extract_field(body, 'publisher'))
+        authors = extract_field(body, 'author') or ''
+        kind, label = KIND_LABELS.get(entry_type, ('other', 'Publication'))
+        entries.append({
+            'key': key,
+            'kind': kind,
+            'label': label,
+            'title': clean_value(extract_field(body, 'title')),
+            'venue': venue,
+            'year': clean_value(extract_field(body, 'year')),
+            'authors': [display_name(a) for a in re.split(r'\s+and\s+', authors) if a.strip()],
+            'url': url,
+            'abstract': trim_abstract(extract_field(body, 'abstract')),
+            'featured': bool(FEATURED_RE.search(body)),
+        })
+    entries.sort(key=lambda e: e['year'] or '', reverse=True)
+    return entries
+
+
 def main():
     # Read BibTeX file
     with open(BIB_FILE, 'r') as f:
@@ -230,6 +294,12 @@ def main():
         json.dump({"entries": featured_entries, "count": len(featured_entries)},
                   f, indent=2, ensure_ascii=False)
     print(f"✓ Generated {FEATURED_OUTPUT} ({len(featured_entries)} featured)")
+
+    publications = build_publication_entries(bib_content)
+    with open(PUBLICATIONS_OUTPUT, 'w') as f:
+        json.dump({"entries": publications, "count": len(publications)},
+                  f, indent=2, ensure_ascii=False)
+    print(f"✓ Generated {PUBLICATIONS_OUTPUT} ({len(publications)} entries)")
 
     # Get current date in Hugo format
     now = datetime.now()

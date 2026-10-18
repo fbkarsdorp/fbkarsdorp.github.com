@@ -1,6 +1,8 @@
 {{ $favicon := resources.Get "favicon.ico" }}
-{{ if $favicon }}<link rel="icon" href="{{ $favicon.RelPermalink }}">{{ end }}
+{{ if $favicon }}<link rel="icon" href="{{ $favicon.RelPermalink }}" sizes="any">{{ end }}
 
+{{/* MathJax only where there can be math: notebook posts and plain pages. */}}
+{{ if and .IsPage (ne .Layout "pubs") }}
 <script>
   MathJax = {
     tex: {
@@ -10,7 +12,9 @@
     },
     options: {
       skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
+    },
+    chtml: { scale: 0.96 }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+{{ end }}

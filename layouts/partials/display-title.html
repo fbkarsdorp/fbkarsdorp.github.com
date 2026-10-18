@@ -1,0 +1,4 @@
+{{- /* A title for the IM Fell display face, with its digits set in Newsreader:
+       Fell's old-style 1 reads as a capital I ("ChaoI"). */ -}}
+{{- $title := replaceRE `([0-9]+)` `<span class="num">$1</span>` (. | htmlEscape) -}}
+{{- return ($title | safeHTML) -}}

@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Comparing diversity under collection bias - Folgert Karsdorp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="https://www.karsdorp.io/favicon.png">
-  <link rel="canonical" href="https://www.karsdorp.io/posts/20260627174328-comparing_diversity_under_collection_bias/" />
-    
-    
-    <link rel="stylesheet" href="/css/style.min.251d7d65352b5a556eab012ce4e9f74f564180e22fed4edb4e704089cd5a95d3.css">
-    <link rel="stylesheet" href="/assets/css/extended.min.8786e9f69c706263a4e4813c914e31c1c1d003522a1f919d3581788e1f9e8d15.css">
+  <title>Comparing diversity under collection bias — Folgert Karsdorp</title>
+  <link rel="canonical" href="https://www.karsdorp.io/posts/20260627174328-comparing_diversity_under_collection_bias/">
+  <link rel="icon" href="/favicon.png">
+  <meta name="theme-color" content="#0c1418">
+  <meta name="description" content="An interactive companion to our Royal Society Interface paper on collection bias: set up two assemblages, bias how their records were collected, and see which standardization strategy still recovers the true diversity ratio.">
+  <meta property="og:title" content="Comparing diversity under collection bias">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.karsdorp.io/posts/20260627174328-comparing_diversity_under_collection_bias/">
+  <meta property="og:description" content="An interactive companion to our Royal Society Interface paper on collection bias: set up two assemblages, bias how their records were collected, and see which standardization strategy still recovers the true diversity ratio.">
+  <meta property="og:image" content="https://www.karsdorp.io/images/social-preview-papers.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM&#43;Fell&#43;English:ital@0;1&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=IBM&#43;Plex&#43;Mono:ital,wght@0,400;0,500;1,400&amp;display=swap">
 
   
-    <meta name="description" content="An interactive companion to our Royal Society Interface paper on collection bias: set up two assemblages, bias how their records were collected, and see which standardization strategy still recovers the true diversity ratio."/>
-    <meta property="og:title" content="Comparing diversity under collection bias"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://www.karsdorp.io/posts/20260627174328-comparing_diversity_under_collection_bias/"/>
-    
-    <meta property="og:description" content="An interactive companion to our Royal Society Interface paper on collection bias: set up two assemblages, bias how their records were collected, and see which standardization strategy still recovers the true diversity ratio."/>
-    <meta name="twitter:card" content="summary"/>
-    
-    
   
+  <link rel="stylesheet" href="/css/site.min.6c23b82d74db0e48e1bbd431120e2a165c2bb06e02de6113bc528e9f763e532e.css">
 
   
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space&#43;Mono:ital,wght@0,400;0,700;1,400&amp;family=IBM&#43;Plex&#43;Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=IBM&#43;Plex&#43;Mono:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
-  
+<link rel="icon" href="/favicon.ico" sizes="any">
 
-  
-<link rel="icon" href="/favicon.ico">
+
 
 <script>
   MathJax = {
@@ -42,92 +37,72 @@
     },
     options: {
       skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
+    },
+    chtml: { scale: 0.96 }
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
+
+  
 </head>
 
-
-
-
-<body class='page frame page-blog-single'>
-  <div id="menu-main-mobile" class="menu-main-mobile">
-    <ul class="menu">
-        
-        
-            
-                <li class="menu-item-home">
-                    <a href="https://www.karsdorp.io/">Home</a>
-                </li>
-            
-        
-            
-                <li class="menu-item-fragments">
-                    <a href="https://www.karsdorp.io/posts/">Fragments</a>
-                </li>
-            
-        
-            
-                <li class="menu-item-publications">
-                    <a href="https://www.karsdorp.io/references">Publications</a>
-                </li>
-            
-        
-    </ul>
-</div>
-  <div id="wrapper" class="wrapper">
-    <div class='header'>
-  <a class="header-logo" href="/">
-    <img src="/images/logo.png" alt="" class="header-logo-img">
-    Folgert Karsdorp
+<body class="page-post">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+  <a class="site-mark" href="/" aria-label="Folgert Karsdorp, home">
+    <img class="site-mark-face" src="/images/logo.png" alt="" width="30" height="30">
+    <span class="site-mark-name">Folgert Karsdorp</span>
   </a>
-  <div class="menu-main">
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <nav id="site-nav" class="site-nav" aria-label="Main">
     <ul>
       
       
+        
+        
+        <li><a href="/posts/" aria-current="page">Fragments</a></li>
       
+        
+        
+        <li><a href="/#worlds">Worlds</a></li>
       
-      <li class="menu-item-home ">
-        <a href="/">
-          
-          <span>Home</span>
-        </a>
-      </li>
+        
+        
+        <li><a href="/references/">Publications</a></li>
       
-      
-      
-      <li class="menu-item-fragments ">
-        <a href="/posts/">
-          
-          <span>Fragments</span>
-        </a>
-      </li>
-      
-      
-      
-      <li class="menu-item-publications ">
-        <a href="/references">
-          
-          <span>Publications</span>
-        </a>
-      </li>
+        
+        
+        <li><a href="https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf" rel="noopener">CV</a></li>
       
     </ul>
-  </div>
-  <div id="toggle-menu-main-mobile" class="hamburger-trigger">
-    <button class="hamburger">Menu</button>
-  </div>
-</div>
+  </nav>
+</header>
+
+  <main id="main">
     
-  <div class="blog">
+<article class="post">
+  <header class="post-head band">
+    <p class="eyebrow">
+      <a href="/posts/">Fragments</a>
+      <span aria-hidden="true">·</span>
+      <time datetime="2026-06-27">27 June 2026</time>
+      <span aria-hidden="true">·</span>
+      Interactive
+    </p>
+    <h1>Comparing diversity under collection bias</h1>
+    <p class="post-standfirst">An interactive companion to our Royal Society Interface paper on collection bias: set up two assemblages, bias how their records were collected, and see which standardization strategy still recovers the true diversity ratio.</p>
     
-    <div class="intro">
-      <h1>Comparing diversity under collection bias<span class="dot">.</span></h1>
-      
-    </div>
-    <div class="content">
+      <ul class="post-tags" aria-label="Tags">
+        <li><a href="/tags/diversity/">diversity</a></li><li><a href="/tags/coverage/">coverage</a></li><li><a href="/tags/collection/">collection</a></li><li><a href="/tags/bias/">bias</a></li><li><a href="/tags/interactive/">interactive</a></li>
+      </ul>
+    
+  </header>
+
+  
+  <div class="post-layout band">
+    
+    <div class="prose">
       <iframe id="cov-demo" src="/demos/coverage-standardization.html"
         title="Interactive demo: comparing diversity under collection bias"
         loading="lazy" scrolling="no"
@@ -231,57 +206,70 @@
     </div>
   </div>
 
-    <div class="footer">
   
-  <div class="footer-social">
+  <nav class="post-pager band" aria-label="More fragments">
     
-      <span class="social-icon social-icon-bluesky">
-        <a href="https://bsky.app/profile/folgertk.bsky.social" title="bluesky" target="_blank" rel="noopener">
-          <img src="/images/social/bluesky.svg" width="24" height="24" alt="bluesky"/>
-        </a>
-      </span>
+      <a class="pager-link pager-older" href="/posts/20221215175357-what_shall_we_do_with_the_unseen_sailor/"><span class="pager-dir">Older</span><span class="pager-title">What Shall We Do with the Unseen Sailor?</span></a>
     
-      <span class="social-icon social-icon-github">
-        <a href="https://github.com/fbkarsdorp" title="github" target="_blank" rel="noopener">
-          <img src="/images/social/github.svg" width="24" height="24" alt="github"/>
-        </a>
-      </span>
     
-      <span class="social-icon social-icon-linkedin">
-        <a href="https://nl.linkedin.com/in/folgert-karsdorp-2ab362323" title="linkedin" target="_blank" rel="noopener">
-          <img src="/images/social/linkedin.svg" width="24" height="24" alt="linkedin"/>
-        </a>
-      </span>
-    
-      <span class="social-icon social-icon-cv">
-        <a href="https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf" title="CV" target="_blank" rel="noopener">
-          <img src="/images/social/cv.svg" width="24" height="24" alt="CV"/>
-        </a>
-      </span>
-    
+  </nav>
+  
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-sign">
+      <p class="footer-name">Folgert Karsdorp</p>
+      <p class="footer-roles">
+        Meertens Institute, Royal Netherlands Academy of Arts and Sciences<br>
+        Utrecht University
+      </p>
+    </div>
+    <ul class="footer-links">
+      
+        <li><a href="https://bsky.app/profile/folgertk.bsky.social" rel="noopener">Bluesky</a></li>
+      
+        <li><a href="https://github.com/fbkarsdorp" rel="noopener">GitHub</a></li>
+      
+        <li><a href="https://nl.linkedin.com/in/folgert-karsdorp-2ab362323" rel="noopener">LinkedIn</a></li>
+      
+        <li><a href="https://raw.githubusercontent.com/fbkarsdorp/fbkarsdorp.github.com/master/tex/main.pdf" rel="noopener">CV (PDF)</a></li>
+      
+      <li><a href="/index.xml">RSS</a></li>
+    </ul>
+    <p class="colophon">
+      Set in IM Fell English — Igino Marini’s revival of the type Bishop John Fell
+      gathered in the 1670s, much of it bought in Holland — with Newsreader and IBM Plex Mono.
+      Built with Hugo.
+    </p>
   </div>
-  
-</div>
-  </div>
+</footer>
 
-  
-
-  
-    <script type="text/javascript" src="/js/bundle.min.5993fcb11c07dea925a3fbd58c03c7f1857197c35fccce3aa963a12c0b3c9960.js"></script>
-  
 
   
   
-
+  <script src="/js/site.min.08e60042420b91a385a285ef63ee5cbe1ae89a2004c70063db4fa46df0d4479f.js" defer></script>
   
+<script>
   
-  
-    
-  
-
-  
-
-  
+  (function () {
+    var bar = document.createElement('div');
+    bar.className = 'read-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var article = document.querySelector('.prose');
+    function update() {
+      var r = article.getBoundingClientRect();
+      var total = r.height - window.innerHeight * 0.6;
+      var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+      bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
 
 </body>
 </html>

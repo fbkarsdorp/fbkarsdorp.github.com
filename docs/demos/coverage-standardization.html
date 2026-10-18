@@ -6,7 +6,7 @@
 <title>Coverage standardization — interactive demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
   :root {
     --A: #1f77b4;  --A-soft: #e9f1f8;
@@ -14,29 +14,29 @@
     --cov: #2ca02c; --cov-soft: #ebf6ea;
     --rare: #8e44ad; --rare-soft: #f3ecf8;
     --truth: #6b7682;
-    --ink: #0f1117;              /* theme --heading-color */
+    --ink: #161b1e;              /* site --ink */
     --muted: #586472;
     --faint: #8b96a0;
-    --accent: #00968a;          /* theme --highlight-color (teal links/accents) */
+    --accent: #2b45b8;          /* site --lapis (links/accents) */
     --line: #e3e7ec;
     --line-2: #d3dae1;
     --track: #e3e7ec;
     --good: #2e9e3f;  --good-soft: #eaf6ec;
     --warn: #c08214;  --warn-soft: #faf1df;
     --bad:  #d6453a;  --bad-soft:  #fdecea;
-    --radius: 12px;  --radius-sm: 9px;
+    --radius: 6px;  --radius-sm: 5px;
     --shadow: 0 1px 2px rgba(17,24,39,.05);
     --shadow-sm: none;
     --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    --heading: 'Space Mono', ui-monospace, monospace;
+    --heading: 'IM Fell English', 'Iowan Old Style', Georgia, serif;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
     font-family: var(--sans);
     color: #3d4451;             /* theme --text-color */
-    background: #f5f7fa;        /* matches the site's --base-color so the embed blends in */
+    background: #f3f2ed;        /* matches the site's --paper so the embed blends in */
     line-height: 1.55;
     font-size: 15px;
     padding: 18px 14px 26px;
@@ -53,7 +53,7 @@
 
   /* header */
   .eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--cov); margin: 0 0 6px; }
-  h1 { font-family: var(--heading); font-size: 1.5rem; line-height: 1.25; letter-spacing: -.01em; margin: 0 0 6px; font-weight: 700; color: var(--ink); }
+  h1 { font-family: var(--heading); font-size: 2.1rem; line-height: 1.1; letter-spacing: -.005em; margin: 0 0 8px; font-weight: 400; color: var(--ink); }
   .sub { color: var(--muted); font-size: .92rem; margin: 0 0 16px; }
   .sub em { font-style: normal; color: var(--ink); font-weight: 600; }
 

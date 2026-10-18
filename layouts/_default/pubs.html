@@ -1,29 +1,95 @@
-{{ define "body_classes" }}page-default-single{{ end }}
+{{ define "title" }}Publications — {{ .Site.Title }}{{ end }}
+{{ define "body_classes" }}page-pubs{{ end }}
 
 {{ define "main" }}
-<div class="intro">
-  <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
-</div>
+<header class="page-head band">
+  <h1>Publications<span class="dot">.</span></h1>
 
-<div class="content">
-  {{ .Content }}
+  <div class="pubs-tools">
+    <label class="pubs-filter">
+      <span class="visually-hidden">Filter publications</span>
+      <input type="search" placeholder="Filter by title, co-author, venue or year" autocomplete="off" spellcheck="false">
+    </label>
+    <p class="pubs-count" aria-live="polite"></p>
+  </div>
+</header>
+
+<div class="band">
+  <div class="pubs">
+    {{ .Content }}
+    <p class="pubs-empty" hidden>Nothing matches that filter. Try a surname, a journal or a year.</p>
+  </div>
 </div>
 {{ end }}
 
 {{ define "footer_js" }}
 <script>
-  document.querySelectorAll('.csl-entry a').forEach(function(a) {
-    var href = a.getAttribute('href') || '';
-    var label;
-    if (href.includes('doi.org')) {
-      label = '[doi]';
-    } else if (href.match(/\.pdf($|\s)/i) || href.includes('/pdf')) {
-      label = '[pdf]';
-    } else {
-      label = '[link]';
-    }
-    a.textContent = label;
-    a.title = href;
+(function () {
+  var entries = Array.prototype.slice.call(document.querySelectorAll('.pubs .csl-entry'));
+
+  entries.forEach(function (entry) {
+    // [doi] / [pdf] / [link] labels instead of bare URLs
+    entry.querySelectorAll('a').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      var label = href.indexOf('doi.org') !== -1 ? 'doi'
+        : (/\.pdf($|\s|\?)/i.test(href) || href.indexOf('/pdf') !== -1) ? 'pdf' : 'link';
+      a.textContent = label;
+      a.title = href;
+      a.className = 'pub-link';
+    });
+    // Mark the author's own name in the author list
+    entry.innerHTML = entry.innerHTML.replace(/(Karsdorp,\s+Folgert|Folgert\s+Karsdorp)/, '<span class="me">$1</span>');   // pandoc may wrap the name
+    // One wrapper for the citation (bare text runs would each become a grid
+    // item), and the year in the margin, shown once per run of same-year entries
+    var text = document.createElement('span');
+    text.className = 'pub-text';
+    while (entry.firstChild) text.appendChild(entry.firstChild);
+    var m = text.textContent.match(/\b(19|20)\d{2}\b/);
+    var year = m ? m[0] : '';
+    var y = document.createElement('span');
+    y.className = 'pub-year';
+    y.textContent = year;
+    entry.appendChild(y);
+    entry.appendChild(text);
+    entry.dataset.year = year;
+    entry.dataset.text = text.textContent.toLowerCase();
   });
+
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.pubs .csl-bib-body'));
+  function markYears() {
+    groups.forEach(function (g) {
+      var prev = null;
+      g.querySelectorAll('.csl-entry').forEach(function (e) {
+        if (e.hidden) return;
+        e.classList.toggle('same-year', e.dataset.year === prev);
+        prev = e.dataset.year;
+      });
+    });
+  }
+
+  var input = document.querySelector('.pubs-filter input');
+  var count = document.querySelector('.pubs-count');
+  var empty = document.querySelector('.pubs-empty');
+  function apply() {
+    var terms = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+    var shown = 0;
+    entries.forEach(function (e) {
+      var ok = terms.every(function (t) { return e.dataset.text.indexOf(t) !== -1; });
+      e.hidden = !ok;
+      if (ok) shown++;
+    });
+    groups.forEach(function (g) {
+      var any = g.querySelector('.csl-entry:not([hidden])');
+      g.hidden = !any;
+      var h = g.previousElementSibling;
+      if (h && h.tagName === 'H2') h.hidden = !any;
+    });
+    count.textContent = terms.length && shown ? shown + (shown === 1 ? ' match' : ' matches') : '';
+    empty.hidden = shown > 0;
+    markYears();
+  }
+  input.addEventListener('input', apply);
+  apply();
+})();
 </script>
 {{ end }}

@@ -1,0 +1,694 @@
+{
+  "entries": [
+    {
+      "key": "texeira-costa:2026",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Flora Batava (1800-1934): from historical citizen science to plant humanities dataset",
+      "venue": "Journal of Open Humanities Data",
+      "year": "2026",
+      "authors": [
+        "Luiza Teixeira-Costa",
+        "Esther van Gelder",
+        "Laurens Sparrius",
+        "Folgert Karsdorp"
+      ],
+      "url": "https://doi.org/10.5334/johd.497",
+      "abstract": "Flora Batava: people, plants, locations lists 11,500+ records of all species in the first illustrated flora of the Netherlands, published in 28 volumes between 1800 and 1934. The dataset includes information about the plants, the people who observed them in each locality, and the publication of each volume. KB, the National Library of the Netherlands holds both original and digitized source material. From the latter, data was segmented and extracted using a generative AI model (OpenAI’s GPT-4), then checked and corrected manually. …",
+      "featured": false
+    },
+    {
+      "key": "kestemont:2026",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Saved in Translation? Estimating latent diversity shared by historic cultures and the case of medieval literature in French and Dutch",
+      "venue": "Evolutionary Human Sciences",
+      "year": "2026",
+      "authors": [
+        "Mike Kestemont",
+        "Folgert Karsdorp",
+        "Jean-Baptiste Camps",
+        "Remco Sleiderink",
+        "Anne Chao"
+      ],
+      "url": "https://doi.org/10.1017/ehs.2026.10036",
+      "abstract": "Empirical studies often have to work with incomplete samples, with scholars rarely accounting for under-registration: in cultural heritage e.g. the age-long loss of artefacts can yield an under-estimation of the original richness of assemblages. Recently, it has been argued that unseen species models from ecology can estimate the unobserved diversity in cultural collections. We report an extension on shared diversity, i.e. the number of types that are common to two assemblages. As a case study, we use stories in medieval French and Dutch (ca. 1150–1450), which were frequently shared. We apply an established estimator (Chao-shared) with a novel bootstrap procedure. …",
+      "featured": true
+    },
+    {
+      "key": "karsdorp2026",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Correcting collection bias in comparative studies of diversity",
+      "venue": "Journal of the Royal Society Interface",
+      "year": "2026",
+      "authors": [
+        "Folgert Karsdorp",
+        "Anne Kandler",
+        "Mike Kestemont",
+        "Iza Romanowska",
+        "Rombert Stapel"
+      ],
+      "url": null,
+      "abstract": "Comparative analyses of diversity in human populations often rely on historical, archival and observational data, which are systematically shaped by uneven documentation, preservation and research attention. Such collection bias can distort comparisons across populations, regions or time periods, obscuring genuine patterns of variation or generating spurious ones. Standard approaches that equalize sample size or sampling effort implicitly assume comparable sampling completeness, which is an assumption rarely satisfied in human and historical datasets. …",
+      "featured": true
+    },
+    {
+      "key": "2025:Wevers",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Quantifying Archival Silences: Phylogenetic Diversity Analysis of Controlled Vocabulary Utilization",
+      "venue": "Proceedings of the Computational Humanities Research Conference, 2025",
+      "year": "2025",
+      "authors": [
+        "Melvin Wevers",
+        "Thomas Smits",
+        "Folgert Karsdorp"
+      ],
+      "url": "https://doi.org/10.63744/H9LnUCR9Mxmx",
+      "abstract": "This study adapts Faith’s Phylogenetic Diversity metric from ecology to measure controlled vocabulary utilization in archival collections, addressing limitations of traditional diversity measures that ignore hierarchical term relationships. We introduce three diagnostic ratios—Coverage, Completeness, and Cataloging Intensity—and apply them to 878,046 photographs across 16 Dutch National Archives collections cataloged with the hierarchical GTAA vocabulary. The framework provides quantitative tools for assessing how vocabulary utilization patterns influence cultural heritage accessibility while highlighting the tension between cataloging intensity and comprehensive research utility. …",
+      "featured": false
+    },
+    {
+      "key": "2024:kestemont",
+      "kind": "book",
+      "label": "Book",
+      "title": "Het mysterie van de verdwenen ridderromans",
+      "venue": "Letterwerk",
+      "year": "2024",
+      "authors": [
+        "Mike Kestemont",
+        "Folgert Karsdorp"
+      ],
+      "url": "https://doi.org/10.5281/zenodo.10807547",
+      "abstract": null,
+      "featured": false
+    },
+    {
+      "key": "2024:nielbo",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Quantitative text analysis",
+      "venue": "Nature Reviews Methods Primers",
+      "year": "2024",
+      "authors": [
+        "Kristoffer Nielbo",
+        "Folgert Karsdorp",
+        "Melvin Wevers",
+        "Alie Lassche",
+        "Rebekah Baglini",
+        "Mike Kestemont",
+        "Nina Tahmasebi"
+      ],
+      "url": "https://doi.org/10.1038/s43586-024-00302-w",
+      "abstract": "Text analysis has undergone substantial evolution since its inception, moving from manual qualitative assessments to sophisticated quantitative and computational methods. Beginning in the late twentieth century, a surge in the utilization of computational techniques reshaped the landscape of text analysis, catalysed by advances in computational power and database technologies. Researchers in various fields, from history to medicine, are now using quantitative methodologies, particularly machine learning, to extract insights from massive textual data sets. This transformation can be described in three discernible methodological stages: feature-based models, representation learning models and generative models. …",
+      "featured": false
+    },
+    {
+      "key": "2024:VDalfsen",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Direct and Indirect Annotation with Generative AI: A Case Study into Finding Animals and Plants in Historical Text",
+      "venue": "Proceedings of the Computational Humanities Research Conference, 2024",
+      "year": "2024",
+      "authors": [
+        "Arjan van Dalfsen",
+        "Folgert Karsdorp",
+        "Ayoub Bagheri",
+        "Thirza van Engelen",
+        "Dieuwertje Mentink",
+        "Els Stronks"
+      ],
+      "url": "https://ceur-ws.org/Vol-3834/paper74.pdf",
+      "abstract": "This study explores the use of generative AI (GenAI) for annotation in the humanities, comparing direct and indirect annotation approaches with human annotations. Direct annotation involves using GenAI to annotate the entire corpus, while indirect annotation uses GenAI to create training data for a specialized model. The research investigates zero-shot and few-shot methods for direct annotation, alongside an indirect approach incorporating active learning, few-shotting, and k-NN example retrieval. The task focuses on identifying words (also referred to as entities) related to plants and animals in Early Modern Dutch texts. …",
+      "featured": false
+    },
+    {
+      "key": "2024:Karsdorp",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Beyond the Register: Demographic Modeling of Arrest Patterns in 1879-1880 Brussels",
+      "venue": "Proceedings of the Computational Humanities Research Conference, 2024",
+      "year": "2024",
+      "authors": [
+        "Folgert Karsdorp",
+        "Mike Kestemont",
+        "Margo de Koster"
+      ],
+      "url": "https://ceur-ws.org/Vol-3834/paper13.pdf",
+      "abstract": "Unseen species models from ecology have recently been applied to censored historical cultural datasets to estimate unobserved populations. We extend this approach to historical criminology, analyzing the police registers of Brussels’ Amigo prison (1879-1880) using the Generalized Chao estimator. Our study aims to quantify the ‘dark number’ of unarrested perpetrators and model demographic biases in policing efforts. We investigate how factors such as age, gender, and origin influence arrest vulnerability. While all examined covariates contribute positively to our model, their small effect sizes limit the model’s predictive performance. …",
+      "featured": false
+    },
+    {
+      "key": "2023:kandler",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "The interplay between age structure and cultural transmission",
+      "venue": "PLOS Computational Biology",
+      "year": "2023",
+      "authors": [
+        "Anne Kandler",
+        "Laurel Fogarty",
+        "Folgert Karsdorp"
+      ],
+      "url": "https://doi.org/https://doi.org/10.1371/journal.pcbi.1011297",
+      "abstract": "Empirical work has shown that human cultural transmission can be heavily influenced by population age structure. We aim to explore the role of such age structure in shaping the cultural composition of a population when cultural transmission occurs in an unbiased way. In particular, we are interested in understanding the effect induced by the interplay between age structure and the cultural transmission process by allowing cultural transmission from individuals within a limited age range only. …",
+      "featured": false
+    },
+    {
+      "key": "2022:kestemont_forgotten",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Forgotten Books: The Application of Unseen Species Models to the Survival of Culture",
+      "venue": "Science",
+      "year": "2022",
+      "authors": [
+        "Mike Kestemont",
+        "Folgert Karsdorp",
+        "Elisabeth de Bruijn",
+        "Matthew Driscoll",
+        "Katarzyna A. Kapitan",
+        "Pádraig Ó Macháin",
+        "Daniel Sawyer",
+        "Remco Sleiderink",
+        "Anne Chao"
+      ],
+      "url": "https://doi.org/10.1126/science.abl7655",
+      "abstract": "The study of ancient cultures is hindered by the incomplete survival of material artifacts, so we commonly underestimate the diversity of cultural production in historic societies. To correct this survivorship bias, we applied unseen species models from ecology to gauge the loss of narratives from medieval Europe, such as the romances about King Arthur. The estimates obtained are compatible with the scant historic evidence. In addition to events such as library fires, we identified the original evenness of cultural populations as an overlooked factor in these assemblages’ stability in the face of immaterial loss. …",
+      "featured": true
+    },
+    {
+      "key": "2022:wevers_karsdorp",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "What shall we do with the unseen sailor? Estimating the size of the Dutch East India Company using an unseen species model",
+      "venue": "Proceedings of the Computational Humanities Research Conference, 2022",
+      "year": "2022",
+      "authors": [
+        "Folgert Karsdorp",
+        "Melvin Wevers",
+        "Jelle van Lottum"
+      ],
+      "url": "https://ceur-ws.org/Vol-3290/short_paper1793.pdf",
+      "abstract": "Historians base their inquiries on the sources that are available to them. However, not all sources that are relevant to the historian’s inquiry may have survived the test of time. Consequently, the resulting data can be biased in unknown ways, possibly skewing analyses. This paper deals with the Dutch East India Company its digitized ledgers of contracts. We apply an unseen species model, a method from ecology, to estimate the actual number of unique seafarers contracted. We find that the lower bound of actual seafarers is much higher than what the remaining contracts indicate: at least, thirty-six percent of the seafarers is unknown. …",
+      "featured": false
+    },
+    {
+      "key": "2022:karsdorp_functional_diversity",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Introducing functional diversity: a novel approach to lexical diversity in (historical) corpora",
+      "venue": "Proceedings of the Computational Humanities Research Conference, 2022",
+      "year": "2022",
+      "authors": [
+        "Folgert Karsdorp",
+        "Lauren Fonteyn",
+        "Enrique Manjavacas"
+      ],
+      "url": "https://ceur-ws.org/Vol-3290/short_paper2780.pdf",
+      "abstract": "The question how we can reliably estimate the lexical diversity of a particular text (collection) has often been asked by linguists and literary scholars alike. This short paper introduces a way of operationalizing functional diversity measurements by means of token-based embeddings, and argues that functional diversity is not only a practically advantageous, but also a theoretically relevant addition to the Computational Humanities Research toolkit. …",
+      "featured": false
+    },
+    {
+      "key": "2021a:karsdorp_book",
+      "kind": "book",
+      "label": "Book",
+      "title": "Humanities Data Analysis. Case Studies with Python",
+      "venue": "Princeton University Press",
+      "year": "2021",
+      "authors": [
+        "Folgert Karsdorp",
+        "Mike Kestemont",
+        "Allen Riddell"
+      ],
+      "url": "https://press.princeton.edu/books/hardcover/9780691172361/humanities-data-analysis",
+      "abstract": "The use of quantitative methods in the humanities and related social sciences has increased considerably in recent years, allowing researchers to discover patterns in a vast range of source materials. Despite this growth, there are few resources addressed to students and scholars who wish to take advantage of these powerful tools. Humanities Data Analysis offers the first intermediate-level guide to quantitative data analysis for humanities students and scholars using the Python programming language. This practical textbook, which assumes a basic knowledge of Python, teaches readers the necessary skills for conducting humanities research in the rapidly developing digital environment.",
+      "featured": false
+    },
+    {
+      "key": "2021:fonteyn_karsdorp",
+      "kind": "other",
+      "label": "Book chapter",
+      "title": "Telkens weer hetzelfde verhaal",
+      "venue": "Wat gebeurt er in het Nederlands?! Over taal, frequentie en variatie",
+      "year": "2021",
+      "authors": [
+        "Folgert Karsdorp",
+        "Lauren Fonteyn"
+      ],
+      "url": null,
+      "abstract": null,
+      "featured": false
+    },
+    {
+      "key": "2020a:manjavacas",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "A Statistical Foray into Contextual Aspects of Intertextuality",
+      "venue": "Proceedings of the Workshop on Computational Humanities Research (CHR2020)",
+      "year": "2020",
+      "authors": [
+        "Enrique Manjavacas",
+        "Folgert Karsdorp",
+        "Mike Kestemont"
+      ],
+      "url": "http://ceur-ws.org/Vol-2723/long28.pdf",
+      "abstract": "Intertextuality is a highly productive concept in literary theory. The pervasiveness of intertextuality in literary texts has lead simultaneously to a proliferation of applications with often divergent interpretations of the concept of intertextuality, as well as a recurrent interest in studying it from a computational point of view. Despite the potential of data-driven, bottom-up approaches, most computational research into intertextuality has focused on the matter of text reuse detection, exploiting surface-level properties to improve the performance of retrieval systems. …",
+      "featured": false
+    },
+    {
+      "key": "2020b:kestemont",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Estimating the Loss of Medieval Literature with an Unseen Species Model from Ecodiversity",
+      "venue": "Proceedings of the Workshop on Computational Humanities Research (CHR2020)",
+      "year": "2020",
+      "authors": [
+        "Mike Kestemont",
+        "Folgert Karsdorp"
+      ],
+      "url": "http://ceur-ws.org/Vol-2723/short10.pdf",
+      "abstract": "The century-long loss of documents is one of the major impediments to the study of historic literature. Here we focus on Middle Dutch chivalric epics (ca. 1200-1450), a genre for which little archival records exist that shed light on the survival rates of works and documents. We cast the quantitative estimation of these survival rates as a variant of the unseen species problem from ecodiversity. We apply an established non-parametric method ( Chao1 ) and compare it to a number of common alternatives on simulated data. …",
+      "featured": false
+    },
+    {
+      "key": "2020a:karsdorp",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Classifying Evolutionary Forces in Language Change Using Neural Networks",
+      "venue": "Evolutionary Human Sciences",
+      "year": "2020",
+      "authors": [
+        "Folgert Karsdorp",
+        "Enrique Manjavacas",
+        "Lauren Fonteyn",
+        "Mike Kestemont"
+      ],
+      "url": "https://doi.org/10.1017/ehs.2020.52",
+      "abstract": "A fundamental problem in research into language and cultural change is the difficulty of distinguishing processes of stochastic drift (also known as neutral evolution) from processes that are subject to selection pressures. In this article, we describe a new technique based on Deep Neural Networks, in which we reformulate the detection of evolutionary forces in cultural change as a binary classification task. Using Residual Networks for time series trained on artificially generated samples of cultural change, we demonstrate that this technique is able to efficiently, accurately and consistently learn which aspects of the time series are distinctive for drift and selection respectively. …",
+      "featured": false
+    },
+    {
+      "key": "2019c:haverals_vooys",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Rekenen op ritme. Een datagedreven oplossing voor het automatisch scanderen van de historische lyriek in de DBNL",
+      "venue": "Vooys. Tijdschrift voor letteren",
+      "year": "2019",
+      "authors": [
+        "Wouter Haverals",
+        "Folgert Karsdorp",
+        "Mike Kestemont"
+      ],
+      "url": null,
+      "abstract": "Kunnen we een robot het metrum van een historisch Nederlands lied laten voorspellen? Die uitdaging gingen Wouter Haverals, Mike Kestemont (beiden Universiteit Antwerpen) en Folgert Karsdorp (Meertens Instituut) aan. In dit artikel schrijven ze over de voortgang van dit project waarin gebruik wordt gemaakt van recente, veelbelovende ontwikkelingen binnen de kunstmatige intelligentie en dan vooral machine learning. Hun data komt van de Nederlandse Liederenbank, die een fenomenale hoeveelheid gegevens bevat over de historische lyriek in het Nederlandse taalgebied. Door een samenwerking met de DBNL is deze collectie recent verrijkt met meer dan 50.000 links naar volledige liedteksten. …",
+      "featured": false
+    },
+    {
+      "key": "2019a:lassche_repetition_popularity",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Repetition and Popularity in Early Modern Songs",
+      "venue": "Proceedings of the 2019 Digital Humanities conference",
+      "year": "2019",
+      "authors": [
+        "Alie Lassche",
+        "Folgert Karsdorp",
+        "Els Stronks"
+      ],
+      "url": "https://pure.knaw.nl/portal/en/publications/repetition-and-popularity-in-early-modern-songs(4a56b6f6-4e6c-4757-a28e-010e8c6b8d28).html",
+      "abstract": "This study explores the relation between repetition and popularity in Dutch historical songs. Previous studies on song lyrics have shown that contemporary songs stand a greater chance of reaching #1 of the Billboard’s hit chart when their lyrics are more repetitive (Nunes, Ordanini, and Valsesia 2015; Alexander 1996; Ellis et al. 2015; Bradlow and Fader 2001). This preference for repetitive structures is a well-known cognitive bias (see e.g. Rubin 1995), yet little is known about whether similar preferences were at play in historical popular song lyrics. …",
+      "featured": false
+    },
+    {
+      "key": "2019b:manjavacas_hip_hop_generation",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "A Robot’s Street Credibility: Modeling authenticity judgments for artificially generated Hip-Hop lyrics",
+      "venue": "Proceedings of the 2019 Digital Humanities conference",
+      "year": "2019",
+      "authors": [
+        "Enrique Manjavacas",
+        "Mike Kestemont",
+        "Folgert Karsdorp"
+      ],
+      "url": "https://pure.knaw.nl/portal/en/publications/a-robots-street-credibility-modeling-authenticity-judgments-for-artificially-generated-hiphop-lyrics(80a790fe-e9cd-459d-9af4-29ccbec320ef).html",
+      "abstract": "This study aims to advance and enhance our understanding of the properties that contribute to the perceived authenticity of a specific art form: Hip-Hop lyrics. The basis of our study is an experiment carried out in the context of a large, mainstream contemporary music festival. We crowdsourced a large dataset of authenticity judgements for both authentic and neurally generated Hip-Hop lyrics, which enable us to quantitatively assess human biases toward artificially generated text as well as which linguistic characteristics are perceived as authenticity cues. Additionally, the dataset provides solid ground for evaluating different neural language generation systems with respect to their perceived credibility. …",
+      "featured": false
+    },
+    {
+      "key": "2019d:karsdorp_cultural_entrenchment",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Cultural Entrenchment of Folktales is Encoded in Language",
+      "venue": "Palgrave Communications",
+      "year": "2019",
+      "authors": [
+        "Folgert Karsdorp",
+        "Lauren Fonteyn"
+      ],
+      "url": "https://doi.org/10.1057/s41599-019-0234-9",
+      "abstract": "In this interdisciplinary study, we explore the understudied effects of growing cultural entrenchment on the form of stories with a long reproduction history. Drawing on insight from literary theory, theoretical linguistics, and cultural evolution theory, we argue that changes in the cultural entrenchment of fairy tales and folk stories are reflected in (small) structural ‘mutations’ in the story. More specifically, we aim to show that with the increasing familiarity of“Little Red Riding Hood”, its story frame and characters have gradually become part of the author and audience’s shared world knowledge, which is encoded in the type of linguistic devices used to introduce the characters. …",
+      "featured": false
+    },
+    {
+      "key": "2019e:karsdorp_melody_sims",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Learning Similarity Metrics for Melody Retrieval",
+      "venue": "Proceedings of the 20th International Society for Music Information Retrieval Conference 2019 (ISMIR 2019)",
+      "year": "2019",
+      "authors": [
+        "Folgert Karsdorp",
+        "Peter van Kranenburg",
+        "Enrique Manjavacas"
+      ],
+      "url": "http://archives.ismir.net/ismir2019/paper/000057.pdf",
+      "abstract": "Similarity measures are indispensable in music information retrieval. In recent years, various proposals have been made for measuring melodic similarity in symbolically encoded scores. Many of these approaches are ultimately based on a dynamic programming approach such as sequence alignment or edit distance, which has various drawbacks. First, the similarity scores are not necessarily metrics and are not directly comparable. Second, the algorithms are mostly first-order and of quadratic time-complexity, and finally, the features and weights need to be defined precisely. We propose an alternative approach which employs deep neural networks for end-to-end similarity metric learning. …",
+      "featured": false
+    },
+    {
+      "key": "2019f:manjavacas_hip_hop_generation",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Generation of Hip-Hop Lyrics with Hierarchical Modeling and Conditional Templates",
+      "venue": "Proceedings of the 12th International Conference on Natural Language Generation",
+      "year": "2019",
+      "authors": [
+        "Enrique Manjavacas",
+        "Folgert Karsdorp",
+        "Mike Kestemont"
+      ],
+      "url": "https://www.inlg2019.com/assets/papers/46_Paper.pdf",
+      "abstract": "This paper addresses Hip-Hop lyric generation with conditional Neural Language Models. We develop a simple yet effective mechanism to extract and apply conditional templates from text snippets, and show – on the basis of a large-scale crowd-sourced manual evaluation – that these templates significantly improve the quality and realism of the generated snippets. Importantly, the proposed approach enables end-to-end training, targeting formal properties of text such as rhythm and rhyme, which are central characteristics of rap texts. Additionally, we explore how generating text at different scales (e.g. character-level or word-level) affects the quality of the output. …",
+      "featured": false
+    },
+    {
+      "key": "2019g:karsdorp_hiphop",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Keepin' it real: linguistic models of authenticity judgments for artificially generated rap lyrics",
+      "venue": "PLoS ONE",
+      "year": "2019",
+      "authors": [
+        "Folgert Karsdorp",
+        "Enrique Manjavacas",
+        "Mike Kestemont"
+      ],
+      "url": "https://doi.org/10.1371/journal.pone.0224152",
+      "abstract": "Through advances in neural language modeling, it has become possible to generate artificial texts in a variety of genres and styles. While the semantic coherence of such texts should not be over-estimated, the grammatical correctness and stylistic qualities of these artificial texts are at times remarkably convincing. In this paper, we report a study into crowd-sourced authenticity judgments for such artificially generated texts. As a case study, we have turned to rap lyrics, an established sub-genre of present-day popular music, known for its explicit content and unique rhythmical delivery of lyrics. …",
+      "featured": false
+    },
+    {
+      "key": "2019h:haverals_syllables",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Data-Driven Syllabification for Middle Dutch",
+      "venue": "Digital Medievalist",
+      "year": "2019",
+      "authors": [
+        "Wouter Haverals",
+        "Folgert Karsdorp",
+        "Mike Kestemont"
+      ],
+      "url": "https://doi.org/10.16995/dm.83",
+      "abstract": "The task of automatically separating Middle Dutch words into syllables is a challenging one. A first method was presented by Bouma and Hermans (2012), who combined a rule-based finite-state component with data-driven error correction. Achieving an average word accuracy of 96.5%, their system surely is a satisfactory one, although it leaves room for improvement. Generally speaking, rule-based methods are less attractive for dealing with a medieval language like Middle Dutch, where not only each dialect has its own spelling preferences, but where there is also much idiosyncratic variation among scribes. …",
+      "featured": false
+    },
+    {
+      "key": "2019i:karsdorp_willekeur",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Willekeur in culturele verandering",
+      "venue": "Tijdschrift voor Nederlands Taal- en Letterkunde",
+      "year": "2019",
+      "authors": [
+        "Folgert Karsdorp"
+      ],
+      "url": null,
+      "abstract": "This article argues in favour of studying processes of random cultural change in the humanities. Studies of cultural change are of limited value if they are not embedded in or contrasted with a formalized and systematic theory of random change. To situate the discussion, this article first provides a brief overview of historical and more recent accounts of random cultural change. While quantitative, cultural evolutionary studies have for long considered random copying to be fundamental to cultural change, it has received hardly any attention in the humanities literature. …",
+      "featured": false
+    },
+    {
+      "key": "2019a:kestemont",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Het Atlantis van de Middelnederlandse ridderepiek. Een schatting van het tekstverlies met methodes uit de ecodiversiteit",
+      "venue": "Spiegel der Letteren",
+      "year": "2019",
+      "authors": [
+        "Mike Kestemont",
+        "Folgert Karsdorp"
+      ],
+      "url": null,
+      "abstract": "It is well known that the study of historical literature is impeded by the incomplete transmission of sources: due to a century-long loss of sources, inevitably, a large number of texts is no longer known to us. As such, our current perspective on the literary diversity of the past is probably underestimating the actual wealth of texts that once existed. Statistical methods from eco-diversity can assist us in adjusting this estimate in a quantitative and precise manner. Applied to Middle Dutch chivalric epics, these methods suggest that prior estimates of text loss may be too conservative: the methods estimate that up to half of the original texts have been lost (and possibly many more).",
+      "featured": false
+    },
+    {
+      "key": "2017a:karsdorp_synthetische_literatuur",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Synthetische literatuur: neurale netwerken als coauteur",
+      "venue": "DIXIT: tijdschrift over taal- en spraaktechnologie",
+      "year": "2017",
+      "authors": [
+        "Folgert Karsdorp",
+        "Enrique Manjavacas",
+        "Ben Burtenshaw",
+        "Mike Kestemont"
+      ],
+      "url": "https://notas.nl/dixit/dixit_2017_ai.pdf",
+      "abstract": "Ronald Giphart doet een literair experiment door samen met een intelligente robot een verhaal te schrijven. Hij gebruikt zowel een oude tekstgenerator als nieuwe recurrente neurale netwerken. Het resultaat lijkt veelbelovend. De Stichting CPNB organiseert ieder jaar de campagne Nederland Leest! ter promotie van het Nederlandse boek. Het thema van 2017 is ‘Robotica’, waarbij aandacht besteed wordt aan de maatschappelijke mogelijkheden en uitdagingen die gepaard gaan met de toenemende rol van artificiële intelligentie in ons dagelijks leven. Een centraal onderdeel van de campagne is de heruitgave van de beroemde sciencefiction-verhalenbundel ‘I, Robot’ van Isaac Asimov (1950). …",
+      "featured": false
+    },
+    {
+      "key": "2017a:manjavacas_writing_science_fiction",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Synthetic literature: Writing science fiction in a co-creative process",
+      "venue": "Proceedings of the Workshop on Computational Creativity in Natural Language Generation (CC-NLG 2017)",
+      "year": "2017",
+      "authors": [
+        "Enrique Manjavacas",
+        "Folgert Karsdorp",
+        "Ben Burtenshaw",
+        "Mike Kestemont"
+      ],
+      "url": "http://aclweb.org/anthology/W17-3904",
+      "abstract": "This paper describes a co-creative text generation system applied within a science fiction setting to be used by an established novelist. The project was initiated as part of The Dutch Book Week, and the generated text will be published within a volume of science fiction stories. We explore the ramifications of applying Natural Language Generation within a cocreative process, and examine where the cocreative setting challenges both writer and machine. We employ a character-level language model to generate text based on a large corpus of Dutch novels that exposes a number of tunable parameters to the user. …",
+      "featured": false
+    },
+    {
+      "key": "2016a:karsdorp_story_networks",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "The Structure and Evolution of Story Networks",
+      "venue": "Royal Society Open Science",
+      "year": "2016",
+      "authors": [
+        "Folgert Karsdorp",
+        "Antal van den Bosch"
+      ],
+      "url": "http://dx.doi.org/10.1098/rsos.160071",
+      "abstract": "With this study, we advance the understanding about the processes through which stories are retold. A collection of story retellings can be considered as a network of stories, in which links between stories represent pre-textual (or ancestral) relationships. This study provides a mechanistic understanding of the structure and evolution of such story networks: we construct a story network for a large diachronic collection of Dutch literary retellings of Red Riding Hood, and compare this network to one derived from a corpus of paper chain letters. …",
+      "featured": false
+    },
+    {
+      "key": "2016a:kestemont_caesar",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Authenticating the writings of Julius Caesar",
+      "venue": "Expert Systems with Applications",
+      "year": "2016",
+      "authors": [
+        "Mike Kestemont",
+        "Justin Stover",
+        "Moshe Koppel",
+        "Folgert Karsdorp",
+        "Walter Daelemans"
+      ],
+      "url": "http://dx.doi.org/10.1016/j.eswa.2016.06.029",
+      "abstract": "In this paper, we shed new light on the authenticity of the Corpus Caesarianum, a group of five commentaries describing the campaigns of Julius Caesar (100–44 BC), the founder of the Roman empire. While Caesar himself has authored at least part of these commentaries, the authorship of the rest of the texts remains a puzzle that has persisted for nineteen centuries. In particular, the role of Caesar’s general Aulus Hirtius, who has claimed a role in shaping the corpus, has remained in contention. …",
+      "featured": false
+    },
+    {
+      "key": "2016a:meder_dfd",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Automatic Enrichment and Classification of Folktales in the Dutch Folktale Database",
+      "venue": "Journal of American Folklore",
+      "year": "2016",
+      "authors": [
+        "Theo Meder",
+        "Folgert Karsdorp",
+        "Dong Nguyen",
+        "Mariët Theune",
+        "Dolf Trieschnigg",
+        "Iwe Muiser"
+      ],
+      "url": "https://pure.knaw.nl/portal/files/2337691/JAF_VVB.pdf",
+      "abstract": "This paper describes the development of the Dutch Folktale Database as a digital archive of intangible heritage and a sophisticated research instrument. Current research focuses on automating the assignment of metadata to folktales and on obtaining a better understanding of classifications of folktales into types, as well as an understanding of motif sequences. These studies are useful for future fundamental research into patterns and structures, such as historical and geographical variation in oral tradition, on an international scale.",
+      "featured": false
+    },
+    {
+      "key": "2015a:karsdorp_animacy_detection",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Animacy Detection in Stories",
+      "venue": "6th Workshop on Computational Models of Narrative (CMN 2015)",
+      "year": "2015",
+      "authors": [
+        "Folgert Karsdorp",
+        "Marten van der Meulen",
+        "Theo Meder",
+        "Antal van den Bosch"
+      ],
+      "url": "http://dx.doi.org/10.4230/OASIcs.CMN.2015.82",
+      "abstract": "This paper presents a linguistically uninformed computational model for animacy classification. The model makes use of word n-grams in combination with lower dimensional word embedding representations that are learned from a web-scale corpus. We compare the model to a number of linguistically informed models that use features such as dependency tags and show competitive results. We apply our animacy classifier to a large collection of Dutch folktales to obtain a list of all characters in the stories. We then draw a semantic map of all automatically extracted characters which provides a unique entrance point to the collection.",
+      "featured": false
+    },
+    {
+      "key": "2015b:karsdorp_momfer",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "MOMFER: A Search Engine of Thompson's Motif-Index of Folk Literature",
+      "venue": "Folklore",
+      "year": "2015",
+      "authors": [
+        "Folgert Karsdorp",
+        "Marten van der Meulen",
+        "Theo Meder",
+        "Antal van den Bosch"
+      ],
+      "url": "http://dx.doi.org/10.1080/0015587X.2015.1006954",
+      "abstract": "More than fifty years after the first edition of Thompson’s seminal Motif-Index of Folk Literature, we present an online search engine tailored to fully disclose the index digitally. This search engine, called MOMFER, greatly enhances the searchability of the Motif-Index and provides exciting new ways to explore the collection. This is enabled by our use of modern techniques from both natural language processing and information retrieval. The key feature of the search tool is the way in which it allows users to search the Motif-Index for semantic concepts, such as ‘mythical animals’, ‘mortality’, or ‘emotions’. …",
+      "featured": false
+    },
+    {
+      "key": "2014a:kestemont_time_mining",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Mining the Twentieth Century's History of from the Time Magazine Corpus",
+      "venue": "Proceedings of the 8th Workshop on Language Technology for Cultural Heritage, Social Sciences, and Humanities (LaTeCH), E-ACL",
+      "year": "2014",
+      "authors": [
+        "Mike Kestemont",
+        "Folgert Karsdorp",
+        "Marten Düring"
+      ],
+      "url": "https://pure.knaw.nl/portal/files/1071098/Karsdorp_2014_ACL.pdf",
+      "abstract": "In this paper we report on an explorative study of the history of the twentieth century from a lexical point of view. As data, we use a diachronic collection of 270,000+ English-language articles harvested from the electronic archive of the well-known Time Magazine (1923–2006). We attempt to automatically identify significant shifts in the vocabulary used in this corpus using efficient, yet unsupervised computational methods, such as Parsimonious Language Models. We offer a qualitative interpretation of the outcome of our experiments in the light of momentous events in the twentieth century, such as the Second World War or the rise of the Internet. …",
+      "featured": false
+    },
+    {
+      "key": "2014a:vankranenburg_cadence",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Cadence Detection in Western Traditional Stanzaic Songs using Melodic and Textual Features",
+      "venue": "15th International Society for Music Information Retrieval Conference (ISMIR 2014)",
+      "year": "2014",
+      "authors": [
+        "Peter van Kranenburg",
+        "Folgert Karsdorp"
+      ],
+      "url": "https://pure.knaw.nl/portal/files/943009/Kranenburg_2014_ismir.pdf",
+      "abstract": "Many Western songs are hierarchically structured in stanzas and phrases. The melody of the song is repeated for each stanza, while the lyrics vary. Each stanza is subdivided into phrases. It is to be expected that melodic and textual formulas at the end of the phrases offer intrinsic clues of closure to a listener or singer. In the current paper we aim at a method to detect such cadences in symbolically encoded folk songs. We take a trigram approach in which we classify trigrams of notes and pitches as cadential or as non-cadential. We use pitch, contour, rhythmic, textual, and contextual features, and a group of features based on the conditions of closure as stated by Narmour [11]. …",
+      "featured": false
+    },
+    {
+      "key": "2013a:karsdorp_formules",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Het is groen en leeft nog lang en gelukkig. Classificatie van volksverhaalgenres op basis van formules",
+      "venue": "Tijdschrift voor Nederlands Taal- en Letterkunde",
+      "year": "2013",
+      "authors": [
+        "Folgert Karsdorp"
+      ],
+      "url": "https://pure.knaw.nl/portal/files/2546821/309_449_1_PB.pdf",
+      "abstract": "Different folktale genres make use of various conventional ways of starting a story. How well can we predict the genre of a folktale based on these opening formulas? In this paper I show by means of computational analysis that Dutch and Frisian folktale formulas in many cases already provide enough information to correctly classify a folktale according to its genre. A more in-depth analysis reveals that idiomatic, fully lexically-specified opening phrases serve not only as predictors of genre but also as more abstract schemas with open slots at different levels of abstraction. I characterize the formulas by classifying them according to their primary communicative functions.",
+      "featured": false
+    },
+    {
+      "key": "2013b:karsdorp_motif_topic_models",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Identifying motifs in folktales using topic models",
+      "venue": "Proceedings of BENELEARN 2013",
+      "year": "2013",
+      "authors": [
+        "Folgert Karsdorp",
+        "Antal van den Bosch"
+      ],
+      "url": "https://pure.knaw.nl/portal/files/458984/Karsdorp_VdBosch.pdf",
+      "abstract": "With the undertake of various folktale digitalization initiatives, the need for computational aids to explore these collections is increasing. In this paper we compare Labeled LDA (L-LDA) to a simple retrieval model on the task of identifying motifs in folktales. We show that both methods are well able to successfully discriminate between relevant and irrelevant motifs. L-LDA represents motifs as distributions over words. In a second experiment we compare the quality of these distributions to those of a simple baseline that ranks words using a TF·IDF weighting scheme. …",
+      "featured": false
+    },
+    {
+      "key": "2012a:karsdorp_motif_annotations",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "In search of an appropriate abstraction level for motif annotations",
+      "venue": "Proceedings of the 2012 Computational Models of Narrative Workshop",
+      "year": "2012",
+      "authors": [
+        "Folgert Karsdorp",
+        "Peter van Kranenburg",
+        "Theo Meder",
+        "Dolf Trieschnigg",
+        "Antal van den Bosch"
+      ],
+      "url": "https://pure.knaw.nl/portal/files/467034/CMN.2012.karsdorp.pdf",
+      "abstract": "We present ongoing research on the role of motifs in oral transmission of stories. We assume that motifs constitute the primary buildingblocks of stories. On the basis of a quantitative analysis we show that the level of motif annotation utilized in the Aarne-Thompson-Utherfolktale type catalogue is well suited to analyze two genres of folktales in terms of motif sequences. However, for the other five genres in the catalogue the annotation level is not apt, because it is unable to bring to front the commonalities between stories.",
+      "featured": false
+    },
+    {
+      "key": "2012b:karsdorp:analogie",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "De relatie tussen schema’s en analogische verbindingen",
+      "venue": "Nederlandse Taalkunde",
+      "year": "2012",
+      "authors": [
+        "Folgert Karsdorp",
+        "Matthias Hüning"
+      ],
+      "url": "http://neon.niederlandistik.fu-berlin.de/static/mh/Karsdorp_Huening_2012.pdf",
+      "abstract": "In deze bijdrage willen we aandacht besteden aan de rol die analogie speelt in het theoretisch model van Construction Morphology zoals ontwikkeld door Booij (2010). In Construction Morphology worden woordvormingspatronen en productiviteit verantwoord door constructionele schema‘s en subschema‘s. Analogie wordt geïnterpreteerd als strikt locale analogie die kan leiden tot een nieuwvorming op basis van een modelwoord. Schema‘s en analogie zijn dus complementair en verschillen in de graad van abstractie, waarbij analogie het uitgangspunt kan zijn voor het ontstaan van een schema. …",
+      "featured": false
+    },
+    {
+      "key": "2012c:karsdorp_casting",
+      "kind": "other",
+      "label": "Conference paper",
+      "title": "Casting a Spell: Indentification and Ranking of Actors in Folktales",
+      "venue": "Proceedings of the Second Workshop on Annotation of Corpora for Research in het Humanities (ACRH-2)",
+      "year": "2012",
+      "authors": [
+        "Folgert Karsdorp",
+        "Peter van Kranenburg",
+        "Theo Meder",
+        "Antal van den Bosch"
+      ],
+      "url": "https://pure.knaw.nl/portal/files/481270/karsdorp_et_al2012b.pdf",
+      "abstract": "We present a system to extract ranked lists of actors from fairytales ordered by importance. This task requires more than a straightforward application of generic methods such as Named Entity Recognition. We show that by focusing on two specific linguistic constructions that reflect the intentionality of a subject, direct and indirec t speech, we obtain a high-precision method to extract the cast of a story. The system we propose contains a new method based on the dispersion of terms to rank the different cast members on a scale of importance to the story.",
+      "featured": false
+    },
+    {
+      "key": "2010a:karsdorp_regelmaat",
+      "kind": "article",
+      "label": "Journal article",
+      "title": "Regelmaat in een regelloos systeem. De Nederlandse superlatief",
+      "venue": "Voortgang, jaarboek van de Neerlandistiek",
+      "year": "2010",
+      "authors": [
+        "Folgert Karsdorp",
+        "Barend Beekhuizen"
+      ],
+      "url": null,
+      "abstract": "In this paper, we show that analogy is a possible cognitive mechanism behind linguistic categorization. Given a formalized stochastic model that shows preference for certain forms as analogues over other forms, the argument that analogy is a void notion because it is unrestricted (Chomsky 1986) no longer applies. As a test case we tried to predict the alternation between the two patterns of forming the superlative in Dutch. Using the Memory-Based Learning model (Daelemans & Van den Bosch 2005), we can predict 67% of the variation on the basis of three features. In a follow-up experiment , the effect of a fourth factor, collocational attraction between the adjective and the noun, was investigated. …",
+      "featured": false
+    }
+  ],
+  "count": 42
+}

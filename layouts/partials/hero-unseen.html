@@ -1,0 +1,39 @@
+{{/* The archive: a three.js unseen-species experiment (assets/js/archive-hero.js).
+     Without WebGL or JS the hero is still a complete title block; the ledger
+     stays hidden. */}}
+<section id="archive" class="archive" aria-labelledby="archive-title">
+  <canvas class="archive-canvas" aria-hidden="true"></canvas>
+  <div class="archive-veil" aria-hidden="true"></div>
+
+  <div class="archive-copy">
+    <p class="eyebrow">{{ .Site.Title }} · computational cultural evolution</p>
+    <h1 id="archive-title">{{ .Title }}<span class="dot">.</span></h1>
+    {{ with .Params.tagline }}<p class="archive-tagline">{{ . }}</p>{{ end }}
+    <p class="archive-hint"><span class="hint-pointer">Move the lamp through the dark.</span><span class="hint-touch">Tap the dark to move the lamp.</span></p>
+  </div>
+
+  <aside class="ledger" aria-label="Your sample of the archive" hidden>
+    <p class="ledger-title">Your sample</p>
+    <dl class="ledger-counts">
+      <div class="ledger-n"><dt>Books lit</dt><dd data-k="n">0</dd></div>
+      <div><dt><span class="long">Works found</span><span class="short">works</span></dt><dd data-k="s">0</dd></div>
+      <div class="ledger-f1"><dt><span class="swatch" aria-hidden="true"></span><span><span class="long">found once </span><i>f</i><sub>1</sub></span></dt><dd data-k="f1">0</dd></div>
+      <div class="ledger-f2"><dt><span class="swatch" aria-hidden="true"></span><span><span class="long">found twice </span><i>f</i><sub>2</sub></span></dt><dd data-k="f2">0</dd></div>
+      <div class="ledger-f3"><dt><span class="swatch" aria-hidden="true"></span><span><span class="long">three times or more</span><span class="short">3+</span></span></dt><dd data-k="f3">0</dd></div>
+    </dl>
+    <div class="ledger-estimate">
+      <span class="ledger-est-label">Chao1 estimate of all works</span>
+      <span class="ledger-est" data-k="est">—</span>
+      <span class="ledger-dark" data-k="dark">Light a few books to begin</span>
+    </div>
+    <p class="ledger-verdict" hidden></p>
+    <button class="ledger-reveal" type="button">Light the whole archive</button>
+    <p class="ledger-note">
+      Each light is a surviving copy of some work. From the works found only once
+      or twice, Chao1 estimates how many the dark still hides — the reasoning we
+      used to count <a href="https://doi.org/10.1126/science.abl7655">lost medieval romances</a>.
+    </p>
+  </aside>
+
+  <a class="archive-onward" href="#about">Read on</a>
+</section>

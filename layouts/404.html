@@ -1,0 +1,15 @@
+{{ define "title" }}Not found — {{ .Site.Title }}{{ end }}
+{{ define "body_classes" }}page-404{{ end }}
+
+{{ define "main" }}
+<header class="page-head band">
+  <p class="eyebrow">404 · unseen</p>
+  <h1>This page is a singleton that got away<span class="dot">.</span></h1>
+  <p class="page-standfirst">
+    Whatever was here has not survived, or never existed. Try the
+    <a href="{{ "posts/" | relURL }}">fragments</a>, the
+    <a href="{{ "references/" | relURL }}">publications</a>, or go back to the
+    <a href="{{ "/" | relURL }}">archive</a>.
+  </p>
+</header>
+{{ end }}

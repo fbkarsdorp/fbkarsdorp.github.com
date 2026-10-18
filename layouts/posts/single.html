@@ -1,0 +1,68 @@
+{{ define "body_classes" }}page-post{{ end }}
+
+{{ define "main" }}
+<article class="post">
+  <header class="post-head band">
+    <p class="eyebrow">
+      <a href="{{ "posts/" | relURL }}">Fragments</a>
+      <span aria-hidden="true">·</span>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+      <span aria-hidden="true">·</span>
+      {{ if in .Params.tags "interactive" }}Interactive{{ else }}{{ .ReadingTime }} min read{{ end }}
+    </p>
+    <h1>{{ partial "display-title.html" .Title }}</h1>
+    {{ with .Params.description }}<p class="post-standfirst">{{ . }}</p>{{ end }}
+    {{ with .Params.tags }}
+      <ul class="post-tags" aria-label="Tags">
+        {{ range . }}<li><a href="{{ (printf "tags/%s/" (urlize .)) | relURL }}">{{ . }}</a></li>{{ end }}
+      </ul>
+    {{ end }}
+  </header>
+
+  {{ $toc := and (gt .WordCount 900) (findRE "<li>" .TableOfContents 3 | len | lt 2) }}
+  <div class="post-layout band{{ if $toc }} has-toc{{ end }}">
+    {{ if $toc }}
+      <nav class="post-toc" aria-label="Contents">
+        <p class="post-toc-title">Contents</p>
+        {{ .TableOfContents }}
+      </nav>
+    {{ end }}
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+
+  {{ if or .NextInSection .PrevInSection }}
+  <nav class="post-pager band" aria-label="More fragments">
+    {{ with .PrevInSection }}
+      <a class="pager-link pager-older" href="{{ .RelPermalink }}"><span class="pager-dir">Older</span><span class="pager-title">{{ partial "display-title.html" .Title }}</span></a>
+    {{ end }}
+    {{ with .NextInSection }}
+      <a class="pager-link pager-newer" href="{{ .RelPermalink }}"><span class="pager-dir">Newer</span><span class="pager-title">{{ partial "display-title.html" .Title }}</span></a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</article>
+{{ end }}
+
+{{ define "footer_js" }}
+<script>
+  // Reading progress: a thin lamp-coloured line under the header.
+  (function () {
+    var bar = document.createElement('div');
+    bar.className = 'read-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var article = document.querySelector('.prose');
+    function update() {
+      var r = article.getBoundingClientRect();
+      var total = r.height - window.innerHeight * 0.6;
+      var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+      bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+{{ end }}

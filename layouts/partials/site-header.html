@@ -1,0 +1,17 @@
+<header class="site-header{{ if .IsHome }} site-header--night{{ end }}">
+  <a class="site-mark" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}, home">
+    {{ with .Site.Data.author.image }}<img class="site-mark-face" src="{{ . | relURL }}" alt="" width="30" height="30">{{ end }}
+    <span class="site-mark-name">{{ .Site.Title }}</span>
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <nav id="site-nav" class="site-nav" aria-label="Main">
+    <ul>
+      {{ $current := . }}
+      {{ range .Site.Menus.main }}
+        {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+        {{ $active = or $active (and (ne .URL "/") (hasPrefix $current.RelPermalink (strings.TrimSuffix "/" .URL))) }}
+        <li><a href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}{{ if hasPrefix .URL "http" }} rel="noopener"{{ end }}>{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>

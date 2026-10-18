@@ -1,0 +1,278 @@
+{
+  "2013a:karsdorp_formules": {
+    "page": "images/papers/2013a-karsdorp_formules.jpg",
+    "aspect": 0.6667,
+    "source": "Karsdorp - 2013 - Het is groen en leeft nog lang en gelukkig. Classi.pdf",
+    "pdfPage": 1,
+    "tile": [
+      0,
+      0,
+      192,
+      272
+    ]
+  },
+  "2014a:kestemont_time_mining": {
+    "page": "images/papers/2014a-kestemont_time_mining.jpg",
+    "aspect": 0.7071,
+    "source": "Kestemont et al. - 2014 - Mining the Twentieth Century's History of from the.pdf",
+    "pdfPage": 1,
+    "tile": [
+      192,
+      0,
+      192,
+      272
+    ]
+  },
+  "2014a:vankranenburg_cadence": {
+    "page": "images/papers/2014a-vankranenburg_cadence.jpg",
+    "aspect": 0.7071,
+    "source": "van Kranenburg and Karsdorp - 2014 - CADENCE DETECTION IN WESTERN TRADITIONAL STANZAIC .pdf",
+    "pdfPage": 1,
+    "tile": [
+      384,
+      0,
+      192,
+      272
+    ]
+  },
+  "2015a:karsdorp_animacy_detection": {
+    "page": "images/papers/2015a-karsdorp_animacy_detection.jpg",
+    "aspect": 0.7071,
+    "source": "Karsdorp et al. - 2015 - Animacy Detection in Stories.pdf",
+    "pdfPage": 1,
+    "tile": [
+      576,
+      0,
+      192,
+      272
+    ]
+  },
+  "2019d:karsdorp_cultural_entrenchment": {
+    "page": "images/papers/2019d-karsdorp_cultural_entrenchment.jpg",
+    "aspect": 0.7609,
+    "source": "Karsdorp and Fonteyn - 2019 - Cultural entrenchment of folktales is encoded in l.pdf",
+    "pdfPage": 1,
+    "tile": [
+      768,
+      0,
+      192,
+      272
+    ]
+  },
+  "2019e:karsdorp_melody_sims": {
+    "page": "images/papers/2019e-karsdorp_melody_sims.jpg",
+    "aspect": 0.7071,
+    "source": "Karsdorp et al. - 2019 - Learning Similarity Metrics for Melody Retrieval.pdf",
+    "pdfPage": 1,
+    "tile": [
+      960,
+      0,
+      192,
+      272
+    ]
+  },
+  "2019f:manjavacas_hip_hop_generation": {
+    "page": "images/papers/2019f-manjavacas_hip_hop_generation.jpg",
+    "aspect": 0.7071,
+    "source": "Manjavacas et al. - 2019 - Generation of Hip-Hop Lyrics with Hierarchical Mod.pdf",
+    "pdfPage": 1,
+    "tile": [
+      1152,
+      0,
+      192,
+      272
+    ]
+  },
+  "2019g:karsdorp_hiphop": {
+    "page": "images/papers/2019g-karsdorp_hiphop.jpg",
+    "aspect": 0.7727,
+    "source": "Karsdorp et al. - 2019 - Keepin' it real linguistic models of authenticity.pdf",
+    "pdfPage": 1,
+    "tile": [
+      1344,
+      0,
+      192,
+      272
+    ]
+  },
+  "2019h:haverals_syllables": {
+    "page": "images/papers/2019h-haverals_syllables.jpg",
+    "aspect": 0.7071,
+    "source": "Haverals and Kestemont - 2019 - Data-Driven Syllabification for Middle Dutch.pdf",
+    "pdfPage": 2,
+    "tile": [
+      0,
+      272,
+      192,
+      272
+    ]
+  },
+  "2019i:karsdorp_willekeur": {
+    "page": "images/papers/2019i-karsdorp_willekeur.jpg",
+    "aspect": 0.6667,
+    "source": "02 Karsdorp TNTL_2019-4 LR.pdf",
+    "pdfPage": 2,
+    "tile": [
+      192,
+      272,
+      192,
+      272
+    ]
+  },
+  "2020a:karsdorp": {
+    "page": "images/papers/2020a-karsdorp.jpg",
+    "aspect": 0.7045,
+    "source": "Karsdorp et al. - 2020 - Classifying evolutionary forces in language change.pdf",
+    "pdfPage": 1,
+    "tile": [
+      384,
+      272,
+      192,
+      272
+    ]
+  },
+  "2020a:manjavacas": {
+    "page": "images/papers/2020a-manjavacas.jpg",
+    "aspect": 0.7071,
+    "source": "Manjavacas et al. - A Statistical Foray into Contextual Aspects of Int.pdf",
+    "pdfPage": 1,
+    "tile": [
+      576,
+      272,
+      192,
+      272
+    ]
+  },
+  "2020b:kestemont": {
+    "page": "images/papers/2020b-kestemont.jpg",
+    "aspect": 0.7071,
+    "source": "Kestemont and Karsdorp - Estimating the Loss of Medieval Literature with an.pdf",
+    "pdfPage": 1,
+    "tile": [
+      768,
+      272,
+      192,
+      272
+    ]
+  },
+  "2022:karsdorp_functional_diversity": {
+    "page": "images/papers/2022-karsdorp_functional_diversity.jpg",
+    "aspect": 0.7071,
+    "source": "Karsdorp et al. - Introducing Functional Diversity A Novel Approach.pdf",
+    "pdfPage": 1,
+    "tile": [
+      960,
+      272,
+      192,
+      272
+    ]
+  },
+  "2022:kestemont_forgotten": {
+    "page": "images/papers/2022-kestemont_forgotten.jpg",
+    "aspect": 0.7857,
+    "source": "Kestemont et al. - 2022 - Forgotten books The application of unseen species.pdf",
+    "pdfPage": 1,
+    "tile": [
+      1152,
+      272,
+      192,
+      272
+    ]
+  },
+  "2022:wevers_karsdorp": {
+    "page": "images/papers/2022-wevers_karsdorp.jpg",
+    "aspect": 0.7071,
+    "source": "Wevers et al. - What Shall We Do With the Unseen Sailor Estimatin.pdf",
+    "pdfPage": 1,
+    "tile": [
+      1344,
+      272,
+      192,
+      272
+    ]
+  },
+  "2023:kandler": {
+    "page": "images/papers/2023-kandler.jpg",
+    "aspect": 0.7727,
+    "source": "Kandler et al. - 2023 - The interplay between age structure and cultural transmission.pdf",
+    "pdfPage": 1,
+    "tile": [
+      0,
+      544,
+      192,
+      272
+    ]
+  },
+  "2024:Karsdorp": {
+    "page": "images/papers/2024-Karsdorp.jpg",
+    "aspect": 0.7071,
+    "source": "Karsdorp et al. - Beyond the Register Demographic Modeling of Arrest Patterns in 1879-1880 Brussels.pdf",
+    "pdfPage": 1,
+    "tile": [
+      192,
+      544,
+      192,
+      272
+    ]
+  },
+  "2024:VDalfsen": {
+    "page": "images/papers/2024-VDalfsen.jpg",
+    "aspect": 0.7071,
+    "source": "van Dalfsen et al. - Direct and Indirect Annotation with Generative AI A Case Study into Finding Animals and Plants in H.pdf",
+    "pdfPage": 1,
+    "tile": [
+      384,
+      544,
+      192,
+      272
+    ]
+  },
+  "2024:nielbo": {
+    "page": "images/papers/2024-nielbo.jpg",
+    "aspect": 0.7527,
+    "source": "Nielbo - 2024 - Quantitative text analysis.pdf",
+    "pdfPage": 1,
+    "tile": [
+      576,
+      544,
+      192,
+      272
+    ]
+  },
+  "karsdorp2026": {
+    "page": "images/papers/karsdorp2026.jpg",
+    "aspect": 0.7071,
+    "source": "Karsdorp et al. - 2026 - Correcting collection bias in comparative studies of diversity.pdf",
+    "pdfPage": 1,
+    "tile": [
+      768,
+      544,
+      192,
+      272
+    ]
+  },
+  "kestemont:2026": {
+    "page": "images/papers/kestemont-2026.jpg",
+    "aspect": 0.7045,
+    "source": "Kestemont et al. - 2026 - Saved in translation Diversity shared in French and Dutch medieval literature.pdf",
+    "pdfPage": 1,
+    "tile": [
+      960,
+      544,
+      192,
+      272
+    ]
+  },
+  "texeira-costa:2026": {
+    "page": "images/papers/texeira-costa-2026.jpg",
+    "aspect": 0.7071,
+    "source": "Teixeira-Costa et al. - 2026 - Flora Batava (1800–1934) From Historical Citizen Science to Plant Humanities Dataset.pdf",
+    "pdfPage": 1,
+    "tile": [
+      1152,
+      544,
+      192,
+      272
+    ]
+  }
+}

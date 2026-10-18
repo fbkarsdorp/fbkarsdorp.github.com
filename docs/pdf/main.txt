@@ -1,0 +1,782 @@
+Correcting collection bias in comparative
+studies of diversity
+Folgert Karsdorp1,2 , Anne Kandler3 , Mike Kestemont4 , Iza Romanowska5 and
+Rombert Stapel6
+1
+
+Research
+Cite this article: Karsdorp F, Kandler A, Kestemont M,
+Romanowska I, Stapel R. 2026 Correcting collection bias in
+comparative studies of diversity. J. R. Soc. Interface 23:
+20260163.
+https://doi.org/10.1098/rsif.2026.0163
+Received: 11 February 2026
+Accepted: 31 May 2026
+
+Subject Category:
+Life Sciences - Mathematics interface
+Subject Areas:
+biometrics, biomathematics, evolution
+Keywords:
+diversity, sampling completeness, collection bias, archival
+data, comparative inference
+Author for correspondence:
+Folgert Karsdorp
+e-mail: folgert.karsdorp@meertens.knaw.nl
+
+Meertens Institute, Royal Netherlands Academy of Arts and Sciences, Amsterdam, The Netherlands
+Utrecht University, Utrecht, The Netherlands
+3
+Department of Human Behavior, TICE Lab, Ecology and Culture, Max-Planck-Institute for Evolutionary
+Anthropology, Leipzig, Germany
+4
+Department of Literature, University of Antwerp, Antwerpen, Belgium
+5
+Centre for Humanities Computing, Aarhus Universitet, Aarhus, Denmark
+6
+International Institute of Social History, Amsterdam, The Netherlands
+2
+
+FK, 0000-0002-5958-0551; AK, 0000-0003-3766-6597; MK, 0000-0003-3590-693X;
+IR, 0000-0002-9487-2111; RS, 0000-0001-6394-260X
+Comparative analyses of diversity in human populations often rely on historical, archival and observational data, which are systematically shaped by
+uneven documentation, preservation and research attention. Such collection
+bias can distort comparisons across populations, regions or time periods,
+obscuring genuine patterns of variation or generating spurious ones. Standard approaches that equalize sample size or sampling effort implicitly assume comparable sampling completeness, which is an assumption rarely
+satisfied in human and historical datasets. Here, we evaluate coveragebased standardization, adapted from ecological diversity estimation, as a
+general framework for comparative diversity analysis under biased and incomplete observation. Using population-level simulations, we show that
+coverage-based approaches reliably recover true diversity relationships
+across multiple, qualitatively distinct mechanisms of collection bias,
+whereas sample-size-based methods yield systematically distorted inferences. We illustrate the utility of this framework with an application to a
+large historical cultural dataset, where correcting for uneven documentation substantially refines inferred diversity patterns. By conditioning comparisons on sampling completeness rather than raw sample size, coveragebased standardization offers a principled and broadly applicable solution
+for comparative research in any domain where observation is biased, incomplete or historically contingent.
+
+1. Introduction
+
+Supplementary material is available online
+at https://doi.org/10.6084/m9.figshare.c.8523348.
+
+Comparative analyses of diversity in human populations rely heavily on historical, archival and observational data, ranging from archaeological assemblages
+and historical records to linguistic corpora and cultural databases. Such data
+are almost invariably shaped by uneven documentation, preservation and research attention, producing systematic collection biases that vary across populations, time periods and social contexts. As a result, apparent differences in
+diversity may reflect how evidence was collected rather than how diversity
+was distributed in the underlying populations. This challenge is not unique
+to human data. Similar forms of biased observation arise across ecology, evolutionary biology and the study of past biodiversity, where sampling effort,
+© 2026 The Authors. Published by the Royal Society under the terms of the Creative Commons Attribution License
+http://creativecommons.org/licenses/by/4.0/, which permits unrestricted use, provided the original author and
+source are credited
+
+Sample coverage, a concept originating from Alan Turing’s cryptographic work and later formalized by Good [15,16], provides a
+robust foundation for comparing diversity across collections of varying sizes. At its core, coverage represents the proportion of a
+population’s total elements—whether species, traits, artefacts or cultural variants—that is captured by our sampling efforts. Unlike
+raw sample size, coverage directly reflects sampling completeness, making it especially informative in settings where observation
+is partial, uneven or systematically biased. As such, coverage-based measures are well suited for comparative analyses across a
+wide range of domains, including ecological surveys, archaeological assemblages and historical or cultural records, where only a
+fraction of the underlying diversity is ever observed.
+
+...................................................................................
+
+2. Coverage-based diversity
+
+2
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+accessibility and collector behaviour shape what is observed and recorded. In all of these domains, comparative analyses of diversity depend on methods that can distinguish genuine differences in underlying variation from artefacts of uneven or biased
+sampling [1,2].
+Collection bias arises from a range of interacting mechanisms—both material and human—that shape what gets documented
+and preserved in empirical records [3]. Material factors play a key role: in natural history collections, specimen size and preservation quality directly influence their likelihood of collection, while in archaeological and cultural datasets, artefact durability and
+visibility shape documentation patterns [4,5]. At the same time, human choices, either driven by expertise, institutional priorities
+or aesthetic preferences, introduce additional layers of systematic distortion [6]. In folklore research, for instance, collectors often
+privileged certain genres (e.g. supernatural narratives) or guided documentation toward specific forms, shaping the resulting
+record according to their research aims [7,8]. Such decisions produce enduring imbalances that reflect the priorities of collectors
+more than the structure of the underlying original systems.
+Spatial and temporal factors further compound these biases by introducing systematic variation in documentation intensity
+across regions and historical periods [9]. Proximity to research centres, accessibility of sites and fluctuations in institutional resources all shape where, when and how data are collected. These patterns do not operate in isolation: their interaction can produce
+complex distortions, such as the underrepresentation of remote populations or temporal clustering that exaggerates or obscures
+continuity [6,10]. As a result, even well-intended documentation efforts may yield datasets that systematically misrepresent the
+structure of the underlying system they aim to document.
+These biasing mechanisms pose particular challenges for comparative diversity research, where researchers seek to relate observed
+repertoire size to explanatory variables, such as population size, productivity or spatial connectivity. Because documentation
+intensity often correlates with the very factors under investigation, collection bias can systematically distort comparative inference.
+For example, studies examining how population size shapes cultural or biological diversity [11] may overestimate demographic
+effects if larger populations receive disproportionate documentation attention. More generally, biased observation can generate
+apparent diversity gradients that reflect collection practices rather than underlying generative processes [1].
+Two particularly pervasive patterns of collection bias stem from the implicit risk-reward trade-offs that shape documentation
+strategies across domains. Collectors, often operating under limited resources, allocate effort towards locations, phenomena or
+communities perceived as especially promising or distinctive. These behavioural dynamics have been documented in archaeology,
+palaeontology, folklore and musicology, and can systematically distort observed diversity patterns. Treating such dynamics as
+recurrent, structured sources of bias allows their effects to be modelled and evaluated within comparative analyses.
+The first of these patterns, often termed the ‘productivity paradox’, refers to collectors’ tendency to concentrate effort in already
+productive locations [3,6]. This self-reinforcing process leads to dense documentation of a subset of sites or populations, not
+necessarily because they are more diverse, but because they are more accessible or already well known. In folklore research, for
+example, reliance on initial informant networks often produced dense local documentation around early contact points [7]. In
+comparative analyses, such clustering can generate artificial diversity patterns driven by effort rather than underlying variation.
+A second pattern, known as Stromer’s Riddle [12], involves the systematic overrepresentation of rare or distinctive items. In
+palaeontology, for instance, theropod dinosaurs appear disproportionately frequently in collections relative to their inferred ecological abundance [3,12]. Analogous processes operate in cultural datasets. Medieval manuscripts illustrate this clearly: while
+ordinary manuscripts have survival rates of roughly 8%, luxuriously decorated manuscripts survive at rates approaching 20%
+[13,14]. Because such items were originally rarer, their disproportionate preservation distorts reconstructions of historical
+diversity.
+Together, these patterns illustrate how collection bias can distort diversity estimates along precisely the dimensions scholars
+aim to compare. To address this problem, we introduce coverage-based standardization as a general framework for comparative
+diversity inference under biased and incomplete observation. Adapted from ecological diversity estimation, this approach enables
+comparisons across assemblages with differing documentation intensity by conditioning inference on sampling completeness
+rather than sample size. We first use simulations to examine how distinct mechanisms of collection bias, such as preferential
+sampling of productive sites or overrepresentation of rare variants, distort diversity estimates under conventional methods. We
+then apply coverage-based standardization to a historical cultural dataset on seventeenth-century Dutch song culture, examining
+how population size relates to melodic diversity across urban centres. Together, these analyses demonstrate that coverage-based
+standardization can recover diversity patterns that would otherwise be obscured or distorted by collection bias, providing a robust
+foundation for comparative research across domains.
+
+(2.1)
+
+where n is the total sample size, and f1 represents the number of singletons (items observed exactly once). The key theoretical
+advantage of coverage-based standardization, as demonstrated by [19], is that it preserves the replication principle: when two
+equally diverse but completely distinct assemblages are combined, their joint diversity should double. This property fails under
+fixed-size standardization because as the species pool increases through addition or combination, the probability of discovering
+any particular species with a fixed sampling effort necessarily decreases. More precisely, if standardizing to size n results in capturing fraction p of species in one assemblage, it will capture only p∕2 of the species in an assemblage twice as large, leading to
+systematic underestimation of diversity ratios [18].
+Derex & MesoudiChao
+and Shen [20] propose an improved coverage estimator which incorporates a correction factor based
+::::::::::::
+on both f1 and f2 (respectively the number of types observed exactly once and exactly twice) for a reference sample of size n, which
+we will employ here as it generally has lower mean squared error than Turing’s estimator [19]
+[
+]
+f1
+(n − 1)f1
+Ĉ n = 1 −
+.
+n (n − 1)f1 + 2f2
+
+(2.2)
+
+Here, the relationship between singletons (f1 ) and doubletons (f2 ) provides insight into both sampling completeness and the underlying structure of the observed repertoire. Across domains, different frequency patterns reflect different generative and observational regimes. For example, (i) a high ratio of singletons to doubletons (f1 ≫ f2 ) indicates a system with extensive rare variants or ongoing innovation, where many types are observed only once and the correction factor approaches unity to account for
+substantial unseen diversity; (ii) a balanced ratio (f1 ≈ f2 ) suggests a more stable repertoire with moderate turnover, leading to
+intermediate coverage adjustment; and (iii) a low singleton-to-doubleton ratio (f1 < f2 ) reflects a system dominated by a smaller
+(n−1)f1
+number of common types, resulting in minimal coverage correction. The term (n−1)f +2f
+captures these regimes mathematically,
+1
+
+2
+
+with its magnitude reflecting uncertainty about sampling completeness given the observed frequency distribution.
+Equation (2.2) provides a principled basis for standardizing assemblages when the goal is to compare their diversity, which,
+as we will show in this paper, provides major advantages compared to, for example, size-based standardization or rarefactionbased standardization. Figure 1 illustrates the basic ideas behind these different comparison strategies. Assume we have observed
+assemblages A and B of different sizes. The left panel shows two common size-based approaches. The simplest strategy is to
+compare the observed richness values SA and SB at their actual sample sizes. This is effectively no standardization, since differences
+in sampling effort directly translate into differences in observed richness, nevertheless it is called size-based standardization in
+the literature. An alternative size-based approach is rarefaction-based standardization, where we compare both assemblages at a
+shared sample size nmin , defined as the smaller of the observed sample sizes (cf. the dashed line in the left panel). As illustrated
+in the figure, this means that the larger assemblage is repeatedly subsampled down to nmin , yielding the richness values SA (nmin )
+and SB (nmin ).
+For coverage-based standardization, we first construct the coverage-based rarefaction curves for each assemblage [19]. These
+curves are obtained by computing the coverage value Ĉ n for progressively larger random subsamples of size n (until we reach the
+observed sample size), while simultaneously recording the corresponding number of observed species Sn at each coverage level.
+This process yields a series of paired values ( ̂Cn , Sn ) that form the coverage-based rarefaction curve, which shows how observed
+richness increases with sampling completeness. Second, we determine the maximum shared coverage ̂Cmax (dashed line in the
+right panel of figure 1) that both assemblages achieve. At this common completeness level, we extract the corresponding richness
+̂
+values SA (Cmax)
+and SB (Ĉ max ), whose ratio SA ∕SB:, on average, provides an unbiased estimate of the true diversity ratio between
+assemblages [19].
+In summary, the coverage-based standardization approach acknowledges that different assemblages may require varying sample sizes to achieve equivalent coverage levels—for instance, one assemblage might require 1000 samples to reach 80% coverage
+while another achieves the same coverage with only 500 samples. By comparing diversity values at common coverage points
+rather than common sample sizes, we aim to capture genuine differences in diversity rather than artefacts of sampling effort [19].
+
+3. Simulation study
+In this section, we theoretically assess the accuracy of coverage-based and size-based standardization for estimating diversity
+from samples subject to different collection biases, reflecting real-world documentation practices across domains. For comparison, we also evaluated rarefaction-based standardization. However, its performance was consistently worse than performing no
+standardization at all, despite its widespread use. The corresponding results are provided in §1 of the supplementary material. In
+all simulations below, we assume that the composition of the underlying populations evolves in a neutral, unbiased way.
+
+...................................................................................
+
+f1
+Ĉ n = 1 − ,
+n
+
+3
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Daly et al. [17] and Deffner et al. [18] demonstrate that unlike :::::
+Alroy ::::::
+[17,18] :::::::::::
+demonstrates::::
+that traditional richness measures,
+which count the number of distinct types, S, observed in a sample, depend on fixed sample sizes. Coverage-based diversity takes a
+different approach by quantifying the completeness of sampling by estimating the proportion of the total population represented
+in the observed sample. The coverage Ĉ n of a sample can be estimated using the Good–Turing estimator
+
+4
+
+To simulate populations where transmission between individuals occurs in a neutral, unbiased way, we use the Wright–Fisher
+model. In this model, a population of fixed size N evolves in discrete, non-overlapping generations: each new generation is formed
+by sampling N variants with replacement from the previous generation, so variant counts follow a multinomial distribution. With
+small probability 𝜇 each sampling event introduces a novel variant not previously seen in the population.
+In empirical studies, however, complete population data are rarely available; researchers typically observe only a sample drawn
+from one or several populations. Naturally, the sampling process can be subject to a variety of biases and here we ask how different documentation practices (in the following, sampling strategies) affect our ability to infer relative population diversity from
+samples.
+We simulate a series of eight neutrally evolving populations with the same innovation rate 𝜇 and exponentially increasing
+sizes following a geometric progression from 1000 to 128,000 individuals by factors of two (i.e. N ∈ {1000, 2000, … , 128, 000}). So
+populations differ in size but have evolved neutrally with the same innovation rate 𝜇. To generate samples, we treat sampling
+as a sequential two-stage process, which is repeated until the desired overall sample size is reached. At each step, we (i) select a
+population according to the sampling strategy under consideration, and (ii) select a variant from that population according to the
+within-population selection rule specified by the strategy.
+This process yields samples of varying size from different populations, depending on both the total sampling budget and the
+sampling strategy used. Our approach therefore simulates both the underlying evolutionary process affecting the composition of
+the populations and the collection process, following the ‘virtual ecologist’ framework [21], which allows systematic evaluation
+of how sampling biases affect the measurement of diversity patterns.
+We implemented three distinct sampling procedures that introduce collection biases similar to those observed in real-world
+documentation efforts. These approaches allow us to simulate diverse scenarios ranging from simple population-size effects to
+more complex feedback mechanisms that characterize actual collection processes, such as the above-described ‘productivity paradox’ (preferential sampling of already-documented locations) and ‘Stromer’s Riddle’ (over-representation of rare variants).
+Population-size-biased sampling. Population-size-biased sampling models the preference for or against large populations when choosing
+which population to sample. The sampling probability of population i is given by
+pi ∝ Ni1−b ,
+
+(3.1)
+
+where the parameter 𝛽 b: modulates the relationship between population size and sampling probability. If 𝛽 < 0::::
+b < 0, larger populations receive disproportionately more sampling attention (analogous to major cultural centres attracting intensive documentation).
+If 𝛽 > 0b::::
+> 0, smaller populations receive disproportionately more attention (mimicking targeted collection of small communities).
+The ‘neutral’ case 𝛽 = 0 ::::
+b = 0:creates sampling probabilities directly proportional to population size, representing unbiased documentation effort. After a population is chosen, a variant is sampled in proportion to its frequency within that population.
+Productivity paradox sampling. The productivity paradox sampling strategy reflects collectors’ tendency to revisit previously productive
+locations, producing self-reinforcing patterns of documentation intensity. The sampling probability for population i is given by
+pi ∝ (si + 1)𝜌 ,
+
+(3.2)
+
+...................................................................................
+
+3.1. Framework
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Figure 1. Comparison of two assemblages under size-based (left) and coverage-based (right) standardization. Each curve shows the accumulation of observed richness
+S with increasing sample size or coverage. In the size-based framework (left), assemblages A (blue) and B (orange) reach different observed richness values (SA , SB )
+at their respective sampling efforts. The vertical dashed line marks nmin , the smallest sample size among the assemblages, which is used as the reference point for
+rarefaction-based comparisons. Here, richness values are compared at SA (nmin ) and SB (nmin ). In the coverage-based framework (right), both curves are expressed in
+terms of coverage ̂C, and the dashed line indicates the maximum shared coverage Ĉmax . At this point, the ratio SA (Ĉmax )∕SB (Ĉmax ) provides an unbiased estimate of
+the true richness ratio between the assemblages.
+
+pi ∝ 1.
+
+(3.3)
+
+But once population i is chosen, sampling favours rare variants. More precisely, the probability that variant v is chosen from
+population i is given by
+pvi ∝ (fiv )−𝛾 ,
+
+(3.4)
+
+where f v i is the frequency of variant v within population i, and 𝛾 > 0 determines the strength of rarity preference. Higher 𝛾 values
+create stronger bias towards uncommon variants, reflecting collectors’ heightened attention to perceived novelty or uniqueness.
+In summary, we sample the populations of size Ni in total n times—n describes the researcher’s sampling budget—under
+the assumed sampling regime, producing a sub-sample from each population. Sub-sample sizes depend strongly on the sampling regime. We then estimate relative sample diversity using both uncorrected (size-based) and coverage-based standardization
+methods (cf. figure 1), and compare these estimates against the true relative population diversity to assess accuracy under biased
+sampling. In more detail, the uncorrected method counts in each simulation the number of distinct variant types observed in each
+sub-sample, normalizes these counts by the maximum count across samples (relative sample diversity) and averages these normalized counts across simulations. For coverage-based standardization, we first estimate the coverage value for each sub-sample
+according to (2.2), adjust the sizes of the sub-samples so that all sub-samples match the minimum positive coverage value observed, and then apply the same counting, normalization and averaging steps as described above to these adjusted sub-samples.
+
+3.2. Simulation setup
+All populations evolve independently under a neutral model with innovation rate 𝜇 = 0.0005. We evaluate the three collection
+biases outlined above: population-size bias, productivity paradox and Stromer’s Riddle. For each, we test multiple values of the
+bias parameters:
+
+r Population-size bias: 𝛽 ∈ {−1, −0.5, 0, 0.5, 1}b ∈ {−1, −0.5, 0, 0.5, 1},
+:::::::::::::::::
+r Productivity paradox: 𝜌 ∈ {0, 0.5, 1},
+r Stromer’s Riddle: 𝛾 ∈ {0, 1, 3}.
+For each combination of sampling strategy, bias level, and sample size n ∈ {500, 1000, 5000, 10, 000, 20, 000}, we simulate 100 independent iterations.
+
+3.3. Simulation results
+Before exploring the effects of different sampling biases, we briefly summarize basic properties of coverage-based standardization
+using Wright–Fisher populations with population size N and innovation rate 𝜇 and corresponding samples of size n (see §2 of the
+supplementary material for a detailed analysis). In this case, the average coverage of a sample of size n is given by
+𝔼{Cn } =
+
+n
+𝜃+n
+
+with 𝜃 = 2N𝜇.
+
+Thus, coverage increases, on average, with sample size n; and for larger 𝜃 (either through increased N or 𝜇), a larger n is required
+to reach a given coverage level. The true coverage provided by a specific sample, however, can vary substantially around this
+mean (see §2 in the supplementary material for figure S2 and the calculation of the realized coverage, denoted as Ctrue ). To assess
+the accuracy of the coverage estimator ̂Cn given by (2.2), we compare the ̂Cn - and Ctrue -value for each sample. Figures S3 and S4
+in the supplementary material show that for sufficiently high sample sizes (for the Wright–Fisher populations with innovation
+rates considered here, n ≥ 30) both Ctrue and ̂C distributions become tightly concentrated around 𝔼{Cn } for all innovation rates,
+indicating that the estimator is stable and unbiased for sample sizes typically encountered in empirical data. Further, we assessed
+the accuracy of the diversity ratio S1 ( ̂Cmax) and S2 ( ̂Cmax ) (i.e. the ratio of the number of variant types contained in the samples after
+coverage-based standardization, see figure 1) in approximating the true diversity ratio of the underlying population. Figure S5
+in the supplementary material shows that, consistent with the results above, this estimator is stable for sufficiently large samples
+
+...................................................................................
+
+Stromer’s Riddle sampling. Our third approach models ‘Stromer’s Riddle’, the tendency for collections to overrepresent rare specimens.
+Populations are chosen uniformly
+
+5
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+where si represents the number of samples already collected from population i, and 𝜌 > 0 controls the strength of the rich-getricher effect. We add a small constant to ensure that all populations have non-zero initial sampling probability. This formulation
+captures how early sampling success, whether by chance or initial accessibility, becomes self-reinforcing as collectors increasingly
+favour previously productive locations. The mechanism is agnostic to population size: any location that yields discoveries attracts
+disproportionate future attention. As above, after a population is chosen, a variant is sampled in proportion to its frequency within
+that population.
+
+6
+...................................................................................
+
+(here n ≥ 30), and the accuracy of coverage-based standardization is governed primarily by the effective standardized sample
+size, not coverage alone.
+Figure 2 shows the diversity profiles—describing the relative richness of the eight populations—of uncorrected (size-based) and
+coverage-based estimations under different degrees of population-size-biased sampling. The dashed line represents the ‘true’ profile of the underlying populations. Population-size-biased sampling models the preference for (𝛽 > 0::::
+b > 0) or against (𝛽 < 0::::
+b < 0)
+large populations and thus, affects the sizes of the sub-samples ni . Uncorrected diversity estimates respond to varying degrees of
+population-size-driven sampling bias. The slope of the diversity–population size relationship is shaped by the bias parameter 𝛽.
+When 𝛽 = −1 :b.::::::
+When ::::::
+b = −1 (blue), sampling strongly favours larger populations, leading to under-sampling, that is, reduced
+sizes of the sub-samples of smaller populations compared to 𝛽 = 0::::
+b = 0, of smaller ones. As a result, the apparent diversity grows
+more steeply with population size: smaller populations appear impoverished relative to larger ones. Conversely, when 𝛽 = 1 ::::
+b=1
+(purple), sampling disproportionately targets smaller populations, that is, sizes of sub-samples of smaller populations are increased compared to 𝛽 = 0::::
+b = 0, making their diversity appear inflated and flattening the overall relationship. These distortions
+persist across sample sizes n, though they attenuate somewhat with increased sampling effort. By contrast, the coverage-based
+estimates (bottom panel) largely eliminate these effects. Across all values of 𝛽 :
+b and all sample sizes, the estimated diversity tracks
+the true population-level richness ratios (grey dashed line). Even under extreme sampling bias, coverage-based standardization
+recovers accurate diversity relationships, underscoring its effectiveness in correcting for heterogeneous documentation effort.
+The effect of productivity-biased sampling is to increase the sizes of the sub-samples of populations that have been chosen
+by chance initially. The higher the value of 𝜌, the stronger the reinforcement of initially selected populations, resulting in selfamplifying dynamics where populations not sampled in the first rounds have only a negligible chance of being chosen later.
+Figure 3 (top panel) shows that—as for population-size-biased sampling—uncorrected diversity estimates result in systematic
+deviations from the true diversity profile. Also note that despite differences in reinforcement strength, the results appear similar
+across different values of 𝜌. This is because, when results are averaged over many simulations, the random allocation of early samples balances out. However, as shown in supplementary material, figure S6, the distribution of sampling effort across populations
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Figure 2. Diversity estimation under population-size-driven sampling bias. Populations (1000–128,000 individuals) evolve under identical neutral dynamics. The bias
+parameter 𝛽 :b controls the relationship between population size and sampling effort, ranging from −1 (preferential sampling of large populations) to 1 (preferential
+sampling of small ones), with 𝛽 = 0 b::::
+= 0 indicating size-proportional sampling. Top: Unadjusted diversity estimates vary systematically with bias. Bottom: Coveragebased standardization removes these distortions, accurately recovering true diversity ratios across all sampling intensities. Lines show the relationship between population
+size and relative richness, defined as the estimated diversity of population i divided by the maximum estimated diversity across all populations.
+
+7
+...................................................................................
+
+becomes increasingly concentrated as 𝜌 rises: the effective number of populations contributing to the sample declines, indicating stronger inequality in sampling intensity. When diversity estimates are standardized by coverage (figure 3, bottom panel),
+the effect of productivity bias becomes almost negligible. Coverage-based rarefaction compensates for differences in sampling
+completeness among populations, leading to nearly overlapping richness profiles for all 𝜌 values.
+Stromer’s Riddle sampling results in similar sizes of the sub-samples of the eight populations but those sub-samples preferentially contain rare variants within each population. Figure 4 (top panel) shows that the uncorrected diversity estimates are strongly
+distorted. Observed relative richness flattens substantially across the population-size range. Because small populations contain
+relatively few variants and only a short rare tail, rarity-biased sampling quickly uncovers a large proportion of their diversity,
+causing their observed richness to be strongly inflated. Large populations also experience inflation, but the effect is weaker: the
+rare tail is so long that the sample captures only a small fraction of it. The result is a flattening of the relationship between diversity and population size: small populations appear disproportionately diverse, while large populations appear more modestly
+elevated. These effects persist across sample sizes, though their magnitude diminishes with greater sampling effort. By contrast,
+the coverage-based estimates (bottom panel) demonstrate robustness: diversity values largely align with the true underlying ratios
+across all values of the rarity bias parameter and all sampling intensities.
+In summary, collection bias—understood broadly as systematic processes governing what is observed, recorded or preserved—
+can substantially distort comparative diversity inference, as illustrated by the three biasing mechanisms considered in figures 2–4
+(top rows). By contrast, coverage-based standardization greatly reduces the impact of such biases when the inferential goal is to
+compare diversity across populations. More generally, coverage-based standardization enables meaningful comparisons when the
+underlying composition of populations is unknown and researchers have access only to incomplete and potentially heterogeneous
+samples, a situation common across ecological, archaeological, historical and cultural datasets.
+
+4. Population size and diversity: theory and a historical case study
+The relationship between population size and diversity is a central question in ecology, evolutionary biology and cultural evolution, and a common target of comparative inference. In cultural evolution, the relationship between population size and cultural
+complexity is one of the most extensively studied topics [11]. A rich theoretical framework predicts how demographic conditions shape the emergence, transmission and maintenance of cultural traits across populations [22,23]. At its core, this framework
+posits two complementary mechanisms. First, larger populations provide more opportunities for innovation, not only through
+sheer numbers but also by enabling more frequent recombination and exchange. Second, larger populations create more stable
+conditions for maintaining innovations once they appear, reducing random loss through drift, providing more opportunities for
+transmission and potentially supporting greater specialization [23–26].
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Figure 3. Diversity estimation under productivity-based sampling bias. Populations (1000–128,000 individuals) evolve under identical neutral dynamics. The parameter
+𝜌 controls the strength of the ‘rich-get-richer’effect: 𝜌 = 0 reflects neutral sampling, while higher values (𝜌 ∈ 0.5, 1) amplify returns to previously sampled populations. Top: Raw diversity estimates inflate richness in heavily sampled populations. Bottom: Coverage-based standardization corrects this reinforcement, preserving the
+true population–diversity relationship.
+
+8
+...................................................................................
+
+These theoretical predictions have received some empirical support, particularly in technological domains. Laboratory experiments show that larger groups tend to generate and maintain more complex cultural traits, especially where cumulative
+improvements are needed [27,28]. These controlled findings align with archaeological evidence, where increases in population
+density correlate with technological innovation, most notably during the Upper Palaeolithic transition in Europe and western
+Asia [22,24]. Comparative studies of contemporary populations have further strengthened this empirical foundation, revealing
+positive correlations between population size and the diversity and complexity of traditional toolkits [29,30]. Historical cases, such
+as technological loss among isolated Tasmanian populations, reinforce the view that population size can shape both innovation
+and retention. However, other studies using ethnographic, archaeological and experimental data found weak or absent effects of
+population size on cultural diversity (see, e.g., [30–33]). these These
+results are subject to debates (see, e.g., [31,34]).
+:::::
+Recent research shows that demographic effects can vary substantially across cultural domains [35]. In linguistic evolution, for
+instance, larger populations are associated with more lexical diversity but simpler grammatical structures [36,37]. In expressive
+culture, the relationship appears even more complex. Studies of folktales suggest that larger populations exhibit greater diversity in
+tale types but less complexity in narrative structure [38]. Musical traditions may follow similar patterns: larger populations might
+promote diversity, while aesthetic norms drive convergence toward certain levels of complexity [39]. These findings suggest that
+expressive domains may follow different evolutionary trajectories than technological ones that are shaped not only by transmission
+fidelity and innovation rate, but by preferences, audience effects and communicative constraints.
+In general, translating these theoretical predictions into empirical tests faces two distinct challenges. First, the theoretically
+relevant demographic quantity is not census population size but the culturally effective population size, which depends on transmission biases, network structure and the concentration of cultural influence [40]. Second, in historical and observational datasets,
+larger populations often leave more extensive records, not necessarily because they ere ::
+are:more culturally diverse, but because
+they attracted more documentation effort or left behind more durable artefacts. As a result, attempts to study population-size
+effects through historical sources are especially vulnerable to confounding, and distinguishing genuine demographic effects from
+sampling artefacts remains a major methodological challenge.
+In this section, we first show theoretically that collection biases in form of population-size-biased sampling can strongly distort estimated scaling between population size and cultural diversity, so empirical studies must account for this bias. We then
+present an example using seventeenth-century Dutch song data to illustrate a practical workflow: applying coverage-based standardization to correct for uneven documentation, and comparing results analysis with and without the correction. We chose the
+Dutch song corpus because it is historically rich and known to be subject of collection biases. Crucially, we can obtain relatively
+reliable historical population estimates which, as we argue below, provide a reasonable proxy for the culturally effective population size. This allows us to isolate the impacts of collection bias without conflating them with large demographic measurement
+errors.
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Figure 4. Diversity estimation under rarity-biased sampling. Populations (1000–128,000 individuals) evolve under neutral dynamics. Samples are formed with preference for rare variants within a population where populations are chosen with equal probability. The rarity parameter 𝛾 controls this bias: 𝛾 = 0 is neutral, while
+higher values (𝛾 ∈ 1, 3) increasingly favour low-frequency variants. Top: Raw estimates overrepresent rare forms, flattening diversity-population relationships. Bottom: Coverage-based standardization restores accurate relative diversity, even under strong rarity bias.
+
+9
+
+To address the methodological challenges posed by uneven documentation, we first develop a theoretical assessment of how
+collection bias influences estimates of demographic scaling relationships. Regression-based log–log models are widely used to
+study how cultural diversity scales with population size [38,41]. In these models, diversity D scales with population size N, such
+that
+log(D) = 𝛼 + 𝛽 log(N) + 𝜖.
+
+(4.1)
+
+When we standardize to a common coverage level, each estimate represents the same proportion of the underlying diversity. This
+follows directly from the definition of coverage as the fraction of total variant types captured in the sample (see §2). Thus, standardizing to a fixed coverage Ĉ max implies that the coverage-adjusted diversity cD is, in expectation, a constant proportion of true
+diversity across populations
+cD = kD,
+
+(4.2)
+
+where k depends only on the chosen coverage level. Taking logarithms, then,
+log(cD) = log(k) + log(D),
+
+(4.3)
+
+log(cD) = log(k) + log(D) = [𝛼 + log(k)] + 𝛽 log(N) + 𝜖.
+
+(4.4)
+
+and substituting the original model gives us
+
+Thus, coverage standardization shifts the intercept 𝛼 by log(k) but leaves the scaling exponent 𝛽 unchanged. As such, while the
+absolute diversity values are scaled by coverage standardization, the overall relationship remains invariant.
+Figure 5 summarizes how bias affects regression estimates of the population–diversity relationship. Using Poisson GLMs with
+a log link (equation (4.4)), we compare scaling coefficients across true values (blue), unadjusted diversity (orange) and coveragestandardized estimates (green). For this experiment, we assumed a log–linear relationship between population size and diversity.
+We use the simulation framework introduced above to implement the population-size-biased sampling strategy and vary its bias
+parameter b to range from strong preferential sampling of large populations to targeted over-sampling of smaller ones. For each
+combination of sample size and sampling bias, we generate diversity profiles describing the diversity of the eight populations. We
+then fit a Poisson regression of diversity on population size. The fitted slope from each model yields one point on the corresponding
+curve.
+The results show that raw diversity estimates systematically deviate from the true relationship under biased sampling, particularly at extreme values of b. By contrast, coverage-standardized estimates remain stable across collection regimes, accurately
+recovering the demographic signal even when documentation intensity varies. This same inferential framework can now be applied to historical cultural datasets to test how demographic conditions shape expressive traditions. Having established how coverage standardization performs under controlled conditions, we now turn to a historical dataset where these issues are especially
+pronounced.
+
+4.2. Case study
+Our case study focuses on seventeenth-century Dutch song culture to illustrate coverage-based standardization under historically contingent observation. The Dutch Song Database [42] offers an unusually detailed record of musical transmission in early
+modern Europe by capturing both the presence and abundance of melodic variants across diverse contexts [43], which is rare
+
+...................................................................................
+
+4.1. Theoretical study
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Figure 5. Regression coefficients for population–diversity scaling under varying strengths of population-size-biased sampling. For each combination of bias parameter
+b and sample size n, we fit a Poisson regression (log link) model (equation (4.4)) the diversity values of the eight simulated populations using (i) true diversities (blue),
+(ii) raw sample-based diversities (orange), and (iii) coverage-standardized diversities (green).
+
+10
+
+Workflow. For each location i, we have an estimate of the population size Nobs,i and observed melody abundances. From these abundances, we compute the diversity measure yi (both sample-based and coverage-based, see §2 for details). To account for uncertainty
+in the historical population-size estimates, we implemented a Bayesian regression model that incorporates measurement error in
+these estimates. The model is formulated as follows:
+yi ∼ Poisson(𝜆i )
+
+(4.5)
+
+log(𝜆i ) = 𝛼 + 𝛽 log(Ntrue,i )
+Ntrue,i ∼ Uniform(Nobs,i − 𝜎N,i , Nobs,i + 𝜎N,i )
+𝛼 ∼ Normal(0, 5)
+𝛽 ∼ Normal(0, 1)
+Here, the Poisson rate 𝜆i is the expected diversity for location i. The true population sizes Ntrue,i are latent parameters with uniform
+priors bounded by the observed estimates Nobs,i and their associated uncertainties 𝜎N,i . The regression coefficients 𝛼 and 𝛽 have
+weakly informative priors. The posterior is over 𝛼, 𝛽 and the latent Ntrue,i jointly, which allows us to propagate uncertainty in
+population estimates through to inferences about population–diversity scaling [41]. We implemented this model using PyMC [46],
+applying it to both sample-based and coverage-standardized diversity estimates.
+Results. Figure 6 shows that, as expected, collection bias is present and substantially inflates the apparent scaling relationship between cultural diversity and population size. Although both sample-based and coverage-based approaches identify a positive
+relationship between population size and melodic diversity, they differ markedly in their estimation of this relationship’s magnitude. The sample-based analysis yields a posterior coefficient of 1.0 (HDI: [0.97, 1.01]) for log population size, suggesting a strong
+
+...................................................................................
+
+for historical expressive-culture corpora that usually rely on presence-absence data. Restricting the analysis to the seventeenth
+century, the database’s standard melody-name classification (maintained by musicological experts and consistent across the corpus) yields 3568 unique melodies documented across 867 different printed sources (excluding reprints), appearing in 37,618 song
+instances. As in ecological diversity research [44], the resulting estimates are conditional on these type definitions. Each source is
+assigned to an urban location based on the place of its publisher or printer. To establish population-size measures, we use historical demographic data for each urban centre. These estimates inevitably carry uncertainty, which we incorporate as measurement
+error margins. Population estimates are derived from digitized pre-modern census data for the low countries::::
+Low ::::::::
+Countries [45].
+Census population serves as a proxy for the culturally effective population. This approximation is reasonable when cultural influence is not highly concentrated in a small subset of individuals and when transmission biases do not drastically alter the relative
+success of variants [40]. For this repertoire, which would be considered popular culture by today’s standards and was widely
+shared across urban populations, neither condition appears strongly violated.
+The data reveal substantial variation in both sampling intensity and population size across locations. Amsterdam, the largest
+urban centre, is represented by 2003 unique melodies across 809 sources with an estimated population of approximately 150,000,
+while smaller cities like Delft contribute 191 melodies from 26 sources with a population around 20,000 (cf. table S3 in the supplementary material). This heterogeneity, combined with detailed frequency information for each melody and reliable demographic
+estimates, makes the corpus especially well suited to test how coverage-based standardization alters inference about population–
+diversity scaling under collection bias. The methodological challenges this case study presents (uneven documentation intensity,
+confounding between collection effort and the variables under study, and incomplete observation of an underlying repertoire)
+arise routinely in fields such as ecology, palaeontology, archaeology and corpus linguistics.
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Figure 6. Comparison of diversity estimation approaches across Dutch song publishing communities (1600–1700). Left panel: Sample-based diversity shows raw
+melodic richness across communities, exhibiting substantial variance in larger populations. Right panel: Coverage-based diversity estimates reveal a more consistent
+scaling relationship after accounting for sampling heterogeneity. Grey horizontal bars indicate uncertainty in the historical population-size estimates. Fitted lines and
+shaded regions show the posterior mean and 94% credible intervals of the Poisson regression model.
+
+11
+
+5. Discussion
+Collection bias poses a fundamental methodological challenge for comparative diversity research across domains. Because observation, documentation and preservation vary systematically across time, space and subject matter, even carefully assembled
+
+...................................................................................
+
+scaling relationship with nearly perfect proportionality: each 1% increase in population corresponds to approximately a 1% increase in melodic diversity. After coverage-based standardization, the scaling coefficient decreases substantially to 0.54 (HDI:
+[0.49, 0.59]), indicating a more moderate but still robust relationship between population size and melodic diversity. In other
+words, roughly half of the effect estimated from sample-based estimates appears attributable to unequal documentation rather
+than true differences in melodic diversity.
+Coverage-based standardization also shifts the relative standing of several mid-sized urban centres. Although both models
+identify Amsterdam and Antwerp as having the highest levels of melodic diversity, consistent with their status as the largest
+urban centres, the relative positions of mid-sized cities change notably. For example, Leiden shows higher standardized diversity
+than its raw counts would suggest, while Brussels shows somewhat lower diversity after accounting for sampling completeness.
+These shifts highlight how sample-based approaches may systematically misrepresent the cultural diversity of communities with
+different sampling intensities.
+Overall, while larger populations do tend to show greater melodic diversity in seventeenth-century Dutch song culture,
+coverage-based standardization reveals that this effect is substantially smaller than raw data alone would suggest.
+Although the cross-sectional analysis reveals clear demographic scaling across cities, it remains unclear whether similar patterns emerge within a single community over time. To this end, we examined the relationship between population size and melodic
+diversity within Amsterdam over the course of the seventeenth century, a useful test case given its growth from approximately
+57,000 inhabitants in 1600 to over 200,000 by century’s end (cf. table S4 in the supplementary material).
+As illustrated in figure 7, our diachronic analysis reveals interesting temporal patterns in the relationship between population
+growth and melodic diversity. The regression analysis of raw diversity counts yields a posterior coefficient of 0.46 (HDI: [0.39,
+0.54]) for log population size, indicating a positive but sub-linear relationship. After applying coverage-based standardization, the
+coefficient increases to 0.68 (HDI: [0.58, 0.78]), suggesting a stronger relationship than the raw counts would indicate. This finding
+contrasts with our cross-sectional analysis, where coverage standardization reduced the apparent strength of demographic effects.
+In figure 7, the raw diversity counts (left panel) exhibit substantial temporal fluctuations that deviate from the overall trend—
+such as the pronounced surge around 1640–1650 and lower values around 1630—whereas the coverage-standardized estimates
+(right panel) demonstrate a more consistent relationship with population size. The analysis thus suggests that after accounting
+for sampling heterogeneity, population size emerges as a more reliable predictor of melodic diversity across time.
+Additionally, the coverage-based analysis uncovers fine-grained patterns undetected by the sample-based analysis. Around
+1600, melodic diversity appears higher than the population size alone would predict. Historical demographic research by [47]
+provides context for this period: Amsterdam was on the cusp of a major demographic transformation, with marriages doubling
+between 1601 and 1603. This surge marked the beginning of a new cultural market, particularly among wealthy young couples.
+This demographic shift created a substantial cohort of relatively affluent young adults who could engage with musical culture. The
+initially high diversity in 1600, followed by continued growth through the 1610s and 1620s as population increased, suggests that
+Amsterdam’s cultural vibrancy preceded and then kept pace with its demographic expansion. This pattern might reflect the early
+stages of cultural innovation driven by a growing youth market, which publishers like Hans Mathysz. recognized and cultivated
+through new forms of songbooks starting in 1602.
+Taken together, our cross-sectional and diachronic results show that collection biases can substantially influence the apparent
+scaling between cultural diversity and population size in raw abundance data. Therefore, coverage-based standardization should
+be considered as a routine step to obtain more reliable inferences.
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Figure 7. Diachronic analysis of melodic diversity in Amsterdam (1600–1700). Population growth correlates with increased melodic diversity under both sample-based
+(left panel) and coverage-based (right panel) estimation approaches. Points represent measurements per decade. Grey horizontal bars indicate uncertainty in historical
+population-size estimates. Lines show fitted Poisson regression models with 94% credible intervals (shaded regions).
+
+Supplementary material is available online [57].
+
+Declaration of AI use. We used Claude Opus 4.5 for light textual editing as well as cleaning up the code base.
+Authors’ contributions. F.K.: conceptualization, data curation, formal analysis, investigation, methodology, project administration, software, validation, visualization, writing—original draft, writing—review and editing; A.K.: conceptualization, formal analysis, investigation, methodology,
+validation, visualization, writing—original draft, writing—review and editing; M.K.: conceptualization, investigation, writing—original draft,
+writing—review and editing; I.R.: conceptualization, writing—review and editing; R.S.: resources, writing—review and editing.
+
+...................................................................................
+
+Ethics. This work did not require ethical approval from a human subject or animal welfare committee.
+Data accessibility. All data and code are available from [56].
+
+12
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+datasets may reflect patterns of collection rather than properties of the underlying systems they aim to describe. These distortions
+are especially problematic when they align with the dimensions researchers seek to compare, such as population size, region,
+productivity or historical period, risking spurious inferences or masking genuine effects. Addressing these challenges therefore
+requires inferential frameworks that explicitly account for biased and incomplete observation, and help distinguish signal from
+artefact in the (historical) record.
+Coverage-based standardization provides a principled approach for comparing diversity across assemblages that differ in documentation intensity. Originally developed in ecological research [18,19,48], this framework shifts the focus from equalizing sample size to equalizing sampling completeness, defined as the proportion of the underlying repertoire represented in the sample.
+When two assemblages are compared at the same coverage level, they are understood—by construction—to represent equivalent
+fractions of their respective underlying diversity, even if different absolute sample sizes were required to achieve that completeness. Our simulation results demonstrate that, whereas conventional diversity estimates are highly sensitive to collection effort,
+coverage-based standardization reliably recovers true diversity relationships across a wide range of biased sampling regimes.
+This robustness makes it particularly valuable for historical, archaeological and archival data, where observation is shaped by
+processes largely outside the analyst’s control.
+A key contribution of our analysis is showing that this robustness extends beyond simple differences in sampling effort to qualitatively different forms of collection bias. Our simulations incorporate three empirically grounded mechanisms: (i) populationsize-biased sampling, (ii) productivity-based reinforcement (‘productivity paradox’), and rarity-biased documentation (‘Stromer’s
+Riddle’). Each of these biases distorts samples in distinct ways: by (i) redistributing effort towards large or small populations, by
+(ii) amplifying early chance discoveries (‘rich-get-richer’ dynamics), or (iii) by disproportionately targeting rare variants. Our results show that on average, coverage-based standardization reliably recovered the true relative richness profiles underlying these
+biased samples. By contrast, uncorrected diversity estimates were systematically skewed, and rarefaction-based standardization
+performed even worse. These results show that coverage-based standardization does not merely correct for unequal sample sizes,
+but can neutralize a broad class of biases that jointly affect where observation occurs and which variants are recorded. This capacity
+is crucial for comparative analyses based on heterogeneous and historically contingent data.
+We illustrated the practical implications of this framework using a historical dataset on seventeenth-century Dutch song culture.
+Under conventional analysis, we observed a strong positive association between population size and melodic diversity, consistent
+with theoretical expectations but potentially inflated by uneven documentation. After applying coverage-based standardization,
+this relationship remained positive but was substantially attenuated. Importantly, coverage standardization preserves the functional form of demographic scaling: because standardization rescales diversity by a constant factor determined by the chosen coverage level, the scaling exponent relating diversity to population size remains invariant in expectation. The corrected estimates
+therefore retain the demographic signal while reducing inflation caused by collection bias. In this case, the results support the
+view that larger populations tend to support greater musical diversity, while also showing that traditional methods can overstate
+the strength of this relationship.
+Our case study also sheds light on why prior research into expressive cultural domains, such as music, folklore and literature, has often produced inconsistent findings. Many earlier studies relied on presence-absence data, which cannot account for
+differences in documentation intensity across populations. As our results show, this limitation can inflate apparent effects in welldocumented contexts or obscure them in underrepresented ones. By incorporating abundance data and applying coverage-based
+standardization, we clarify the demographic signal while controlling for bias. Although collecting such data requires more effort
+than incidence-based approaches, even relatively modest samples can yield reliable diversity estimates: as Robbins [49] shows,
+the mean squared error of the coverage estimator decreases rapidly with sample size. Our simulations reinforce this point (cf. §2
+of the supplementary material): for sample sizes above roughly 30 observations, coverage estimates and diversity ratios converge
+tightly around their expected values. This means that researchers can obtain stable, meaningful diversity estimates even from
+limited archival samples, so long as they retain frequency information.
+The relevance of coverage-based standardization extends well beyond demographic scaling. Many central questions in comparative research involve contrasts across assemblages that differ systematically in observation intensity, including comparisons
+across historical periods, regions, genres, media or social strata. Temporal analyses must contend with unequal preservation and
+survival—for example, differences between manuscript and print cultures [50] or challenges posed by digital ephemerality [51,52].
+Genre-based comparisons face analogous issues, as written traditions are often better documented than oral ones [53,54], and elite
+cultural production is more likely to be preserved than vernacular or everyday forms [55]. In all such cases, coverage-based standardization offers a principled way to condition comparisons on sampling completeness, shifting the question from how much was
+recorded to how much of what existed was recorded, and thereby bringing comparative inference closer to the phenomena it aims to
+describe.
+
+All authors gave final approval for publication and agreed to be held accountable for the work performed therein.
+
+Acknowledgements. We thank Melvin Wevers, Els Stronks, Martine de Bruin and Arnoud Visser for advice and discussions.
+
+References
+1. Bevan A. 2012 Spatial methods for analysing large-scale artefact inventories. Antiquity 86, 492–506. (doi:10.1017/S0003598X0006289X)
+2. Robbins KJ. 2013 Balancing the scales: exploring the variable effects of collection bias on data collected by the portable antiquities scheme. Landscapes 14, 54–72.
+(doi:10.1179/1466203513Z.0000000006)
+3. Whitaker A, Kimmig J. 2020 Anthropologically introduced biases in natural history collections, with a case study on the invertebrate paleontology collections from the middle cambrian
+spence shale lagerstätte. Palaeontol. Electron. 23, a58. (doi:10.26879/1106)
+4. Cool H, Baxter M. 2016 Exploring morphological bias in metal-detected finds. Antiquity 90, 1643–1653. (doi:10.15184/aqy.2016.207)
+5. Kestemont M, Karsdorp F, de Bruijn E, Driscoll M, Kapitan KA, Ó Macháin P, Sawyer D, Sleiderink R, Chao A. 2022 Forgotten books: the application of unseen species models to the
+survival of culture. Science 375, 765–769. (doi:10.1126/science.abl7655)
+6. Nekola JC, Hutchins BT, Schofield A, Najev B, Perez KE. 2019 Caveat consumptor notitia museo : let the museum data user beware. Glob. Ecol. Biogeogr. 28, 1722–1734.
+(doi:10.1111/geb.12995)
+7. Dekker T. 1992 Op zoek naar de verteller van volksverhalen. Amsterdams Sociol. Tijdschr. 19, 60–84.
+8. Meder T. 2001 Vertelcultuur in waterland. De volksverhalen uit de collectie Bakker (ca. 1900). Amsterdam:
+Stichting Beheer IISG.
+:::::::
+9. Panchen ZA, Doubt J, Kharouba HM, Johnston MO. 2019 Patterns and biases in an arctic herbarium specimen collection: implications for phenological research. Appl. Plant Sci. 7,
+e01229. (doi:10.1002/aps3.1229)
+10. Oksanen E, Lewis M. 2020 Medieval commercial sites: as seen through portable antiquities scheme data. Antiqu. J. 100, 109–140. (doi:10.1017/S0003581520000165)
+11. Mesoudi A. 2016 Cultural evolution: a review of theory, findings and controversies. Evol. Biol. 43, 481–497. (doi:10.1007/s11692015-9320-0)
+12. McGowan AJ, Dyke GJ. 2009 A surfeit of theropods in the Moroccan late cretaceous? Comparing diversity estimates from field data and fossil shops. Geology 37, 843–846.
+(doi:10.1130/G30188A.1)
+13. Buringh E. 2011 Medieval manuscript production in the Latin west, explorations with a global database. Amsterdam:
+Brill.
+:::::::
+14. Wijsman H. 2010 Luxury bound. Illustrated manuscript production and noble and princely book ownership in the Burgundian Netherlands (1400–1550). Turnhout:
+Brepols.
+:::::
+15. Good IJ. 1953 The population frequencies of species and the estimation of population parameters. Biometrika 40, 237–264. (doi:10.1093/biomet/40.3-4.237)
+16. Good IJ, Toulmin GH. 1956 The number of new species, and the increase in population coverage, when a sample is increased. Biometrika 43, 45–63. (doi:10.2307/2333577)
+17. Alroy J. 2010 The shifting balance of diversity among major marine animal groups. Science 329, 1191–1194. (doi:10.1126/science.1189910)
+18. Alroy J. 2010 Geographical, environmental and intrinsic biotic controls on phanerozoic marine diversification: controls on phanerozoic marine diversification. Palaeontology 53,
+1211–1235. (doi:10.1111/j.1475-4983.2010.01011.x)
+19. Chao A, Jost L. 2012 Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. Ecology 93, 2533–2547. (doi:10.1890/11-1952.1)
+20. Chao A, Shen TJ. 2010 Program SPADE (species prediction and diversity estimation). Program and user’s guide published at https://sites.google.com/view/chao-lab-website/software/
+spade.
+21. Zurell D et al. 2010 The virtual ecologist approach: simulating data and observers. Oikos 119, 622–635. (doi:10.1111/j.1600-0706.2009.18284.x)
+22. Shennan S. 2001 Demography and cultural innovation: a model and its implications for the emergence of modern human culture. Cambridge Archaeol. J. 11, 5–16.
+(doi:10.1017/S0959774301000014)
+23. Henrich J. 2004 Demography and cultural evolution: how adaptive cultural processes can produce maladaptive losses—the Tasmanian case. Am. Antiq. 69, 197–214.
+(doi:10.2307/4128416)
+24. Powell A, Shennan S, Thomas MG. 2009 Late pleistocene demography and the appearance of modern human behavior. Science 324, 1298–1301. (doi:10.1126/science.1170165)
+25. Kobayashi Y, Aoki K. 2012 Innovativeness, population size and cumulative cultural evolution. Theor. Popul. Biol. 82, 38–47. (doi:10.1016/j.tpb.2012.04.001)
+26. Fogarty L, Wakano JY, Feldman MW, Aoki K. 2017 The driving forces of cultural complexity: Neanderthals, modern humans, and the question of population size. Hum. Nat. 28, 39–52.
+(doi:10.1007/s12110-016-9275-6)
+27. Derex M, Beugin MP, Godelle B, Raymond M. 2013 Experimental evidence for the influence of group size on cultural complexity. Nature 503, 389–391. (doi:10.1038/nature12774)
+28. Kempe M, Mesoudi A. 2014 An experimental demonstration of the effect of group size on cultural accumulation. Evol. Hum. Behav. 35, 285–290. (doi:10.1016/j.evolhumbehav.2014.02.009)
+29. Kline MA, Boyd R. 2010 Population size predicts technological complexity in oceania. Proc. R. Soc. B Biol. Sci. 277, 2559–2564. (doi:10.1098/rspb.2010.0452)
+30. Collard M, Buchanan B, O’Brien MJ. 2013 Population size as an explanation for patterns in the Paleolithic archaeological record: more caution is needed. Curr. Anthropol. 54, S388–S396.
+(doi:10.1086/673881)
+31. Collard M, Vaesen K, Cosgrove R, Roebroeks W. 2016 The empirical case against the ‘demographic turn’ in palaeolithic archaeology. Philos. Trans. R. Soc. B Biol. Sci. 371, 20150242.
+(doi:10.1098/rstb.2015.0242)
+32. Caldwell CA, Millen AE. 2010 Human cumulative culture in the laboratory: effects of (micro) population size. Learn. Behav. 38, 310–318. (doi:10.3758/LB.38.3.310)
+33. Fay N, De Kleine N, Walker B, Caldwell CA. 2019 Increasing population size can inhibit cumulative cultural evolution. Proc. Natl Acad. Sci. USA 116, 6726–6731.
+(doi:10.1073/pnas.1811413116)
+34. Vaesen K, Collard M, Cosgrove R, Roebroeks W. 2016 Population size does not explain past changes in cultural complexity. Proc. Natl Acad. Sci. USA 113, E2241–E2247.
+(doi:10.1073/pnas.1520288113)
+
+...................................................................................
+
+and Resilience).
+
+13
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+Conflict of interest declaration. We declare we have no competing interests.
+Funding. IR has been funded by the European Union (ERC-StG 101116639 – TheModelCity. Drivers and Mechanisms of Long-term Urban Evolution
+
+14
+...................................................................................
+
+royalsocietypublishing.org/rsif J.R.Soc.Interface 23: 20260163
+
+35. Derex M, Mesoudi A. 2020 Cumulative cultural evolution within evolving population structures. Trends Cogn. Sci. 24, 654–667. (doi:10.1016/j.tics.2020.04.005)
+36. Bromham L, Hua X, Fitzpatrick TG, Greenhill SJ. 2015 Rate of language evolution is affected by population size. Proc.NatlAcad.Sci.USA 112, 2097–2102. (doi:10.1073/pnas.1419704112)
+37. Reali F, Chater N, Christiansen MH. 2018 Simpler grammar, larger vocabulary: how population size affects language. Proc. R. Soc. B Biol. Sci. 285, 20172586.
+(doi:10.1098/rspb.2017.2586)
+38. Acerbi A, Kendal J, Tehrani JJ. 2017 Cultural complexity and demography: the case of folktales. Evol. Hum. Behav. 38, 474–480. (doi:10.1016/j.evolhumbehav.2017.03.005)
+39. Street SE, Eerola T, Kendal JR. 2022 The role of population size in folk tune complexity. Humanit. Soc. Sci. Commun. 9, 152. (doi:10.1057/s41599-022-01139-y)
+40. Deffner D, Kandler A, Fogarty L. 2022 Effective population size for culturally evolving traits. PLoS Comput. Biol. 18, e1009430. (doi:10.1371/journal.pcbi.1009430)
+41. McElreath R. 2018 Statistical rethinking: a Bayesian course with examples in R and Stan, 1 ed.:::
+Boca ::::
+Raton: Chapman and Hall/CRC. (doi:10.1201/9781315372495)
+42. Grijp LP. 1991 Het Nederlandse lied in de Gouden Eeuw. Amsterdam: P.J. Meertens-Instituut.
+43. Van Kranenburg P, De Bruin M, Volk A. 2019 Documenting a song culture: the Dutch song database as a resource for musicological research. Int. J. Digit. Libr. 20, 13–23.
+(doi:10.1007/s00799017-0228-4)
+44. Daly A, Baetens J, De Baets B. 2018 Ecological diversity: measuring the unmeasurable. Mathematics 6, 119. (doi:10.3390/math6070119)
+45. Stapel R, Flens I, Vaccari D, Versmissen R. 2023 ’(Re)counting the uncounted’: repository of digitised premodern censuses in the low countriesLow
+Countries. https://hdl.handle.net/
+::::::::
+10622/E5BC1Y.
+46. Abril-Pla O et al. 2023 PyMC: a modern, and comprehensive probabilistic programming framework in Python. PeerJ Comput. Sci. 9, e1516. (doi:10.7717/peerj-cs.1516)
+47. Grootes EK. 1987 Het jeugdig publiek van de ‘nieuwe liedboeken’in het eerste kwart van de zeventiende eeuw. In Het woord aan de lezer. Zeven literatuurhistorische verkenningen (eds
+W van den Berg, J Stouten), pp. 72–88. Groningen: ::::::::::
+Wolters-Noordhoff.
+48. Jost L. 2010 The relation between evenness and diversity. Diversity 2, 207–232. (doi:10.3390/d2020207)
+49. Robbins HE. 1968 Estimating the total probability of the unobserved outcomes of an experiment. Ann. Math. Stat. 39, 256–257. (doi:10.1214/aoms/1177698526)
+50. Buringh E, Van Zanden JL. 2009 Charting the ‘Rise of the west’: manuscripts and printed books in Europe, a long-term perspective from the sixth through eighteenth centuries. J. Econ.
+Hist. 69, 409. 409–445.
+(doi:10.1017/S0022050709000837)
+:::::
+51. Acerbi A. 2019 Cultural evolution in the digital age. Oxford: Oxford University Press.
+52. Kirschenbaum M, Ovenden R, Redwine G, Donahue R. 2010 Digital forensics and born-digital content in cultural heritage collections. ::::::::
+. Washington: ::::
+Council::
+on ::::
+Library ::
+and:::::::
+Information
+Resources.
+(
+https://www.clir.org/wp-content/uploads/sites/6/pub149.pdf)
+::::::::::::::::::::::::::::::::::::::::::
+53. Finnegan R. 1970 A note on oral tradition and historical evidence. Hist. Theory 9, 195–201. (doi:10.2307/2504126)
+54. Tehrani J, Nguyen Q, Roos T. 2016 Oral fairy tale or literary fake? Investigating the origins of little red riding hood using phylogenetic network analysis. Digit. Scholarsh. Humanit. 31,
+611–636. (doi:10.1093/llc/fqv016)
+55. Rutten G, Van der Wal MJ. 2014 Letters as loot: a sociolinguistic approach to seventeenth-and eighteenth-century Dutch. Amsterdam:
+John Benjamins.
+:::::::
+56. Karsdorp, F. (2026). Code for Correcting collection bias in comparative studies of diversity (v1.4). Zenodo. (https://doi.org/10.5281/zenodo.19573110)
+57. Karsdorp F, Kandler A, Kestemont M, Romanowska I, Stapel R. 2026 Supplementary material from: Correcting collection bias in comparative studies of diversity. FigShare.
+(doi:10.6084/m9.figshare.c.8523348)
+
+

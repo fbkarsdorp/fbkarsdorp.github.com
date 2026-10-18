@@ -1,0 +1,14 @@
+{{ define "body_classes" }}page-list{{ end }}
+
+{{ define "main" }}
+<header class="page-head band">
+  <h1>{{ partial "display-title.html" .Title }}<span class="dot">.</span></h1>
+  {{ with .Params.description }}<p class="page-standfirst">{{ . }}</p>{{ end }}
+</header>
+<section class="band">
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  <ol class="fragment-index fragment-index--full">
+    {{ range .Pages.ByDate.Reverse }}{{ partial "fragment-row.html" . }}{{ end }}
+  </ol>
+</section>
+{{ end }}

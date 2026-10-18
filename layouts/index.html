@@ -2,66 +2,96 @@
 
 {{ define "main" }}
 
-  {{ if .Site.Params.showAuthorOnHomepage }}
-    {{ partial "author-large.html" . }}
-  {{ end }}
+{{/* The homepage hero. `params.hero` in config.toml picks the version:
+     "papers" (default) — the floating books are my publications, shelved by year;
+     "unseen" — the Chao1 unseen-species experiment. */}}
+{{ if eq site.Params.hero "unseen" }}
+  {{ partial "hero-unseen.html" . }}
+{{ else }}
+  {{ partial "hero-papers.html" . }}
+{{ end }}
 
-  <div class="intro">
-    <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
-    {{ if .Site.Params.showIntroContentOnHomepage}}
-      <div class="intro-content">{{ .Content }}</div>
+<section id="about" class="about band">
+  <div class="about-side">
+    {{ with .Site.Data.author.image }}<img class="about-face" src="{{ . | relURL }}" alt="Pen sketch of {{ $.Site.Title }}" width="120" height="120" loading="lazy">{{ end }}
+    <ul class="about-links">
+      {{ range .Site.Data.social.links }}
+        <li><a href="{{ .url }}" rel="noopener">{{ .label | default .name }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="about-body">{{ .Content }}</div>
+</section>
+
+{{ with .Site.Data.worlds }}
+<section id="worlds" class="worlds band" aria-labelledby="worlds-title">
+  <header class="section-head">
+    <h2 id="worlds-title">{{ .heading }}</h2>
+    <p>{{ .intro }}</p>
+  </header>
+  <div class="worlds-grid">
+    {{ range $i, $w := .entries }}
+      <a class="world{{ if eq $i 0 }} world--lead{{ end }}" href="{{ $w.url | relURL }}">
+        <span class="world-plate">
+          <img src="{{ $w.image | relURL }}" alt="{{ $w.alt }}" loading="lazy" width="1200" height="630">
+        </span>
+        <span class="world-text">
+          <span class="world-meta">{{ $w.meta }}</span>
+          <span class="world-title">{{ $w.title }}</span>
+          <span class="world-sub">{{ $w.subtitle }}</span>
+          <span class="world-blurb">{{ $w.blurb }}</span>
+          <span class="world-go">{{ $w.action }}</span>
+        </span>
+      </a>
     {{ end }}
   </div>
+</section>
+{{ end }}
 
-  {{/* Selected publications — generated into data/featured.json by
-       scripts/generate-references.py from `featured` entries in references.bib.
-       Rendered as a compact, flush-left list beneath the bio. */}}
-  {{ with .Site.Data.featured }}
-    {{ if gt (.count | default 0) 0 }}
-      <section class="featured-publications">
-        <h2>Selected publications<span class="dot">.</span></h2>
-        {{ range .entries }}
-          <div class="featured-pub">
-            {{ if .url }}
-              <a class="featured-pub-title" href="{{ .url }}">{{ .title }}</a>
-            {{ else }}
-              <span class="featured-pub-title">{{ .title }}</span>
-            {{ end }}
-            <div class="featured-pub-meta">
-              {{ with .venue }}{{ . }}{{ end }}{{ if and .venue .year }} · {{ end }}{{ .year }}{{ if .label }} <a class="featured-pub-link" href="{{ .url }}">{{ .label }}</a>{{ end }}
-            </div>
-          </div>
-        {{ end }}
-        <a class="view-more" href="/references">All publications</a>
-      </section>
+{{ $posts := where (where .Site.RegularPages "Section" "posts") "Draft" false }}
+{{ with $posts }}
+<section id="fragments" class="fragments-home band" aria-labelledby="fragments-title">
+  <header class="section-head">
+    <h2 id="fragments-title">Fragments</h2>
+    <p>{{ with site.GetPage "/posts" }}{{ .Params.description }}{{ end }}</p>
+  </header>
+  <ol class="fragment-index">
+    {{ range first 5 .ByDate.Reverse }}
+      {{ partial "fragment-row.html" . }}
     {{ end }}
-  {{ end }}
+  </ol>
+  <a class="more" href="{{ "posts/" | relURL }}">All fragments</a>
+</section>
+{{ end }}
 
-  {{ if .Site.Params.showPostsOnHomepage }}
-
-    {{ $pages := where .Site.RegularPages "Type" "posts" }}
-    {{ $sorted := ($pages.ByParam "date").Reverse }}
-    {{ if .Site.Params.sortPostsByDateOldestFirst }}
-      {{ $sorted = $pages.ByParam "date" }}
-    {{ end }}
-
-    {{ $paginator := .Paginate $sorted }}
-
-    {{ if .Site.Params.usePaginationOnHomepage }}
-      {{ range $paginator.Pages }}
-        {{ .Render "summary" }}
+{{/* Selected publications — generated into data/featured.json by
+     scripts/generate-references.py from `featured` entries in references.bib. */}}
+{{ with .Site.Data.featured }}
+  {{ if gt (.count | default 0) 0 }}
+  <section id="publications" class="featured band" aria-labelledby="featured-title">
+    <header class="section-head">
+      <h2 id="featured-title">Selected publications</h2>
+    </header>
+    <ol class="featured-list">
+      {{ range .entries }}
+        <li class="featured-pub">
+          <span class="featured-year">{{ .year }}</span>
+          <span class="featured-body">
+            {{ if .url }}<a class="featured-title" href="{{ .url }}">{{ .title }}</a>{{ else }}<span class="featured-title">{{ .title }}</span>{{ end }}
+            {{ with .venue }}<span class="featured-venue">{{ . }}</span>{{ end }}
+          </span>
+        </li>
       {{ end }}
-      {{ partial "paginator" . }}
-    {{ else }}
-      {{ $limit := .Site.Params.limitPostsOnHomepage | default 3 }}
-      {{ range first $limit $sorted}}
-        {{ .Render "summary" }}
-      {{ end }}
-      <a class="view-more" href="/posts">More Posts</a>
-    {{ end }}
+    </ol>
+    <a class="more" href="{{ "references/" | relURL }}">All publications</a>
+  </section>
   {{ end }}
+{{ end }}
 
 {{ end }}
 
 {{ define "footer_js" }}
+  {{ $hero := resources.Get (cond (eq site.Params.hero "unseen") "js/archive-hero.js" "js/archive-papers.js") }}
+  {{ if hugo.IsProduction }}{{ $hero = $hero | minify | fingerprint }}{{ end }}
+  <script type="module" src="{{ $hero.RelPermalink }}"></script>
 {{ end }}

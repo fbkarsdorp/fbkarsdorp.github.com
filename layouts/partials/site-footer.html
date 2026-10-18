@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-sign">
+      <p class="footer-name">{{ .Site.Title }}</p>
+      <p class="footer-roles">
+        Meertens Institute, Royal Netherlands Academy of Arts and Sciences<br>
+        Utrecht University
+      </p>
+    </div>
+    <ul class="footer-links">
+      {{ range .Site.Data.social.links }}
+        <li><a href="{{ .url }}" rel="noopener">{{ .label | default .name }}</a></li>
+      {{ end }}
+      <li><a href="{{ "index.xml" | relURL }}">RSS</a></li>
+    </ul>
+    <p class="colophon">
+      Set in IM Fell English — Igino Marini’s revival of the type Bishop John Fell
+      gathered in the 1670s, much of it bought in Holland — with Newsreader and IBM Plex Mono.
+      Built with Hugo{{ if .IsHome }}; the archive above is drawn with three.js{{ end }}.
+    </p>
+  </div>
+</footer>
