@@ -1,6 +1,3 @@
-{{ $favicon := resources.Get "favicon.ico" }}
-{{ if $favicon }}<link rel="icon" href="{{ $favicon.RelPermalink }}" sizes="any">{{ end }}
-
 {{/* MathJax only where there can be math: notebook posts and plain pages. */}}
 {{ if and .IsPage (ne .Layout "pubs") }}
 <script>

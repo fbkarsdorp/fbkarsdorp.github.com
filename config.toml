@@ -23,9 +23,11 @@ publishDir = "docs"
   description = "Folgert Karsdorp studies how culture spreads, develops and disappears, with methods from ecology, population genetics and machine learning."
   # Homepage hero: "papers" (the floating books are the publications in
   # references.bib) or "unseen" (the Chao1 unseen-species experiment).
-  # Switch socialImage along with it.
+  # Switch socialImage (and its alt text) along with it. A page can set its own
+  # with `image` and `imageAlt` in its front matter.
   hero = "papers"
   socialImage = "images/social-preview-papers.jpg"   # or images/social-preview-unseen.jpg
+  socialImageAlt = "Fragments of Cultural Change: publications float as books in the dark, one lit by a lamp and catalogued beside the title."
   googleFontsUrl = "https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap"
 
 # markdown config settings https://gohugo.io/getting-started/configuration-markup/#goldmark

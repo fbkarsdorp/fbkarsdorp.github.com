@@ -661,7 +661,13 @@ h1, h2, h3, h4 { color: var(--ink); text-wrap: balance; }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(28px, 3.5vw, 48px) clamp(20px, 3vw, 40px);
+  transition: opacity 0.6s ease;
 }
+/* three across when the cards under the lead come in threes, so none is left alone */
+.worlds-grid--thirds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.worlds-grid--thirds .world:not(.world--lead) .world-title { font-size: clamp(30px, 2.6vw, 40px); }
+/* site.js turns the lead over to the next world: fade out, reorder, fade in */
+.worlds-grid.is-turning { opacity: 0; }
 .world {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -719,7 +725,7 @@ h1, h2, h3, h4 { color: var(--ink); text-wrap: balance; }
 }
 .world--lead:hover { color: var(--moon); }
 .world--lead .world-plate { aspect-ratio: auto; min-height: 100%; }
-.world--lead .world-plate img { object-position: 62% 50%; filter: brightness(1.08) saturate(1.05); }
+.world--lead .world-plate img { object-position: var(--focus, 62% 50%); filter: brightness(1.08) saturate(1.05); }
 .world--lead .world-text { padding: clamp(24px, 3.5vw, 52px); justify-content: center; }
 .world--lead .world-meta { color: color-mix(in srgb, var(--lamp) 80%, var(--moon)); }
 .world--lead .world-title { font-size: clamp(48px, 5.4vw, 84px); }

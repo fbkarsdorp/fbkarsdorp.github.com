@@ -1,7 +1,18 @@
 {
   "heading": "Worlds to walk through",
-  "intro": "Interactive reconstructions built from the collections I work with: you can walk through a corpus, a century or a statistical argument.",
+  "intro": "Experiments in making games out of cultural heritage collections. Every tale, card and song book you meet in them is a real record from the archive.",
   "entries": [
+    {
+      "title": "Sagenland",
+      "subtitle": "Twelve days in the field, and what the archive kept",
+      "blurb": "Cycle the villages of a region that has been telling itself stories for eight years before you arrive. Visit tellers, follow tips, and race the clock: every tale in the game is a real record from the Dutch Folktale Database.",
+      "meta": "Game · 12 days · Volksverhalenbank",
+      "action": "Set out",
+      "url": "https://www.karsdorp.io/sagenland/",
+      "image": "images/worlds/sagenland.jpg",
+      "alt": "A hand-drawn field map with a village, a church, woods and a doctor in a gig, with the title Sagenland.",
+      "focus": "6% 50%"
+    },
     {
       "title": "Roodkapje",
       "subtitle": "The Forest of Tellings",
@@ -31,16 +42,6 @@
       "url": "https://www.karsdorp.io/amsterdam-song-map/",
       "image": "images/worlds/op-t-water.jpg",
       "alt": "Gerrit de Broen’s engraved map of Amsterdam, with red and blue song books stacked on the printers’ shops."
-    },
-    {
-      "title": "Diversity under collection bias",
-      "subtitle": "A companion to the Royal Society Interface paper",
-      "blurb": "Set up two assemblages, bias how their records were collected, and see which standardization strategy still recovers the true diversity ratio.",
-      "meta": "Simulation · coverage standardization",
-      "action": "Try the demo",
-      "url": "/posts/20260627174328-comparing_diversity_under_collection_bias/",
-      "image": "images/worlds/collection-bias.jpg",
-      "alt": "Richness curves for two assemblages by sample size and by coverage, from the interactive demo."
     }
   ]
 }

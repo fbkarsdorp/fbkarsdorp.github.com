@@ -29,9 +29,9 @@
     <h2 id="worlds-title">{{ .heading }}</h2>
     <p>{{ .intro }}</p>
   </header>
-  <div class="worlds-grid">
+  <div class="worlds-grid{{ if eq (mod (sub (len .entries) 1) 3) 0 }} worlds-grid--thirds{{ end }}">
     {{ range $i, $w := .entries }}
-      <a class="world{{ if eq $i 0 }} world--lead{{ end }}" href="{{ $w.url | relURL }}">
+      <a class="world{{ if eq $i 0 }} world--lead{{ end }}" href="{{ $w.url | relURL }}"{{ with $w.focus }} style="--focus: {{ . }}"{{ end }}>
         <span class="world-plate">
           <img src="{{ $w.image | relURL }}" alt="{{ $w.alt }}" loading="lazy" width="1200" height="630">
         </span>

@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }} — {{ .Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}{{ end }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
-  <link rel="icon" href="{{ "favicon.png" | relURL }}">
+  {{/* The line-drawn logo on paper, from static/images/logo.png. ?v busts cached copies of the old portrait icon. */}}
+  {{ with resources.Get "favicon.ico" }}<link rel="icon" href="{{ .RelPermalink }}?v=2" sizes="16x16 32x32 48x48">{{ end }}
+  <link rel="icon" type="image/png" href="{{ "favicon.png" | relURL }}?v=2" sizes="192x192">
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}?v=2">
   <meta name="theme-color" content="#0c1418">
 
   {{- $description := .Params.description | default .Site.Params.description }}
   {{ with $description }}<meta name="description" content="{{ . }}">{{ end }}
+  <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:url" content="{{ .Permalink }}">
   {{ with $description }}<meta property="og:description" content="{{ . }}">{{ end }}
   {{- $image := .Params.image | default .Site.Params.socialImage }}
+  {{- $imageAlt := cond (isset .Params "image") .Params.imageAlt .Site.Params.socialImageAlt }}
   {{ with $image }}<meta property="og:image" content="{{ . | absURL }}">
+  {{- $file := path.Join "static" . }}
+  {{ if and (not (hasPrefix . "http")) (fileExists $file) }}{{ with imageConfig $file }}<meta property="og:image:width" content="{{ .Width }}">
+  <meta property="og:image:height" content="{{ .Height }}">{{ end }}{{ end }}
+  {{ with $imageAlt }}<meta property="og:image:alt" content="{{ . }}">{{ end }}
   <meta name="twitter:card" content="summary_large_image">{{ else }}
   <meta name="twitter:card" content="summary">{{ end }}
 
