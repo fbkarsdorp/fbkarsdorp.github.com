@@ -475,13 +475,13 @@ function start(entries) {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'alphabetic';
     ctx.fillStyle = GILT;
-    ctx.font = 'italic 25px "IM Fell English", Georgia, serif';
+    ctx.font = 'italic 25px "Linden Hill", Georgia, serif';
     ctx.fillText(p.label || 'Publication', COVER_W / 2, 92);
     // the title, fitted to the panel
     const maxW = COVER_W - 120;
     let size = 64, lines;
     for (; size > 26; size -= 2) {
-      ctx.font = `${size}px "IM Fell English", Georgia, serif`;
+      ctx.font = `${size}px "Linden Hill", Georgia, serif`;
       lines = wrapLines(ctx, p.title, maxW);
       if (lines.length * size * 1.12 <= 380 && lines.length <= 8) break;
     }
@@ -498,10 +498,10 @@ function start(entries) {
     ctx.fillRect(cx - 70, oy - 0.5, 52, 1); ctx.fillRect(cx + 18, oy - 0.5, 52, 1);
     // venue and year
     if (p.venue) {
-      ctx.font = 'italic 24px "IM Fell English", Georgia, serif';
+      ctx.font = 'italic 24px "Linden Hill", Georgia, serif';
       wrapLines(ctx, p.venue, maxW).slice(0, 2).forEach((l, k) => ctx.fillText(l, cx, 610 + k * 28));
     }
-    ctx.font = '500 30px Newsreader, Georgia, serif';     // Fell's old-style 1 reads as I
+    ctx.font = '500 30px Newsreader, Georgia, serif';     // Linden Hill's figures are old-style
     ctx.fillText(p.year, cx, COVER_H - 62);
     coverTexture.needsUpdate = true;
 
@@ -513,7 +513,7 @@ function start(entries) {
     s.save();
     s.translate(48, COVER_H / 2); s.rotate(-Math.PI / 2);
     s.textAlign = 'center'; s.textBaseline = 'middle';
-    s.font = '24px "IM Fell English", Georgia, serif';
+    s.font = '24px "Linden Hill", Georgia, serif';
     s.fillText(p.title.length > 38 ? p.title.slice(0, 36).replace(/\s+\S*$/, '') + ' …' : p.title, 0, 0);
     s.restore();
     spineTexture.needsUpdate = true;
@@ -580,8 +580,8 @@ function start(entries) {
   }
 
   const fontsReady = Promise.all([
-    document.fonts.load('64px "IM Fell English"'),
-    document.fonts.load('italic 25px "IM Fell English"'),
+    document.fonts.load('64px "Linden Hill"'),
+    document.fonts.load('italic 25px "Linden Hill"'),
     document.fonts.load('500 30px Newsreader'),
     document.fonts.load('600 30px Newsreader'),
     document.fonts.load('30px Newsreader'),
