@@ -1,6 +1,6 @@
 {
-  "heading": "Worlds to walk through",
-  "intro": "Experiments in making games out of cultural heritage collections. Every tale, card and song book you meet in them is a real record from the archive.",
+  "heading": "A vibecoded playground",
+  "intro": "Games, maps and tools I vibecoded out of cultural heritage collections. Every tale, motif, card and song book you meet in them is a real record from the archive.",
   "entries": [
     {
       "title": "Sagenland",
@@ -42,6 +42,16 @@
       "url": "https://www.karsdorp.io/amsterdam-song-map/",
       "image": "images/worlds/op-t-water.jpg",
       "alt": "Gerrit de Broen’s engraved map of Amsterdam, with red and blue song books stacked on the printers’ shops."
+    },
+    {
+      "title": "Spindle",
+      "subtitle": "Thompson’s Motif-Index, searched by meaning",
+      "blurb": "Describe a story element in your own words, say a sorcerer whose death is hidden in an egg, and find its motif among the 46,000 of Stith Thompson’s Motif-Index of Folk-Literature, however he worded it. A papercut atlas shows where each one is told, and it all runs in your browser.",
+      "meta": "Search engine · 46,000 motifs · Motif-Index",
+      "action": "Find a motif",
+      "url": "https://www.karsdorp.io/spindle/",
+      "image": "images/worlds/spindle.jpg",
+      "alt": "Spindle’s papercut atlas: a parchment world map dotted with red discs for the peoples and places Thompson’s sources cite, largest for India, Ireland and Iceland."
     }
   ]
 }

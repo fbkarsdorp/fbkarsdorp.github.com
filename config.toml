@@ -45,10 +45,10 @@ publishDir = "docs"
     weight = 2
     url = "/posts/"
   [[menu.main]]
-    name = "Worlds"
-    identifier = "worlds"
+    name = "Playground"
+    identifier = "playground"
     weight = 4
-    url = "/#worlds"
+    url = "/#playground"
   [[menu.main]]
     name = "Publications"
     url = "/references/"
