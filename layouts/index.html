@@ -1,16 +1,22 @@
-{{ define "body_classes" }}page-home{{ end }}
+{{ define "body_classes" }}page-home hero-{{ site.Params.hero | default "leeszaal" }}{{ end }}
 
 {{ define "main" }}
 
 {{/* The homepage hero. `params.hero` in config.toml picks the version:
-     "papers" (default) — the floating books are my publications, shelved by year;
-     "unseen" — the Chao1 unseen-species experiment. */}}
+     "leeszaal" (default) — the research statement on paper, with the bio;
+     "papers" — the night archive: the floating books are my publications, shelved by year;
+     "unseen" — the night archive as the Chao1 unseen-species experiment.
+     The two night heroes are followed by the bio in its own section. */}}
+{{ $night := in (slice "papers" "unseen") site.Params.hero }}
 {{ if eq site.Params.hero "unseen" }}
   {{ partial "hero-unseen.html" . }}
-{{ else }}
+{{ else if eq site.Params.hero "papers" }}
   {{ partial "hero-papers.html" . }}
+{{ else }}
+  {{ partial "hero-leeszaal.html" . }}
 {{ end }}
 
+{{ if $night }}
 <section id="about" class="about band">
   <div class="about-side">
     {{ with .Site.Data.author.image }}<img class="about-face" src="{{ . | relURL }}" alt="Pen sketch of {{ $.Site.Title }}" width="120" height="120" loading="lazy">{{ end }}
@@ -22,13 +28,34 @@
   </div>
   <div class="about-body">{{ .Content }}</div>
 </section>
+{{ end }}
 
+{{ $posts := where (where .Site.RegularPages "Section" "posts") "Draft" false }}
+{{ with $posts }}
+<section id="fragments" class="fragments-home band band--bleed" aria-labelledby="fragments-title">
+  <header class="section-head">
+    <h2 id="fragments-title">Fragments</h2>
+    <p>{{ with site.GetPage "/posts" }}{{ .Params.description }}{{ end }}</p>
+  </header>
+  <ol class="fragment-index">
+    {{ range first 5 .ByDate.Reverse }}
+      {{ partial "fragment-row.html" . }}
+    {{ end }}
+  </ol>
+  <a class="more" href="{{ "posts/" | relURL }}">All fragments</a>
+</section>
+{{ end }}
+
+{{/* Below the Fragments: selected publications (pinned while the playground
+     scrolls past) beside the playground. The playground comes first in the
+     source so it leads on narrow screens. */}}
+<div class="lz-split">
 {{ with .Site.Data.worlds }}
-<section id="playground" class="worlds band" aria-labelledby="worlds-title">
+<section id="playground" class="worlds band--bleed" aria-labelledby="worlds-title">
   <header class="section-head">
     <h2 id="worlds-title">{{ .heading }}</h2>
-    <p>{{ .intro }}</p>
   </header>
+  {{ with .intro }}<p class="section-intro">{{ . }}</p>{{ end }}
   <div class="worlds-grid{{ if eq (mod (sub (len .entries) 1) 3) 0 }} worlds-grid--thirds{{ end }}">
     {{ range $i, $w := .entries }}
       <a class="world{{ if eq $i 0 }} world--lead{{ end }}" href="{{ $w.url | relURL }}"{{ with $w.focus }} style="--focus: {{ . }}"{{ end }}>
@@ -48,36 +75,31 @@
 </section>
 {{ end }}
 
-{{ $posts := where (where .Site.RegularPages "Section" "posts") "Draft" false }}
-{{ with $posts }}
-<section id="fragments" class="fragments-home band" aria-labelledby="fragments-title">
-  <header class="section-head">
-    <h2 id="fragments-title">Fragments</h2>
-    <p>{{ with site.GetPage "/posts" }}{{ .Params.description }}{{ end }}</p>
-  </header>
-  <ol class="fragment-index">
-    {{ range first 5 .ByDate.Reverse }}
-      {{ partial "fragment-row.html" . }}
-    {{ end }}
-  </ol>
-  <a class="more" href="{{ "posts/" | relURL }}">All fragments</a>
-</section>
-{{ end }}
-
 {{/* Selected publications — generated into data/featured.json by
      scripts/generate-references.py from `featured` entries in references.bib. */}}
 {{ with .Site.Data.featured }}
   {{ if gt (.count | default 0) 0 }}
-  <section id="publications" class="featured band" aria-labelledby="featured-title">
+  <section id="publications" class="featured band--bleed" aria-labelledby="featured-title">
     <header class="section-head">
       <h2 id="featured-title">Selected publications</h2>
     </header>
     <ol class="featured-list">
       {{ range .entries }}
+        {{- $title := .title }}{{ $pub := dict }}
+        {{- range where (site.Data.publications.entries | default slice) "title" $title }}{{ $pub = . }}{{ end }}
+        {{- $tile := slice }}{{ with $pub.key }}{{ with index (site.Data.covers | default dict) . }}{{ $tile = .tile }}{{ end }}{{ end }}
         <li class="featured-pub">
           <span class="featured-year">{{ .year }}</span>
+          {{ with $tile }}<span class="featured-page" style="--tx: {{ index . 0 }}; --ty: {{ index . 1 }}" aria-hidden="true"></span>{{ else }}<span class="featured-page featured-page--none" aria-hidden="true"></span>{{ end }}
           <span class="featured-body">
             {{ if .url }}<a class="featured-title" href="{{ .url }}">{{ .title }}</a>{{ else }}<span class="featured-title">{{ .title }}</span>{{ end }}
+            {{- with $pub.authors }}
+              {{- $shown := first 3 . }}
+              <span class="featured-authors">
+                {{- range $i, $a := $shown }}{{ if $i }}, {{ end }}{{ if eq $a site.Title }}<span class="me">{{ $a }}</span>{{ else }}{{ $a }}{{ end }}{{ end -}}
+                {{ with sub (len .) (len $shown) }}{{ if gt . 0 }} and {{ . }} other{{ if gt . 1 }}s{{ end }}{{ end }}{{ end -}}
+              </span>
+            {{- end }}
             {{ with .venue }}<span class="featured-venue">{{ . }}</span>{{ end }}
           </span>
         </li>
@@ -87,11 +109,14 @@
   </section>
   {{ end }}
 {{ end }}
-
+</div>
 {{ end }}
 
 {{ define "footer_js" }}
+  {{ partial "marginalia-js.html" . }}
+  {{ if in (slice "papers" "unseen") site.Params.hero }}
   {{ $hero := resources.Get (cond (eq site.Params.hero "unseen") "js/archive-hero.js" "js/archive-papers.js") }}
   {{ if hugo.IsProduction }}{{ $hero = $hero | minify | fingerprint }}{{ end }}
   <script type="module" src="{{ $hero.RelPermalink }}"></script>
+  {{ end }}
 {{ end }}

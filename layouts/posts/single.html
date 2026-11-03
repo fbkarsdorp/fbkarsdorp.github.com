@@ -1,7 +1,7 @@
 {{ define "body_classes" }}page-post{{ end }}
 
 {{ define "main" }}
-<article class="post">
+<article class="post" data-mg-page="{{ .RelPermalink }}" data-mg-title="{{ .Title }}">
   <header class="post-head band">
     <p class="eyebrow">
       <a href="{{ "posts/" | relURL }}">Fragments</a>
@@ -46,6 +46,7 @@
 {{ end }}
 
 {{ define "footer_js" }}
+{{ partial "marginalia-js.html" . }}
 <script>
   // Reading progress: a thin lamp-coloured line under the header.
   (function () {

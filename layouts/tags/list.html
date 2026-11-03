@@ -5,7 +5,7 @@
   <p class="eyebrow"><a href="{{ "posts/" | relURL }}">Fragments</a>{{ if eq .Kind "term" }} <span aria-hidden="true">·</span> tagged{{ end }}</p>
   <h1>{{ if eq .Kind "term" }}{{ partial "display-title.html" .Data.Term }}{{ else }}{{ .Title }}{{ end }}<span class="dot">.</span></h1>
 </header>
-<section class="band">
+<section class="band band--bleed">
   {{ if eq .Kind "taxonomy" }}
     <ul class="tag-cloud">
       {{ range .Data.Terms.ByCount }}

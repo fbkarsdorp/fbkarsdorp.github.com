@@ -1,4 +1,9 @@
-<header class="site-header{{ if .IsHome }} site-header--night{{ end }}">
+{{ $night := and .IsHome (in (slice "papers" "unseen") site.Params.hero) }}
+<div class="reader-tools">
+  <button type="button" class="large-text-toggle" aria-pressed="false">Large text</button>
+  <a href="{{ "index.xml" | relURL }}">RSS</a>
+</div>
+<header class="site-header{{ if $night }} site-header--night{{ end }}">
   <a class="site-mark" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}, home">
     {{ with .Site.Data.author.image }}<img class="site-mark-face" src="{{ . | relURL }}" alt="" width="30" height="30">{{ end }}
     <span class="site-mark-name">{{ .Site.Title }}</span>

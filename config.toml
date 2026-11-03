@@ -21,14 +21,16 @@ publishDir = "docs"
   # Layouts, styles and scripts live in layouts/ and assets/ (they replace the
   # winston theme's); colours and type are tokens at the top of assets/css/site.css.
   description = "Folgert Karsdorp studies how culture spreads, develops and disappears, with methods from ecology, population genetics and machine learning."
-  # Homepage hero: "papers" (the floating books are the publications in
+  # Homepage hero: "leeszaal" (the research statement on paper, with the bio;
+  # the statement is `statement` in content/_index.md), or one of the older
+  # night heroes: "papers" (the floating books are the publications in
   # references.bib) or "unseen" (the Chao1 unseen-species experiment).
   # Switch socialImage (and its alt text) along with it. A page can set its own
   # with `image` and `imageAlt` in its front matter.
-  hero = "papers"
+  hero = "leeszaal"
   socialImage = "images/social-preview-papers.jpg"   # or images/social-preview-unseen.jpg
   socialImageAlt = "Fragments of Cultural Change: publications float as books in the dark, one lit by a lamp and catalogued beside the title."
-  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Linden+Hill:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap"
+  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@400;500&display=swap"
 
 # markdown config settings https://gohugo.io/getting-started/configuration-markup/#goldmark
 [markup]

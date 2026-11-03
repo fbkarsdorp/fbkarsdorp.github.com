@@ -9,7 +9,9 @@
   <link rel="icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/png" href="/favicon.png?v=2" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-  <meta name="theme-color" content="#0c1418">
+  <meta name="theme-color" content="#efece4">
+  
+  <script>try { if (localStorage.getItem('large-text') === '1') document.documentElement.classList.add('large-text'); } catch (e) {}</script>
   <meta name="description" content="Folgert Karsdorp studies how culture spreads, develops and disappears, with methods from ecology, population genetics and machine learning.">
   <meta property="og:site_name" content="Folgert Karsdorp">
   <meta property="og:title" content="Richness">
@@ -24,11 +26,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Linden&#43;Hill:ital@0;1&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=IBM&#43;Plex&#43;Mono:ital,wght@0,400;0,500;1,400&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken&#43;Grotesk:ital,wght@0,300..700;1,300..700&amp;family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=DM&#43;Mono:wght@400;500&amp;display=swap">
 
   
   
-  <link rel="stylesheet" href="/css/site.min.73b4779281459841fb24453174d8ac7cd405a7a69218c66a34a55095d404147b.css">
+  <link rel="stylesheet" href="/css/site.min.3876a7c77486fd24ee070180b28071276cae83b9599fa4a27c538dfa4c48c2be.css">
 
   
 
@@ -38,7 +40,12 @@
 
 <body class="page-list">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
+  
+<div class="reader-tools">
+  <button type="button" class="large-text-toggle" aria-pressed="false">Large text</button>
+  <a href="/index.xml">RSS</a>
+</div>
+<header class="site-header">
   <a class="site-mark" href="/" aria-label="Folgert Karsdorp, home">
     <img class="site-mark-face" src="/images/logo.png" alt="" width="30" height="30">
     <span class="site-mark-name">Folgert Karsdorp</span>
@@ -74,47 +81,63 @@
   <p class="eyebrow"><a href="/posts/">Fragments</a> <span aria-hidden="true">·</span> tagged</p>
   <h1>richness<span class="dot">.</span></h1>
 </header>
-<section class="band">
+<section class="band band--bleed">
   
     <ol class="fragment-index fragment-index--full">
-      <li class="fragment-row">
+      
+<li class="fragment-row">
   <a href="/posts/20220316142536-two_assemblage_good_turing_estimation/">
-    <time class="fr-date" datetime="2022-05-14">May 2022</time>
+    <span class="fr-date">
+      <time datetime="2022-05-14">14 May 2022</time>
+      <span class="fr-meta">11 min read</span>
+    </span>
     <span class="fr-main">
       <span class="fr-title">Estimating Unseen Shared Cultural Diversity</span>
       <span class="fr-desc">Extends unseen species models to estimate the shared diversity between two cultural collections — how many artefacts they have in common that neither has observed.</span>
     </span>
-    <span class="fr-meta">11 min read</span>
+    <span class="fr-go" aria-hidden="true">Read</span>
   </a>
 </li>
+
 <li class="fragment-row">
   <a href="/posts/20220405110456-population_size_regression_estimators/">
-    <time class="fr-date" datetime="2022-04-23">Apr 2022</time>
+    <span class="fr-date">
+      <time datetime="2022-04-23">23 Apr 2022</time>
+      <span class="fr-meta">12 min read</span>
+    </span>
     <span class="fr-main">
       <span class="fr-title">Population Size Estimation as a Regression Problem</span>
       <span class="fr-desc">Reframes population size estimation as a Bayesian regression problem to correct for heterogeneous detection probabilities in cultural samples.</span>
     </span>
-    <span class="fr-meta">12 min read</span>
+    <span class="fr-go" aria-hidden="true">Read</span>
   </a>
 </li>
+
 <li class="fragment-row">
   <a href="/posts/20220323122150-estimating_richness_under_sampling_without_replacement/">
-    <time class="fr-date" datetime="2022-03-31">Mar 2022</time>
+    <span class="fr-date">
+      <time datetime="2022-03-31">31 Mar 2022</time>
+      <span class="fr-meta">10 min read</span>
+    </span>
     <span class="fr-main">
       <span class="fr-title">Estimating Richness under Sampling without Replacement</span>
       <span class="fr-desc">Examines how standard unseen species estimators break down under sampling without replacement, and how to correct for it.</span>
     </span>
-    <span class="fr-meta">10 min read</span>
+    <span class="fr-go" aria-hidden="true">Read</span>
   </a>
 </li>
+
 <li class="fragment-row">
   <a href="/posts/20220309103709-good_turing_as_an_unseen_species_model/">
-    <time class="fr-date" datetime="2022-03-15">Mar 2022</time>
+    <span class="fr-date">
+      <time datetime="2022-03-15">15 Mar 2022</time>
+      <span class="fr-meta">10 min read</span>
+    </span>
     <span class="fr-main">
       <span class="fr-title">Demystifying Chao<span class="num">1</span> with Good-Turing</span>
       <span class="fr-desc">How Good-Turing frequency estimation underpins the Chao1 biodiversity estimator — and what that means for counting unseen cultural artefacts.</span>
     </span>
-    <span class="fr-meta">10 min read</span>
+    <span class="fr-go" aria-hidden="true">Read</span>
   </a>
 </li>
 
@@ -145,9 +168,8 @@
       <li><a href="/index.xml">RSS</a></li>
     </ul>
     <p class="colophon">
-      Set in Linden Hill — Barry Schwartz’s revival of Deepdene, the book face
-      Frederic Goudy cut in 1927 — with Newsreader and IBM Plex Mono.
-      Built with Hugo.
+      Set in Hanken Grotesk, with Spectral for the titles of works and DM Mono
+      for dates. Built with Hugo.
     </p>
   </div>
 </footer>
@@ -155,7 +177,7 @@
 
   
   
-  <script src="/js/site.min.3e2a022bb7cb5ad40b0e036573ffafe172e66384f0fe261d62bb4684000e0a8c.js" defer></script>
+  <script src="/js/site.min.6e733256b8916c5f646b4e47cff3e59534940a2cc1b5b6ee353baadc2a4f9220.js" defer></script>
   
 </body>
 </html>

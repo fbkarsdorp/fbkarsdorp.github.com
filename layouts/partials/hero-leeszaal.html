@@ -1,0 +1,30 @@
+{{/* The Leeszaal hero (params.hero = "leeszaal"): the homepage title
+     ("Fragments of Cultural Change") set very large with its last word fading
+     into the paper, then the bio from content/_index.md beside the links.
+     Setting `statement` in content/_index.md's front matter shows that
+     sentence in its place (same treatment) and moves the title to a small
+     kicker above the links. */}}
+{{ $line := .Params.statement | default .Title }}
+{{ $words := split $line " " }}
+<section id="intro" class="lz-hero band" aria-labelledby="intro-title">
+  <h1 id="intro-title" class="lz-statement">
+    {{- if gt (len $words) 1 -}}
+      {{- delimit (first (sub (len $words) 1) $words) " " }} <span class="fade">{{ index $words (sub (len $words) 1) }}</span>
+    {{- else -}}
+      {{ $line }}
+    {{- end -}}
+  </h1>
+  <div class="lz-hero-row">
+    <div class="about-side">
+      {{ with .Params.statement }}<p class="lz-kicker">{{ $.Title }}</p>{{ end }}
+      <ul class="about-links">
+        {{ range .Site.Data.social.links }}
+          <li><a href="{{ .url }}" rel="noopener">{{ .label | default .name }}</a></li>
+        {{ end }}
+      </ul>
+      {{/* Filled by marginalia.js for readers who have marked passages. */}}
+      <div class="mg-reading" hidden></div>
+    </div>
+    <div class="about-body">{{ .Content }}</div>
+  </div>
+</section>

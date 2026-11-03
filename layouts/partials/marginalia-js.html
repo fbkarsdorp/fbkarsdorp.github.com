@@ -1,0 +1,5 @@
+{{/* The reader's highlighter (assets/js/marginalia.js): marks in Fragments,
+     "Your reading" in the homepage hero. */}}
+{{ $mg := resources.Get "js/marginalia.js" }}
+{{ if hugo.IsProduction }}{{ $mg = $mg | minify | fingerprint }}{{ end }}
+<script src="{{ $mg.RelPermalink }}" defer></script>

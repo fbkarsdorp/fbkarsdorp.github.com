@@ -9,7 +9,9 @@
   {{ with resources.Get "favicon.ico" }}<link rel="icon" href="{{ .RelPermalink }}?v=2" sizes="16x16 32x32 48x48">{{ end }}
   <link rel="icon" type="image/png" href="{{ "favicon.png" | relURL }}?v=2" sizes="192x192">
   <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}?v=2">
-  <meta name="theme-color" content="#0c1418">
+  <meta name="theme-color" content="#efece4">
+  {{/* Apply the reader's "Large text" choice before first paint (site.js toggles it). */}}
+  <script>try { if (localStorage.getItem('large-text') === '1') document.documentElement.classList.add('large-text'); } catch (e) {}</script>
 
   {{- $description := .Params.description | default .Site.Params.description }}
   {{ with $description }}<meta name="description" content="{{ . }}">{{ end }}

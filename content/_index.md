@@ -1,5 +1,6 @@
 ---
 title: Fragments of Cultural Change
+statement: How culture spreads, develops and disappears
 description: 
 ---
 

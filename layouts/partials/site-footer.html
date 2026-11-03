@@ -14,9 +14,8 @@
       <li><a href="{{ "index.xml" | relURL }}">RSS</a></li>
     </ul>
     <p class="colophon">
-      Set in Linden Hill — Barry Schwartz’s revival of Deepdene, the book face
-      Frederic Goudy cut in 1927 — with Newsreader and IBM Plex Mono.
-      Built with Hugo{{ if .IsHome }}; the archive above is drawn with three.js{{ end }}.
+      Set in Hanken Grotesk, with Spectral for the titles of works and DM Mono
+      for dates. Built with Hugo{{ if and .IsHome (in (slice "papers" "unseen") site.Params.hero) }}; the archive above is drawn with three.js{{ end }}.
     </p>
   </div>
 </footer>

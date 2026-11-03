@@ -1,6 +1,19 @@
-// Small site-wide behaviour: the mobile menu, and the header's state over the
-// homepage's dark archive.
+// Small site-wide behaviour: the "Large text" switch, the mobile menu, the
+// playground's turning lead card, and the header's state over the homepage's
+// dark archive (only with the older night heroes).
 (function () {
+  // Large text: scales every rem on the page; remembered per browser. The
+  // class itself is set before first paint by an inline script in baseof.html.
+  var root = document.documentElement;
+  document.querySelectorAll('.large-text-toggle').forEach(function (btn) {
+    btn.setAttribute('aria-pressed', root.classList.contains('large-text') ? 'true' : 'false');
+    btn.addEventListener('click', function () {
+      var on = root.classList.toggle('large-text');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      try { localStorage.setItem('large-text', on ? '1' : '0'); } catch (e) {}
+    });
+  });
+
   var toggle = document.querySelector('.nav-toggle');
   var header = document.querySelector('.site-header');
   if (toggle && header) {
@@ -16,17 +29,6 @@
       }
     });
   }
-
-  // World plates: a small pool of lamplight follows the pointer.
-  document.querySelectorAll('.world').forEach(function (card) {
-    var plate = card.querySelector('.world-plate');
-    if (!plate) return;
-    card.addEventListener('pointermove', function (e) {
-      var r = plate.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
 
   // Worlds: every few seconds the lead card is shelved at the end and the next
   // world takes its place. Holds still while the grid is pointed at, focused,

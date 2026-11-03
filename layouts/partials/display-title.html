@@ -1,4 +1,7 @@
-{{- /* A title for the Linden Hill display face, with its digits set in Newsreader:
-       its old-style figures sit low and small in a title ("Chao1"). */ -}}
+{{- /* A title set in the display face. Linden Hill (the night design) had
+       old-style figures that sat low and small, so its digits were wrapped in
+       <span class="num"> and set in another face. Leeszaal's grotesk has lining
+       figures and .num now inherits; the wrapper stays so a display face with
+       old-style figures can be brought back without touching the templates. */ -}}
 {{- $title := replaceRE `([0-9]+)` `<span class="num">$1</span>` (. | htmlEscape) -}}
 {{- return ($title | safeHTML) -}}

@@ -2,7 +2,10 @@
 {{ define "body_classes" }}page-pubs{{ end }}
 
 {{ define "main" }}
-<header class="page-head band">
+{{/* Wide screens: title, filter and section links pinned on the left, the
+     citations beside them (see "publications" in site.css). */}}
+<div class="pubs-page">
+<header class="page-head band pubs-head">
   <h1>Publications<span class="dot">.</span></h1>
 
   <div class="pubs-tools">
@@ -12,13 +15,15 @@
     </label>
     <p class="pubs-count" aria-live="polite"></p>
   </div>
+  <nav class="pubs-jump" aria-label="Kinds of publication"></nav>
 </header>
 
-<div class="band">
+<div class="band band--bleed pubs-list">
   <div class="pubs">
     {{ .Content }}
     <p class="pubs-empty" hidden>Nothing matches that filter. Try a surname, a journal or a year.</p>
   </div>
+</div>
 </div>
 {{ end }}
 
@@ -56,6 +61,17 @@
   });
 
   var groups = Array.prototype.slice.call(document.querySelectorAll('.pubs .csl-bib-body'));
+
+  // Section links (Books, Journal Articles, …) from the headings pandoc wrote.
+  var jump = document.querySelector('.pubs-jump');
+  // The generated references.md writes raw <h2>s without ids, so give them one.
+  document.querySelectorAll('.pubs h2').forEach(function (h) {
+    if (!h.id) h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    jump.appendChild(a);
+  });
   function markYears() {
     groups.forEach(function (g) {
       var prev = null;
