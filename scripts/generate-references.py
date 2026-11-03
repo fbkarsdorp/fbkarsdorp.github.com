@@ -25,6 +25,14 @@ FEATURED_OUTPUT = PROJECT_DIR / "data" / "featured.json"
 # Every entry as structured fields, for the homepage hero's floating books
 # (assets/js/archive-papers.js, via layouts/index.html).
 PUBLICATIONS_OUTPUT = PROJECT_DIR / "data" / "publications.json"
+# Per entry, the full abstract and a clean BibTeX entry, for the call slips on
+# the Publications page (layouts/_default/pubs.html, assets/js/slips.js).
+SLIPS_OUTPUT = PROJECT_DIR / "data" / "slips.json"
+# Fields kept in a slip's "Copy BibTeX", in this order. Everything else
+# (abstract, featured, featured_order, keywords, annote, code, ...) is left out.
+BIBTEX_FIELDS = ['author', 'editor', 'title', 'booktitle', 'journal', 'series',
+                 'publisher', 'address', 'year', 'month', 'volume', 'number',
+                 'issue', 'pages', 'isbn', 'issn', 'doi', 'url']
 
 # Entry type mappings
 BOOKS = {'book'}  # Only standalone books
@@ -216,6 +224,47 @@ KIND_LABELS = {
 }
 
 
+def raw_field(body, name):
+    """A field's value as written in the .bib, with its delimiters: '{...}',
+    '"..."' or a bare value (a number or a month macro). None if absent."""
+    m = re.search(r'(?<![\w])' + re.escape(name) + r'\s*=\s*', body, re.IGNORECASE)
+    if not m or m.end() >= len(body):
+        return None
+    value = extract_field(body, name)
+    if value is None:
+        return None
+    value = re.sub(r'\s+', ' ', value).strip()
+    opener = body[m.end()]
+    if opener == '{':
+        return '{' + value + '}'
+    if opener == '"':
+        return '"' + value + '"'
+    return value
+
+
+def clean_bibtex(entry_type, key, body):
+    """The entry rebuilt with only BIBTEX_FIELDS, one per line."""
+    lines = []
+    for name in BIBTEX_FIELDS:
+        value = raw_field(body, name)
+        if value:
+            lines.append(f"  {name} = {value}")
+    return f"@{entry_type}{{{key},\n" + ",\n".join(lines) + "\n}"
+
+
+def build_slips(bib_content):
+    """{key: {bibtex, abstract}} for every entry."""
+    pattern = r'@(\w+)\{([^,]+),\s*\n((?:[^@])*?)\n\}'
+    slips = {}
+    for match in re.finditer(pattern, bib_content, re.DOTALL | re.MULTILINE):
+        entry_type, key, body = match.group(1).lower(), match.group(2), match.group(3)
+        slips[key] = {
+            'bibtex': clean_bibtex(entry_type, key, body),
+            'abstract': clean_value(extract_field(body, 'abstract')) or '',
+        }
+    return slips
+
+
 def trim_abstract(text, limit=720):
     """First sentences of an abstract, up to about `limit` characters."""
     text = clean_value(text)
@@ -300,6 +349,11 @@ def main():
         json.dump({"entries": publications, "count": len(publications)},
                   f, indent=2, ensure_ascii=False)
     print(f"✓ Generated {PUBLICATIONS_OUTPUT} ({len(publications)} entries)")
+
+    slips = build_slips(bib_content)
+    with open(SLIPS_OUTPUT, 'w') as f:
+        json.dump(slips, f, indent=2, ensure_ascii=False)
+    print(f"✓ Generated {SLIPS_OUTPUT} ({len(slips)} entries)")
 
     # Get current date in Hugo format
     now = datetime.now()

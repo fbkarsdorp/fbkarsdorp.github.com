@@ -30,7 +30,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/site.min.3876a7c77486fd24ee070180b28071276cae83b9599fa4a27c538dfa4c48c2be.css">
+  <link rel="stylesheet" href="/css/site.min.38ebabf11fefe916b549d441936ad3227e23dcef72563c374aa901e4cd6eeec2.css">
 
   
 
@@ -92,8 +92,183 @@
   <nav class="pubs-jump" aria-label="Kinds of publication"></nav>
 </header>
 
+
+
+
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+
+
 <div class="band band--bleed pubs-list">
-  <div class="pubs">
+  <div class="pubs" data-slips="/js/pub-slips.4e998f6131a9e5b314303b4d4b6d14e7ef1b84aabd8d687a3c80445f08150743.json" data-me="Folgert Karsdorp">
     <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style>
 <h2>Books</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -400,6 +575,9 @@ Finlayson, 22–26. Turkey, Istanbul. <a href="https://pure.knaw.nl/portal/files
   
   <script src="/js/site.min.6e733256b8916c5f646b4e47cff3e59534940a2cc1b5b6ee353baadc2a4f9220.js" defer></script>
   
+
+
+<script src="/js/slips.min.76328f0ceabc12e6d6a10d5b5ea8510c12e8c2ebc7ae85235bc995610af49ca1.js" defer></script>
 <script>
 (function () {
   var entries = Array.prototype.slice.call(document.querySelectorAll('.pubs .csl-entry'));
@@ -421,8 +599,11 @@ Finlayson, 22–26. Turkey, Istanbul. <a href="https://pure.knaw.nl/portal/files
     var text = document.createElement('span');
     text.className = 'pub-text';
     while (entry.firstChild) text.appendChild(entry.firstChild);
-    var m = text.textContent.match(/\b(19|20)\d{2}\b/);
-    var year = m ? m[0] : '';
+    
+    
+    
+    var m = text.textContent.match(/\b((?:19|20)\d{2})[a-z]?\b/);
+    var year = m ? m[1] : '';
     var y = document.createElement('span');
     y.className = 'pub-year';
     y.textContent = year;

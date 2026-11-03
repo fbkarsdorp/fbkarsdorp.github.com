@@ -18,8 +18,22 @@
   <nav class="pubs-jump" aria-label="Kinds of publication"></nav>
 </header>
 
+{{/* Call slips (assets/js/slips.js): per entry the title, authors, venue,
+     full abstract, clean BibTeX (data/slips.json, from generate-references.py)
+     and first-page tile (data/covers.json), as one JSON file fetched the first
+     time a slip is opened. */}}
+{{ $slips := site.Data.slips | default dict }}
+{{ $covers := site.Data.covers | default dict }}
+{{ $list := slice }}
+{{ range site.Data.publications.entries | default slice }}
+  {{ $s := index $slips .key | default dict }}
+  {{ $tile := slice }}{{ with index $covers .key }}{{ $tile = .tile }}{{ end }}
+  {{ $list = $list | append (dict "key" .key "title" .title "authors" .authors "venue" .venue "year" .year "label" .label "url" .url "abstract" ($s.abstract | default .abstract) "bibtex" $s.bibtex "tile" $tile) }}
+{{ end }}
+{{ $slipData := $list | jsonify | resources.FromString "js/pub-slips.json" }}
+{{ if hugo.IsProduction }}{{ $slipData = $slipData | fingerprint }}{{ end }}
 <div class="band band--bleed pubs-list">
-  <div class="pubs">
+  <div class="pubs" data-slips="{{ $slipData.RelPermalink }}" data-me="{{ site.Title }}">
     {{ .Content }}
     <p class="pubs-empty" hidden>Nothing matches that filter. Try a surname, a journal or a year.</p>
   </div>
@@ -28,6 +42,9 @@
 {{ end }}
 
 {{ define "footer_js" }}
+{{ $sl := resources.Get "js/slips.js" }}
+{{ if hugo.IsProduction }}{{ $sl = $sl | minify | fingerprint }}{{ end }}
+<script src="{{ $sl.RelPermalink }}" defer></script>
 <script>
 (function () {
   var entries = Array.prototype.slice.call(document.querySelectorAll('.pubs .csl-entry'));
@@ -49,8 +66,11 @@
     var text = document.createElement('span');
     text.className = 'pub-text';
     while (entry.firstChild) text.appendChild(entry.firstChild);
-    var m = text.textContent.match(/\b(19|20)\d{2}\b/);
-    var year = m ? m[0] : '';
+    // The first year in the citation (Chicago puts it right after the authors).
+    // Pandoc adds a letter when an author group has two works in one year
+    // ("2019a", "2019b"); the margin shows the bare year.
+    var m = text.textContent.match(/\b((?:19|20)\d{2})[a-z]?\b/);
+    var year = m ? m[1] : '';
     var y = document.createElement('span');
     y.className = 'pub-year';
     y.textContent = year;

@@ -1222,9 +1222,10 @@ a.featured-title:hover { text-decoration: underline; text-decoration-thickness: 
 .pubs .csl-bib-body + h2 { margin-top: clamp(56px, 6vw, 88px); }
 .pubs .csl-bib-body[hidden] + h2 { margin-top: 0; }
 /* the citations are the works: set in the serif */
+.pubs { --yearcol: 9.5rem; }
 .pubs .csl-entry {
   display: grid;
-  grid-template-columns: 9.5rem minmax(0, 44rem);
+  grid-template-columns: var(--yearcol) minmax(0, 44rem);
   column-gap: 32px;
   margin: 0 !important;
   text-indent: 0 !important;
@@ -1236,7 +1237,11 @@ a.featured-title:hover { text-decoration: underline; text-decoration-thickness: 
   color: var(--ink-2);
 }
 .pubs .csl-entry[hidden] { display: none; }
-.pub-year { padding-top: 0.2em; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--ink); }
+.pub-year {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  padding-top: 0.2em; padding-right: 12px;
+  font-family: var(--font-mono); font-size: 0.8125rem; color: var(--ink);
+}
 .same-year .pub-year { visibility: hidden; }
 .pubs .pub-link {
   display: inline-block; margin-left: 4px; padding: 0 6px;
@@ -1249,8 +1254,84 @@ a.featured-title:hover { text-decoration: underline; text-decoration-thickness: 
 .pubs-empty { padding: 32px var(--pad, 0px); font-family: var(--font-serif); font-style: italic; color: var(--ink-2); }
 @media (max-width: 760px) {
   .pubs .csl-entry { grid-template-columns: 1fr; }
-  .pub-year { padding: 0 0 4px; }
-  .same-year .pub-year { display: none; }
+  .pub-year { padding: 0 0 4px; justify-content: flex-start; }
+}
+
+/* call slips (assets/js/slips.js): click a citation, or its "+", to unfold one */
+.pubs .csl-entry[id^="ref-"] { cursor: pointer; transition: background-color 0.2s ease; }
+.pubs .csl-entry[id^="ref-"]:hover, .pubs .csl-entry.is-open { background: var(--card-pale); }
+.pubs .csl-entry.is-open { border-bottom-color: transparent; }
+.pub-toggle {
+  visibility: visible;                      /* stays when a repeated year is hidden */
+  width: 1.25rem; height: 1.25rem; padding: 0;
+  display: inline-grid; place-items: center;
+  font: 400 0.9375rem/1 var(--font-text);
+  color: var(--ink); background: transparent;
+  border: 1px solid var(--ink-3); cursor: pointer;
+}
+.pub-toggle:hover, .is-open .pub-toggle { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.pub-slip {
+  padding: 0 var(--pad, 0px) 26px calc(var(--pad, 0px) + var(--yearcol) + 32px);
+  background: var(--card-pale);
+  border-bottom: 1px solid var(--paper-2);
+}
+.csl-entry[hidden] + .pub-slip { display: none; }
+@keyframes slip-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.slip-sheet {
+  max-width: 44rem;
+  padding: 18px 22px 20px;
+  background: var(--paper-3);
+  border: 1px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--paper-2);
+  animation: slip-in 0.25s ease-out;
+}
+.slip-head {
+  display: flex; flex-wrap: wrap; gap: 4px 18px; justify-content: space-between;
+  margin: 0 0 14px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.slip-no { text-transform: none; color: var(--ink-3); }
+.slip-grid { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: start; }
+.slip-grid:not(:has(.slip-page)) { grid-template-columns: minmax(0, 1fr); }
+.slip-page {
+  display: block; width: 96px; height: 136px;
+  background: #fff url("../images/papers/atlas.jpg") no-repeat;
+  background-size: 768px 408px;
+  background-position: calc(var(--tx) * -0.5px) calc(var(--ty) * -0.5px);
+  box-shadow: 0 0 0 1px var(--rule), 3px 3px 0 var(--paper-2);
+}
+.slip-fields { margin: 0; }
+.slip-fields > div {
+  display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--ink-3);
+}
+.slip-fields dt { padding-top: 0.25em; font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+.slip-fields dd { margin: 0; font-family: var(--font-serif); font-size: 1rem; line-height: 1.4; color: var(--ink); }
+.slip-fields .slip-title { font-size: 1.125rem; }
+.slip-abstract {
+  margin: 16px 0 0;
+  font-size: 0.9375rem; line-height: 1.55; color: var(--ink-2);
+  hyphens: auto; -webkit-hyphens: auto;
+}
+.slip-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
+.slip-actions button, .slip-actions a {
+  padding: 6px 12px;
+  font: 400 0.875rem/1.2 var(--font-text);
+  color: var(--ink); background: transparent;
+  border: 1px solid var(--ink); text-decoration: none; cursor: pointer;
+}
+.slip-actions button:hover, .slip-actions a:hover { background: var(--hi); color: var(--ink); }
+.slip-actions .is-done { background: var(--hi); }
+.slip-actions .slip-close { margin-left: auto; border-color: transparent; color: var(--ink-3); }
+.slip-actions .slip-close:hover { border-color: var(--ink); color: var(--ink); }
+@media (max-width: 760px) {
+  .pub-slip { padding-left: var(--pad, 0px); }
+  .slip-sheet { padding: 14px 14px 16px; }
+  .slip-grid { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; }
+  .slip-page { width: 72px; height: 102px; background-size: 576px 306px; background-position: calc(var(--tx) * -0.375px) calc(var(--ty) * -0.375px); }
+  .slip-fields > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }
 
 /* wide screens: title, filter and section links pinned beside the list */
@@ -1260,7 +1341,8 @@ a.featured-title:hover { text-decoration: underline; text-decoration-thickness: 
   .pubs-head h1 { font-size: clamp(3rem, 4.8vw, 5.25rem); }
   .pubs-jump { flex-direction: column; align-items: flex-start; }
   .pubs-list { min-height: 100%; padding-top: clamp(48px, 7vw, 104px); border-left: 1px solid var(--paper-2); }
-  .pubs .csl-entry { grid-template-columns: 5rem minmax(0, 46rem); }
+  .pubs { --yearcol: 5rem; }
+  .pubs .csl-entry { grid-template-columns: var(--yearcol) minmax(0, 46rem); }
 }
 /* ---------- marginalia: the reader's highlighter (assets/js/marginalia.js) ---------- */
 
