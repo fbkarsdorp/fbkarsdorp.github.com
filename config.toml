@@ -28,8 +28,10 @@ publishDir = "docs"
   # Switch socialImage (and its alt text) along with it. A page can set its own
   # with `image` and `imageAlt` in its front matter.
   hero = "leeszaal"
-  socialImage = "images/social-preview-papers.jpg"   # or images/social-preview-unseen.jpg
-  socialImageAlt = "Fragments of Cultural Change: publications float as books in the dark, one lit by a lamp and catalogued beside the title."
+  # Leeszaal card (made from scripts/social-preview.html); the night heroes'
+  # cards are images/social-preview-papers.jpg and images/social-preview-unseen.jpg.
+  socialImage = "images/social-preview-leeszaal.jpg"
+  socialImageAlt = "How culture spreads, develops and disappears: the last word fades into the paper, above Folgert Karsdorp's name and a row of first pages from his papers, each older one paler."
   googleFontsUrl = "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@400;500&display=swap"
 
 # markdown config settings https://gohugo.io/getting-started/configuration-markup/#goldmark
